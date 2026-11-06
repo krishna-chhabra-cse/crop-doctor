@@ -116,7 +116,7 @@ def test_trust_meter_demo_controls():
     assert not dash.exception
     run = db.calibration_runs()[-1]
     assert run["n_field_points"] == 30
-    assert run["monitor_coverage"] > lab_run["monitor_coverage"] + 0.3   # the broken promise gets repaired
+    assert run["monitor_coverage"] >= 0.9 > lab_run["monitor_coverage"]   # the broken promise gets repaired
 
 
 def test_follow_up_chat_question():

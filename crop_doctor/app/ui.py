@@ -34,7 +34,7 @@ def calibrated_doctor():
         with st.spinner("First start: calibrating on field photos ..."):
             lc.ensure_initialised(doc)
     else:
-        doc.set_calibration(runs[-1]["temperature"], runs[-1]["qhat"])
+        doc.set_calibration(runs[-1]["temperature"], db.run_qhat(runs[-1]))
     return doc
 
 

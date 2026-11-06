@@ -493,3 +493,64 @@ cautious (97% coverage, longer shortlists); more labels make the shortlists shor
 - *Isn't 10% audits expensive?* It's a dial: fewer audits = slower recalibration. For a pilot, 10% of answered
   photos is a few per day per expert.
 - *Security?* The demo has no login. A real deployment needs expert accounts, access control and an audit trail.
+
+## Day 9: More data, a properly trained v2 model, and a live website
+
+### More field data (and what we found when we checked it)
+| Source | What it is | Licence | How we use it |
+|---|---|---|---|
+| **Tanzania Irish Potato** (Zenodo 10.5281/zenodo.8286529) | smartphone photos from smallholder farms, healthy / early blight / late blight, checked by plant pathologists | CC-BY-4.0 | train, val, calibration, **test** |
+| **Tomato-Village** (Gehlot et al., *Multimedia Systems* 2023) | Indian tomato leaves (Jodhpur/Jaipur) | none stated: cite; ask authors before commercial use | **training only** (see below) |
+| PlantVillage `Potato___healthy` | lab photos | CC0-style | training: the new **healthy potato** class |
+
+What our checks found (say these, they show rigour):
+- **Tanzania advertises 58,709 images; only ~38,600 are unique.** Early blight is only **35% unique**: one photo
+  appears **350 times**. A naive random split would put copies of the same photo in train and test and inflate
+  the score. We de-duplicated by checksum *before* sampling, and also removed 70 test photos with a near-identical
+  twin in training (perceptual hash).
+- **Tomato-Village isn't field data**: the leaves were picked and photographed on paper, and some are rotated
+  copies (black corners). Its own train/test split leaks: ~1,600 photos have a near-twin in another split. So we use
+  it only for training and claim no test results on it.
+- Its other diseases (leaf miner, spotted wilt virus, nutrient deficiencies) became an **"unknown disease" probe**.
+
+### Training v2 "properly"
+ConvNeXt-Tiny, 10 epochs × 16,000 photos; each batch 40% lab / 60% field; classes balanced with square-root
+weights (rare classes drawn more often, without repeating a 16-photo class hundreds of times); strong augmentation;
+one-cycle learning rate; best epoch chosen by **macro-F1 on field_val** (every class counts equally): epoch 8, 0.719.
+
+### Results on 1,306 held-out field photos (never used for training, choosing or calibrating)
+| | v1 app model | **v2** |
+|---|---|---|
+| All | 61.9% | **87.4%** (macro-F1 0.59 → 0.73) |
+| PlantDoc (476 independent web photos) | 65.3% | **66.8%** |
+| Tanzania (830 farm photos, incl. healthy potato) | 60.0% | **99.3%** |
+
+**Be honest about the 99%:** Tanzania test photos come from the same farms and phones as its training photos, so
+that number is "in-distribution". PlantDoc is the independent test, and there v2 improves only slightly. More
+*diverse* field data, not just more of the same, is what would move it.
+
+### Mondrian (per-crop) conformal: fixing a hidden coverage problem
+With one shared threshold, coverage was 89% overall, but only **82% on PlantDoc** (93% on Tanzania): the
+calibration set is mostly easy Tanzania photos, so the threshold was too tight for tomato. The 90% promise holds
+**on average over the calibration mix**, not for each subgroup. Fix: one threshold **per crop**, each from that
+crop's calibration photos ("Mondrian conformal prediction"). It's possible because the farmer tells us the crop.
+| Coverage (target 90%) | one threshold | **per crop** |
+|---|---|---|
+| PlantDoc (tomato) | 81.9% | **88.7%** |
+| Tanzania (potato) | 93.4% | **90.6%** |
+
+### Unknown diseases: an honest limitation
+On never-taught tomato diseases, the assistant still names one of its 11 diseases **43%** of the time (58% before
+per-crop calibration); 51% get a follow-up question, 5% go to an expert. **Conformal prediction can't detect a
+disease it has never seen**: it only knows the 11 classes. A separate "unfamiliar photo" detector is future work.
+
+### The live system
+```
+phone → Vercel (Next.js website) → Render (FastAPI + ONNX model) → Supabase (Postgres)
+```
+- The same Python pipeline powers the website (via `crop_doctor/app/service.py`) and the Streamlit demo.
+- Render's free plan has 512 MB of RAM, so the server runs **without PyTorch**: the model is exported to **ONNX**.
+  8-bit weights changed the top answer on 5.5% of photos (our automatic check rejected them), so we store **16-bit
+  weights** (56 MB, identical answers on all test photos) and expand them at build time. Retrieval uses an 8-bit
+  MiniLM. **Server memory: 685 MB → 294 MB.**
+- Photos and cases are stored in **Supabase Postgres** (survive restarts); expert pages need an **expert key**.

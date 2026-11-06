@@ -44,9 +44,14 @@ class CropDoctor:
         self.cfg = cfg                                       # includes the calibration "splits" for live recalibration
         self.crops = sorted({knowledge()["diseases"][c]["crop"] for c in self.classes})
 
-    def set_calibration(self, temperature: float, qhat: float) -> None:
-        """Live recalibration (expert labels) swaps these two numbers; the network is untouched."""
-        self.temperature, self.qhat = float(temperature), float(qhat)
+    def set_calibration(self, temperature: float, qhat: float | dict) -> None:
+        """Live recalibration (expert labels) swaps these numbers; the network is untouched.
+        qhat: one threshold, or one per crop ({"tomato": .., "potato": ..}, Mondrian conformal)."""
+        self.temperature = float(temperature)
+        self.qhat = {k: float(v) for k, v in qhat.items()} if isinstance(qhat, dict) else float(qhat)
+
+    def qhat_for(self, crop: str) -> float:
+        return self.qhat.get(crop, float("inf")) if isinstance(self.qhat, dict) else self.qhat
 
     def logits(self, img: Image.Image, crop: str) -> np.ndarray:
         out = self.backend.raw_logits(img).copy()
@@ -75,7 +80,7 @@ class CropDoctor:
             q = next(q for q in knowledge()["follow_up_questions"] if q["id"] == question_id)
             answer = {"question_id": question_id, "favours": q["options"][option]["favours"]}
             asked = {question_id}
-        result.update(decide(probs, self.classes, self.qhat, u, answer=answer, asked=asked))
+        result.update(decide(probs, self.classes, self.qhat_for(crop), u, answer=answer, asked=asked))
 
         if result["status"] == "diagnosis":
             sev = severity.estimate(img)

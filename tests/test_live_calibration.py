@@ -53,7 +53,7 @@ def test_field_points_replace_lab_points(env):
 def test_too_few_field_labels_means_every_disease_possible(env):
     lc.reset(env, "lab")
     run = lc.simulate_expert_labels(env, 5, seed=2)
-    assert run["qhat"] == float("inf") and env.qhat == float("inf")
+    assert run["qhat"] == float("inf") and all(v == float("inf") for v in env.qhat.values())
     assert run["monitor_coverage"] == 1.0
 
 
@@ -80,5 +80,5 @@ def test_runs_are_logged_and_reapplied(env):
     assert len(runs) == 2 and runs[-1]["n_field_points"] == 80
     env.set_calibration(1.0, 0.1)
     lc.ensure_initialised(env)
-    assert env.qhat == pytest.approx(runs[-1]["qhat"])
+    assert env.qhat == pytest.approx(runs[-1]["qhat_by_crop"])
     assert np.isfinite(softmax(np.array([[1.0, 2.0, -np.inf]]), env.temperature)).all()

@@ -1,7 +1,8 @@
 {
-  "checkpoint": "final_convnext_tiny.pt",
+  "checkpoint": "final_v2_convnext_tiny.pt",
   "classes": [
     "potato_early_blight",
+    "potato_healthy",
     "potato_late_blight",
     "tomato_bacterial_spot",
     "tomato_early_blight",
@@ -12,12 +13,25 @@
     "tomato_septoria",
     "tomato_yellow_curl_virus"
   ],
-  "temperature": 1.8911556159781817,
+  "temperature": 1.6770871751152927,
   "qhat": {
-    "0.1": 0.9270205318278967,
-    "0.2": 0.8407507984709814
+    "0.1": {
+      "potato": 0.869591692832633,
+      "tomato": 0.9450327594338652
+    },
+    "0.2": {
+      "potato": 0.7826929917205658,
+      "tomato": 0.8744534889324734
+    }
   },
+  "mondrian": "crop",
   "default_alpha": 0.1,
-  "calibrated_on": "final_field_cal",
-  "noise_note": "app uses fresh uniform noise per photo (randomised APS)"
+  "calibrated_on": "splits_v2/field_cal",
+  "splits": {
+    "dir": "crop_doctor/data/splits_v2",
+    "lab": "lab_val",
+    "cal": "field_cal",
+    "simulate": "field_val",
+    "monitor": "field_test"
+  }
 }

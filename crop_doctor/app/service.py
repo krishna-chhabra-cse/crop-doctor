@@ -24,7 +24,7 @@ def ensure_calibrated(doctor) -> dict:
     runs = db.calibration_runs()
     if not runs or not db.calibration_points():
         return lc.ensure_initialised(doctor)
-    doctor.set_calibration(runs[-1]["temperature"], runs[-1]["qhat"])
+    doctor.set_calibration(runs[-1]["temperature"], db.run_qhat(runs[-1]))
     return runs[-1]
 
 

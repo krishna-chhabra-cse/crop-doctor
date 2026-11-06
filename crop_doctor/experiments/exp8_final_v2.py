@@ -30,7 +30,8 @@ from crop_doctor.model.crops import crop_mask, crops_from_labels, mask_logits
 from crop_doctor.model.train_final import logits_of
 from crop_doctor.uncertainty.calibration import ece, fit_temperature, softmax
 from crop_doctor.uncertainty.conformal import (
-    aps_scores, class_coverage, conformal_quantile, evaluate_sets, prediction_sets, uniform_noise,
+    aps_scores, class_coverage, conformal_quantile, evaluate_sets, group_prediction_sets, group_quantiles,
+    prediction_sets, uniform_noise,
 )
 
 SPLITS = config.ROOT / "crop_doctor" / "data" / "splits_v2"
@@ -73,8 +74,12 @@ def main() -> None:
     qhat = {a: conformal_quantile(aps_scores(softmax(lg2_cal, t), cal_y, uniform_noise(len(cal_y), 7)), a) for a in ALPHAS}
     probs = softmax(lg2_test, t)
     u = uniform_noise(len(test_y), 12345)
+    # Mondrian: one threshold per crop (the app knows the crop), each from that crop's calibration photos.
+    cal_crops = crops_from_labels(cal_y, classes)
+    qcrop = {a: group_quantiles(softmax(lg2_cal, t), cal_y, cal_crops, a, uniform_noise(len(cal_y), 7)) for a in ALPHAS}
 
-    res = {"temperature": t, "qhat": {str(a): q for a, q in qhat.items()}, "test_photos": int(len(test_y)),
+    res = {"temperature": t, "qhat_single": {str(a): q for a, q in qhat.items()},
+           "qhat_by_crop": {str(a): q for a, q in qcrop.items()}, "test_photos": int(len(test_y)),
            "calibration_photos": int(len(cal_y)), "by_source": {}}
     for name, mask in [("all", np.ones(len(test_y), bool))] + [(s, src == s) for s in sorted(set(src))]:
         y, p2, p1 = test_y[mask], lg2_test[mask].argmax(1), lg1_test[mask].argmax(1)
@@ -83,14 +88,15 @@ def main() -> None:
              "v1_macro_f1": float(f1_score(y, p1, average="macro")), "v2_macro_f1": float(f1_score(y, p2, average="macro")),
              "v2_ece": ece(probs[mask], y)}
         for a in ALPHAS:
-            sets = prediction_sets(probs[mask], qhat[a], u[mask])
-            r[f"alpha_{a}"] = evaluate_sets(sets, y)
+            r[f"single_threshold_alpha_{a}"] = evaluate_sets(prediction_sets(probs[mask], qhat[a], u[mask]), y)
+            r[f"alpha_{a}"] = evaluate_sets(group_prediction_sets(probs[mask], qcrop[a], crops[mask], u[mask]), y)
         res["by_source"][name] = r
         print(f"  {name:<9} n={r['photos']:<5} accuracy v1 {r['v1_accuracy']:.3f} -> v2 {r['v2_accuracy']:.3f} | "
               f"macro-F1 {r['v1_macro_f1']:.3f} -> {r['v2_macro_f1']:.3f} | coverage@90 {r['alpha_0.1']['coverage']:.3f} "
               f"set {r['alpha_0.1']['avg_set_size']:.2f} answered {r['alpha_0.1']['answered_rate']:.3f} "
-              f"(acc {r['alpha_0.1']['answered_accuracy']:.3f})")
-    cc = class_coverage(prediction_sets(probs, qhat[0.1], u), test_y, len(classes))
+              f"(acc {r['alpha_0.1']['answered_accuracy']:.3f}) | single-threshold coverage "
+              f"{r['single_threshold_alpha_0.1']['coverage']:.3f}")
+    cc = class_coverage(group_prediction_sets(probs, qcrop[0.1], crops, u), test_y, len(classes))
     res["class_coverage_90"] = {c: (None if np.isnan(v) else round(float(v), 3)) for c, v in zip(classes, cc)}
 
     # Unknown-disease probe (tomato): never-taught diseases.
@@ -98,7 +104,7 @@ def main() -> None:
     lgp = lgp.copy()
     lgp[:, ~crop_mask(classes, "tomato")] = -np.inf
     pp = softmax(lgp, t)
-    sets = prediction_sets(pp, qhat[0.1], uniform_noise(len(pp), 99))
+    sets = prediction_sets(pp, qcrop[0.1]["tomato"], uniform_noise(len(pp), 99))
     size = sets.sum(1)
     res["unknown_probe"] = {"photos": int(len(pp)), "named_one_disease": float((size == 1).mean()),
                             "asked_question_2_3": float(((size >= 2) & (size <= 3)).mean()),
@@ -143,7 +149,8 @@ def main() -> None:
     if app.exists() and not (config.OUTPUTS_DIR / "app_model_v1.json").exists():
         shutil.copy(app, config.OUTPUTS_DIR / "app_model_v1.json")
     app.write_text(json.dumps({
-        "checkpoint": V2_CKPT, "classes": classes, "temperature": t, "qhat": {str(a): q for a, q in qhat.items()},
+        "checkpoint": V2_CKPT, "classes": classes, "temperature": t, "qhat": {str(a): q for a, q in qcrop.items()},
+        "mondrian": "crop",
         "default_alpha": 0.1, "calibrated_on": "splits_v2/field_cal",
         "splits": {"dir": "crop_doctor/data/splits_v2", "lab": "lab_val", "cal": "field_cal", "simulate": "field_val",
                    "monitor": "field_test"}}, indent=2))

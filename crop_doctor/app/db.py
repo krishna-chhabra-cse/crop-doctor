@@ -84,6 +84,7 @@ runs_t = Table(
     Column("n_field_points", Integer, nullable=False),
     Column("temperature", Float, nullable=False),
     Column("qhat", Float, nullable=False),                   # may be inf: too few photos, every disease possible
+    Column("qhat_by_crop", Text),                            # JSON {"tomato": .., "potato": ..} (Mondrian conformal)
     Column("monitor_coverage", Float),
     Column("monitor_set_size", Float),
     Column("monitor_answered", Float),
@@ -246,12 +247,21 @@ def add_calibration_run(run: dict, db_path: Path | None = None) -> None:
     keys = ("n_points", "n_field_points", "temperature", "qhat", "monitor_coverage", "monitor_set_size",
             "monitor_answered", "note")
     with connect(db_path) as con:
-        con.execute(insert(runs_t).values(created_at=now(), **{k: run.get(k) for k in keys}))
+        con.execute(insert(runs_t).values(created_at=now(), qhat_by_crop=json.dumps(run.get("qhat_by_crop")),
+                                          **{k: run.get(k) for k in keys}))
 
 
 def calibration_runs(db_path: Path | None = None) -> list[dict]:
     with connect(db_path) as con:
-        return [dict(r._mapping) for r in con.execute(select(runs_t).order_by(runs_t.c.id))]
+        rows = [dict(r._mapping) for r in con.execute(select(runs_t).order_by(runs_t.c.id))]
+    for r in rows:
+        r["qhat_by_crop"] = json.loads(r["qhat_by_crop"]) if r.get("qhat_by_crop") else None
+    return rows
+
+
+def run_qhat(run: dict) -> float | dict:
+    """The threshold(s) to apply from a stored run: per crop if available, else the single value."""
+    return run.get("qhat_by_crop") or run["qhat"]
 
 
 def _row(r) -> dict:

@@ -28,6 +28,6 @@ services:
       - key: ALLOWED_ORIGINS       # your Vercel site, e.g. https://crop-doctor.vercel.app
         sync: false
       - key: ALLOWED_ORIGIN_REGEX  # also allow Vercel preview deployments of this project
-        value: https://crop-doctor-[a-z0-9-]+\.vercel\.app
+        value: https://crop-doctor(-[a-z0-9-]+)?\.vercel\.app
       - key: ANTHROPIC_API_KEY     # optional: friendly AI replies; leave empty for sourced template replies
         sync: false

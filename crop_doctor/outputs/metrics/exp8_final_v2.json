@@ -1,0 +1,155 @@
+{
+  "temperature": 1.6770871751152927,
+  "qhat_single": {
+    "0.1": 0.8895184354855624,
+    "0.2": 0.8033414727017887
+  },
+  "qhat_by_crop": {
+    "0.1": {
+      "potato": 0.869591692832633,
+      "tomato": 0.9450327594338652
+    },
+    "0.2": {
+      "potato": 0.7826929917205658,
+      "tomato": 0.8744534889324734
+    }
+  },
+  "test_photos": 1306,
+  "calibration_photos": 545,
+  "by_source": {
+    "all": {
+      "photos": 1306,
+      "v1_accuracy": 0.6194486983154671,
+      "v2_accuracy": 0.8744257274119449,
+      "v1_macro_f1": 0.5937375884139938,
+      "v2_macro_f1": 0.7332099130550715,
+      "v2_ece": 0.026884674842112422,
+      "single_threshold_alpha_0.1": {
+        "coverage": 0.8920367534456355,
+        "avg_set_size": 1.3177641653905054,
+        "empty_rate": 0.0451761102603369,
+        "answered_rate": 0.7511485451761103,
+        "answered_accuracy": 0.9490316004077471
+      },
+      "alpha_0.1": {
+        "coverage": 0.8989280245022971,
+        "avg_set_size": 1.510719754977029,
+        "empty_rate": 0.06049004594180704,
+        "answered_rate": 0.6960183767228177,
+        "answered_accuracy": 0.9614961496149615
+      },
+      "single_threshold_alpha_0.2": {
+        "coverage": 0.7932618683001531,
+        "avg_set_size": 1.0888208269525268,
+        "empty_rate": 0.11868300153139356,
+        "answered_rate": 0.7434915773353752,
+        "answered_accuracy": 0.9227600411946447
+      },
+      "alpha_0.2": {
+        "coverage": 0.8131699846860643,
+        "avg_set_size": 1.1914241960183767,
+        "empty_rate": 0.11562021439509954,
+        "answered_rate": 0.7143950995405819,
+        "answered_accuracy": 0.9346195069667739
+      }
+    },
+    "plantdoc": {
+      "photos": 476,
+      "v1_accuracy": 0.6533613445378151,
+      "v2_accuracy": 0.6680672268907563,
+      "v1_macro_f1": 0.6463815573366503,
+      "v2_macro_f1": 0.6643369729534381,
+      "v2_ece": 0.11175339972303672,
+      "single_threshold_alpha_0.1": {
+        "coverage": 0.819327731092437,
+        "avg_set_size": 1.9558823529411764,
+        "empty_rate": 0.014705882352941176,
+        "answered_rate": 0.45168067226890757,
+        "answered_accuracy": 0.7813953488372093
+      },
+      "alpha_0.1": {
+        "coverage": 0.8865546218487395,
+        "avg_set_size": 2.542016806722689,
+        "empty_rate": 0.008403361344537815,
+        "answered_rate": 0.3403361344537815,
+        "answered_accuracy": 0.8024691358024691
+      },
+      "single_threshold_alpha_0.2": {
+        "coverage": 0.7016806722689075,
+        "avg_set_size": 1.495798319327731,
+        "empty_rate": 0.06512605042016807,
+        "answered_rate": 0.5651260504201681,
+        "answered_accuracy": 0.7360594795539034
+      },
+      "alpha_0.2": {
+        "coverage": 0.7815126050420168,
+        "avg_set_size": 1.8046218487394958,
+        "empty_rate": 0.031512605042016806,
+        "answered_rate": 0.5084033613445378,
+        "answered_accuracy": 0.7644628099173554
+      }
+    },
+    "tanzania": {
+      "photos": 830,
+      "v1_accuracy": 0.6,
+      "v2_accuracy": 0.9927710843373494,
+      "v1_macro_f1": 0.5042063339935681,
+      "v2_macro_f1": 0.9924751638131473,
+      "v2_ece": 0.034826085853069004,
+      "single_threshold_alpha_0.1": {
+        "coverage": 0.9337349397590361,
+        "avg_set_size": 0.9518072289156626,
+        "empty_rate": 0.06265060240963856,
+        "answered_rate": 0.9228915662650602,
+        "answered_accuracy": 0.9960835509138382
+      },
+      "alpha_0.1": {
+        "coverage": 0.9060240963855422,
+        "avg_set_size": 0.9192771084337349,
+        "empty_rate": 0.09036144578313253,
+        "answered_rate": 0.9,
+        "answered_accuracy": 0.9959839357429718
+      },
+      "single_threshold_alpha_0.2": {
+        "coverage": 0.8457831325301205,
+        "avg_set_size": 0.8554216867469879,
+        "empty_rate": 0.1493975903614458,
+        "answered_rate": 0.8457831325301205,
+        "answered_accuracy": 0.9943019943019943
+      },
+      "alpha_0.2": {
+        "coverage": 0.8313253012048193,
+        "avg_set_size": 0.8397590361445784,
+        "empty_rate": 0.163855421686747,
+        "answered_rate": 0.8325301204819278,
+        "answered_accuracy": 0.9942112879884226
+      }
+    }
+  },
+  "class_coverage_90": {
+    "potato_early_blight": 0.879,
+    "potato_healthy": 0.943,
+    "potato_late_blight": 0.866,
+    "tomato_bacterial_spot": 0.764,
+    "tomato_early_blight": 0.909,
+    "tomato_healthy": 0.935,
+    "tomato_late_blight": 1.0,
+    "tomato_leaf_mold": 0.8,
+    "tomato_mosaic_virus": 0.963,
+    "tomato_septoria": 0.987,
+    "tomato_yellow_curl_virus": 0.919
+  },
+  "unknown_probe": {
+    "photos": 2909,
+    "named_one_disease": 0.43245101409419046,
+    "asked_question_2_3": 0.5139223100721898,
+    "sent_to_expert_empty_or_long": 0.053626675833619804,
+    "by_disease": {
+      "Leaf Miner": 0.3486328125,
+      "Magnesium Deficiency": 0.4305555555555556,
+      "Nitrogen Deficiency": 0.45,
+      "Pottassium Deficiency": 0.3611111111111111,
+      "Spotted Wilt Virus": 0.5996131528046421
+    }
+  }
+}

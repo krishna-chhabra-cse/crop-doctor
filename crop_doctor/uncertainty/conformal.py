@@ -80,6 +80,30 @@ def prediction_sets(probs: np.ndarray, qhat: float, u: np.ndarray | None = None)
     return sets
 
 
+def group_quantiles(probs: np.ndarray, labels: np.ndarray, groups: np.ndarray, alpha: float,
+                    u: np.ndarray | None = None) -> dict[str, float]:
+    """Mondrian conformal: a separate q-hat for each group (here: each crop), from that group's photos only.
+
+    One shared q-hat only promises 90% coverage ON AVERAGE over the mix of calibration photos; if one crop's
+    photos are easy and plentiful, the other crop can end up well below 90%. Calibrating per crop gives each
+    crop its own 90% promise. Usable because the farmer tells us the crop. A crop with too few calibration
+    photos gets q-hat = inf (every disease stays possible -> expert)."""
+    out = {}
+    for g in np.unique(groups):
+        m = groups == g
+        out[str(g)] = conformal_quantile(aps_scores(probs[m], labels[m], None if u is None else u[m]), alpha)
+    return out
+
+
+def group_prediction_sets(probs: np.ndarray, qhats: dict[str, float], groups: np.ndarray,
+                          u: np.ndarray | None = None) -> np.ndarray:
+    sets = np.zeros_like(probs, dtype=bool)
+    for g in np.unique(groups):
+        m = groups == g
+        sets[m] = prediction_sets(probs[m], qhats.get(str(g), float("inf")), None if u is None else u[m])
+    return sets
+
+
 def evaluate_sets(sets: np.ndarray, labels: np.ndarray) -> dict[str, float]:
     """Coverage, average shortlist size, and what an app would do with them.
 

@@ -27,8 +27,9 @@ from crop_doctor.app import db
 from crop_doctor.model.crops import crops_from_labels, mask_logits
 from crop_doctor.uncertainty.calibration import fit_temperature, softmax
 from crop_doctor.uncertainty.conformal import (
-    aps_scores, conformal_quantile, evaluate_sets, prediction_sets, uniform_noise,
+    evaluate_sets, group_prediction_sets, group_quantiles, uniform_noise,
 )
+from crop_doctor.model.crops import crop_of
 
 ALPHA = 0.1
 LAB = "lab_val"
@@ -86,24 +87,28 @@ def calibration_set(points: list[dict]) -> tuple[np.ndarray, np.ndarray, int]:
     return np.array([p["logits"] for p in use]), np.array([p["label_idx"] for p in use]), len(field)
 
 
-def fit(logits: np.ndarray, labels: np.ndarray) -> tuple[float, float]:
+def fit(logits: np.ndarray, labels: np.ndarray, doctor_classes: list[str]) -> tuple[float, dict]:
     if len(labels) == 0:
-        return 1.0, float("inf")
+        return 1.0, {c: float("inf") for c in sorted({crop_of(c) for c in doctor_classes})}
     t = fit_temperature(logits, labels)
-    qhat = conformal_quantile(aps_scores(softmax(logits, t), labels, uniform_noise(len(labels), 7)), ALPHA)
-    return t, qhat
+    # Mondrian conformal: one threshold per crop, each from that crop's calibration photos only.
+    crops = np.array([crop_of(doctor_classes[y]) for y in labels])
+    qhat = group_quantiles(softmax(logits, t), labels, crops, ALPHA, uniform_noise(len(labels), 7))
+    return t, {c: qhat.get(c, float("inf")) for c in sorted({crop_of(c) for c in doctor_classes})}
 
 
 def recalibrate(doctor, note: str = "") -> dict:
     """Recompute T and q-hat from the stored points, apply them to the app, measure on the monitor set."""
     points = db.calibration_points()
     logits, labels, n_field = calibration_set(points)
-    t, qhat = fit(logits, labels)
+    t, qhat = fit(logits, labels, doctor.classes)
     doctor.set_calibration(t, qhat)
     mon_logits, mon_y = split_logits(splits(doctor)["monitor"], doctor)
-    sets = prediction_sets(softmax(mon_logits, t), qhat, uniform_noise(len(mon_y), 12345))
+    mon_crops = np.array([crop_of(doctor.classes[y]) for y in mon_y])
+    sets = group_prediction_sets(softmax(mon_logits, t), qhat, mon_crops, uniform_noise(len(mon_y), 12345))
     m = evaluate_sets(sets, mon_y)
-    run = {"n_points": len(labels), "n_field_points": n_field, "temperature": t, "qhat": qhat,
+    run = {"n_points": len(labels), "n_field_points": n_field, "temperature": t, "qhat": max(qhat.values()),
+           "qhat_by_crop": qhat,
            "monitor_coverage": m["coverage"], "monitor_set_size": m["avg_set_size"],
            "monitor_answered": m["answered_rate"], "note": note}
     db.add_calibration_run(run)
@@ -125,7 +130,7 @@ def ensure_initialised(doctor) -> dict:
     if not db.calibration_points():
         return reset(doctor, "field")
     last = runs[-1] if runs else recalibrate(doctor, note="startup")
-    doctor.set_calibration(last["temperature"], last["qhat"])
+    doctor.set_calibration(last["temperature"], db.run_qhat(last))
     return last
 
 

@@ -1,36 +1,36 @@
 {
   "assistant_on_field_test": {
     "careful": {
-      "photos": 476,
+      "photos": 1306,
       "status_share": {
-        "diagnosis": 0.5105,
-        "expert": 0.4454,
-        "retake": 0.0189,
-        "healthy": 0.0252
+        "diagnosis": 0.5544,
+        "expert": 0.2067,
+        "retake": 0.0276,
+        "healthy": 0.2113
       },
-      "asked_a_question": 0.3466,
-      "answered_by_assistant": 0.5357,
-      "accuracy_when_answered": 0.8588,
-      "accuracy_answered_directly": 0.7857,
-      "accuracy_answered_after_question": 0.9478,
-      "questions_resolved": 0.697,
-      "sent_to_expert": 0.4454
+      "asked_a_question": 0.1363,
+      "answered_by_assistant": 0.7657,
+      "accuracy_when_answered": 0.958,
+      "accuracy_answered_directly": 0.9657,
+      "accuracy_answered_after_question": 0.904,
+      "questions_resolved": 0.7022,
+      "sent_to_expert": 0.2067
     },
     "typical": {
-      "photos": 476,
+      "photos": 1306,
       "status_share": {
-        "diagnosis": 0.4601,
-        "expert": 0.4958,
-        "retake": 0.0189,
-        "healthy": 0.0252
+        "diagnosis": 0.5459,
+        "expert": 0.2167,
+        "retake": 0.0276,
+        "healthy": 0.2098
       },
-      "asked_a_question": 0.3466,
-      "answered_by_assistant": 0.4853,
-      "accuracy_when_answered": 0.8355,
-      "accuracy_answered_directly": 0.7857,
-      "accuracy_answered_after_question": 0.9121,
-      "questions_resolved": 0.5515,
-      "sent_to_expert": 0.4958
+      "asked_a_question": 0.1363,
+      "answered_by_assistant": 0.7557,
+      "accuracy_when_answered": 0.9493,
+      "accuracy_answered_directly": 0.9657,
+      "accuracy_answered_after_question": 0.8214,
+      "questions_resolved": 0.6292,
+      "sent_to_expert": 0.2167
     }
   },
   "tools": {

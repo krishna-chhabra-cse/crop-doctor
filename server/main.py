@@ -266,7 +266,9 @@ def trust():
     runs = db.calibration_runs()
     resets = [i for i, r in enumerate(runs) if (r["note"] or "").startswith("reset")]
     since = runs[resets[-1]:] if resets else runs
-    clean = lambda r: {k: (None if isinstance(v, float) and v == float("inf") else v) for k, v in r.items()}  # noqa: E731
+    def clean(r):  # JSON has no "infinity": show it as null
+        fix = lambda v: None if isinstance(v, float) and v == float("inf") else v  # noqa: E731
+        return {k: ({kk: fix(vv) for kk, vv in v.items()} if isinstance(v, dict) else fix(v)) for k, v in r.items()}
     return {"current": clean(runs[-1]) if runs else None, "since_reset": [clean(r) for r in since],
             "all": [clean(r) for r in runs[-200:]]}
 

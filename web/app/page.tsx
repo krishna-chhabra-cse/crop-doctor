@@ -68,15 +68,15 @@ export default function Home() {
       <section aria-labelledby="why" className="pb-14">
         <h2 id="why" className="text-2xl font-bold text-ink">Why honesty matters</h2>
         <p className="mt-2 max-w-2xl text-ink-2">
-          Measured on {R.fieldTestPhotos} real farm photos that none of the models saw during training.
+          Measured on {R.fieldTestPhotos} real field photos that none of the models saw during training.
         </p>
         <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <Stat tone="red" value={pct(R.labOnlyFieldAccuracy)} label="A typical lab-trained model"
-            note={`${pct(R.labAccuracy)} right on lab photos, but only ${pct(R.labOnlyFieldAccuracy)} on farm photos, while ${pct(R.labOnlyFieldConfidence)} sure of itself.`} />
+            note={`${pct(R.labAccuracy)} right on lab photos, but only ${pct(R.labOnlyFieldAccuracy)} on ${R.labOnlyTestPhotos} field photos, while ${pct(R.labOnlyFieldConfidence)} sure of itself.`} />
           <Stat value={pct(R.finalFieldAccuracy)} label="Our model's top answer"
-            note="Trained on lab and real field photos, and it knows which crop you're photographing." />
+            note={`${pct(R.tanzaniaAccuracy)} on farm photos from Tanzania, ${pct(R.plantdocAccuracy)} on harder, more varied web photos.`} />
           <Stat value={pct(R.coverage)} label="Shortlist contains the right disease"
-            note={`Target ${pct(R.coverageTarget)}; on average ${R.avgShortlist.toFixed(1)} diseases in the shortlist.`} />
+            note={`Target ${pct(R.coverageTarget)}, checked separately for each crop. On average ${R.avgShortlist.toFixed(1)} diseases in the shortlist.`} />
           <Stat value={pct(R.accuracyWhenAnswered)} label="Right when it answers alone"
             note={`It answers about ${pct(R.answeredByAssistant)} of photos itself and sends the rest to an expert.`} />
         </div>

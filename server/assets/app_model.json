@@ -1,7 +1,8 @@
 {
-  "onnx": "model_w16.onnx",
+  "onnx": "model.onnx",
   "classes": [
     "potato_early_blight",
+    "potato_healthy",
     "potato_late_blight",
     "tomato_bacterial_spot",
     "tomato_early_blight",
@@ -12,19 +13,33 @@
     "tomato_septoria",
     "tomato_yellow_curl_virus"
   ],
-  "temperature": 1.8930486646428246,
+  "splits": {
+    "dir": "crop_doctor/data/splits_v2",
+    "lab": "lab_val",
+    "cal": "field_cal",
+    "simulate": "field_val",
+    "monitor": "field_test"
+  },
+  "mondrian": "crop",
+  "temperature": 1.665321797389989,
   "qhat": {
-    "0.1": 0.9269026411213014,
-    "0.2": 0.8406552654557734
+    "0.1": {
+      "potato": 0.8786254186216339,
+      "tomato": 0.9517059607872302
+    },
+    "0.2": {
+      "potato": 0.7832053804086136,
+      "tomato": 0.8710284770776651
+    }
   },
   "default_alpha": 0.1,
-  "calibrated_on": "final_field_cal",
-  "source_checkpoint": "final_convnext_tiny.pt",
+  "calibrated_on": "field_cal",
+  "source_checkpoint": "final_v2_convnext_tiny.pt",
   "check": {
-    "top1_agreement_with_pytorch": 1.0,
-    "field_test_accuracy_pytorch": 0.6533613445378151,
-    "field_test_accuracy_onnx": 0.6533613445378151,
-    "field_test_coverage_90": 0.9096638655462185,
-    "field_test_avg_set_size": 2.880252100840336
+    "top1_agreement_with_pytorch": 0.9915773353751914,
+    "field_test_accuracy_pytorch": 0.8744257274119449,
+    "field_test_accuracy_onnx": 0.8721286370597243,
+    "field_test_coverage_90": 0.9065849923430321,
+    "field_test_avg_set_size": 1.5681470137825422
   }
 }

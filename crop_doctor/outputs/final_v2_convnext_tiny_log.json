@@ -1,0 +1,122 @@
+{
+  "args": {
+    "epochs": 10,
+    "samples_per_epoch": 16000,
+    "lr": 0.0001,
+    "batch_size": 32,
+    "workers": 6,
+    "smoke": false
+  },
+  "epochs": [
+    {
+      "epoch": 1,
+      "train_loss": 0.7902,
+      "val_macro_f1": 0.6538,
+      "val_acc": 0.9229,
+      "val_acc_by_source": {
+        "plantdoc": 0.5684,
+        "tanzania": 0.9978
+      },
+      "seconds": 194.1
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.1686,
+      "val_macro_f1": 0.6562,
+      "val_acc": 0.9229,
+      "val_acc_by_source": {
+        "plantdoc": 0.5684,
+        "tanzania": 0.9978
+      },
+      "seconds": 97.7
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.0942,
+      "val_macro_f1": 0.6338,
+      "val_acc": 0.9174,
+      "val_acc_by_source": {
+        "plantdoc": 0.5263,
+        "tanzania": 1.0
+      },
+      "seconds": 100.0
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.0705,
+      "val_macro_f1": 0.6552,
+      "val_acc": 0.9193,
+      "val_acc_by_source": {
+        "plantdoc": 0.5474,
+        "tanzania": 0.9978
+      },
+      "seconds": 100.7
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.0543,
+      "val_macro_f1": 0.6554,
+      "val_acc": 0.9211,
+      "val_acc_by_source": {
+        "plantdoc": 0.5684,
+        "tanzania": 0.9956
+      },
+      "seconds": 101.3
+    },
+    {
+      "epoch": 6,
+      "train_loss": 0.0449,
+      "val_macro_f1": 0.7053,
+      "val_acc": 0.9229,
+      "val_acc_by_source": {
+        "plantdoc": 0.6,
+        "tanzania": 0.9911
+      },
+      "seconds": 100.4
+    },
+    {
+      "epoch": 7,
+      "train_loss": 0.0291,
+      "val_macro_f1": 0.7016,
+      "val_acc": 0.9303,
+      "val_acc_by_source": {
+        "plantdoc": 0.6,
+        "tanzania": 1.0
+      },
+      "seconds": 101.1
+    },
+    {
+      "epoch": 8,
+      "train_loss": 0.0244,
+      "val_macro_f1": 0.7192,
+      "val_acc": 0.9339,
+      "val_acc_by_source": {
+        "plantdoc": 0.6211,
+        "tanzania": 1.0
+      },
+      "seconds": 100.9
+    },
+    {
+      "epoch": 9,
+      "train_loss": 0.0176,
+      "val_macro_f1": 0.701,
+      "val_acc": 0.9303,
+      "val_acc_by_source": {
+        "plantdoc": 0.6,
+        "tanzania": 1.0
+      },
+      "seconds": 100.6
+    },
+    {
+      "epoch": 10,
+      "train_loss": 0.0158,
+      "val_macro_f1": 0.7087,
+      "val_acc": 0.9303,
+      "val_acc_by_source": {
+        "plantdoc": 0.6,
+        "tanzania": 1.0
+      },
+      "seconds": 100.2
+    }
+  ]
+}

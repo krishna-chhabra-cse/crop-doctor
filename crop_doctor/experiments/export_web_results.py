@@ -31,6 +31,10 @@ def main() -> None:
         "fieldTestPhotos": e8["test_photos"],
         "labOnlyTestPhotos": e1["field_test"]["images"],
         "unknownNamed": round(e8["unknown_probe"]["named_one_disease"], 4),
+        "plantdocAccuracy": round(e8["by_source"]["plantdoc"]["v2_accuracy"], 4),
+        "tanzaniaAccuracy": round(e8["by_source"]["tanzania"]["v2_accuracy"], 4),
+        "plantdocCoverage": round(e8["by_source"]["plantdoc"]["alpha_0.1"]["coverage"], 4),
+        "tanzaniaCoverage": round(e8["by_source"]["tanzania"]["alpha_0.1"]["coverage"], 4),
     }
     body = ",\n".join(f"  {k}: {v}" for k, v in r.items())
     (config.ROOT / "web" / "lib" / "results.ts").write_text(

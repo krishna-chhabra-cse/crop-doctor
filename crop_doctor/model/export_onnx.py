@@ -24,7 +24,7 @@ from crop_doctor.model.backends import OnnxBackend
 from crop_doctor.model.common import IMG_SIZE, load_trained_model
 from crop_doctor.model.crops import crops_from_labels, mask_logits
 from crop_doctor.uncertainty.calibration import fit_temperature, softmax
-from crop_doctor.uncertainty.conformal import aps_scores, conformal_quantile, evaluate_sets, prediction_sets, uniform_noise
+from crop_doctor.uncertainty.conformal import evaluate_sets, group_prediction_sets, group_quantiles, uniform_noise
 
 ASSETS = config.ROOT / "server" / "assets"
 ALPHAS = (0.1, 0.2)
@@ -107,10 +107,12 @@ def main() -> None:
         print(f"  cached {split}: {len(yy)} photos")
     cal_l, cal_y = cache[sp["cal"]]
     t = fit_temperature(cal_l, cal_y)
-    qhat = {str(a): conformal_quantile(aps_scores(softmax(cal_l, t), cal_y, uniform_noise(len(cal_y), 7)), a) for a in ALPHAS}
+    cal_crops = crops_from_labels(cal_y, classes)
+    qhat = {str(a): group_quantiles(softmax(cal_l, t), cal_y, cal_crops, a, uniform_noise(len(cal_y), 7)) for a in ALPHAS}
     mon_l, mon_y = cache[sp["monitor"]]
-    m = evaluate_sets(prediction_sets(softmax(mon_l, t), qhat["0.1"], uniform_noise(len(mon_y), 12345)), mon_y)
-    out = {"onnx": use.name, "classes": classes, "splits": sp, "temperature": t, "qhat": qhat, "default_alpha": 0.1,
+    m = evaluate_sets(group_prediction_sets(softmax(mon_l, t), qhat["0.1"], crops_from_labels(mon_y, classes),
+                                            uniform_noise(len(mon_y), 12345)), mon_y)
+    out = {"onnx": use.name, "classes": classes, "splits": sp, "mondrian": "crop", "temperature": t, "qhat": qhat, "default_alpha": 0.1,
            "calibrated_on": sp["cal"], "source_checkpoint": app["checkpoint"],
            "check": {"top1_agreement_with_pytorch": agree, "field_test_accuracy_pytorch": acc_pt,
                      "field_test_accuracy_onnx": acc_q8, "field_test_coverage_90": m["coverage"],
