@@ -29,5 +29,7 @@ services:
         sync: false
       - key: ALLOWED_ORIGIN_REGEX  # also allow Vercel preview deployments of this project
         value: https://crop-doctor(-[a-z0-9-]+)?\.vercel\.app
-      - key: ANTHROPIC_API_KEY     # optional: friendly AI replies; leave empty for sourced template replies
+      - key: GEMINI_API_KEY        # optional: AI replies with Gemini (add it in the Render dashboard, never in git)
+        sync: false
+      - key: ANTHROPIC_API_KEY     # optional: AI replies with Claude instead; empty = sourced template replies
         sync: false

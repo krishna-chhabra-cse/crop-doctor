@@ -9,7 +9,8 @@ Environment variables:
   DATABASE_URL              Postgres connection string (Supabase). Unset = local SQLite file.
   EXPERT_KEY                password for the expert dashboard endpoints. Unset = open (local dev only).
   ALLOWED_ORIGINS           comma-separated website origins allowed to call the API (CORS), e.g. the Vercel URL.
-  ANTHROPIC_API_KEY         optional: friendly AI replies; without it, sourced template replies.
+  GEMINI_API_KEY            optional: AI replies with Gemini (GEMINI_MODEL, default gemini-3.6-flash).
+  ANTHROPIC_API_KEY         optional: AI replies with Claude. Neither key = sourced template replies.
   CROP_DOCTOR_APP_CONFIG    model/calibration config (server/assets/app_model.json on Render).
   CROP_DOCTOR_LOGITS_DIR    cached model outputs for live calibration (server/assets/logits on Render).
 """
@@ -33,6 +34,7 @@ from crop_doctor.app import db, service
 from crop_doctor.assistant import live_calibration as lc
 from crop_doctor.assistant.decision import disease_name, knowledge
 from crop_doctor.assistant.llm import llm_available
+from crop_doctor.assistant.llm import provider as llm_provider
 
 SAMPLES_DIR = config.ROOT / "crop_doctor" / "app" / "samples"
 METRICS_DIR = config.OUTPUTS_DIR / "metrics"
@@ -136,6 +138,7 @@ def meta():
         "samples": [{"file": s["file"], "title": s["title"], "crop": s["crop"]} for s in samples],
         "languages": LANGUAGES,
         "llm_enabled": llm_available(),
+        "llm_provider": llm_provider(),
         "expert_key_required": bool(os.environ.get("EXPERT_KEY")),
         "results": results,
     }

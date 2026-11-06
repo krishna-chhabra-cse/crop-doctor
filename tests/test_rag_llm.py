@@ -65,3 +65,56 @@ def test_retake_reply_has_no_treatment(monkeypatch):
     monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
     r = llm.reply({"status": "retake", "message": "The photo is blurry."})
     assert r.text == "The photo is blurry." and r.note_ids == []
+
+
+SEPTORIA = {"status": "diagnosis", "crop": "tomato", "label": "tomato_septoria", "probability": 0.9,
+            "shortlist": ["tomato_septoria"], "message": "Most likely: Tomato Septoria leaf spot."}
+
+
+def test_provider_choice(monkeypatch):
+    assert llm.provider() is None
+    monkeypatch.setenv("ANTHROPIC_API_KEY", "x")
+    assert llm.provider() == "claude"
+    monkeypatch.setenv("GEMINI_API_KEY", "y")
+    assert llm.provider() == "gemini"                      # Gemini wins when both are set...
+    monkeypatch.setenv("CROP_DOCTOR_LLM", "claude")
+    assert llm.provider() == "claude"                      # ...unless Claude is chosen explicitly
+
+
+def test_gemini_reply_passes_guardrail(monkeypatch):
+    monkeypatch.setenv("GEMINI_API_KEY", "y")
+    seen = {}
+
+    def fake(system, history, user_text):
+        seen.update(system=system, user=user_text)
+        return "Most likely Septoria leaf spot. Remove lower leaves. Confirm with a local expert before spraying."
+    monkeypatch.setattr(llm, "_ask_gemini", fake)
+    r = llm.reply(SEPTORIA, language="Hindi")
+    assert r.used_llm and "Septoria" in r.text and r.sources
+    assert "Reply in Hindi" in seen["system"] and "<allowed_diseases>" in seen["user"]
+
+
+def test_gemini_reply_naming_other_disease_is_replaced(monkeypatch):
+    monkeypatch.setenv("GEMINI_API_KEY", "y")
+    monkeypatch.setattr(llm, "_ask_gemini", lambda *a: "This could also be late blight.")
+    r = llm.reply(SEPTORIA)
+    assert not r.used_llm and "guardrail" in r.fallback_reason
+
+
+def test_gemini_failure_falls_back_to_template(monkeypatch):
+    monkeypatch.setenv("GEMINI_API_KEY", "y")
+
+    def boom(*a):
+        raise llm.Declined("status failed")
+    monkeypatch.setattr(llm, "_ask_gemini", boom)
+    r = llm.reply(SEPTORIA)
+    assert not r.used_llm and r.fallback_reason == "gemini: status failed" and "Septoria" in r.text
+    monkeypatch.setattr(llm, "_ask_gemini", lambda *a: (_ for _ in ()).throw(ConnectionError()))
+    assert llm.reply(SEPTORIA).fallback_reason == "gemini unavailable: ConnectionError"
+
+
+def test_gemini_with_bad_key_still_answers(monkeypatch):
+    """Real SDK, fake key: the request fails (no network or 400) and the farmer still gets the template."""
+    monkeypatch.setenv("GEMINI_API_KEY", "not-a-real-key")
+    r = llm.reply(SEPTORIA)
+    assert not r.used_llm and r.fallback_reason.startswith("gemini") and "Septoria" in r.text

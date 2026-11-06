@@ -13,3 +13,4 @@ scikit-learn>=1.5        # only for the keyword-search fallback if the embedding
 sqlalchemy>=2.0
 psycopg[binary]>=3.2     # Postgres driver for Supabase
 anthropic>=2.0
+google-genai>=3.0

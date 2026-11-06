@@ -76,8 +76,8 @@ Outputs: `final_*.pt`, `app_model.json` (checkpoint, temperature, conformal q-ha
 .venv/Scripts/python -m crop_doctor.experiments.exp7_retrieval   # retrieval check on 20 farmer questions
 ```
 
-The LLM reply needs an Anthropic API key in the environment (`ANTHROPIC_API_KEY`); without it the assistant
-uses sourced template replies. Optional: `CROP_DOCTOR_MODEL=claude-haiku-5-5` for a cheaper model.
+AI-written replies need `GEMINI_API_KEY` (Gemini, default `gemini-3.6-flash`) or `ANTHROPIC_API_KEY` (Claude) in the
+environment; without either, the assistant uses sourced template replies. Same prompt and guardrail for both.
 
 ## Layout
 
