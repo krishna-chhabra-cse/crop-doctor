@@ -7,8 +7,8 @@ import type { CalibrationRun } from "@/lib/api";
 
 const W = 420, H = 230, PAD = { l: 40, r: 12, t: 14, b: 38 };
 const SERIES = [
-  { key: "monitor_coverage", label: "Shortlist contains right disease", color: "#15803d" },
-  { key: "monitor_answered", label: "Answered without expert", color: "#1d5fad" },
+  { key: "monitor_coverage", label: "Shortlist contains right disease", color: "var(--brand)" },
+  { key: "monitor_answered", label: "Answered without expert", color: "var(--blue)" },
 ] as const;
 
 export default function TrustChart({ runs }: { runs: CalibrationRun[] }) {
@@ -28,23 +28,23 @@ export default function TrustChart({ runs }: { runs: CalibrationRun[] }) {
         onMouseLeave={() => setHover(null)}>
         {[0, 0.25, 0.5, 0.75, 1].map((v) => (
           <g key={v}>
-            <line x1={PAD.l} x2={W - PAD.r} y1={y(v)} y2={y(v)} stroke="#e3e1d8" />
-            <text x={PAD.l - 8} y={y(v) + 4} textAnchor="end" fontSize="12" fill="#7a837c">{v * 100}%</text>
+            <line x1={PAD.l} x2={W - PAD.r} y1={y(v)} y2={y(v)} stroke="var(--border)" />
+            <text x={PAD.l - 8} y={y(v) + 4} textAnchor="end" fontSize="12" fill="var(--ink-3)">{v * 100}%</text>
           </g>
         ))}
-        <line x1={PAD.l} x2={W - PAD.r} y1={y(0.9)} y2={y(0.9)} stroke="#7a837c" strokeDasharray="5 4" />
-        <text x={W - PAD.r} y={y(0.9) - 5} textAnchor="end" fontSize="12" fill="#4b554e">90% promise</text>
+        <line x1={PAD.l} x2={W - PAD.r} y1={y(0.9)} y2={y(0.9)} stroke="var(--ink-3)" strokeDasharray="5 4" />
+        <text x={W - PAD.r} y={y(0.9) - 5} textAnchor="end" fontSize="12" fill="var(--ink-2)">90% promise</text>
         {SERIES.map((s) => (
           <path key={s.key} d={path(s.key)} fill="none" stroke={s.color} strokeWidth="2.5" strokeLinejoin="round" />
         ))}
         {runs.map((r, i) => (
           <g key={r.id}>
-            {SERIES.map((s) => <circle key={s.key} cx={x(i)} cy={y(r[s.key])} r={i === h ? 5 : 3.5} fill={s.color} stroke="#fff" strokeWidth="2" />)}
+            {SERIES.map((s) => <circle key={s.key} cx={x(i)} cy={y(r[s.key])} r={i === h ? 5 : 3.5} fill={s.color} stroke="var(--surface)" strokeWidth="2" />)}
             <rect x={x(i) - 14} y={PAD.t} width="28" height={H - PAD.t - PAD.b} fill="transparent" onMouseEnter={() => setHover(i)} />
-            <text x={x(i)} y={H - PAD.b + 16} textAnchor="middle" fontSize="12" fill="#7a837c">{r.n_field_points}</text>
+            <text x={x(i)} y={H - PAD.b + 16} textAnchor="middle" fontSize="12" fill="var(--ink-3)">{r.n_field_points}</text>
           </g>
         ))}
-        <text x={(W + PAD.l) / 2} y={H - 4} textAnchor="middle" fontSize="12" fill="#4b554e">Field labels in calibration</text>
+        <text x={(W + PAD.l) / 2} y={H - 4} textAnchor="middle" fontSize="12" fill="var(--ink-2)">Field labels in calibration</text>
       </svg>
       <figcaption className="mt-2 flex flex-wrap items-center gap-x-5 gap-y-1 text-sm text-ink-2">
         {SERIES.map((s) => (

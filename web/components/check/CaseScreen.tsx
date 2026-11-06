@@ -2,44 +2,54 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { api, ApiError, imageUrl, type CaseView, type Meta, type Message } from "@/lib/api";
+import {
+  ActionTiles, ConfidenceDots, DiseaseFacts, EXTENT_ICON, LeafDamage, ListenButton, optionIcon, StatusHero, UrgencyLight,
+  type HeroKind,
+} from "./visuals";
 
-const URGENCY = {
-  urgent: { box: "bg-red-soft text-red border-red/30", word: "Urgent" },
-  soon: { box: "bg-amber-soft text-amber border-amber/30", word: "Soon" },
-  routine: { box: "bg-blue-soft text-blue border-blue/30", word: "Routine" },
-} as const;
-
-// Tiny safe formatter: **bold** and line breaks only (no HTML from the server is ever injected).
+// Tiny safe formatter: **bold**, "- " bullets and line breaks only (no HTML from the server is ever injected).
 function Rich({ text }: { text: string }) {
+  const bold = (line: string) =>
+    line.split(/(\*\*[^*]+\*\*)/g).map((part, j) =>
+      part.startsWith("**") && part.endsWith("**") ? <strong key={j}>{part.slice(2, -2)}</strong> : part);
+  const body = text.replace(/\n*Sources:[\s\S]*$/, "");      // sources are shown separately, below
   return (
     <>
-      {text.split("\n").map((line, i) => (
-        <p key={i} className={i ? "mt-2" : ""}>
-          {line.split(/(\*\*[^*]+\*\*)/g).map((part, j) =>
-            part.startsWith("**") && part.endsWith("**") ? <strong key={j}>{part.slice(2, -2)}</strong> : part)}
-        </p>
-      ))}
+      {body.split("\n").filter((l) => l.trim()).map((line, i) => {
+        const bullet = /^\s*[-*•]\s+/.test(line);
+        return bullet ? (
+          <p key={i} className="mt-1.5 flex gap-2"><span aria-hidden="true" className="text-brand">●</span><span>{bold(line.replace(/^\s*[-*•]\s+/, ""))}</span></p>
+        ) : (
+          <p key={i} className={i ? "mt-2" : ""}>{bold(line)}</p>
+        );
+      })}
     </>
   );
 }
 
-function Bubble({ m }: { m: Message }) {
+function Bubble({ m, language }: { m: Message; language: string }) {
   const mine = m.role === "farmer";
   return (
-    <div className={`flex ${mine ? "justify-end" : "justify-start"}`}>
+    <div className={`pop-in flex items-end gap-2 ${mine ? "justify-end" : "justify-start"}`}>
+      {!mine && (
+        <span className={`mb-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-base ${m.role === "expert" ? "bg-brand text-brand-ink" : "bg-brand-soft"}`} aria-hidden="true">
+          {m.role === "expert" ? "🧑‍🌾" : "🌱"}
+        </span>
+      )}
       <div className={`max-w-[85%] rounded-3xl px-4 py-3 text-[15px] leading-relaxed ${
         mine ? "rounded-br-md bg-brand text-brand-ink"
           : m.role === "expert" ? "rounded-bl-md border-2 border-leaf bg-brand-soft text-ink"
-          : "rounded-bl-md border border-border bg-surface text-ink"}`}>
+          : "rounded-bl-md border border-border bg-surface text-ink shadow-card"}`}>
         {m.role === "expert" && <p className="mb-1 text-xs font-bold uppercase tracking-wide text-brand">Expert answer</p>}
         {m.image ? (
-          <img src={imageUrl(m.image)} alt="Your leaf photo" className="h-44 w-44 rounded-2xl object-cover" />
+          <img src={imageUrl(m.image)} alt="Your leaf photo" className="h-40 w-40 rounded-2xl object-cover" />
         ) : (
           <Rich text={m.text} />
         )}
+        {!mine && !m.image && <ListenButton text={m.text} language={language} />}
         {m.sources.length > 0 && (
           <details className="mt-2 text-sm">
-            <summary className="cursor-pointer font-semibold text-brand">Sources ({m.sources.length})</summary>
+            <summary className="cursor-pointer font-semibold text-brand">📚 Sources ({m.sources.length})</summary>
             <ul className="mt-1 space-y-1 text-ink-2">
               {m.sources.map((s) => {
                 const url = s.match(/https?:\/\/\S+/)?.[0];
@@ -54,76 +64,107 @@ function Bubble({ m }: { m: Message }) {
   );
 }
 
+function heroKind(c: CaseView): HeroKind {
+  const a = c.assessment;
+  if (c.status === "expert_answered") return "answered";
+  if (a.status === "retake") return "retake";
+  if (a.status === "healthy") return "healthy";
+  if (a.status === "diagnosis") return a.urgency?.level === "urgent" ? "urgent" : "diagnosis";
+  if (a.status === "question") return "question";
+  return "expert";
+}
+
 function ResultCard({ c }: { c: CaseView }) {
   const a = c.assessment;
+  const kind = heroKind(c);
+  const shell = "pop-in space-y-4 rounded-3xl border border-border bg-surface p-5 shadow-card";
+  const hero = <StatusHero kind={kind} photo={c.image ? imageUrl(c.image) : undefined} crop={c.crop} />;
+
   if (a.status === "retake")
     return (
-      <div className="rounded-3xl border border-amber/30 bg-amber-soft p-5 text-amber">
-        <p className="text-lg font-bold">Please take a new photo</p>
-        <p className="mt-1">{a.message}</p>
+      <div className={shell}>
+        {hero}
+        <p className="rounded-2xl bg-amber-soft p-4 font-semibold text-amber">{a.message}</p>
+        <div className="grid grid-cols-3 gap-2 text-center text-xs font-semibold text-ink-2">
+          {[["☀️", "Daylight"], ["🍃", "Fill the photo"], ["✋", "Hold steady"]].map(([i, w]) => (
+            <div key={w} className="rounded-2xl bg-surface-2 p-3"><div className="text-2xl" aria-hidden="true">{i}</div>{w}</div>
+          ))}
+        </div>
       </div>
     );
+
   if (c.status === "expert_answered" && c.expert)
     return (
-      <div className="rounded-3xl border-2 border-leaf bg-brand-soft p-5">
-        <p className="text-sm font-bold uppercase tracking-wide text-brand">Checked by an expert</p>
-        <p className="mt-1 text-2xl font-extrabold text-ink">{c.expert.name}</p>
+      <div className={`${shell} border-2 border-leaf`}>
+        {hero}
+        <div className="rounded-2xl bg-brand-soft p-4">
+          <p className="text-sm font-semibold text-brand">The expert says</p>
+          <p className="text-2xl font-extrabold text-ink">{c.expert.name}</p>
+        </div>
+        <DiseaseFacts d={c.expert} />
       </div>
     );
+
   if ((a.status === "diagnosis" || a.status === "healthy") && a.disease) {
-    const u = a.urgency && a.urgency.level !== "none" ? URGENCY[a.urgency.level] : null;
+    const healthy = a.status === "healthy";
     return (
-      <div className="rounded-3xl border border-border bg-surface p-5">
-        <p className="text-sm font-semibold text-ink-3">{a.status === "healthy" ? "Good news" : "Most likely"}</p>
-        <p className="text-2xl font-extrabold leading-tight text-ink">{a.disease.name}</p>
-        <div className="mt-3 flex items-center gap-3">
-          <div className="h-2.5 flex-1 overflow-hidden rounded-full bg-surface-2" aria-hidden="true">
-            <div className="h-full rounded-full bg-brand" style={{ width: `${Math.round((a.probability ?? 0) * 100)}%` }} />
-          </div>
-          <span className="text-sm font-semibold text-ink-2">{Math.round((a.probability ?? 0) * 100)}% likely</span>
+      <div className={shell}>
+        {hero}
+        <div>
+          <p className="text-sm font-semibold text-ink-3">{healthy ? "Good news" : "Most likely"}</p>
+          <p className="text-2xl font-extrabold leading-tight text-ink sm:text-3xl">{a.disease.name}</p>
+          <div className="mt-2"><ConfidenceDots p={a.probability ?? 0} /></div>
         </div>
-        {u && a.urgency && (
-          <div className={`mt-4 rounded-2xl border px-4 py-3 ${u.box}`}>
-            <p className="font-bold">{u.word}: act within {a.urgency.act_within}</p>
-            <p className="text-sm">{a.urgency.why}</p>
-          </div>
-        )}
-        {a.severity_estimate?.fraction != null && (
-          <p className="mt-3 text-sm text-ink-3">
-            About {Math.round(a.severity_estimate.fraction * 100)}% of the leaf looks damaged (rough estimate from colour).
+        {a.urgency && <UrgencyLight u={a.urgency} />}
+        {!healthy && a.severity_estimate?.fraction != null && <LeafDamage fraction={a.severity_estimate.fraction} />}
+        {!healthy && <DiseaseFacts d={a.disease} />}
+        <ActionTiles d={a.disease} healthy={healthy} urgent={a.urgency?.level === "urgent"} />
+        {!healthy && (
+          <p className="flex items-start gap-2 rounded-2xl bg-surface-2 p-3 text-sm text-ink-2">
+            <span aria-hidden="true">⚠️</span>Not 100% certain. Please confirm with a local expert before spraying.
           </p>
         )}
-        {a.status === "diagnosis" && (
-          <p className="mt-2 text-sm text-ink-3">Not certain. Please confirm with a local expert before spraying.</p>
-        )}
         {c.audit && c.status !== "expert_answered" && (
-          <p className="mt-3 rounded-xl bg-blue-soft px-3 py-2 text-sm text-blue">An expert will also double-check this answer.</p>
+          <p className="flex items-center gap-2 rounded-2xl bg-blue-soft px-3 py-2 text-sm text-blue">
+            <span aria-hidden="true">🧑‍🌾</span>An expert will also double-check this answer.
+          </p>
         )}
       </div>
     );
   }
+
+  const options = a.top.filter((t) => a.shortlist.some((s) => s.label === t.label));
   return (
-    <div className="rounded-3xl border border-border bg-surface p-5">
-      <p className="text-sm font-semibold text-ink-3">{a.status === "question" ? "Could be one of these" : "Not sure yet"}</p>
-      {a.shortlist.length > 0 ? (
-        <ul className="mt-2 space-y-2">
-          {a.top.filter((t) => a.shortlist.some((s) => s.label === t.label)).map((t) => (
-            <li key={t.label}>
-              <div className="flex justify-between text-sm font-semibold text-ink"><span>{t.name}</span><span>{Math.round(t.probability * 100)}%</span></div>
-              <div className="mt-1 h-2 overflow-hidden rounded-full bg-surface-2" aria-hidden="true">
-                <div className="h-full rounded-full bg-leaf" style={{ width: `${Math.round(t.probability * 100)}%` }} />
-              </div>
-            </li>
-          ))}
-        </ul>
+    <div className={shell}>
+      {hero}
+      {options.length > 0 ? (
+        <div>
+          <p className="text-sm font-semibold text-ink-3">It could be one of these</p>
+          <ul className="mt-2 space-y-3">
+            {options.map((t) => (
+              <li key={t.label} className="rounded-2xl bg-surface-2 p-3">
+                <p className="font-bold text-ink">{t.name}</p>
+                <div className="mt-1"><ConfidenceDots p={t.probability} tone="leaf" /></div>
+              </li>
+            ))}
+          </ul>
+        </div>
       ) : (
-        <p className="mt-1 text-ink-2">This photo doesn&apos;t look like the diseases the assistant knows well.</p>
+        <p className="text-ink-2">This photo doesn&apos;t look like the diseases the assistant knows well.</p>
       )}
       {c.status === "pending" && (
-        <div className="mt-4 flex items-center gap-3 rounded-2xl bg-blue-soft px-4 py-3 text-blue" role="status">
-          <span className="dot-pulse text-lg" aria-hidden="true"><span>●</span><span>●</span><span>●</span></span>
-          <p className="text-sm font-semibold">Sent to an expert. Their answer will appear here; you can close this page and come back.</p>
+        <div className="flex items-center gap-3 rounded-2xl bg-blue-soft px-4 py-3 text-blue" role="status">
+          <span className="text-2xl" aria-hidden="true">⏳</span>
+          <div>
+            <p className="font-bold">Waiting for the expert</p>
+            <p className="text-sm">Their answer will appear here. You can close this page and come back later.</p>
+          </div>
         </div>
+      )}
+      {c.status === "pending" && (
+        <p className="flex items-start gap-2 rounded-2xl bg-surface-2 p-3 text-sm text-ink-2">
+          <span aria-hidden="true">✋</span>Wait for the expert before buying or spraying any chemical. Meanwhile, remove badly affected leaves and keep them away from the field.
+        </p>
       )}
     </div>
   );
@@ -190,27 +231,31 @@ export default function CaseScreen({ id, meta, language, initial, onNew }: Props
 
   return (
     <div className="space-y-5">
-      <div className="flex items-center justify-between">
-        <h1 className="text-xl font-extrabold text-ink">Your {c.crop} leaf</h1>
-        <button type="button" onClick={onNew} className="rounded-full border border-border bg-surface px-4 py-2 text-sm font-semibold text-ink hover:bg-surface-2">
-          + New photo
+      <div className="flex items-center justify-between gap-3">
+        <h1 className="sr-only">Your {c.crop} leaf</h1>
+        <p className="text-sm font-semibold text-ink-3">Check #{c.id}</p>
+        <button type="button" onClick={onNew} className="flex items-center gap-1.5 rounded-full border border-border bg-surface px-4 py-2 text-sm font-semibold text-ink shadow-card hover:bg-surface-2">
+          <span aria-hidden="true">📷</span> New photo
         </button>
       </div>
 
       <ResultCard c={c} />
 
       {a.status === "question" && a.question && c.status !== "expert_answered" && (
-        <section aria-labelledby="q" className="rounded-3xl border-2 border-leaf bg-surface p-5">
-          <h2 id="q" className="font-bold text-ink">{a.question.text}</h2>
-          <div className="mt-3 space-y-2">
+        <section aria-labelledby="q" className="pop-in rounded-3xl border-2 border-blue/40 bg-surface p-5 shadow-card">
+          <p className="text-sm font-semibold text-blue">Look closely at your leaf</p>
+          <h2 id="q" className="text-lg font-extrabold text-ink">{a.question.text}</h2>
+          <div className="mt-3 grid gap-2">
             {a.question.options.map((o, i) => (
               <button key={o} type="button" disabled={busy} onClick={() => act(() => api.answerQuestion(c.id, i, language))}
-                className="w-full rounded-2xl border border-border bg-surface px-4 py-3 text-left font-semibold text-ink hover:border-brand hover:bg-brand-soft disabled:opacity-50">
-                {o}
+                className="flex w-full items-center gap-3 rounded-2xl border-2 border-border bg-surface px-4 py-3 text-left font-semibold text-ink transition hover:border-brand hover:bg-brand-soft disabled:opacity-50">
+                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-surface-2 text-2xl" aria-hidden="true">{optionIcon(o)}</span>
+                <span className="leading-snug">{o}</span>
               </button>
             ))}
             <button type="button" disabled={busy} onClick={() => act(() => api.answerQuestion(c.id, null, language))}
-              className="w-full rounded-2xl px-4 py-3 text-left font-semibold text-ink-2 underline disabled:opacity-50">
+              className="flex w-full items-center gap-3 rounded-2xl px-4 py-3 text-left font-semibold text-ink-2 hover:bg-surface-2 disabled:opacity-50">
+              <span className="flex h-12 w-12 shrink-0 items-center justify-center text-2xl" aria-hidden="true">🤷</span>
               I&apos;m not sure: ask an expert
             </button>
           </div>
@@ -218,13 +263,14 @@ export default function CaseScreen({ id, meta, language, initial, onNew }: Props
       )}
 
       {c.ask_extent && c.status !== "expert_answered" && (
-        <section aria-labelledby="ext" className="rounded-3xl border border-border bg-surface p-5">
-          <h2 id="ext" className="font-bold text-ink">{meta.extent_question.text}</h2>
+        <section aria-labelledby="ext" className="pop-in rounded-3xl border border-border bg-surface p-5 shadow-card">
+          <h2 id="ext" className="text-lg font-extrabold text-ink">{meta.extent_question.text}</h2>
           <p className="text-sm text-ink-3">This tells us how quickly you need to act.</p>
-          <div className="mt-3 grid gap-2 sm:grid-cols-3">
+          <div className="mt-3 grid grid-cols-3 gap-2">
             {meta.extent_question.options.map((o) => (
               <button key={o.value} type="button" disabled={busy} onClick={() => act(() => api.answerExtent(c.id, o.value))}
-                className="rounded-2xl border border-border px-3 py-3 font-semibold text-ink hover:border-brand hover:bg-brand-soft disabled:opacity-50">
+                className="flex flex-col items-center gap-1 rounded-2xl border-2 border-border px-2 py-3 text-center text-sm font-semibold leading-snug text-ink transition hover:border-brand hover:bg-brand-soft disabled:opacity-50">
+                <span className="text-4xl" aria-hidden="true">{EXTENT_ICON[o.value] ?? "🌱"}</span>
                 {o.text}
               </button>
             ))}
@@ -233,13 +279,14 @@ export default function CaseScreen({ id, meta, language, initial, onNew }: Props
       )}
 
       {a.status === "retake" && (
-        <button type="button" onClick={onNew} className="w-full rounded-2xl bg-brand py-4 text-lg font-bold text-brand-ink">
-          Take a new photo
+        <button type="button" onClick={onNew} className="w-full rounded-2xl bg-brand py-4 text-lg font-bold text-brand-ink shadow-card">
+          📷 Take a new photo
         </button>
       )}
 
       <section aria-label="Conversation" className="space-y-3" aria-live="polite">
-        {c.messages.map((m, i) => <Bubble key={i} m={m} />)}
+        <h2 className="pt-2 text-sm font-bold uppercase tracking-wide text-ink-3">Chat with the crop doctor</h2>
+        {c.messages.map((m, i) => <Bubble key={i} m={m} language={language} />)}
         {busy && (
           <div className="flex justify-start"><div className="rounded-3xl border border-border bg-surface px-4 py-3">
             <span className="dot-pulse text-ink-3" aria-label="Writing a reply"><span>●</span> <span>●</span> <span>●</span></span>
@@ -250,8 +297,15 @@ export default function CaseScreen({ id, meta, language, initial, onNew }: Props
 
       {error && <p role="alert" className="rounded-xl bg-red-soft p-3 text-sm text-red">{error}</p>}
 
+      {busy && (
+        <div role="status" className="pop-in sticky bottom-20 z-10 mx-auto flex w-fit items-center gap-2 rounded-full bg-ink px-4 py-2 text-sm font-semibold text-background shadow-card">
+          <span aria-hidden="true">✍️</span> Writing your answer
+          <span className="dot-pulse" aria-hidden="true"><span>●</span><span>●</span><span>●</span></span>
+        </div>
+      )}
+
       {a.status !== "retake" && (
-        <form className="sticky bottom-3 flex gap-2 rounded-3xl border border-border bg-surface p-2 shadow-lg"
+        <form className="sticky bottom-3 flex gap-2 rounded-3xl border border-border bg-surface p-2 shadow-card"
           onSubmit={(e) => {
             e.preventDefault();
             const t = text.trim();
@@ -264,7 +318,7 @@ export default function CaseScreen({ id, meta, language, initial, onNew }: Props
             placeholder="Ask anything, e.g. can I use an organic spray?"
             className="min-w-0 flex-1 rounded-2xl bg-transparent px-3 py-2 text-ink outline-none placeholder:text-ink-3" />
           <button type="submit" disabled={busy || !text.trim()}
-            className="rounded-2xl bg-brand px-4 py-2 font-bold text-brand-ink disabled:opacity-40">Send</button>
+            className="rounded-2xl bg-brand px-5 py-2 text-lg font-bold text-brand-ink disabled:opacity-40" aria-label="Send">➤</button>
         </form>
       )}
     </div>

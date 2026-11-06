@@ -19,6 +19,40 @@
   --red-soft: #fdeceb;
   --blue: #1d5fad;
   --blue-soft: #e8f0fb;
+  --shadow: 0 1px 2px rgb(23 32 26 / 0.06), 0 8px 24px -12px rgb(23 32 26 / 0.18);
+  color-scheme: light;
+}
+
+/* Dark mode: warm near-black (not pure black), same meaning for every colour. */
+:root[data-theme="dark"] {
+  --background: #0f1411;
+  --surface: #171e1a;
+  --surface-2: #212a24;
+  --border: #2e3832;
+  --ink: #eef2ee;
+  --ink-2: #b7c1ba;
+  --ink-3: #8a958d;
+  --brand: #22a355;
+  --brand-ink: #ffffff;
+  --brand-soft: #173523;
+  --leaf: #3fcf8e;
+  --amber: #f5b14c;
+  --amber-soft: #3a2a12;
+  --red: #ff7b72;
+  --red-soft: #3d1a19;
+  --blue: #7cb4ff;
+  --blue-soft: #16273f;
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.4), 0 8px 24px -12px rgb(0 0 0 / 0.6);
+  color-scheme: dark;
+}
+/* No JavaScript yet: follow the phone's setting. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --background: #0f1411; --surface: #171e1a; --surface-2: #212a24; --border: #2e3832;
+    --ink: #eef2ee; --ink-2: #b7c1ba; --ink-3: #8a958d; --brand: #22a355; --brand-soft: #173523;
+    --leaf: #3fcf8e; --amber: #f5b14c; --amber-soft: #3a2a12; --red: #ff7b72; --red-soft: #3d1a19;
+    --blue: #7cb4ff; --blue-soft: #16273f; color-scheme: dark;
+  }
 }
 
 @theme inline {
@@ -40,6 +74,7 @@
   --color-blue: var(--blue);
   --color-blue-soft: var(--blue-soft);
   --font-sans: var(--font-jakarta);
+  --shadow-card: var(--shadow);
 }
 
 html {
@@ -48,6 +83,7 @@ html {
 
 body {
   background: var(--background);
+  transition: background-color 0.2s ease, color 0.2s ease;
   color: var(--ink);
   font-family: var(--font-jakarta), system-ui, sans-serif;
 }
@@ -69,4 +105,23 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .dot-pulse span { animation: none; opacity: 0.7; }
+}
+
+/* Scanning line on the photo while the leaf is being checked. */
+@keyframes scan {
+  0% { top: 4%; }
+  50% { top: 92%; }
+  100% { top: 4%; }
+}
+.scan-line { animation: scan 2.4s ease-in-out infinite; }
+
+@keyframes pop-in {
+  from { opacity: 0; transform: translateY(8px) scale(0.98); }
+  to { opacity: 1; transform: none; }
+}
+.pop-in { animation: pop-in 0.35s ease-out both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .scan-line, .pop-in { animation: none; }
+  body { transition: none; }
 }

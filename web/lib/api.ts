@@ -3,7 +3,14 @@
 
 export const API_URL = (process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000").replace(/\/$/, "");
 
-export type Disease = { label: string; name: string; crop: string | null };
+export type Disease = {
+  label: string;
+  name: string;
+  crop: string | null;
+  cause?: string | null;
+  spread?: string | null;
+  signs?: string | null;
+};
 export type Urgency = { level: "urgent" | "soon" | "routine" | "none"; act_within: string | null; why: string };
 export type Assessment = {
   status: "diagnosis" | "healthy" | "question" | "expert" | "retake";

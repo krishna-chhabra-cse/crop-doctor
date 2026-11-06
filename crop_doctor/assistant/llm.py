@@ -197,9 +197,10 @@ def _ask_gemini(system: str, history: list[dict], user_text: str) -> str:
         model=GEMINI_MODEL,
         system_instruction=system,
         input=prompt,
-        generation_config={"max_output_tokens": 1500},
+        # Low thinking: it only explains facts it's given, and farmers shouldn't wait a minute for a reply.
+        generation_config={"max_output_tokens": 1500, "thinking_level": "low"},
         store=False,                       # don't keep farmers' conversations on Google's servers
-        timeout=60.0,
+        timeout=30.0,                      # slower than this -> template reply instead of a long wait
     )
     if it.status != "completed":
         raise Declined(f"status {it.status}")
