@@ -550,8 +550,12 @@ phone → Vercel (Next.js website) → Render (FastAPI + ONNX model) → Supabas
 ```
 - The same Python pipeline powers the website (via `crop_doctor/app/service.py`) and the Streamlit demo.
 - Render's free plan has 512 MB of RAM, so the server runs **without PyTorch**: the model is exported to **ONNX**.
-  8-bit weights changed the top answer on 5.5% of photos (our automatic check rejected them), so we store **16-bit
-  weights** (56 MB, identical answers on all test photos) and expand them at build time. Retrieval uses an 8-bit
+  For v2, per-channel 8-bit weights passed our check (99.2% same answers), **but the live test caught a subtle bug**:
+  8-bit maths gives slightly different numbers on different CPUs. On Render's CPU the clear tomato sample scored
+  91.1% instead of 92.7% on the laptop, so thresholds calibrated on the laptop no longer matched the server, and the
+  "clear" sample got a question instead of an answer. Fix: store **16-bit weights** (56 MB) and run full-precision
+  maths (identical to PyTorch on 100% of test photos, on any CPU). Lesson: **calibrate with the exact numbers
+  the deployed model produces.** Retrieval uses an 8-bit
   MiniLM. **Server memory: 685 MB → 294 MB.**
 - Photos and cases are stored in **Supabase Postgres** (survive restarts); expert pages need an **expert key**.
 
@@ -563,5 +567,5 @@ rest to an expert. That's the honest behaviour we want: it answers less where it
 
 ### Live links
 - Website (Vercel): https://crop-doctor-snowy.vercel.app
-- API (Render): https://crop-doctor-api.onrender.com/api/health (after the Render setup in docs/DEPLOY.md)
+- API (Render): https://crop-doctor-api-fz3n.onrender.com/api/health (website also at https://cropdoctor.cv)
 - Code: private GitHub repo krishna-chhabra-cse/crop-doctor

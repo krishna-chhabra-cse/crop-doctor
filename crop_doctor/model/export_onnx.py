@@ -1,6 +1,12 @@
 """Package the final model for the live server: ONNX + 8-bit weights + calibration files.
 
-    python -m crop_doctor.model.export_onnx
+    python -m crop_doctor.model.export_onnx                 # 16-bit stored weights (default, used on Render)
+    python -m crop_doctor.model.export_onnx --weights auto  # try 8-bit first
+
+Why 16-bit by default: 8-bit (int8) maths gives slightly DIFFERENT numbers on different CPUs (they use different
+int8 instructions). On Render's CPU the clear tomato sample scored 91.1% instead of 92.7% on the laptop, so the
+calibration thresholds measured here no longer matched the server. Full-precision maths gives the same numbers on
+any CPU; the weights are only STORED as 16-bit floats (56 MB, under GitHub's 100 MB limit) and expanded at build.
 
 1. Export the PyTorch checkpoint named in outputs/app_model.json to ONNX (a portable model format).
 2. Quantise its weights to 8-bit integers (dynamic quantisation): ~4x smaller, runs fast on a small CPU.
@@ -39,6 +45,11 @@ def onnx_logits(backend: OnnxBackend, df: pd.DataFrame) -> np.ndarray:
 
 
 def main() -> None:
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--weights", choices=("w16", "auto"), default="w16",
+                    help="w16: full-precision maths, 16-bit stored weights; auto: int8 if it passes the check")
+    weights = ap.parse_args().weights
     app = json.loads((config.OUTPUTS_DIR / "app_model.json").read_text())
     model, classes = load_trained_model("cpu", config.OUTPUTS_DIR / app["checkpoint"])
     ASSETS.mkdir(parents=True, exist_ok=True)
@@ -68,10 +79,10 @@ def main() -> None:
     acc_pt, acc_q8 = float((pt_m.argmax(1) == y).mean()), float((q8_m.argmax(1) == y).mean())
     print(f"  top answer agreement {agree:.3f}; accuracy PyTorch {acc_pt:.3f} vs int8 {acc_q8:.3f}")
     use = int8
-    if agree < 0.98 or acc_q8 < acc_pt - 0.01:
-        # Plan B: keep full-precision maths but STORE the weights as 16-bit floats (half the file size, under
-        # GitHub's 100 MB limit). OnnxBackend expands them back to 32-bit when the server starts.
-        print("  int8 changed answers too much -> shipping 16-bit stored weights instead")
+    if weights == "w16" or agree < 0.98 or acc_q8 < acc_pt - 0.01:
+        # Keep full-precision maths but STORE the weights as 16-bit floats (half the file size, under
+        # GitHub's 100 MB limit). The server expands them back to 32-bit at build time.
+        print("  shipping 16-bit stored weights (same numbers on every CPU)")
         import onnx
         from onnx import numpy_helper
         m = onnx.load(fp32)

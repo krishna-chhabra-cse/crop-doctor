@@ -1,5 +1,5 @@
 {
-  "onnx": "model.onnx",
+  "onnx": "model_w16.onnx",
   "classes": [
     "potato_early_blight",
     "potato_healthy",
@@ -21,25 +21,25 @@
     "monitor": "field_test"
   },
   "mondrian": "crop",
-  "temperature": 1.665321797389989,
+  "temperature": 1.6770871751152927,
   "qhat": {
     "0.1": {
-      "potato": 0.8786254186216339,
-      "tomato": 0.9517059607872302
+      "potato": 0.8696336062637192,
+      "tomato": 0.9450409970454512
     },
     "0.2": {
-      "potato": 0.7832053804086136,
-      "tomato": 0.8710284770776651
+      "potato": 0.7827187072209726,
+      "tomato": 0.8744101758460241
     }
   },
   "default_alpha": 0.1,
   "calibrated_on": "field_cal",
   "source_checkpoint": "final_v2_convnext_tiny.pt",
   "check": {
-    "top1_agreement_with_pytorch": 0.9915773353751914,
+    "top1_agreement_with_pytorch": 1.0,
     "field_test_accuracy_pytorch": 0.8744257274119449,
-    "field_test_accuracy_onnx": 0.8721286370597243,
-    "field_test_coverage_90": 0.9065849923430321,
-    "field_test_avg_set_size": 1.5681470137825422
+    "field_test_accuracy_onnx": 0.8744257274119449,
+    "field_test_coverage_90": 0.8989280245022971,
+    "field_test_avg_set_size": 1.510719754977029
   }
 }

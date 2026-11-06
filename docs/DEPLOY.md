@@ -36,8 +36,9 @@ Free-plan behaviour: the API sleeps after 15 minutes without visitors; the first
 
 ## 3. Vercel: the website (live at https://crop-doctor-snowy.vercel.app)
 
-Deployed from `web/` with the Vercel CLI. `NEXT_PUBLIC_API_URL` must be the Render address, for example
-`https://crop-doctor-api.onrender.com`. To redeploy after changes:
+Deployed from `web/` with the Vercel CLI (also served at https://cropdoctor.cv). `NEXT_PUBLIC_API_URL` must be the
+Render address: **`https://crop-doctor-api-fz3n.onrender.com`**. Careful: `crop-doctor-api.onrender.com` (without
+`-fz3n`) is someone else's app; Render adds a suffix when a name is taken. To redeploy after changes:
 
 ```bash
 cd web
