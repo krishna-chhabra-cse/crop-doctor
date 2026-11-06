@@ -3,6 +3,7 @@
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { api, ApiError, type CaseView, type Meta } from "@/lib/api";
+import { setLanguage, useLanguage, useT } from "@/lib/i18n";
 import CaseScreen from "./CaseScreen";
 import NewPhoto from "./NewPhoto";
 
@@ -12,9 +13,8 @@ export default function CheckFlow() {
   const caseId = Number(params.get("case")) || null;
   const [meta, setMeta] = useState<Meta | null>(null);
   const [error, setError] = useState<string | null>(null);
-  // This component only renders in the browser (it reads the URL inside Suspense), so localStorage is safe here.
-  const [language, setLanguage] = useState(() =>
-    typeof window === "undefined" ? "English" : localStorage.getItem("cd_language") ?? "English");
+  const language = useLanguage();            // shared with the header switch; also the AI reply language
+  const t = useT();
   const [initialCase, setInitialCase] = useState<CaseView | null>(null);
 
   useEffect(() => {
@@ -38,10 +38,6 @@ export default function CheckFlow() {
     };
   }, []);
 
-  const changeLanguage = (l: string) => {
-    setLanguage(l);
-    localStorage.setItem("cd_language", l);
-  };
 
   const opened = (c: CaseView) => {
     setInitialCase(c);
@@ -55,7 +51,7 @@ export default function CheckFlow() {
     return (
       <div className="py-16 text-center text-ink-3" role="status">
         <div className="dot-pulse text-3xl text-brand" aria-hidden="true"><span>●</span> <span>●</span> <span>●</span></div>
-        <p className="mt-3">Getting the crop doctor ready…</p>
+        <p className="mt-3">{t("loading")}</p>
       </div>
     );
 
@@ -72,7 +68,7 @@ export default function CheckFlow() {
     );
 
   return (
-    <NewPhoto meta={meta} language={language} onLanguage={changeLanguage} onOpened={opened}
+    <NewPhoto meta={meta} language={language} onLanguage={setLanguage} onOpened={opened}
       showSamples={params.get("sample") === "1"} />
   );
 }

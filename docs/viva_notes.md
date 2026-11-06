@@ -542,7 +542,33 @@ crop's calibration photos ("Mondrian conformal prediction"). It's possible becau
 ### Unknown diseases: an honest limitation
 On never-taught tomato diseases, the assistant still names one of its 11 diseases **43%** of the time (58% before
 per-crop calibration); 51% get a follow-up question, 5% go to an expert. **Conformal prediction can't detect a
-disease it has never seen**: it only knows the 11 classes. A separate "unfamiliar photo" detector is future work.
+disease it has never seen**: it only knows the 11 classes.
+
+**Exp 9: we tried an "unfamiliar photo" detector, and it failed (an honest negative result).**
+`crop_doctor/experiments/exp9_unfamiliar.py`. Score: the *energy* of the model's outputs (Liu et al., 2020), with
+max-probability as a baseline, both chosen before seeing results. Threshold set on known field photos only (5% flagged).
+| | Energy | Max-prob |
+|---|---|---|
+| unknown-disease photos flagged | **0%** | 0.2% |
+| known field photos flagged (cost) | 8.1% | 6.6% |
+| AUROC known vs unknown (0.5 = coin flip) | **0.18** | 0.39 |
+
+Below chance: the model is *more* confident on the unknown diseases than on real known field photos. Why: the unknown
+photos come from Tomato-Village, whose setup (leaves on paper) was in training, so they look "familiar", while real farm
+photos are messy. **Confidence scores can't tell "new disease" from "familiar-looking photo".** Shipping it would send
+4.2% of correct answers to experts and catch nothing, so the script ships a gate only if it cuts the wrong answers by
+≥10 points; here it doesn't, so it's off (the code and tests stay). Next step: an explicit "something else" class trained
+with examples of other diseases (outlier exposure), tested on held-out diseases.
+
+### Website for farmers (picture-first, Hindi, dark mode)
+- Every key fact is a picture as well as words: urgency traffic light, a leaf that fills brown with the damage,
+  confidence dots, cause/spread icons, numbered "what to do" tiles, a **Listen** button (reads replies aloud).
+- **Hindi interface** (हिं button): all buttons and labels, plus the server's fixed sentences (11 disease names, 5
+  questions, urgency, photo-quality messages) are translated on the website. Other languages: replies in that
+  language, interface in English (we only ship translations we can check).
+- **Reference photos** ("compare your leaf with these"): one per disease, only from sources we may show publicly:
+  Tanzania potato (CC BY 4.0) and PlantVillage tomato. Picked by the model (≥95% sure) + most visible symptoms;
+  2 chosen by eye because photo shadows fooled the damage estimate. `crop_doctor/app/make_references.py`.
 
 ### The live system
 ```

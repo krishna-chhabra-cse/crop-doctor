@@ -17,6 +17,7 @@ import os
 from pathlib import Path
 
 import numpy as np
+from scipy.special import logsumexp
 from PIL import Image
 
 from crop_doctor import config
@@ -73,7 +74,13 @@ class CropDoctor:
         if not gate.ok:
             return {**result, "status": "retake", "message": gate.message}
 
-        probs = self.probabilities(img, crop)
+        logits = self.logits(img, crop)
+        probs = softmax(logits[None, :], self.temperature)[0]
+        # Unfamiliar-photo check (Exp 9): energy = log-sum-exp of the crop's raw outputs. Very low = the photo
+        # doesn't strongly look like ANY disease the model knows -> an expert, never a confident wrong name.
+        familiarity = float(logsumexp(logits[np.isfinite(logits)]))
+        thr = (self.cfg.get("unfamiliar") or {}).get("threshold", {}).get(crop)
+        result["familiarity"] = round(familiarity, 3)
         u = float(np.random.default_rng(seed).uniform())
         answer, asked = None, set()
         if question_id is not None:
@@ -81,6 +88,11 @@ class CropDoctor:
             answer = {"question_id": question_id, "favours": q["options"][option]["favours"]}
             asked = {question_id}
         result.update(decide(probs, self.classes, self.qhat_for(crop), u, answer=answer, asked=asked))
+        if thr is not None and familiarity < thr:
+            result.update(status="expert", unfamiliar=True, question=None,
+                          reason="this photo doesn't look much like the diseases I learned")
+            result.pop("label", None)
+            result.pop("probability", None)
 
         if result["status"] == "diagnosis":
             sev = severity.estimate(img)

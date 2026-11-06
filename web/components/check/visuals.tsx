@@ -3,21 +3,25 @@
 // Picture-first building blocks for farmers: every important fact is shown as an icon, colour or shape AND words.
 import { useEffect, useState } from "react";
 import type { Disease, Urgency } from "@/lib/api";
+import { useT, type Key } from "@/lib/i18n";
+import { REFERENCES } from "@/lib/references";
 
 /* ---------- Status hero: one big symbol that says what kind of answer this is ---------- */
-const HERO = {
-  healthy: { icon: "✅", ring: "bg-brand-soft text-brand", title: "Healthy leaf" },
-  diagnosis: { icon: "🔎", ring: "bg-amber-soft text-amber", title: "Disease found" },
-  urgent: { icon: "🚨", ring: "bg-red-soft text-red", title: "Disease found" },
-  question: { icon: "❓", ring: "bg-blue-soft text-blue", title: "One quick question" },
-  expert: { icon: "🧑‍🌾", ring: "bg-blue-soft text-blue", title: "Sent to an expert" },
-  answered: { icon: "🎓", ring: "bg-brand-soft text-brand", title: "Checked by an expert" },
-  retake: { icon: "📷", ring: "bg-amber-soft text-amber", title: "New photo needed" },
-} as const;
-export type HeroKind = keyof typeof HERO;
+const HERO: Record<string, { icon: string; ring: string; title: Key }> = {
+  healthy: { icon: "✅", ring: "bg-brand-soft text-brand", title: "heroHealthy" },
+  diagnosis: { icon: "🔎", ring: "bg-amber-soft text-amber", title: "heroDisease" },
+  urgent: { icon: "🚨", ring: "bg-red-soft text-red", title: "heroDisease" },
+  question: { icon: "❓", ring: "bg-blue-soft text-blue", title: "heroQuestion" },
+  expert: { icon: "🧑‍🌾", ring: "bg-blue-soft text-blue", title: "heroExpert" },
+  answered: { icon: "🎓", ring: "bg-brand-soft text-brand", title: "heroAnswered" },
+  retake: { icon: "📷", ring: "bg-amber-soft text-amber", title: "heroRetake" },
+  unfamiliar: { icon: "⚠️", ring: "bg-amber-soft text-amber", title: "unfamiliar" },
+};
+export type HeroKind = "healthy" | "diagnosis" | "urgent" | "question" | "expert" | "answered" | "retake" | "unfamiliar";
 
 export function StatusHero({ kind, photo, crop }: { kind: HeroKind; photo?: string; crop: string }) {
   const h = HERO[kind];
+  const t = useT();
   return (
     <div className="flex items-center gap-4">
       <div className="relative shrink-0">
@@ -31,8 +35,8 @@ export function StatusHero({ kind, photo, crop }: { kind: HeroKind; photo?: stri
         </span>
       </div>
       <div className="min-w-0">
-        <p className="text-sm font-semibold uppercase tracking-wide text-ink-3">{crop} leaf</p>
-        <p className="text-xl font-extrabold leading-tight text-ink sm:text-2xl">{h.title}</p>
+        <p className="text-sm font-semibold uppercase tracking-wide text-ink-3">{t.hi ? `${t(crop === "potato" ? "potato" : "tomato")} का ${t("leaf")}` : `${crop} leaf`}</p>
+        <p className="text-xl font-extrabold leading-tight text-ink sm:text-2xl">{t(h.title)}</p>
       </div>
     </div>
   );
@@ -40,8 +44,9 @@ export function StatusHero({ kind, photo, crop }: { kind: HeroKind; photo?: stri
 
 /* ---------- Confidence: 10 dots are easier to read than a percentage ---------- */
 export function ConfidenceDots({ p, tone = "brand" }: { p: number; tone?: "brand" | "leaf" }) {
+  const t = useT();
   const filled = Math.max(1, Math.round(p * 10));
-  const word = p >= 0.9 ? "Very likely" : p >= 0.7 ? "Likely" : p >= 0.5 ? "Possible" : "Less likely";
+  const word = t(p >= 0.9 ? "veryLikely" : p >= 0.7 ? "likely" : p >= 0.5 ? "possible" : "lessLikely");
   return (
     <div className="flex flex-wrap items-center gap-x-3 gap-y-1" aria-label={`${word}: ${Math.round(p * 100)} out of 100`}>
       <div className="flex gap-1" aria-hidden="true">
@@ -55,13 +60,14 @@ export function ConfidenceDots({ p, tone = "brand" }: { p: number; tone?: "brand
 }
 
 /* ---------- Urgency: a traffic light with a clock ---------- */
-const LEVELS = [
-  { key: "routine", word: "Can wait", icon: "🟢", on: "bg-brand text-brand-ink" },
-  { key: "soon", word: "This week", icon: "🟠", on: "bg-amber text-background" },
-  { key: "urgent", word: "Today", icon: "🔴", on: "bg-red text-background" },
-] as const;
+const LEVELS: { key: string; word: Key; icon: string; on: string }[] = [
+  { key: "routine", word: "canWait", icon: "🟢", on: "bg-brand text-brand-ink" },
+  { key: "soon", word: "thisWeek", icon: "🟠", on: "bg-amber text-background" },
+  { key: "urgent", word: "today", icon: "🔴", on: "bg-red text-background" },
+];
 
 export function UrgencyLight({ u }: { u: Urgency }) {
+  const t = useT();
   if (u.level === "none") return null;
   const box = u.level === "urgent" ? "border-red/40 bg-red-soft" : u.level === "soon" ? "border-amber/40 bg-amber-soft" : "border-blue/30 bg-blue-soft";
   const ink = u.level === "urgent" ? "text-red" : u.level === "soon" ? "text-amber" : "text-blue";
@@ -70,14 +76,14 @@ export function UrgencyLight({ u }: { u: Urgency }) {
       <div className="flex items-center gap-3">
         <span className="text-3xl" aria-hidden="true">⏰</span>
         <div>
-          <p className={`text-lg font-extrabold leading-tight ${ink}`}>Act within {u.act_within}</p>
-          <p className="text-sm text-ink-2">{u.why}</p>
+          <p className={`text-lg font-extrabold leading-tight ${ink}`}>{t("actWithin", { t: t.server(u.act_within) })}</p>
+          <p className="text-sm text-ink-2">{t.server(u.why)}</p>
         </div>
       </div>
       <div className="mt-3 grid grid-cols-3 gap-1.5" role="img" aria-label={`Urgency: ${u.level}`}>
         {LEVELS.map((l) => (
           <div key={l.key} className={`rounded-xl px-2 py-1.5 text-center text-xs font-bold ${u.level === l.key ? l.on : "bg-surface/70 text-ink-3"}`}>
-            <span aria-hidden="true">{l.icon}</span> {l.word}
+            <span aria-hidden="true">{l.icon}</span> {t(l.word)}
           </div>
         ))}
       </div>
@@ -88,8 +94,9 @@ export function UrgencyLight({ u }: { u: Urgency }) {
 /* ---------- Leaf damage: a leaf that fills up brown ---------- */
 const LEAF = "M50 6C20 26 10 58 26 86c6 10 16 14 24 14s18-4 24-14C90 58 80 26 50 6Z";
 export function LeafDamage({ fraction }: { fraction: number }) {
+  const t = useT();
   const pct = Math.round(Math.min(Math.max(fraction, 0), 1) * 100);
-  const word = pct < 10 ? "A little damage" : pct < 30 ? "Some damage" : pct < 60 ? "A lot of damage" : "Badly damaged";
+  const word = t(pct < 10 ? "dmgLittle" : pct < 30 ? "dmgSome" : pct < 60 ? "dmgLot" : "dmgBad");
   return (
     <div className="flex items-center gap-4 rounded-2xl bg-surface-2 p-3">
       <svg viewBox="0 0 100 104" className="h-20 w-20 shrink-0" role="img" aria-label={`About ${pct}% of the leaf is damaged`}>
@@ -106,41 +113,42 @@ export function LeafDamage({ fraction }: { fraction: number }) {
       </svg>
       <div>
         <p className="font-bold text-ink">{word}</p>
-        <p className="text-sm text-ink-2">About {pct}% of the leaf looks damaged</p>
-        <p className="text-xs text-ink-3">Rough estimate from the colours in the photo</p>
+        <p className="text-sm text-ink-2">{t("dmgAbout", { p: pct })}</p>
+        <p className="text-xs text-ink-3">{t("dmgNote")}</p>
       </div>
     </div>
   );
 }
 
 /* ---------- What causes it and how fast it spreads ---------- */
-function causeOf(cause?: string | null) {
+function causeOf(cause?: string | null): { icon: string; word: Key } | null {
   const c = (cause ?? "").toLowerCase();
-  if (c.includes("whitefl")) return { icon: "🪰", word: "Virus carried by whiteflies" };
-  if (c.includes("virus")) return { icon: "🧬", word: "Virus" };
-  if (c.includes("bacteri")) return { icon: "🦠", word: "Bacteria" };
-  if (c.includes("water mould")) return { icon: "💧", word: "Water mould (loves wet weather)" };
-  if (c.includes("fung")) return { icon: "🍄", word: "Fungus" };
+  if (c.includes("whitefl")) return { icon: "🪰", word: "cWhitefly" };
+  if (c.includes("virus")) return { icon: "🧬", word: "cVirus" };
+  if (c.includes("bacteri")) return { icon: "🦠", word: "cBacteria" };
+  if (c.includes("water mould")) return { icon: "💧", word: "cWater" };
+  if (c.includes("fung")) return { icon: "🍄", word: "cFungus" };
   return null;
 }
-const SPREAD: Record<string, { icon: string; word: string; bars: number }> = {
-  fast: { icon: "🔥", word: "Spreads very fast", bars: 3 },
-  medium: { icon: "🌬️", word: "Spreads slowly to nearby leaves", bars: 2 },
-  virus_insect: { icon: "🪰", word: "Spread by insects", bars: 2 },
-  virus_contact: { icon: "🖐️", word: "Spread by hands and tools", bars: 2 },
+const SPREAD: Record<string, { icon: string; word: Key; bars: number }> = {
+  fast: { icon: "🔥", word: "spFast", bars: 3 },
+  medium: { icon: "🌬️", word: "spMedium", bars: 2 },
+  virus_insect: { icon: "🪰", word: "spInsect", bars: 2 },
+  virus_contact: { icon: "🖐️", word: "spContact", bars: 2 },
 };
 
 export function DiseaseFacts({ d }: { d: Disease }) {
+  const t = useT();
   const cause = causeOf(d.cause);
   const spread = d.spread ? SPREAD[d.spread] : undefined;
   if (!cause && !spread && !d.signs) return null;
   return (
     <div className="grid gap-2 sm:grid-cols-2">
       {cause && (
-        <Fact icon={cause.icon} label="Caused by" value={cause.word} />
+        <Fact icon={cause.icon} label={t("causedBy")} value={t(cause.word)} />
       )}
       {spread && (
-        <Fact icon={spread.icon} label="How it spreads" value={spread.word}>
+        <Fact icon={spread.icon} label={t("spreads")} value={t(spread.word)}>
           <span className="mt-1 flex gap-1" aria-hidden="true">
             {[1, 2, 3].map((i) => <span key={i} className={`h-1.5 w-6 rounded-full ${i <= spread.bars ? "bg-amber" : "bg-border"}`} />)}
           </span>
@@ -148,7 +156,7 @@ export function DiseaseFacts({ d }: { d: Disease }) {
       )}
       {d.signs && (
         <div className="sm:col-span-2">
-          <Fact icon="👁️" label="How to recognise it" value={d.signs.charAt(0).toUpperCase() + d.signs.slice(1)} />
+          <Fact icon="👁️" label={t("recognise")} value={t.hi ? t.server(d.signs) : d.signs.charAt(0).toUpperCase() + d.signs.slice(1)} />
         </div>
       )}
     </div>
@@ -170,34 +178,35 @@ function Fact({ icon, label, value, children }: { icon: string; label: string; v
 
 /* ---------- What to do: picture tiles (safe, general steps; details are in the chat reply) ---------- */
 export function ActionTiles({ d, healthy, urgent }: { d: Disease | null; healthy: boolean; urgent: boolean }) {
-  const tiles: { icon: string; text: string }[] = healthy
+  const t = useT();
+  const tiles: { icon: string; text: Key }[] = healthy
     ? [
-        { icon: "👀", text: "Check your plants every week" },
-        { icon: "💧", text: "Water at the base, keep leaves dry" },
-        { icon: "📷", text: "Send a new photo if spots appear" },
+        { icon: "👀", text: "aWeekly" },
+        { icon: "💧", text: "aWater" },
+        { icon: "📷", text: "aNewPhoto" },
       ]
     : d?.spread?.startsWith("virus")
       ? [
-          { icon: "🪓", text: "Pull out sick plants, far from the field" },
-          { icon: d.spread === "virus_insect" ? "🪰" : "🧼", text: d.spread === "virus_insect" ? "Control whiteflies" : "Wash hands and tools" },
-          { icon: "🚫", text: "No spray cures a virus" },
+          { icon: "🪓", text: "aPull" },
+          { icon: d.spread === "virus_insect" ? "🪰" : "🧼", text: d.spread === "virus_insect" ? "aWhitefly" : "aWash" },
+          { icon: "🚫", text: "aNoCure" },
         ]
       : [
-          { icon: "✂️", text: "Remove badly affected leaves" },
-          { icon: urgent ? "📢" : "💧", text: urgent ? "Tell neighbouring farmers" : "Water at the base, keep leaves dry" },
-          { icon: "🧑‍🌾", text: "Ask KVK / expert before spraying" },
+          { icon: "✂️", text: "aRemove" },
+          { icon: urgent ? "📢" : "💧", text: urgent ? "aTell" : "aWater" },
+          { icon: "🧑‍🌾", text: "aAsk" },
         ];
   return (
     <div>
-      <p className="mb-2 text-sm font-bold text-ink">What to do now</p>
+      <p className="mb-2 text-sm font-bold text-ink">{t("whatToDo")}</p>
       <ol className="grid grid-cols-3 gap-2">
-        {tiles.map((t, i) => (
-          <li key={t.text} className="flex flex-col items-center gap-1.5 rounded-2xl border border-border bg-surface p-3 text-center">
+        {tiles.map((tile, i) => (
+          <li key={tile.text} className="flex flex-col items-center gap-1.5 rounded-2xl border border-border bg-surface p-3 text-center">
             <span className="relative text-3xl" aria-hidden="true">
-              {t.icon}
+              {tile.icon}
               <span className="absolute -left-3 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-brand text-[11px] font-bold text-brand-ink">{i + 1}</span>
             </span>
-            <span className="text-xs font-semibold leading-snug text-ink sm:text-sm">{t.text}</span>
+            <span className="text-xs font-semibold leading-snug text-ink sm:text-sm">{t(tile.text)}</span>
           </li>
         ))}
       </ol>
@@ -214,6 +223,7 @@ const LANG: Record<string, string> = {
 export function ListenButton({ text, language }: { text: string; language: string }) {
   const [speaking, setSpeaking] = useState(false);
   const [supported, setSupported] = useState(false);
+  const t = useT();
   useEffect(() => {
     // Feature check after mount (speech synthesis only exists in the browser).
     const ok = typeof window !== "undefined" && "speechSynthesis" in window;
@@ -246,7 +256,7 @@ export function ListenButton({ text, language }: { text: string; language: strin
     <button type="button" onClick={toggle}
       className="mt-2 inline-flex items-center gap-1.5 rounded-full bg-surface-2 px-3 py-1.5 text-sm font-bold text-ink hover:bg-brand-soft hover:text-brand"
       aria-pressed={speaking}>
-      <span aria-hidden="true">{speaking ? "⏹️" : "🔊"}</span>{speaking ? "Stop" : "Listen"}
+      <span aria-hidden="true">{speaking ? "⏹️" : "🔊"}</span>{t(speaking ? "stop" : "listen")}
     </button>
   );
 }
@@ -267,3 +277,29 @@ export function optionIcon(text: string): string {
 }
 
 export const EXTENT_ICON: Record<string, string> = { few: "🍃", some: "🪴", many: "🌾" };
+
+/* ---------- Reference photos: "Does your leaf look like this?" ---------- */
+export function ReferencePhotos({ diseases, single = false }: { diseases: Disease[]; single?: boolean }) {
+  const t = useT();
+  const items = diseases.filter((d) => REFERENCES[d.label]);
+  if (!items.length) return null;
+  return (
+    <div>
+      <p className="mb-2 text-sm font-bold text-ink">
+        {single ? t("typicalLook") : t("compareTitle")}
+      </p>
+      <div className={`grid gap-2 ${single ? "grid-cols-1" : items.length > 2 ? "grid-cols-3" : "grid-cols-2"}`}>
+        {items.map((d) => (
+          <figure key={d.label} className={`overflow-hidden rounded-2xl border border-border bg-surface ${single ? "flex items-center gap-3 p-2" : ""}`}>
+            <img src={REFERENCES[d.label].src} alt={t.server(d.name)} loading="lazy"
+              className={single ? "h-24 w-24 shrink-0 rounded-xl object-cover" : "aspect-square w-full object-cover"} />
+            <figcaption className={single ? "min-w-0" : "p-2"}>
+              <span className="block text-sm font-bold leading-snug text-ink">{t.server(d.name)}</span>
+              <span className="mt-0.5 block text-[11px] leading-tight text-ink-3">{t("photoCredit")} {REFERENCES[d.label].credit}</span>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  );
+}

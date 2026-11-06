@@ -43,14 +43,22 @@ another model (default `gemini-3.6-flash`).
 
 ## 3. Vercel: the website (live at https://crop-doctor-snowy.vercel.app)
 
-Deployed from `web/` with the Vercel CLI (also served at https://cropdoctor.cv). `NEXT_PUBLIC_API_URL` must be the
-Render address: **`https://crop-doctor-api-fz3n.onrender.com`**. Careful: `crop-doctor-api.onrender.com` (without
-`-fz3n`) is someone else's app; Render adds a suffix when a name is taken. To redeploy after changes:
+Also served at https://cropdoctor.cv. The Vercel project is linked to the GitHub repo with **Root Directory = `web`**,
+so **every `git push` to `main` deploys the website automatically** (like Render does for the API). Without that
+setting Vercel builds the repo root, finds no Next.js app and fails ("Couldn't find any `pages` or `app`
+directory"), which is what the red "Error" deployments before 6 Nov were.
+
+`NEXT_PUBLIC_API_URL` must be the Render address: **`https://crop-doctor-api-fz3n.onrender.com`**. Careful:
+`crop-doctor-api.onrender.com` (without `-fz3n`) is someone else's app; Render adds a suffix when a name is taken.
+
+Run it on your computer (uses the live API; the file is git-ignored):
 
 ```bash
-cd web
-vercel --prod
+echo NEXT_PUBLIC_API_URL=https://crop-doctor-api-fz3n.onrender.com > web/.env.development.local
+npm --prefix web run dev
 ```
+
+Then open http://localhost:3000.
 
 ## Updating the model
 

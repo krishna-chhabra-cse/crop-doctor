@@ -25,6 +25,8 @@ export type Assessment = {
   message?: string;
   extent?: string | null;
   quality?: { ok: boolean; problems: string[] };
+  unfamiliar?: boolean;
+  familiarity?: number | null;
 };
 export type Message = {
   role: "farmer" | "assistant" | "expert";

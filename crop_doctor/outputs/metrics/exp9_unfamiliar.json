@@ -1,0 +1,35 @@
+{
+  "target_flag_rate_on_known": 0.05,
+  "scores": {
+    "energy": {
+      "threshold": {
+        "potato": 7.921574954974602,
+        "tomato": 3.271104328453085
+      },
+      "auroc_tomato_known_vs_unknown": 0.17969953452937298,
+      "unknown_flagged": 0.0,
+      "known_test_flagged": 0.08116385911179173,
+      "known_tomato_village_flagged": 0.0
+    },
+    "max_prob": {
+      "threshold": {
+        "potato": 0.8559022753193006,
+        "tomato": 0.3137338036866078
+      },
+      "auroc_tomato_known_vs_unknown": 0.3897717242853029,
+      "unknown_flagged": 0.002062564455139223,
+      "known_test_flagged": 0.06584992343032159,
+      "known_tomato_village_flagged": 0.0
+    }
+  },
+  "assistant": {
+    "unknown_named_one_disease_before": 0.4358886215194225,
+    "unknown_named_one_disease_after": 0.4358886215194225,
+    "known_answered_before": 0.6960183767228177,
+    "known_answered_after": 0.6607963246554365,
+    "known_accuracy_when_answered_before": 0.9614961496149615,
+    "known_accuracy_when_answered_after": 0.9698725376593279,
+    "known_correct_answers_sent_to_expert": 0.04233409610983982
+  },
+  "shipped": false
+}
