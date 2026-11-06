@@ -1,0 +1,1462 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd"><key id="d10" for="edge" attr.name="rel" attr.type="string"/>
+<key id="d9" for="node" attr.name="summary" attr.type="string"/>
+<key id="d8" for="node" attr.name="pdf_url" attr.type="string"/>
+<key id="d7" for="node" attr.name="submitted" attr.type="string"/>
+<key id="d6" for="node" attr.name="code_url" attr.type="string"/>
+<key id="d5" for="node" attr.name="timeline_weeks" attr.type="long"/>
+<key id="d4" for="node" attr.name="difficulty" attr.type="string"/>
+<key id="d3" for="node" attr.name="domain" attr.type="string"/>
+<key id="d2" for="node" attr.name="arxiv_id" attr.type="string"/>
+<key id="d1" for="node" attr.name="label" attr.type="string"/>
+<key id="d0" for="node" attr.name="kind" attr.type="string"/>
+<graph edgedefault="undirected"><node id="paper:2608 20315">
+  <data key="d0">paper</data>
+  <data key="d1">Explainable Transformer Models for Clinical Prediction Tasks on Structured Electronic Health Records</data>
+  <data key="d2">2608.20315</data>
+  <data key="d3">Clinical Prediction / EHR</data>
+  <data key="d4">High</data>
+  <data key="d5">10</data>
+  <data key="d6"></data>
+  <data key="d7">20 August 2026</data>
+  <data key="d8">https://arxiv.org/pdf/2608.20315.pdf</data>
+  <data key="d9">Predictive models over structured electronic health records (EHRs) remain central to clinical decision support. This work presents explainable transformer architectures for clinical prediction.</data>
+</node>
+<node id="author:jun ni du">
+  <data key="d0">author</data>
+  <data key="d1">Jun Ni Du</data>
+</node>
+<node id="author:lukas adamek">
+  <data key="d0">author</data>
+  <data key="d1">Lukas Adamek</data>
+</node>
+<node id="author:maxim kryukov">
+  <data key="d0">author</data>
+  <data key="d1">Maxim Kryukov</data>
+</node>
+<node id="author:flavio dormont">
+  <data key="d0">author</data>
+  <data key="d1">Flavio Dormont</data>
+</node>
+<node id="author:ziv bar joseph">
+  <data key="d0">author</data>
+  <data key="d1">Ziv Bar-Joseph</data>
+</node>
+<node id="author:sven jager">
+  <data key="d0">author</data>
+  <data key="d1">Sven Jager</data>
+</node>
+<node id="author:brandon rufino">
+  <data key="d0">author</data>
+  <data key="d1">Brandon Rufino</data>
+</node>
+<node id="concept:transformers">
+  <data key="d0">concept</data>
+  <data key="d1">Transformers</data>
+</node>
+<node id="concept:explainable ai">
+  <data key="d0">concept</data>
+  <data key="d1">Explainable AI</data>
+</node>
+<node id="concept:ehr">
+  <data key="d0">concept</data>
+  <data key="d1">EHR</data>
+</node>
+<node id="dataset:ehr datasets">
+  <data key="d0">dataset</data>
+  <data key="d1">EHR datasets</data>
+</node>
+<node id="dataset:mimic">
+  <data key="d0">dataset</data>
+  <data key="d1">MIMIC</data>
+</node>
+<node id="dataset:eicu">
+  <data key="d0">dataset</data>
+  <data key="d1">eICU</data>
+</node>
+<node id="domain:clinical prediction ehr">
+  <data key="d0">domain</data>
+  <data key="d1">Clinical Prediction / EHR</data>
+</node>
+<node id="category:cs lg">
+  <data key="d0">category</data>
+  <data key="d1">cs.LG</data>
+</node>
+<node id="paper:2608 16972">
+  <data key="d0">paper</data>
+  <data key="d1">MultiSigBERT: Beyond Survival Analysis through Multimodal and Sequential Modeling in Oncology</data>
+  <data key="d2">2608.16972</data>
+  <data key="d3">Clinical Prediction / EHR</data>
+  <data key="d4">High</data>
+  <data key="d5">12</data>
+  <data key="d6"></data>
+  <data key="d7">17 August 2026</data>
+  <data key="d8">https://arxiv.org/pdf/2608.16972.pdf</data>
+  <data key="d9">Multimodal and sequential modeling for oncology survival analysis using BERT-based architectures.</data>
+</node>
+<node id="author:paul minchella">
+  <data key="d0">author</data>
+  <data key="d1">Paul Minchella</data>
+</node>
+<node id="author:st phane chr tien">
+  <data key="d0">author</data>
+  <data key="d1">Stéphane Chrétien</data>
+</node>
+<node id="author:guillaume metzler">
+  <data key="d0">author</data>
+  <data key="d1">Guillaume Metzler</data>
+</node>
+<node id="author:lo c verlingue">
+  <data key="d0">author</data>
+  <data key="d1">Loïc Verlingue</data>
+</node>
+<node id="author:r mi vaucher">
+  <data key="d0">author</data>
+  <data key="d1">Rémi Vaucher</data>
+</node>
+<node id="concept:multimodal bert">
+  <data key="d0">concept</data>
+  <data key="d1">Multimodal BERT</data>
+</node>
+<node id="concept:survival analysis">
+  <data key="d0">concept</data>
+  <data key="d1">Survival Analysis</data>
+</node>
+<node id="concept:oncology">
+  <data key="d0">concept</data>
+  <data key="d1">Oncology</data>
+</node>
+<node id="dataset:oncology clinical data">
+  <data key="d0">dataset</data>
+  <data key="d1">Oncology clinical data</data>
+</node>
+<node id="paper:2608 16273">
+  <data key="d0">paper</data>
+  <data key="d1">Foresight-England: Development of a National-Scale Generative AI Model of Electronic Health Records for Medical Event Prediction across the COVID-19 Pandemic</data>
+  <data key="d2">2608.16273</data>
+  <data key="d3">Clinical Prediction / EHR</data>
+  <data key="d4">High</data>
+  <data key="d5">12</data>
+  <data key="d6"></data>
+  <data key="d7">17 August 2026</data>
+  <data key="d8">https://arxiv.org/pdf/2608.16273.pdf</data>
+  <data key="d9">National-scale generative AI model for EHR medical event prediction across COVID-19 pandemic.</data>
+</node>
+<node id="author:simon ellershaw">
+  <data key="d0">author</data>
+  <data key="d1">Simon Ellershaw</data>
+</node>
+<node id="author:christopher tomlinson">
+  <data key="d0">author</data>
+  <data key="d1">Christopher Tomlinson</data>
+</node>
+<node id="author:zeljko kraljevic">
+  <data key="d0">author</data>
+  <data key="d1">Zeljko Kraljevic</data>
+</node>
+<node id="author:spiros denaxas">
+  <data key="d0">author</data>
+  <data key="d1">Spiros Denaxas</data>
+</node>
+<node id="author:harry hemingway">
+  <data key="d0">author</data>
+  <data key="d1">Harry Hemingway</data>
+</node>
+<node id="author:cathie sudlow">
+  <data key="d0">author</data>
+  <data key="d1">Cathie Sudlow</data>
+</node>
+<node id="author:angela m wood">
+  <data key="d0">author</data>
+  <data key="d1">Angela M. Wood</data>
+</node>
+<node id="author:anoop d shah">
+  <data key="d0">author</data>
+  <data key="d1">Anoop D. Shah</data>
+</node>
+<node id="author:richard dobson">
+  <data key="d0">author</data>
+  <data key="d1">Richard Dobson</data>
+</node>
+<node id="concept:generative ai">
+  <data key="d0">concept</data>
+  <data key="d1">Generative AI</data>
+</node>
+<node id="concept:large scale ehr">
+  <data key="d0">concept</data>
+  <data key="d1">Large-scale EHR</data>
+</node>
+<node id="concept:national scale">
+  <data key="d0">concept</data>
+  <data key="d1">National-scale</data>
+</node>
+<node id="dataset:nhs england ehr data">
+  <data key="d0">dataset</data>
+  <data key="d1">NHS England EHR data</data>
+</node>
+<node id="paper:2608 17598">
+  <data key="d0">paper</data>
+  <data key="d1">SpurCon: Weighted Supervised Contrastive Learning for Mitigating Spurious Cues in Medical Imaging</data>
+  <data key="d2">2608.17598</data>
+  <data key="d3">Medical Imaging</data>
+  <data key="d4">High</data>
+  <data key="d5">10</data>
+  <data key="d6"></data>
+  <data key="d7">18 August 2026</data>
+  <data key="d8">https://arxiv.org/pdf/2608.17598.pdf</data>
+  <data key="d9">Contrastive learning approach to mitigate spurious correlations in medical imaging classification.</data>
+</node>
+<node id="author:shenhav nadir">
+  <data key="d0">author</data>
+  <data key="d1">Shenhav Nadir</data>
+</node>
+<node id="author:meir yossef levi">
+  <data key="d0">author</data>
+  <data key="d1">Meir Yossef Levi</data>
+</node>
+<node id="author:eyal gofer">
+  <data key="d0">author</data>
+  <data key="d1">Eyal Gofer</data>
+</node>
+<node id="author:guy gilboa">
+  <data key="d0">author</data>
+  <data key="d1">Guy Gilboa</data>
+</node>
+<node id="concept:contrastive learning">
+  <data key="d0">concept</data>
+  <data key="d1">Contrastive Learning</data>
+</node>
+<node id="concept:medical imaging">
+  <data key="d0">concept</data>
+  <data key="d1">Medical Imaging</data>
+</node>
+<node id="concept:robustness">
+  <data key="d0">concept</data>
+  <data key="d1">Robustness</data>
+</node>
+<node id="dataset:medical imaging datasets">
+  <data key="d0">dataset</data>
+  <data key="d1">Medical imaging datasets</data>
+</node>
+<node id="domain:medical imaging">
+  <data key="d0">domain</data>
+  <data key="d1">Medical Imaging</data>
+</node>
+<node id="category:cs cv">
+  <data key="d0">category</data>
+  <data key="d1">cs.CV</data>
+</node>
+<node id="paper:2608 11762">
+  <data key="d0">paper</data>
+  <data key="d1">A comparison of CNN architectures for Alzheimer's disease detection in single-view MRI scans</data>
+  <data key="d2">2608.11762</data>
+  <data key="d3">Medical Imaging</data>
+  <data key="d4">Medium</data>
+  <data key="d5">6</data>
+  <data key="d6"></data>
+  <data key="d7">12 August 2026</data>
+  <data key="d8">https://arxiv.org/pdf/2608.11762.pdf</data>
+  <data key="d9">Benchmarking CNN architectures for Alzheimer's detection from single-view MRI.</data>
+</node>
+<node id="author:hiram zuniga">
+  <data key="d0">author</data>
+  <data key="d1">Hiram Zuniga</data>
+</node>
+<node id="author:ulises orozco rosas">
+  <data key="d0">author</data>
+  <data key="d1">Ulises Orozco-Rosas</data>
+</node>
+<node id="author:kenia picos">
+  <data key="d0">author</data>
+  <data key="d1">Kenia Picos</data>
+</node>
+<node id="concept:cnn benchmarking">
+  <data key="d0">concept</data>
+  <data key="d1">CNN Benchmarking</data>
+</node>
+<node id="concept:alzheimers">
+  <data key="d0">concept</data>
+  <data key="d1">Alzheimer's</data>
+</node>
+<node id="concept:mri">
+  <data key="d0">concept</data>
+  <data key="d1">MRI</data>
+</node>
+<node id="dataset:mri datasets">
+  <data key="d0">dataset</data>
+  <data key="d1">MRI datasets</data>
+</node>
+<node id="dataset:adni">
+  <data key="d0">dataset</data>
+  <data key="d1">ADNI</data>
+</node>
+<node id="paper:2608 07651">
+  <data key="d0">paper</data>
+  <data key="d1">An Agentic AI Framework Overcomes Fundamental Limitations of Large Language Models for Glaucoma Detection from Fundus Photography</data>
+  <data key="d2">2608.07651</data>
+  <data key="d3">Medical Imaging</data>
+  <data key="d4">High</data>
+  <data key="d5">10</data>
+  <data key="d6"></data>
+  <data key="d7">7 August 2026</data>
+  <data key="d8">https://arxiv.org/pdf/2608.07651.pdf</data>
+  <data key="d9">Agentic AI framework for glaucoma detection from fundus photography overcoming LLM limitations.</data>
+</node>
+<node id="author:jalil jalili">
+  <data key="d0">author</data>
+  <data key="d1">Jalil Jalili</data>
+</node>
+<node id="author:hossein taghizad">
+  <data key="d0">author</data>
+  <data key="d1">Hossein Taghizad</data>
+</node>
+<node id="author:anuwat jiravarnsirikul">
+  <data key="d0">author</data>
+  <data key="d1">Anuwat Jiravarnsirikul</data>
+</node>
+<node id="author:christopher bowd">
+  <data key="d0">author</data>
+  <data key="d1">Christopher Bowd</data>
+</node>
+<node id="author:akram belghith">
+  <data key="d0">author</data>
+  <data key="d1">Akram Belghith</data>
+</node>
+<node id="author:raheleh kafieh">
+  <data key="d0">author</data>
+  <data key="d1">Raheleh Kafieh</data>
+</node>
+<node id="author:christopher a girkin">
+  <data key="d0">author</data>
+  <data key="d1">Christopher A. Girkin</data>
+</node>
+<node id="author:sally l baxter">
+  <data key="d0">author</data>
+  <data key="d1">Sally L. Baxter</data>
+</node>
+<node id="author:robert n weinreb">
+  <data key="d0">author</data>
+  <data key="d1">Robert N. Weinreb</data>
+</node>
+<node id="author:linda m zangwill">
+  <data key="d0">author</data>
+  <data key="d1">Linda M. Zangwill</data>
+</node>
+<node id="author:mark christopher">
+  <data key="d0">author</data>
+  <data key="d1">Mark Christopher</data>
+</node>
+<node id="concept:agentic ai">
+  <data key="d0">concept</data>
+  <data key="d1">Agentic AI</data>
+</node>
+<node id="concept:llm">
+  <data key="d0">concept</data>
+  <data key="d1">LLM</data>
+</node>
+<node id="concept:glaucoma">
+  <data key="d0">concept</data>
+  <data key="d1">Glaucoma</data>
+</node>
+<node id="concept:fundus">
+  <data key="d0">concept</data>
+  <data key="d1">Fundus</data>
+</node>
+<node id="dataset:fundus photography datasets">
+  <data key="d0">dataset</data>
+  <data key="d1">Fundus photography datasets</data>
+</node>
+<node id="paper:2607 24814">
+  <data key="d0">paper</data>
+  <data key="d1">Aletheia: An Offline-First Clinical Decision Support System for Differential Diagnosis in Low-Resource Healthcare Settings</data>
+  <data key="d2">2607.24814</data>
+  <data key="d3">Clinical Decision Support</data>
+  <data key="d4">Medium-High</data>
+  <data key="d5">8</data>
+  <data key="d6"></data>
+  <data key="d7">14 July 2026</data>
+  <data key="d8">https://arxiv.org/pdf/2607.24814.pdf</data>
+  <data key="d9">Offline-first clinical decision support for differential diagnosis in low-resource settings.</data>
+</node>
+<node id="author:joseph walusimbi">
+  <data key="d0">author</data>
+  <data key="d1">Joseph Walusimbi</data>
+</node>
+<node id="author:ann move oguti">
+  <data key="d0">author</data>
+  <data key="d1">Ann Move Oguti</data>
+</node>
+<node id="author:abubakhari sserwadda">
+  <data key="d0">author</data>
+  <data key="d1">Abubakhari Sserwadda</data>
+</node>
+<node id="author:precious boss kasasira">
+  <data key="d0">author</data>
+  <data key="d1">Precious Boss Kasasira</data>
+</node>
+<node id="author:charles brian okoboi">
+  <data key="d0">author</data>
+  <data key="d1">Charles Brian Okoboi</data>
+</node>
+<node id="concept:offline cdss">
+  <data key="d0">concept</data>
+  <data key="d1">Offline CDSS</data>
+</node>
+<node id="concept:low resource">
+  <data key="d0">concept</data>
+  <data key="d1">Low-resource</data>
+</node>
+<node id="concept:differential diagnosis">
+  <data key="d0">concept</data>
+  <data key="d1">Differential Diagnosis</data>
+</node>
+<node id="dataset:clinical diagnosis datasets">
+  <data key="d0">dataset</data>
+  <data key="d1">Clinical diagnosis datasets</data>
+</node>
+<node id="domain:clinical decision support">
+  <data key="d0">domain</data>
+  <data key="d1">Clinical Decision Support</data>
+</node>
+<node id="paper:2605 22611">
+  <data key="d0">paper</data>
+  <data key="d1">Benchmarking Machine Learning Architectures for Antimicrobial Stewardship in Pediatric ICUs</data>
+  <data key="d2">2605.22611</data>
+  <data key="d3">Clinical Decision Support</data>
+  <data key="d4">Medium-High</data>
+  <data key="d5">8</data>
+  <data key="d6">https://anonymous.4open.science/r/AMS_intervention_prediction-C024</data>
+  <data key="d7">21 May 2026</data>
+  <data key="d8">https://arxiv.org/pdf/2605.22611.pdf</data>
+  <data key="d9">Benchmarking ML architectures for antimicrobial stewardship prediction in pediatric ICUs.</data>
+</node>
+<node id="author:niklas raehse">
+  <data key="d0">author</data>
+  <data key="d1">Niklas Raehse</data>
+</node>
+<node id="author:luregn j schlapbach">
+  <data key="d0">author</data>
+  <data key="d1">Luregn J. Schlapbach</data>
+</node>
+<node id="author:daphn chopard">
+  <data key="d0">author</data>
+  <data key="d1">Daphné Chopard</data>
+</node>
+<node id="concept:benchmarking">
+  <data key="d0">concept</data>
+  <data key="d1">Benchmarking</data>
+</node>
+<node id="concept:antimicrobial stewardship">
+  <data key="d0">concept</data>
+  <data key="d1">Antimicrobial Stewardship</data>
+</node>
+<node id="concept:pediatric icu">
+  <data key="d0">concept</data>
+  <data key="d1">Pediatric ICU</data>
+</node>
+<node id="dataset:pediatric icu antimicrobial data">
+  <data key="d0">dataset</data>
+  <data key="d1">Pediatric ICU antimicrobial data</data>
+</node>
+<node id="paper:2605 00645">
+  <data key="d0">paper</data>
+  <data key="d1">From Prediction to Practice: A Task-Aware Evaluation Framework for Blood Glucose Forecasting</data>
+  <data key="d2">2605.00645</data>
+  <data key="d3">Clinical Decision Support</data>
+  <data key="d4">Medium-High</data>
+  <data key="d5">8</data>
+  <data key="d6"></data>
+  <data key="d7">1 May 2026</data>
+  <data key="d8">https://arxiv.org/pdf/2605.00645.pdf</data>
+  <data key="d9">Task-aware evaluation framework for blood glucose forecasting in diabetes management.</data>
+</node>
+<node id="author:alireza namazi">
+  <data key="d0">author</data>
+  <data key="d1">Alireza Namazi</data>
+</node>
+<node id="author:heman shakeri">
+  <data key="d0">author</data>
+  <data key="d1">Heman Shakeri</data>
+</node>
+<node id="concept:time series">
+  <data key="d0">concept</data>
+  <data key="d1">Time Series</data>
+</node>
+<node id="concept:glucose forecasting">
+  <data key="d0">concept</data>
+  <data key="d1">Glucose Forecasting</data>
+</node>
+<node id="concept:diabetes">
+  <data key="d0">concept</data>
+  <data key="d1">Diabetes</data>
+</node>
+<node id="dataset:cgm glucose monitoring data">
+  <data key="d0">dataset</data>
+  <data key="d1">CGM/glucose monitoring data</data>
+</node>
+<node id="paper:2603 05423">
+  <data key="d0">paper</data>
+  <data key="d1">An interpretable prototype parts-based neural network for medical tabular data</data>
+  <data key="d2">2603.05423</data>
+  <data key="d3">Clinical Decision Support</data>
+  <data key="d4">High</data>
+  <data key="d5">10</data>
+  <data key="d6"></data>
+  <data key="d7">5 March 2026</data>
+  <data key="d8">https://arxiv.org/pdf/2603.05423.pdf</data>
+  <data key="d9">Interpretable prototype-based neural network for medical tabular data.</data>
+</node>
+<node id="author:jacek karolczak">
+  <data key="d0">author</data>
+  <data key="d1">Jacek Karolczak</data>
+</node>
+<node id="author:jerzy stefanowski">
+  <data key="d0">author</data>
+  <data key="d1">Jerzy Stefanowski</data>
+</node>
+<node id="concept:prototype learning">
+  <data key="d0">concept</data>
+  <data key="d1">Prototype Learning</data>
+</node>
+<node id="concept:interpretability">
+  <data key="d0">concept</data>
+  <data key="d1">Interpretability</data>
+</node>
+<node id="concept:tabular">
+  <data key="d0">concept</data>
+  <data key="d1">Tabular</data>
+</node>
+<node id="dataset:medical tabular datasets">
+  <data key="d0">dataset</data>
+  <data key="d1">Medical tabular datasets</data>
+</node>
+<node id="paper:2608 23646">
+  <data key="d0">paper</data>
+  <data key="d1">MolEmb: Multimodal Large Language Models Can Be Strong Molecular Embedding Models</data>
+  <data key="d2">2608.23646</data>
+  <data key="d3">Drug Discovery / Molecular ML</data>
+  <data key="d4">High</data>
+  <data key="d5">10</data>
+  <data key="d6"></data>
+  <data key="d7">24 August 2026</data>
+  <data key="d8">https://arxiv.org/pdf/2608.23646.pdf</data>
+  <data key="d9">Multimodal LLMs as strong molecular embedding models for property prediction.</data>
+</node>
+<node id="author:xinjian zhao">
+  <data key="d0">author</data>
+  <data key="d1">Xinjian Zhao</data>
+</node>
+<node id="author:xiangru jian">
+  <data key="d0">author</data>
+  <data key="d1">Xiangru Jian</data>
+</node>
+<node id="author:yaoyao xu">
+  <data key="d0">author</data>
+  <data key="d1">Yaoyao Xu</data>
+</node>
+<node id="author:xiaozhuang song">
+  <data key="d0">author</data>
+  <data key="d1">Xiaozhuang Song</data>
+</node>
+<node id="author:wei pang">
+  <data key="d0">author</data>
+  <data key="d1">Wei Pang</data>
+</node>
+<node id="author:lei bai">
+  <data key="d0">author</data>
+  <data key="d1">Lei Bai</data>
+</node>
+<node id="author:tianshu yu">
+  <data key="d0">author</data>
+  <data key="d1">Tianshu Yu</data>
+</node>
+<node id="concept:multimodal llm">
+  <data key="d0">concept</data>
+  <data key="d1">Multimodal LLM</data>
+</node>
+<node id="concept:molecular embeddings">
+  <data key="d0">concept</data>
+  <data key="d1">Molecular Embeddings</data>
+</node>
+<node id="concept:drug discovery">
+  <data key="d0">concept</data>
+  <data key="d1">Drug Discovery</data>
+</node>
+<node id="dataset:molecular property datasets">
+  <data key="d0">dataset</data>
+  <data key="d1">Molecular property datasets</data>
+</node>
+<node id="dataset:moleculenet">
+  <data key="d0">dataset</data>
+  <data key="d1">MoleculeNet</data>
+</node>
+<node id="domain:drug discovery molecular ml">
+  <data key="d0">domain</data>
+  <data key="d1">Drug Discovery / Molecular ML</data>
+</node>
+<node id="paper:2608 19121">
+  <data key="d0">paper</data>
+  <data key="d1">PGFS++: Molecular Property Improvement under Synthesis and Diversity Constraints</data>
+  <data key="d2">2608.19121</data>
+  <data key="d3">Drug Discovery / Molecular ML</data>
+  <data key="d4">High</data>
+  <data key="d5">10</data>
+  <data key="d6"></data>
+  <data key="d7">19 August 2026</data>
+  <data key="d8">https://arxiv.org/pdf/2608.19121.pdf</data>
+  <data key="d9">Molecular property optimization with synthesis and diversity constraints.</data>
+</node>
+<node id="author:boqiao zhang">
+  <data key="d0">author</data>
+  <data key="d1">Boqiao Zhang</data>
+</node>
+<node id="author:godbless james">
+  <data key="d0">author</data>
+  <data key="d1">Godbless James</data>
+</node>
+<node id="author:sai krishna gottipati">
+  <data key="d0">author</data>
+  <data key="d1">Sai Krishna Gottipati</data>
+</node>
+<node id="author:andrew fitzgibbon">
+  <data key="d0">author</data>
+  <data key="d1">Andrew Fitzgibbon</data>
+</node>
+<node id="concept:molecular generation">
+  <data key="d0">concept</data>
+  <data key="d1">Molecular Generation</data>
+</node>
+<node id="concept:optimization">
+  <data key="d0">concept</data>
+  <data key="d1">Optimization</data>
+</node>
+<node id="concept:synthesis aware">
+  <data key="d0">concept</data>
+  <data key="d1">Synthesis-aware</data>
+</node>
+<node id="dataset:molecular datasets">
+  <data key="d0">dataset</data>
+  <data key="d1">Molecular datasets</data>
+</node>
+<node id="paper:2608 17678">
+  <data key="d0">paper</data>
+  <data key="d1">Conformal Prediction for Molecular Properties under Label Shift</data>
+  <data key="d2">2608.17678</data>
+  <data key="d3">Drug Discovery / Molecular ML</data>
+  <data key="d4">High</data>
+  <data key="d5">8</data>
+  <data key="d6"></data>
+  <data key="d7">18 August 2026</data>
+  <data key="d8">https://arxiv.org/pdf/2608.17678.pdf</data>
+  <data key="d9">Conformal prediction for molecular property prediction under distribution shift.</data>
+</node>
+<node id="author:hyeonsu lee">
+  <data key="d0">author</data>
+  <data key="d1">Hyeonsu Lee</data>
+</node>
+<node id="author:juyeon kim">
+  <data key="d0">author</data>
+  <data key="d1">Juyeon Kim</data>
+</node>
+<node id="author:erkhembayar jadamba">
+  <data key="d0">author</data>
+  <data key="d1">Erkhembayar Jadamba</data>
+</node>
+<node id="author:seungjin choi">
+  <data key="d0">author</data>
+  <data key="d1">Seungjin Choi</data>
+</node>
+<node id="author:hyunjin shin">
+  <data key="d0">author</data>
+  <data key="d1">Hyunjin Shin</data>
+</node>
+<node id="concept:conformal prediction">
+  <data key="d0">concept</data>
+  <data key="d1">Conformal Prediction</data>
+</node>
+<node id="concept:distribution shift">
+  <data key="d0">concept</data>
+  <data key="d1">Distribution Shift</data>
+</node>
+<node id="concept:molecular">
+  <data key="d0">concept</data>
+  <data key="d1">Molecular</data>
+</node>
+<node id="paper:2608 10480">
+  <data key="d0">paper</data>
+  <data key="d1">Multi-Granular Rationale-Guided Molecular LLM for Property Prediction</data>
+  <data key="d2">2608.10480</data>
+  <data key="d3">Drug Discovery / Molecular ML</data>
+  <data key="d4">High</data>
+  <data key="d5">10</data>
+  <data key="d6">https://github.com/skku-aihclab/MR-MoL</data>
+  <data key="d7">11 August 2026</data>
+  <data key="d8">https://arxiv.org/pdf/2608.10480.pdf</data>
+  <data key="d9">Rationale-guided molecular LLM with multi-granular explanations for property prediction.</data>
+</node>
+<node id="author:junwoo park">
+  <data key="d0">author</data>
+  <data key="d1">Junwoo Park</data>
+</node>
+<node id="author:minyoung shin">
+  <data key="d0">author</data>
+  <data key="d1">Minyoung Shin</data>
+</node>
+<node id="author:cheol soon lee">
+  <data key="d0">author</data>
+  <data key="d1">Cheol Soon Lee</data>
+</node>
+<node id="author:sujee lee">
+  <data key="d0">author</data>
+  <data key="d1">Sujee Lee</data>
+</node>
+<node id="concept:rationale guided llm">
+  <data key="d0">concept</data>
+  <data key="d1">Rationale-guided LLM</data>
+</node>
+<node id="paper:2608 18438">
+  <data key="d0">paper</data>
+  <data key="d1">Pedagogical AI in Mental Health: A Tri-Stream Fine-Tuned LLM Framework for Automated Clinical Supervision and Risk Triage</data>
+  <data key="d2">2608.18438</data>
+  <data key="d3">Mental Health / Digital Health</data>
+  <data key="d4">High</data>
+  <data key="d5">8</data>
+  <data key="d6"></data>
+  <data key="d7">18 August 2026</data>
+  <data key="d8">https://arxiv.org/pdf/2608.18438.pdf</data>
+  <data key="d9">Tri-stream fine-tuned LLM framework for mental health clinical supervision and risk triage.</data>
+</node>
+<node id="author:shreeya sharma">
+  <data key="d0">author</data>
+  <data key="d1">Shreeya Sharma</data>
+</node>
+<node id="author:ravish gupta">
+  <data key="d0">author</data>
+  <data key="d1">Ravish Gupta</data>
+</node>
+<node id="author:saket kumar">
+  <data key="d0">author</data>
+  <data key="d1">Saket Kumar</data>
+</node>
+<node id="author:abhishek aggarwal">
+  <data key="d0">author</data>
+  <data key="d1">Abhishek Aggarwal</data>
+</node>
+<node id="concept:llm fine tuning">
+  <data key="d0">concept</data>
+  <data key="d1">LLM Fine-tuning</data>
+</node>
+<node id="concept:mental health">
+  <data key="d0">concept</data>
+  <data key="d1">Mental Health</data>
+</node>
+<node id="concept:risk triage">
+  <data key="d0">concept</data>
+  <data key="d1">Risk Triage</data>
+</node>
+<node id="dataset:mental health clinical data">
+  <data key="d0">dataset</data>
+  <data key="d1">Mental health clinical data</data>
+</node>
+<node id="domain:mental health digital health">
+  <data key="d0">domain</data>
+  <data key="d1">Mental Health / Digital Health</data>
+</node>
+<node id="paper:2603 18239">
+  <data key="d0">paper</data>
+  <data key="d1">Impact of automatic speech recognition quality on Alzheimer's disease detection from spontaneous speech: a reproducible benchmark study with lexical modeling and statistical validation</data>
+  <data key="d2">2603.18239</data>
+  <data key="d3">Mental Health / Digital Health</data>
+  <data key="d4">Medium-High</data>
+  <data key="d5">8</data>
+  <data key="d6"></data>
+  <data key="d7">18 March 2026</data>
+  <data key="d8">https://arxiv.org/pdf/2603.18239.pdf</data>
+  <data key="d9">Benchmark study on ASR quality impact on Alzheimer's detection from speech.</data>
+</node>
+<node id="author:himadri s samanta">
+  <data key="d0">author</data>
+  <data key="d1">Himadri S Samanta</data>
+</node>
+<node id="concept:speech processing">
+  <data key="d0">concept</data>
+  <data key="d1">Speech Processing</data>
+</node>
+<node id="concept:asr">
+  <data key="d0">concept</data>
+  <data key="d1">ASR</data>
+</node>
+<node id="dataset:speech datasets for alzheimers">
+  <data key="d0">dataset</data>
+  <data key="d1">Speech datasets for Alzheimer's</data>
+</node>
+<node id="paper:2608 23153">
+  <data key="d0">paper</data>
+  <data key="d1">Conformal Risk Minimization for Semi-Supervised Domain Adaptation via Optimal Transport</data>
+  <data key="d2">2608.23153</data>
+  <data key="d3">Domain Adaptation / Robustness</data>
+  <data key="d4">High</data>
+  <data key="d5">10</data>
+  <data key="d6"></data>
+  <data key="d7">24 August 2026</data>
+  <data key="d8">https://arxiv.org/pdf/2608.23153.pdf</data>
+  <data key="d9">Conformal risk minimization for domain adaptation in high-stakes healthcare applications.</data>
+</node>
+<node id="author:manos giannopoulos">
+  <data key="d0">author</data>
+  <data key="d1">Manos Giannopoulos</data>
+</node>
+<node id="author:yi shen">
+  <data key="d0">author</data>
+  <data key="d1">Yi Shen</data>
+</node>
+<node id="author:michael m zavlanos">
+  <data key="d0">author</data>
+  <data key="d1">Michael M. Zavlanos</data>
+</node>
+<node id="concept:domain adaptation">
+  <data key="d0">concept</data>
+  <data key="d1">Domain Adaptation</data>
+</node>
+<node id="concept:optimal transport">
+  <data key="d0">concept</data>
+  <data key="d1">Optimal Transport</data>
+</node>
+<node id="dataset:healthcare domain adaptation benchmarks">
+  <data key="d0">dataset</data>
+  <data key="d1">Healthcare domain adaptation benchmarks</data>
+</node>
+<node id="domain:domain adaptation robustness">
+  <data key="d0">domain</data>
+  <data key="d1">Domain Adaptation / Robustness</data>
+</node>
+<node id="paper:2608 26149">
+  <data key="d0">paper</data>
+  <data key="d1">Methodological and Conceptual Framework for 5D Multi-Table Analysis: A Unified Approach for Complex Data Reuse</data>
+  <data key="d2">2608.26149</data>
+  <data key="d3">Data Integration / Multi-table</data>
+  <data key="d4">Medium-High</data>
+  <data key="d5">8</data>
+  <data key="d6"></data>
+  <data key="d7">1 July 2026</data>
+  <data key="d8">https://arxiv.org/pdf/2608.26149.pdf</data>
+  <data key="d9">Framework for multi-table learning and complex data reuse in healthcare.</data>
+</node>
+<node id="author:edouard lansiaux">
+  <data key="d0">author</data>
+  <data key="d1">Edouard Lansiaux</data>
+</node>
+<node id="author:hugo kazzi">
+  <data key="d0">author</data>
+  <data key="d1">Hugo Kazzi</data>
+</node>
+<node id="author:aur lien loison">
+  <data key="d0">author</data>
+  <data key="d1">Aurélien Loison</data>
+</node>
+<node id="author:slim hammadi">
+  <data key="d0">author</data>
+  <data key="d1">Slim Hammadi</data>
+</node>
+<node id="author:emmanuel chazard">
+  <data key="d0">author</data>
+  <data key="d1">Emmanuel Chazard</data>
+</node>
+<node id="concept:multi table learning">
+  <data key="d0">concept</data>
+  <data key="d1">Multi-table Learning</data>
+</node>
+<node id="concept:data integration">
+  <data key="d0">concept</data>
+  <data key="d1">Data Integration</data>
+</node>
+<node id="concept:complex data">
+  <data key="d0">concept</data>
+  <data key="d1">Complex Data</data>
+</node>
+<node id="dataset:multi table healthcare datasets">
+  <data key="d0">dataset</data>
+  <data key="d1">Multi-table healthcare datasets</data>
+</node>
+<node id="domain:data integration multi table">
+  <data key="d0">domain</data>
+  <data key="d1">Data Integration / Multi-table</data>
+</node>
+<node id="category:cs ai">
+  <data key="d0">category</data>
+  <data key="d1">cs.AI</data>
+</node>
+<edge source="paper:2608 20315" target="author:jun ni du">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2608 20315" target="author:lukas adamek">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2608 20315" target="author:maxim kryukov">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2608 20315" target="author:flavio dormont">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2608 20315" target="author:ziv bar joseph">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2608 20315" target="author:sven jager">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2608 20315" target="author:brandon rufino">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2608 20315" target="concept:transformers">
+  <data key="d10">uses</data>
+</edge>
+<edge source="paper:2608 20315" target="concept:explainable ai">
+  <data key="d10">uses</data>
+</edge>
+<edge source="paper:2608 20315" target="concept:ehr">
+  <data key="d10">uses</data>
+</edge>
+<edge source="paper:2608 20315" target="dataset:ehr datasets">
+  <data key="d10">evaluated_on</data>
+</edge>
+<edge source="paper:2608 20315" target="dataset:mimic">
+  <data key="d10">evaluated_on</data>
+</edge>
+<edge source="paper:2608 20315" target="dataset:eicu">
+  <data key="d10">evaluated_on</data>
+</edge>
+<edge source="paper:2608 20315" target="domain:clinical prediction ehr">
+  <data key="d10">in_domain</data>
+</edge>
+<edge source="paper:2608 20315" target="category:cs lg">
+  <data key="d10">listed_in</data>
+</edge>
+<edge source="domain:clinical prediction ehr" target="paper:2608 16972">
+  <data key="d10">in_domain</data>
+</edge>
+<edge source="domain:clinical prediction ehr" target="paper:2608 16273">
+  <data key="d10">in_domain</data>
+</edge>
+<edge source="category:cs lg" target="paper:2608 16972">
+  <data key="d10">listed_in</data>
+</edge>
+<edge source="category:cs lg" target="paper:2605 22611">
+  <data key="d10">listed_in</data>
+</edge>
+<edge source="category:cs lg" target="paper:2605 00645">
+  <data key="d10">listed_in</data>
+</edge>
+<edge source="category:cs lg" target="paper:2603 05423">
+  <data key="d10">listed_in</data>
+</edge>
+<edge source="category:cs lg" target="paper:2608 17678">
+  <data key="d10">listed_in</data>
+</edge>
+<edge source="category:cs lg" target="paper:2603 18239">
+  <data key="d10">listed_in</data>
+</edge>
+<edge source="category:cs lg" target="paper:2608 23153">
+  <data key="d10">listed_in</data>
+</edge>
+<edge source="category:cs lg" target="paper:2608 26149">
+  <data key="d10">listed_in</data>
+</edge>
+<edge source="paper:2608 16972" target="author:paul minchella">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2608 16972" target="author:st phane chr tien">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2608 16972" target="author:guillaume metzler">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2608 16972" target="author:lo c verlingue">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2608 16972" target="author:r mi vaucher">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2608 16972" target="concept:multimodal bert">
+  <data key="d10">uses</data>
+</edge>
+<edge source="paper:2608 16972" target="concept:survival analysis">
+  <data key="d10">uses</data>
+</edge>
+<edge source="paper:2608 16972" target="concept:oncology">
+  <data key="d10">uses</data>
+</edge>
+<edge source="paper:2608 16972" target="dataset:oncology clinical data">
+  <data key="d10">evaluated_on</data>
+</edge>
+<edge source="paper:2608 16273" target="author:simon ellershaw">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2608 16273" target="author:christopher tomlinson">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2608 16273" target="author:zeljko kraljevic">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2608 16273" target="author:spiros denaxas">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2608 16273" target="author:harry hemingway">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2608 16273" target="author:cathie sudlow">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2608 16273" target="author:angela m wood">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2608 16273" target="author:anoop d shah">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2608 16273" target="author:richard dobson">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2608 16273" target="concept:generative ai">
+  <data key="d10">uses</data>
+</edge>
+<edge source="paper:2608 16273" target="concept:large scale ehr">
+  <data key="d10">uses</data>
+</edge>
+<edge source="paper:2608 16273" target="concept:national scale">
+  <data key="d10">uses</data>
+</edge>
+<edge source="paper:2608 16273" target="dataset:nhs england ehr data">
+  <data key="d10">evaluated_on</data>
+</edge>
+<edge source="paper:2608 17598" target="author:shenhav nadir">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2608 17598" target="author:meir yossef levi">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2608 17598" target="author:eyal gofer">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2608 17598" target="author:guy gilboa">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2608 17598" target="concept:contrastive learning">
+  <data key="d10">uses</data>
+</edge>
+<edge source="paper:2608 17598" target="concept:medical imaging">
+  <data key="d10">uses</data>
+</edge>
+<edge source="paper:2608 17598" target="concept:robustness">
+  <data key="d10">uses</data>
+</edge>
+<edge source="paper:2608 17598" target="dataset:medical imaging datasets">
+  <data key="d10">evaluated_on</data>
+</edge>
+<edge source="paper:2608 17598" target="domain:medical imaging">
+  <data key="d10">in_domain</data>
+</edge>
+<edge source="paper:2608 17598" target="category:cs cv">
+  <data key="d10">listed_in</data>
+</edge>
+<edge source="domain:medical imaging" target="paper:2608 11762">
+  <data key="d10">in_domain</data>
+</edge>
+<edge source="domain:medical imaging" target="paper:2608 07651">
+  <data key="d10">in_domain</data>
+</edge>
+<edge source="paper:2608 11762" target="author:hiram zuniga">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2608 11762" target="author:ulises orozco rosas">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2608 11762" target="author:kenia picos">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2608 11762" target="concept:cnn benchmarking">
+  <data key="d10">uses</data>
+</edge>
+<edge source="paper:2608 11762" target="concept:alzheimers">
+  <data key="d10">uses</data>
+</edge>
+<edge source="paper:2608 11762" target="concept:mri">
+  <data key="d10">uses</data>
+</edge>
+<edge source="paper:2608 11762" target="dataset:mri datasets">
+  <data key="d10">evaluated_on</data>
+</edge>
+<edge source="paper:2608 11762" target="dataset:adni">
+  <data key="d10">evaluated_on</data>
+</edge>
+<edge source="concept:alzheimers" target="paper:2603 18239">
+  <data key="d10">uses</data>
+</edge>
+<edge source="paper:2608 07651" target="author:jalil jalili">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2608 07651" target="author:hossein taghizad">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2608 07651" target="author:anuwat jiravarnsirikul">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2608 07651" target="author:christopher bowd">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2608 07651" target="author:akram belghith">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2608 07651" target="author:raheleh kafieh">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2608 07651" target="author:christopher a girkin">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2608 07651" target="author:sally l baxter">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2608 07651" target="author:robert n weinreb">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2608 07651" target="author:linda m zangwill">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2608 07651" target="author:mark christopher">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2608 07651" target="concept:agentic ai">
+  <data key="d10">uses</data>
+</edge>
+<edge source="paper:2608 07651" target="concept:llm">
+  <data key="d10">uses</data>
+</edge>
+<edge source="paper:2608 07651" target="concept:glaucoma">
+  <data key="d10">uses</data>
+</edge>
+<edge source="paper:2608 07651" target="concept:fundus">
+  <data key="d10">uses</data>
+</edge>
+<edge source="paper:2608 07651" target="dataset:fundus photography datasets">
+  <data key="d10">evaluated_on</data>
+</edge>
+<edge source="paper:2607 24814" target="author:joseph walusimbi">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2607 24814" target="author:ann move oguti">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2607 24814" target="author:abubakhari sserwadda">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2607 24814" target="author:precious boss kasasira">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2607 24814" target="author:charles brian okoboi">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2607 24814" target="concept:offline cdss">
+  <data key="d10">uses</data>
+</edge>
+<edge source="paper:2607 24814" target="concept:low resource">
+  <data key="d10">uses</data>
+</edge>
+<edge source="paper:2607 24814" target="concept:differential diagnosis">
+  <data key="d10">uses</data>
+</edge>
+<edge source="paper:2607 24814" target="dataset:clinical diagnosis datasets">
+  <data key="d10">evaluated_on</data>
+</edge>
+<edge source="paper:2607 24814" target="domain:clinical decision support">
+  <data key="d10">in_domain</data>
+</edge>
+<edge source="domain:clinical decision support" target="paper:2605 22611">
+  <data key="d10">in_domain</data>
+</edge>
+<edge source="domain:clinical decision support" target="paper:2605 00645">
+  <data key="d10">in_domain</data>
+</edge>
+<edge source="domain:clinical decision support" target="paper:2603 05423">
+  <data key="d10">in_domain</data>
+</edge>
+<edge source="paper:2605 22611" target="author:niklas raehse">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2605 22611" target="author:luregn j schlapbach">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2605 22611" target="author:daphn chopard">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2605 22611" target="concept:benchmarking">
+  <data key="d10">uses</data>
+</edge>
+<edge source="paper:2605 22611" target="concept:antimicrobial stewardship">
+  <data key="d10">uses</data>
+</edge>
+<edge source="paper:2605 22611" target="concept:pediatric icu">
+  <data key="d10">uses</data>
+</edge>
+<edge source="paper:2605 22611" target="dataset:pediatric icu antimicrobial data">
+  <data key="d10">evaluated_on</data>
+</edge>
+<edge source="concept:benchmarking" target="paper:2603 18239">
+  <data key="d10">uses</data>
+</edge>
+<edge source="paper:2605 00645" target="author:alireza namazi">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2605 00645" target="author:heman shakeri">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2605 00645" target="concept:time series">
+  <data key="d10">uses</data>
+</edge>
+<edge source="paper:2605 00645" target="concept:glucose forecasting">
+  <data key="d10">uses</data>
+</edge>
+<edge source="paper:2605 00645" target="concept:diabetes">
+  <data key="d10">uses</data>
+</edge>
+<edge source="paper:2605 00645" target="dataset:cgm glucose monitoring data">
+  <data key="d10">evaluated_on</data>
+</edge>
+<edge source="paper:2603 05423" target="author:jacek karolczak">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2603 05423" target="author:jerzy stefanowski">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2603 05423" target="concept:prototype learning">
+  <data key="d10">uses</data>
+</edge>
+<edge source="paper:2603 05423" target="concept:interpretability">
+  <data key="d10">uses</data>
+</edge>
+<edge source="paper:2603 05423" target="concept:tabular">
+  <data key="d10">uses</data>
+</edge>
+<edge source="paper:2603 05423" target="dataset:medical tabular datasets">
+  <data key="d10">evaluated_on</data>
+</edge>
+<edge source="concept:interpretability" target="paper:2608 10480">
+  <data key="d10">uses</data>
+</edge>
+<edge source="paper:2608 23646" target="author:xinjian zhao">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2608 23646" target="author:xiangru jian">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2608 23646" target="author:yaoyao xu">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2608 23646" target="author:xiaozhuang song">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2608 23646" target="author:wei pang">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2608 23646" target="author:lei bai">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2608 23646" target="author:tianshu yu">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2608 23646" target="concept:multimodal llm">
+  <data key="d10">uses</data>
+</edge>
+<edge source="paper:2608 23646" target="concept:molecular embeddings">
+  <data key="d10">uses</data>
+</edge>
+<edge source="paper:2608 23646" target="concept:drug discovery">
+  <data key="d10">uses</data>
+</edge>
+<edge source="paper:2608 23646" target="dataset:molecular property datasets">
+  <data key="d10">evaluated_on</data>
+</edge>
+<edge source="paper:2608 23646" target="dataset:moleculenet">
+  <data key="d10">evaluated_on</data>
+</edge>
+<edge source="paper:2608 23646" target="domain:drug discovery molecular ml">
+  <data key="d10">in_domain</data>
+</edge>
+<edge source="dataset:molecular property datasets" target="paper:2608 17678">
+  <data key="d10">evaluated_on</data>
+</edge>
+<edge source="dataset:molecular property datasets" target="paper:2608 10480">
+  <data key="d10">evaluated_on</data>
+</edge>
+<edge source="domain:drug discovery molecular ml" target="paper:2608 19121">
+  <data key="d10">in_domain</data>
+</edge>
+<edge source="domain:drug discovery molecular ml" target="paper:2608 17678">
+  <data key="d10">in_domain</data>
+</edge>
+<edge source="domain:drug discovery molecular ml" target="paper:2608 10480">
+  <data key="d10">in_domain</data>
+</edge>
+<edge source="paper:2608 19121" target="author:boqiao zhang">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2608 19121" target="author:godbless james">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2608 19121" target="author:sai krishna gottipati">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2608 19121" target="author:andrew fitzgibbon">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2608 19121" target="concept:molecular generation">
+  <data key="d10">uses</data>
+</edge>
+<edge source="paper:2608 19121" target="concept:optimization">
+  <data key="d10">uses</data>
+</edge>
+<edge source="paper:2608 19121" target="concept:synthesis aware">
+  <data key="d10">uses</data>
+</edge>
+<edge source="paper:2608 19121" target="dataset:molecular datasets">
+  <data key="d10">evaluated_on</data>
+</edge>
+<edge source="paper:2608 17678" target="author:hyeonsu lee">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2608 17678" target="author:juyeon kim">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2608 17678" target="author:erkhembayar jadamba">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2608 17678" target="author:seungjin choi">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2608 17678" target="author:hyunjin shin">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2608 17678" target="concept:conformal prediction">
+  <data key="d10">uses</data>
+</edge>
+<edge source="paper:2608 17678" target="concept:distribution shift">
+  <data key="d10">uses</data>
+</edge>
+<edge source="paper:2608 17678" target="concept:molecular">
+  <data key="d10">uses</data>
+</edge>
+<edge source="concept:conformal prediction" target="paper:2608 23153">
+  <data key="d10">uses</data>
+</edge>
+<edge source="concept:molecular" target="paper:2608 10480">
+  <data key="d10">uses</data>
+</edge>
+<edge source="paper:2608 10480" target="author:junwoo park">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2608 10480" target="author:minyoung shin">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2608 10480" target="author:cheol soon lee">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2608 10480" target="author:sujee lee">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2608 10480" target="concept:rationale guided llm">
+  <data key="d10">uses</data>
+</edge>
+<edge source="paper:2608 18438" target="author:shreeya sharma">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2608 18438" target="author:ravish gupta">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2608 18438" target="author:saket kumar">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2608 18438" target="author:abhishek aggarwal">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2608 18438" target="concept:llm fine tuning">
+  <data key="d10">uses</data>
+</edge>
+<edge source="paper:2608 18438" target="concept:mental health">
+  <data key="d10">uses</data>
+</edge>
+<edge source="paper:2608 18438" target="concept:risk triage">
+  <data key="d10">uses</data>
+</edge>
+<edge source="paper:2608 18438" target="dataset:mental health clinical data">
+  <data key="d10">evaluated_on</data>
+</edge>
+<edge source="paper:2608 18438" target="domain:mental health digital health">
+  <data key="d10">in_domain</data>
+</edge>
+<edge source="domain:mental health digital health" target="paper:2603 18239">
+  <data key="d10">in_domain</data>
+</edge>
+<edge source="paper:2603 18239" target="author:himadri s samanta">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2603 18239" target="concept:speech processing">
+  <data key="d10">uses</data>
+</edge>
+<edge source="paper:2603 18239" target="concept:asr">
+  <data key="d10">uses</data>
+</edge>
+<edge source="paper:2603 18239" target="dataset:speech datasets for alzheimers">
+  <data key="d10">evaluated_on</data>
+</edge>
+<edge source="paper:2608 23153" target="author:manos giannopoulos">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2608 23153" target="author:yi shen">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2608 23153" target="author:michael m zavlanos">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2608 23153" target="concept:domain adaptation">
+  <data key="d10">uses</data>
+</edge>
+<edge source="paper:2608 23153" target="concept:optimal transport">
+  <data key="d10">uses</data>
+</edge>
+<edge source="paper:2608 23153" target="dataset:healthcare domain adaptation benchmarks">
+  <data key="d10">evaluated_on</data>
+</edge>
+<edge source="paper:2608 23153" target="domain:domain adaptation robustness">
+  <data key="d10">in_domain</data>
+</edge>
+<edge source="paper:2608 26149" target="author:edouard lansiaux">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2608 26149" target="author:hugo kazzi">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2608 26149" target="author:aur lien loison">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2608 26149" target="author:slim hammadi">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2608 26149" target="author:emmanuel chazard">
+  <data key="d10">written_by</data>
+</edge>
+<edge source="paper:2608 26149" target="concept:multi table learning">
+  <data key="d10">uses</data>
+</edge>
+<edge source="paper:2608 26149" target="concept:data integration">
+  <data key="d10">uses</data>
+</edge>
+<edge source="paper:2608 26149" target="concept:complex data">
+  <data key="d10">uses</data>
+</edge>
+<edge source="paper:2608 26149" target="dataset:multi table healthcare datasets">
+  <data key="d10">evaluated_on</data>
+</edge>
+<edge source="paper:2608 26149" target="domain:data integration multi table">
+  <data key="d10">in_domain</data>
+</edge>
+<edge source="paper:2608 26149" target="category:cs ai">
+  <data key="d10">listed_in</data>
+</edge>
+</graph></graphml>

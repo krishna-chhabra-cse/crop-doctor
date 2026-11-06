@@ -1,0 +1,96 @@
+path,label,label_idx,source,md5,width,height
+plantdoc/train/Tomato leaf yellow virus/tj5itxzunn3k.jpg,tomato_yellow_curl_virus,9,plantdoc,193a9498aac91acff1002c3e4b3ab293,1280,960
+plantdoc/train/Potato leaf late blight/B2650062-Potato_late_blight-SPL.jpg,potato_late_blight,1,plantdoc,9b459a89c3176f0a0b1def105c39e6d1,779,800
+plantdoc/train/Tomato leaf late blight/late-blight-tomato.jpg,tomato_late_blight,5,plantdoc,e7980e5df2ada1532a76967a9fcac2ee,600,600
+plantdoc/train/Tomato leaf late blight/tomato-late-blight-leaf-61-3x32.jpg,tomato_late_blight,5,plantdoc,1d0721469bf49d2ed1d7fc1e13f9377e,300,154
+plantdoc/train/Tomato mold leaf/Leaf-mold-caused-by-the-fungal-pathogen-Passalore-fulva-in-tomatoes.jpg,tomato_leaf_mold,6,plantdoc,4eb93b7ea8fcc353fe6ac5df8d6401cd,810,500
+plantdoc/train/Potato leaf late blight/potato-late-blight-phytophthora-infestans-lesions-on-potato-foliage-a1w19k.jpg,potato_late_blight,1,plantdoc,cab60f6c6a8b0290ce2db991d066574b,519,540
+plantdoc/train/Tomato leaf/1688.jpg,tomato_healthy,4,plantdoc,1f3e9eb3db76e9d8f1edbadf3948f867,1024,768
+plantdoc/train/Tomato leaf bacterial spot/bac_spot_tomato_leaf_l.jpg,tomato_bacterial_spot,2,plantdoc,97e93284dedcf372b3cd010cba8c3d38,400,300
+plantdoc/train/Potato leaf late blight/foliar_late_blight.jpg,potato_late_blight,1,plantdoc,38365cb71c6f02032c6e0aa273a676cf,375,500
+plantdoc/test/Tomato mold leaf/fungus-univ-of-minnesoeta.jpg,tomato_leaf_mold,6,plantdoc,295c3a4034852e685b27b6eb1257911e,800,600
+plantdoc/test/Tomato Septoria leaf spot/2STEM.jpg,tomato_septoria,8,plantdoc,862c3905b8f4c8e4fa69c0366c912fcd,367,640
+plantdoc/test/Tomato leaf/2013-08-20-06.jpg,tomato_healthy,4,plantdoc,9089db404a4bc69f03bd695b7d78e980,1600,1200
+plantdoc/train/Potato leaf early blight/potato-blight-showing-on-potato-plant-leaves-KJ70DB.jpg,potato_early_blight,0,plantdoc,5ab6c9deb477a4c7c18b4b49891fa649,866,1390
+plantdoc/train/Potato leaf early blight/Early_Blight_of_Tomato177.jpg,potato_early_blight,0,plantdoc,065ac832482c1f179b00d22e24e013fa,800,600
+plantdoc/train/Tomato Early blight leaf/1058_0.jpeg_itok=OQkdtxgv.jpg,tomato_early_blight,3,plantdoc,47449060a78a0c428ac8df0e7dc4db95,800,600
+plantdoc/train/Tomato Early blight leaf/20080526-_DSC4211.jpg,tomato_early_blight,3,plantdoc,768aad2263555df148bd820be97e1125,465,700
+plantdoc/train/Tomato leaf late blight/late_blight_tomato_leaf1x1200.jpg,tomato_late_blight,5,plantdoc,1c739a9d8ad16ae325aa27cde8263f50,1200,900
+plantdoc/train/Tomato Septoria leaf spot/gray-leaf-spot.jpg,tomato_septoria,8,plantdoc,2ad58b62d32e4aac7fee58751a8a52c6,205,300
+plantdoc/train/Tomato leaf yellow virus/TYLCV-tomate-DB-441-170.jpg,tomato_yellow_curl_virus,9,plantdoc,73e218bf3c297a29c8b6bfaacbd7080b,693,520
+plantdoc/train/Potato leaf early blight/EB%20lesions1_opt.jpeg.jpg,potato_early_blight,0,plantdoc,7958f6ddfbf706df78124e2c1abf3a28,576,386
+plantdoc/train/Potato leaf late blight/6a00d8341c4fe353ef011571354632970c-800wi.jpg,potato_late_blight,1,plantdoc,281201de79ad501d5f5d20c9692e0a88,800,600
+plantdoc/train/Tomato Septoria leaf spot/5315825271570432.jpeg.jpg,tomato_septoria,8,plantdoc,b54a9a22db0f7b50989d487007bded00,600,800
+plantdoc/train/Tomato Septoria leaf spot/septoria-leaf-spot-2.jpg,tomato_septoria,8,plantdoc,dc77102132ac00024c1f43e8a1eb17e6,250,250
+plantdoc/train/Tomato mold leaf/IMG_1261.jpg,tomato_leaf_mold,6,plantdoc,48c950f0a79dc913e0d682fe66f62663,1600,1200
+plantdoc/train/Tomato leaf/single-a-green-leaf-of-tomato-picture-id496662675_k=6&m=496662675&s=612x612&w=0&h=6zKfv022H_9cLQSIR_kpcOAlTeg1eIVtLBbc80PQA7Y=.jpg,tomato_healthy,4,plantdoc,e4eea971d1f947e96cfdccce18202d40,612,508
+plantdoc/train/Tomato Septoria leaf spot/septoria-leaf-spot-treatment-leaf-spot-septoria-leaf-spot-soil-treatment-septoria-leaf-spot-tomato-organic-treatment.jpg,tomato_septoria,8,plantdoc,127187db55c6c6598e836c6efc9c42b7,550,586
+plantdoc/train/Potato leaf early blight/Early-Blight-UK-A.jpg,potato_early_blight,0,plantdoc,9a948d89975b119cae3bebe4c3f73bc2,768,576
+plantdoc/train/Tomato leaf yellow virus/IMG_2684.JPG.jpg,tomato_yellow_curl_virus,9,plantdoc,195eba8b04a606b6bfa626aff62911b2,1200,1600
+plantdoc/train/Tomato leaf yellow virus/r_tomato.jpg,tomato_yellow_curl_virus,9,plantdoc,9e7631424c358f34b781264b8c6f7012,288,198
+plantdoc/train/Potato leaf early blight/fac66s01h.jpg,potato_early_blight,0,plantdoc,b805ce8fb73c02b6a3bb44c88dcb28eb,316,228
+plantdoc/train/Potato leaf early blight/Blght.jpg,potato_early_blight,0,plantdoc,469e732bcfd84eb05af4982b1e196edf,2400,1800
+plantdoc/train/Tomato leaf bacterial spot/photo-1.jpg,tomato_bacterial_spot,2,plantdoc,d39301a651460c7ad0990a7fe698f7dc,1000,750
+plantdoc/train/Tomato leaf bacterial spot/bacterialLeafSpot04-xqxm03.jpg,tomato_bacterial_spot,2,plantdoc,a5f3e35961a21f8cadae10d3c7c743c4,613,461
+plantdoc/test/Tomato leaf mosaic virus/tmv-tomato-34.jpg,tomato_mosaic_virus,7,plantdoc,de2001487c4c72b7cf5a19e7ae7e0f12,3648,2736
+plantdoc/train/Tomato mold leaf/tomato_leaf-mold_03_zoom.jpg,tomato_leaf_mold,6,plantdoc,2ecdba20236e722f7155ad6161bb5766,900,675
+plantdoc/train/Tomato leaf/tomato-leaf-isolated-white-34309524.jpg,tomato_healthy,4,plantdoc,4cb9ea3de52f165bd351844f66aa7e6f,987,1300
+plantdoc/train/Tomato leaf bacterial spot/bacterial-speck-tomato1x2400-275mmny.jpg,tomato_bacterial_spot,2,plantdoc,a0c117519521a6ad616c8168ce02d6f1,2400,1800
+plantdoc/train/Tomato leaf late blight/LateBlight-Leaflet-Large-Spot_9005-ROTATED-sbzntn.jpg,tomato_late_blight,5,plantdoc,427ca0c005977fa4420d60c17c11fb48,1704,2272
+plantdoc/train/Tomato leaf bacterial spot/tomato1A.jpg,tomato_bacterial_spot,2,plantdoc,0c5b8831458e2b210a29f7474807ec08,460,349
+plantdoc/train/Tomato Early blight leaf/early-blight-pp-labeled_orig.jpg,tomato_early_blight,3,plantdoc,28b77b1b803334f4a29a91a99209cefb,499,332
+plantdoc/train/Tomato Septoria leaf spot/septorialeafspot.jpg,tomato_septoria,8,plantdoc,9d21681872d34a5e3bf75e563a28d655,300,305
+plantdoc/train/Tomato leaf late blight/late-blight-TomC2-10.jpg,tomato_late_blight,5,plantdoc,d1522f5c2538f38b22d1aab6b08937ec,4416,3312
+plantdoc/train/Potato leaf early blight/early-blight-or-targfet-spot-alternaria-solani-lesions-on-a-tomato-ACG8W6.jpg,potato_early_blight,0,plantdoc,e3e710f4403d87dee8dad5e5997bc80a,1300,1065
+plantdoc/train/Tomato leaf bacterial spot/05-069f1.jpg,tomato_bacterial_spot,2,plantdoc,1d98ce45d160304481da12724d363bcf,326,196
+plantdoc/test/Tomato leaf late blight/636368370164094909-late-blight-15-.jpg,tomato_late_blight,5,plantdoc,6ba1300099da0822038fc2e39309e102,540,405
+plantdoc/train/Tomato leaf late blight/late-blight-fungicides.jpg,tomato_late_blight,5,plantdoc,9e9118a77074c667fcf9a2611dad2fec,2400,1800
+plantdoc/train/Tomato leaf/depositphotos_120361722-stock-photo-tomato-leaf-closeup.jpg,tomato_healthy,4,plantdoc,263d0b30d049cd7314f9307c9bb425b8,1024,720
+plantdoc/train/Tomato leaf mosaic virus/wd0phb4.jpg,tomato_mosaic_virus,7,plantdoc,071aacc416723c9908c197ba513cd959,478,640
+plantdoc/train/Tomato Septoria leaf spot/early+blight+on+leaf+yel+halo+IMG_2313.JPG.jpg,tomato_septoria,8,plantdoc,9b76d6faba3689531972394049afec05,898,1600
+plantdoc/test/Potato leaf early blight/potato-blight-phytophthora-infestans-close-up-of-upper-surface-of-BMMRXC.jpg,potato_early_blight,0,plantdoc,29841e16c99d54780fc2577d67535550,1300,956
+plantdoc/train/Potato leaf late blight/potato-late-blight-phytophthora-infestans-lesions-on-potato-foliage-X4XJF4.jpg,potato_late_blight,1,plantdoc,e57d04a03debd3ebac716287fa82c44d,1296,1390
+plantdoc/train/Tomato leaf mosaic virus/fig2-2k11-1-12.jpg,tomato_mosaic_virus,7,plantdoc,209ec874f9d917484fe78a33b9e30a19,248,212
+plantdoc/train/Potato leaf early blight/21-late%20blight-early%20symptoms%20potato.jpg,potato_early_blight,0,plantdoc,f7c159d146a4448a3837f3b07805a214,3072,2032
+plantdoc/train/Tomato leaf late blight/late-blight-tom-leaf.jpg,tomato_late_blight,5,plantdoc,96e6cac1295483ba294de6f5a62f978b,768,521
+plantdoc/train/Tomato leaf/PxWBE.jpg,tomato_healthy,4,plantdoc,821f723941dd2ac6aecfb1e49b4b6891,2520,3780
+plantdoc/train/Tomato leaf bacterial spot/3bacterial-canker1.jpg,tomato_bacterial_spot,2,plantdoc,72e91979f3570b57fe521ab27ff4ab47,320,240
+plantdoc/train/Tomato leaf mosaic virus/tomato-leaves-260nw-670831669.jpg,tomato_mosaic_virus,7,plantdoc,abfb1ca8d2aa543f063b34b1d9d24cfb,390,280
+plantdoc/train/Tomato leaf mosaic virus/Tomato%2Bmosaic%2Bvirus.jpg,tomato_mosaic_virus,7,plantdoc,44cf1336b557039ebfa61cb5f4baa520,1200,630
+plantdoc/train/Tomato Septoria leaf spot/6242739939180544.jpeg.jpg,tomato_septoria,8,plantdoc,3e1099700516c8be2090866c5fb47ebf,600,800
+plantdoc/train/Tomato Early blight leaf/Tomato-Early-Blight-Leaf-Examples-Cornell-University.jpg,tomato_early_blight,3,plantdoc,4e2d05b2fcdbd18fffd82883964afba7,1200,900
+plantdoc/train/Tomato mold leaf/tomato.jpg,tomato_leaf_mold,6,plantdoc,5c3ead26603eaa72358b5abd88018dff,600,800
+plantdoc/test/Tomato leaf bacterial spot/Tomato%2BBacterial%2BSpot%2Bon%2BLeaves.jpg,tomato_bacterial_spot,2,plantdoc,aa81c8cfdf58110556468415ecc4f86e,500,263
+plantdoc/train/Tomato Septoria leaf spot/3-septoria-leaf-blight-n.jpg,tomato_septoria,8,plantdoc,eac10419b9223cae8c69b6c549c3dfab,720,540
+plantdoc/train/Tomato Septoria leaf spot/leafspot-5aba8283642dca003687f6fa.jpg,tomato_septoria,8,plantdoc,e7991b5456019b105f3bc901b89c1fbd,425,424
+plantdoc/train/Tomato leaf late blight/5816170621_e1cce08736_z.jpg,tomato_late_blight,5,plantdoc,be598f4c7d181d918f9ec673e3a9e64c,640,427
+plantdoc/train/Tomato leaf yellow virus/role-of-whitefly-in-plant-virus-transmission-by-pmanikandan-13-638.jpg,tomato_yellow_curl_virus,9,plantdoc,81d5be82361bfd1fe77a1800566116ac,638,479
+plantdoc/train/Tomato leaf bacterial spot/CankerFoliar-copy-50-QUALITY-122b09b.jpg,tomato_bacterial_spot,2,plantdoc,6fd7f4953a0f8c3668e4c51d7cb528ee,667,500
+plantdoc/train/Tomato leaf bacterial spot/Bacterial_spots586.jpg,tomato_bacterial_spot,2,plantdoc,241a6737f2e960131c389a9a76f1d5f8,800,600
+plantdoc/train/Tomato mold leaf/Leaf+mold+tomato+%25282%2529.JPG.jpg,tomato_leaf_mold,6,plantdoc,5d82b04f12385bf97130bd199f1a0ac7,1600,1200
+plantdoc/train/Tomato Septoria leaf spot/septorialycopersici_small.jpg,tomato_septoria,8,plantdoc,9e67fa3b086ff540dd4e4ef0914734ef,1000,676
+plantdoc/train/Tomato Septoria leaf spot/5315825271570432-600x272.jpeg.jpg,tomato_septoria,8,plantdoc,00f91468b7ef30694c10d5de91d650bc,600,272
+plantdoc/train/Potato leaf late blight/IMG_0019.jpg,potato_late_blight,1,plantdoc,aa1bdbaf7db5ac9e9b5daddbae0a158b,4000,3000
+plantdoc/train/Tomato mold leaf/Tomato+leaf+mold.jpg,tomato_leaf_mold,6,plantdoc,c3ead6d87591fcb54bdc7fb876f8da9f,1600,1200
+plantdoc/train/Potato leaf early blight/early-blight-septoria-ls-fig-1.jpg,potato_early_blight,0,plantdoc,5e6f3e06b0d60ef0266f47fbfbe716d0,1500,844
+plantdoc/test/Potato leaf early blight/potato-early-blight-alternaria-alternata-lesion-on-a-potato-leaf-a1w1em.jpg,potato_early_blight,0,plantdoc,de575fdb7330c7c4433514813554f5af,589,540
+plantdoc/train/Potato leaf late blight/lb7_l.jpg,potato_late_blight,1,plantdoc,0e29142c6d86d8a1fddda1fc406b30c8,802,532
+plantdoc/train/Tomato leaf late blight/Tomato_Blight_Leaves.JPG.jpg,tomato_late_blight,5,plantdoc,4a3b048d04acbf8c6b7b5859d752f0cb,1600,1200
+plantdoc/train/Potato leaf late blight/LateBlight13.jpg,potato_late_blight,1,plantdoc,68d6d390bbad2ea0eda1cc31ef23b9db,490,320
+plantdoc/train/Potato leaf late blight/6-13lateblightleavesMARY.jpg,potato_late_blight,1,plantdoc,2e1a79cb4e27a2d6ee87f6a79373b2b6,450,338
+plantdoc/train/Tomato leaf yellow virus/IU-TYLCV_img_6.jpg,tomato_yellow_curl_virus,9,plantdoc,7e6c671ba9223ed0c8487be69c194bb3,675,512
+plantdoc/train/Tomato leaf mosaic virus/tomato-leaf-herbicide-damage.jpg,tomato_mosaic_virus,7,plantdoc,bef550722985917bf78576adedd1e851,500,375
+plantdoc/train/Tomato Early blight leaf/tomatoearlyblight.jpg,tomato_early_blight,3,plantdoc,c37d8c71908fc74b02677427595d3ddb,448,336
+plantdoc/train/Tomato Early blight leaf/126689-004-D622CD2F.jpg,tomato_early_blight,3,plantdoc,9f68685ef8b7fbc12e5e2ca4432f2997,550,384
+plantdoc/train/Tomato mold leaf/leaf_mold_tomato6x1200.jpg,tomato_leaf_mold,6,plantdoc,c3c8dfe65eb038bb6f2641aef753c4f9,1200,951
+plantdoc/train/Tomato Septoria leaf spot/Septoria_Leaf_Spot_of_Tomato186.jpg,tomato_septoria,8,plantdoc,a4c244a20e9e5d965a970e0a533a38c6,800,533
+plantdoc/train/Tomato Early blight leaf/early-blight-2x.jpg,tomato_early_blight,3,plantdoc,c34f9490f9b02b98c52b4aa68ece0a67,450,575
+plantdoc/train/Tomato leaf late blight/late_blight_tomato_leaf5x12001.jpg,tomato_late_blight,5,plantdoc,1149460ad612c2d6a49b8dc600e24129,1200,1600
+plantdoc/train/Tomato mold leaf/23600077_1572609202782510_2145699867_o.jpg,tomato_leaf_mold,6,plantdoc,55bd63672aba863ec5ee9ebd452c13a8,1440,1920
+plantdoc/train/Tomato Septoria leaf spot/confused-early-blight-septoria-zoom.jpg,tomato_septoria,8,plantdoc,dbaa6e5ac389a2a32b3d3c65317a3d6a,453,417
+plantdoc/train/Potato leaf late blight/phytophthora-infestans-potato-blight-first-foliar-symptoms-on-solanum-EJKRCK.jpg,potato_late_blight,1,plantdoc,f093b3bc573ecb7e2500a8ff0efe6367,866,1390
+plantdoc/train/Tomato leaf bacterial spot/Leaf-spots-on-tomato-leaves-Credits-Hank-Dankers_Q320.jpg,tomato_bacterial_spot,2,plantdoc,3ac3b9a922e7060c87ad2a2a1a981faf,320,320
+plantdoc/test/Tomato leaf yellow virus/11-40580_5.jpg,tomato_yellow_curl_virus,9,plantdoc,d22d8f0b0ad2a4212d05b869f87c90e9,400,200
+plantdoc/train/Tomato Septoria leaf spot/IMG_0312_original.jpg,tomato_septoria,8,plantdoc,7620695c08151c52a7ba48dbf5355022,1200,1600
+plantdoc/test/Tomato Early blight leaf/tomato_early-blight_01_zoom.jpg,tomato_early_blight,3,plantdoc,42c2d51855f247153f5fa440afc149b2,257,378
+plantdoc/train/Tomato Early blight leaf/earlyblighttomato.jpg,tomato_early_blight,3,plantdoc,4e5ed1465c44a5c63cb9912acdbfa66e,328,477

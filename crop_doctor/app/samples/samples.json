@@ -1,0 +1,56 @@
+[
+  {
+    "file": "diag_tomato.jpg",
+    "title": "Tomato leaf (clear case)",
+    "crop": "tomato",
+    "true_label": "tomato_septoria",
+    "seed": 14,
+    "expected_status": "diagnosis",
+    "source": "plantdoc/test/Tomato Septoria leaf spot/55830b60a7cf2.image.jpg"
+  },
+  {
+    "file": "diag_potato.jpg",
+    "title": "Potato leaf (clear case)",
+    "crop": "potato",
+    "true_label": "potato_early_blight",
+    "seed": 0,
+    "expected_status": "diagnosis",
+    "source": "plantdoc/test/Potato leaf early blight/early-blight-alternaria-alternata-leaf-spotting-on-potato-leaf-X91XJE.jpg"
+  },
+  {
+    "file": "question.jpg",
+    "title": "Potato leaf (needs one question)",
+    "crop": "potato",
+    "true_label": "potato_late_blight",
+    "seed": 6,
+    "expected_status": "question",
+    "source": "plantdoc/test/Potato leaf late blight/B2750109-Late_blight_on_a_potato_plant-SPL.jpg"
+  },
+  {
+    "file": "expert.jpg",
+    "title": "Tomato leaf (unclear, goes to expert)",
+    "crop": "tomato",
+    "true_label": "tomato_early_blight",
+    "seed": 11,
+    "expected_status": "expert",
+    "source": "plantdoc/test/Tomato Early blight leaf/dscn3175.jpg"
+  },
+  {
+    "file": "healthy.jpg",
+    "title": "Healthy tomato leaf",
+    "crop": "tomato",
+    "true_label": "tomato_healthy",
+    "seed": 34,
+    "expected_status": "healthy",
+    "source": "plantdoc/test/Tomato leaf/1684.jpg"
+  },
+  {
+    "file": "retake_blurry.jpg",
+    "title": "Blurry photo (asks to retake)",
+    "crop": "tomato",
+    "true_label": "tomato_septoria",
+    "seed": 14,
+    "expected_status": "retake",
+    "source": "plantdoc/test/Tomato Septoria leaf spot/55830b60a7cf2.image.jpg (blurred on purpose)"
+  }
+]

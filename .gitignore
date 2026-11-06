@@ -1,0 +1,11 @@
+.venv/
+datasets/
+__pycache__/
+.pytest_cache/
+*.pyc
+*.pt
+*.npz
+.env
+app_data/
+.claude/
+*.log

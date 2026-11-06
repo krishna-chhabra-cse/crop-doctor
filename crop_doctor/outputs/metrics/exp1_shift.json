@@ -1,0 +1,80 @@
+{
+  "results": {
+    "lab_test": {
+      "images": 1707,
+      "accuracy": 0.9848,
+      "macro_f1": 0.9806,
+      "mean_confidence": 0.988,
+      "mean_confidence_when_wrong": 0.7434,
+      "wrong_with_confidence_over_90": 10,
+      "wrong_total": 26
+    },
+    "field_test": {
+      "images": 476,
+      "accuracy": 0.25,
+      "macro_f1": 0.2007,
+      "mean_confidence": 0.8321,
+      "mean_confidence_when_wrong": 0.8252,
+      "wrong_with_confidence_over_90": 179,
+      "wrong_total": 357
+    }
+  },
+  "recall_per_class": {
+    "lab_test": {
+      "potato_early_blight": 1.0,
+      "potato_late_blight": 0.94,
+      "tomato_bacterial_spot": 1.0,
+      "tomato_early_blight": 0.95,
+      "tomato_healthy": 0.962,
+      "tomato_late_blight": 0.995,
+      "tomato_leaf_mold": 0.989,
+      "tomato_mosaic_virus": 1.0,
+      "tomato_septoria": 0.96,
+      "tomato_yellow_curl_virus": 1.0
+    },
+    "field_test": {
+      "potato_early_blight": 0.125,
+      "potato_late_blight": 0.32,
+      "tomato_bacterial_spot": 0.018,
+      "tomato_early_blight": 0.727,
+      "tomato_healthy": 0.032,
+      "tomato_late_blight": 0.5,
+      "tomato_leaf_mold": 0.133,
+      "tomato_mosaic_virus": 0.037,
+      "tomato_septoria": 0.307,
+      "tomato_yellow_curl_virus": 0.108
+    }
+  },
+  "top_field_mistakes": [
+    {
+      "true": "tomato_septoria",
+      "predicted": "tomato_early_blight",
+      "count": 37
+    },
+    {
+      "true": "tomato_bacterial_spot",
+      "predicted": "tomato_early_blight",
+      "count": 27
+    },
+    {
+      "true": "tomato_healthy",
+      "predicted": "tomato_late_blight",
+      "count": 23
+    },
+    {
+      "true": "potato_early_blight",
+      "predicted": "tomato_early_blight",
+      "count": 19
+    },
+    {
+      "true": "tomato_leaf_mold",
+      "predicted": "tomato_late_blight",
+      "count": 18
+    },
+    {
+      "true": "tomato_late_blight",
+      "predicted": "tomato_early_blight",
+      "count": 18
+    }
+  ]
+}

@@ -1,0 +1,308 @@
+{
+  "papers": 18,
+  "domains": 7,
+  "accuracy": {
+    "majority": 0.0,
+    "1nn": 0.1667,
+    "3nn_weighted": 0.1667,
+    "label_propagation": 0.1667
+  },
+  "predictions": {
+    "majority": {
+      "2608.20315": [
+        "Clinical Prediction / EHR",
+        "Clinical Decision Support"
+      ],
+      "2608.16972": [
+        "Clinical Prediction / EHR",
+        "Clinical Decision Support"
+      ],
+      "2608.16273": [
+        "Clinical Prediction / EHR",
+        "Clinical Decision Support"
+      ],
+      "2608.17598": [
+        "Medical Imaging",
+        "Clinical Decision Support"
+      ],
+      "2608.11762": [
+        "Medical Imaging",
+        "Clinical Decision Support"
+      ],
+      "2608.07651": [
+        "Medical Imaging",
+        "Clinical Decision Support"
+      ],
+      "2607.24814": [
+        "Clinical Decision Support",
+        "Drug Discovery / Molecular ML"
+      ],
+      "2605.22611": [
+        "Clinical Decision Support",
+        "Drug Discovery / Molecular ML"
+      ],
+      "2605.00645": [
+        "Clinical Decision Support",
+        "Drug Discovery / Molecular ML"
+      ],
+      "2603.05423": [
+        "Clinical Decision Support",
+        "Drug Discovery / Molecular ML"
+      ],
+      "2608.23646": [
+        "Drug Discovery / Molecular ML",
+        "Clinical Decision Support"
+      ],
+      "2608.19121": [
+        "Drug Discovery / Molecular ML",
+        "Clinical Decision Support"
+      ],
+      "2608.17678": [
+        "Drug Discovery / Molecular ML",
+        "Clinical Decision Support"
+      ],
+      "2608.10480": [
+        "Drug Discovery / Molecular ML",
+        "Clinical Decision Support"
+      ],
+      "2608.18438": [
+        "Mental Health / Digital Health",
+        "Clinical Decision Support"
+      ],
+      "2603.18239": [
+        "Mental Health / Digital Health",
+        "Clinical Decision Support"
+      ],
+      "2608.23153": [
+        "Domain Adaptation / Robustness",
+        "Clinical Decision Support"
+      ],
+      "2608.26149": [
+        "Data Integration / Multi-table",
+        "Clinical Decision Support"
+      ]
+    },
+    "1nn": {
+      "2608.20315": [
+        "Clinical Prediction / EHR",
+        "Domain Adaptation / Robustness"
+      ],
+      "2608.16972": [
+        "Clinical Prediction / EHR",
+        "Domain Adaptation / Robustness"
+      ],
+      "2608.16273": [
+        "Clinical Prediction / EHR",
+        "Clinical Decision Support"
+      ],
+      "2608.17598": [
+        "Medical Imaging",
+        "Clinical Decision Support"
+      ],
+      "2608.11762": [
+        "Medical Imaging",
+        "Mental Health / Digital Health"
+      ],
+      "2608.07651": [
+        "Medical Imaging",
+        "Clinical Decision Support"
+      ],
+      "2607.24814": [
+        "Clinical Decision Support",
+        "Drug Discovery / Molecular ML"
+      ],
+      "2605.22611": [
+        "Clinical Decision Support",
+        "Mental Health / Digital Health"
+      ],
+      "2605.00645": [
+        "Clinical Decision Support",
+        "Domain Adaptation / Robustness"
+      ],
+      "2603.05423": [
+        "Clinical Decision Support",
+        "Domain Adaptation / Robustness"
+      ],
+      "2608.23646": [
+        "Drug Discovery / Molecular ML",
+        "Drug Discovery / Molecular ML"
+      ],
+      "2608.19121": [
+        "Drug Discovery / Molecular ML",
+        "Clinical Decision Support"
+      ],
+      "2608.17678": [
+        "Drug Discovery / Molecular ML",
+        "Drug Discovery / Molecular ML"
+      ],
+      "2608.10480": [
+        "Drug Discovery / Molecular ML",
+        "Drug Discovery / Molecular ML"
+      ],
+      "2608.18438": [
+        "Mental Health / Digital Health",
+        "Clinical Decision Support"
+      ],
+      "2603.18239": [
+        "Mental Health / Digital Health",
+        "Clinical Decision Support"
+      ],
+      "2608.23153": [
+        "Domain Adaptation / Robustness",
+        "Drug Discovery / Molecular ML"
+      ],
+      "2608.26149": [
+        "Data Integration / Multi-table",
+        "Domain Adaptation / Robustness"
+      ]
+    },
+    "3nn_weighted": {
+      "2608.20315": [
+        "Clinical Prediction / EHR",
+        "Domain Adaptation / Robustness"
+      ],
+      "2608.16972": [
+        "Clinical Prediction / EHR",
+        "Domain Adaptation / Robustness"
+      ],
+      "2608.16273": [
+        "Clinical Prediction / EHR",
+        "Clinical Decision Support"
+      ],
+      "2608.17598": [
+        "Medical Imaging",
+        "Clinical Decision Support"
+      ],
+      "2608.11762": [
+        "Medical Imaging",
+        "Mental Health / Digital Health"
+      ],
+      "2608.07651": [
+        "Medical Imaging",
+        "Clinical Decision Support"
+      ],
+      "2607.24814": [
+        "Clinical Decision Support",
+        "Drug Discovery / Molecular ML"
+      ],
+      "2605.22611": [
+        "Clinical Decision Support",
+        "Mental Health / Digital Health"
+      ],
+      "2605.00645": [
+        "Clinical Decision Support",
+        "Domain Adaptation / Robustness"
+      ],
+      "2603.05423": [
+        "Clinical Decision Support",
+        "Domain Adaptation / Robustness"
+      ],
+      "2608.23646": [
+        "Drug Discovery / Molecular ML",
+        "Drug Discovery / Molecular ML"
+      ],
+      "2608.19121": [
+        "Drug Discovery / Molecular ML",
+        "Clinical Decision Support"
+      ],
+      "2608.17678": [
+        "Drug Discovery / Molecular ML",
+        "Drug Discovery / Molecular ML"
+      ],
+      "2608.10480": [
+        "Drug Discovery / Molecular ML",
+        "Drug Discovery / Molecular ML"
+      ],
+      "2608.18438": [
+        "Mental Health / Digital Health",
+        "Clinical Decision Support"
+      ],
+      "2603.18239": [
+        "Mental Health / Digital Health",
+        "Clinical Decision Support"
+      ],
+      "2608.23153": [
+        "Domain Adaptation / Robustness",
+        "Clinical Prediction / EHR"
+      ],
+      "2608.26149": [
+        "Data Integration / Multi-table",
+        "Domain Adaptation / Robustness"
+      ]
+    },
+    "label_propagation": {
+      "2608.20315": [
+        "Clinical Prediction / EHR",
+        "Clinical Decision Support"
+      ],
+      "2608.16972": [
+        "Clinical Prediction / EHR",
+        "Clinical Decision Support"
+      ],
+      "2608.16273": [
+        "Clinical Prediction / EHR",
+        "Clinical Decision Support"
+      ],
+      "2608.17598": [
+        "Medical Imaging",
+        "Clinical Decision Support"
+      ],
+      "2608.11762": [
+        "Medical Imaging",
+        "Mental Health / Digital Health"
+      ],
+      "2608.07651": [
+        "Medical Imaging",
+        "Clinical Decision Support"
+      ],
+      "2607.24814": [
+        "Clinical Decision Support",
+        "Drug Discovery / Molecular ML"
+      ],
+      "2605.22611": [
+        "Clinical Decision Support",
+        "Mental Health / Digital Health"
+      ],
+      "2605.00645": [
+        "Clinical Decision Support",
+        "Clinical Prediction / EHR"
+      ],
+      "2603.05423": [
+        "Clinical Decision Support",
+        "Drug Discovery / Molecular ML"
+      ],
+      "2608.23646": [
+        "Drug Discovery / Molecular ML",
+        "Drug Discovery / Molecular ML"
+      ],
+      "2608.19121": [
+        "Drug Discovery / Molecular ML",
+        "Clinical Decision Support"
+      ],
+      "2608.17678": [
+        "Drug Discovery / Molecular ML",
+        "Drug Discovery / Molecular ML"
+      ],
+      "2608.10480": [
+        "Drug Discovery / Molecular ML",
+        "Drug Discovery / Molecular ML"
+      ],
+      "2608.18438": [
+        "Mental Health / Digital Health",
+        "Clinical Decision Support"
+      ],
+      "2603.18239": [
+        "Mental Health / Digital Health",
+        "Clinical Decision Support"
+      ],
+      "2608.23153": [
+        "Domain Adaptation / Robustness",
+        "Drug Discovery / Molecular ML"
+      ],
+      "2608.26149": [
+        "Data Integration / Multi-table",
+        "Clinical Decision Support"
+      ]
+    }
+  }
+}

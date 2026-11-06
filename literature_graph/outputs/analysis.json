@@ -1,0 +1,396 @@
+{
+  "summary": {
+    "nodes": 183,
+    "edges": 191,
+    "components": 1,
+    "density": 0.0115,
+    "nodes_by_kind": {
+      "paper": 18,
+      "author": 84,
+      "concept": 51,
+      "dataset": 20,
+      "domain": 7,
+      "category": 3
+    },
+    "edges_by_relation": {
+      "written_by": 84,
+      "uses": 56,
+      "evaluated_on": 22,
+      "in_domain": 18,
+      "listed_in": 11
+    }
+  },
+  "top_concepts": [
+    [
+      "concept:alzheimers",
+      2,
+      0.3191
+    ],
+    [
+      "concept:interpretability",
+      2,
+      0.0266
+    ],
+    [
+      "concept:benchmarking",
+      2,
+      0.0197
+    ],
+    [
+      "concept:molecular",
+      2,
+      0.0125
+    ],
+    [
+      "concept:conformal prediction",
+      2,
+      0.0088
+    ],
+    [
+      "concept:transformers",
+      1,
+      0.0
+    ],
+    [
+      "concept:explainable ai",
+      1,
+      0.0
+    ],
+    [
+      "concept:ehr",
+      1,
+      0.0
+    ],
+    [
+      "concept:multimodal bert",
+      1,
+      0.0
+    ],
+    [
+      "concept:survival analysis",
+      1,
+      0.0
+    ]
+  ],
+  "top_datasets": [
+    [
+      "dataset:molecular property datasets",
+      3,
+      0.0708
+    ],
+    [
+      "dataset:ehr datasets",
+      1,
+      0.0
+    ],
+    [
+      "dataset:mimic",
+      1,
+      0.0
+    ],
+    [
+      "dataset:eicu",
+      1,
+      0.0
+    ],
+    [
+      "dataset:oncology clinical data",
+      1,
+      0.0
+    ]
+  ],
+  "bridges": [
+    [
+      "concept:alzheimers",
+      [
+        "Medical Imaging",
+        "Mental Health / Digital Health"
+      ]
+    ],
+    [
+      "concept:benchmarking",
+      [
+        "Clinical Decision Support",
+        "Mental Health / Digital Health"
+      ]
+    ],
+    [
+      "concept:interpretability",
+      [
+        "Clinical Decision Support",
+        "Drug Discovery / Molecular ML"
+      ]
+    ],
+    [
+      "concept:conformal prediction",
+      [
+        "Domain Adaptation / Robustness",
+        "Drug Discovery / Molecular ML"
+      ]
+    ]
+  ],
+  "clusters": [
+    [
+      "paper:2608 16273",
+      "paper:2608 16972",
+      "paper:2608 20315",
+      "paper:2608 23153",
+      "paper:2608 26149"
+    ],
+    [
+      "paper:2603 05423",
+      "paper:2605 00645",
+      "paper:2605 22611",
+      "paper:2607 24814"
+    ],
+    [
+      "paper:2608 10480",
+      "paper:2608 17678",
+      "paper:2608 19121",
+      "paper:2608 23646"
+    ],
+    [
+      "paper:2608 07651",
+      "paper:2608 11762",
+      "paper:2608 17598"
+    ],
+    [
+      "paper:2603 18239",
+      "paper:2608 18438"
+    ]
+  ],
+  "related": {
+    "paper:2608 20315": [
+      [
+        "paper:2608 16972",
+        0.3333
+      ],
+      [
+        "paper:2608 16273",
+        0.2667
+      ],
+      [
+        "paper:2605 22611",
+        0.0667
+      ]
+    ],
+    "paper:2608 16972": [
+      [
+        "paper:2608 20315",
+        0.3333
+      ],
+      [
+        "paper:2608 16273",
+        0.2667
+      ],
+      [
+        "paper:2605 22611",
+        0.0667
+      ]
+    ],
+    "paper:2608 16273": [
+      [
+        "paper:2608 20315",
+        0.2667
+      ],
+      [
+        "paper:2608 16972",
+        0.2667
+      ]
+    ],
+    "paper:2608 17598": [
+      [
+        "paper:2608 11762",
+        0.2667
+      ],
+      [
+        "paper:2608 07651",
+        0.2667
+      ]
+    ],
+    "paper:2608 11762": [
+      [
+        "paper:2608 07651",
+        0.2857
+      ],
+      [
+        "paper:2608 17598",
+        0.2667
+      ],
+      [
+        "paper:2603 18239",
+        0.0444
+      ]
+    ],
+    "paper:2608 07651": [
+      [
+        "paper:2608 11762",
+        0.2857
+      ],
+      [
+        "paper:2608 17598",
+        0.2667
+      ]
+    ],
+    "paper:2607 24814": [
+      [
+        "paper:2605 22611",
+        0.2667
+      ],
+      [
+        "paper:2605 00645",
+        0.2667
+      ],
+      [
+        "paper:2603 05423",
+        0.2667
+      ]
+    ],
+    "paper:2605 22611": [
+      [
+        "paper:2605 00645",
+        0.3333
+      ],
+      [
+        "paper:2603 05423",
+        0.3333
+      ],
+      [
+        "paper:2607 24814",
+        0.2667
+      ]
+    ],
+    "paper:2605 00645": [
+      [
+        "paper:2605 22611",
+        0.3333
+      ],
+      [
+        "paper:2603 05423",
+        0.3333
+      ],
+      [
+        "paper:2607 24814",
+        0.2667
+      ]
+    ],
+    "paper:2603 05423": [
+      [
+        "paper:2605 22611",
+        0.3333
+      ],
+      [
+        "paper:2605 00645",
+        0.3333
+      ],
+      [
+        "paper:2607 24814",
+        0.2667
+      ]
+    ],
+    "paper:2608 23646": [
+      [
+        "paper:2608 10480",
+        0.4286
+      ],
+      [
+        "paper:2608 17678",
+        0.4
+      ],
+      [
+        "paper:2608 19121",
+        0.2857
+      ]
+    ],
+    "paper:2608 19121": [
+      [
+        "paper:2608 23646",
+        0.2857
+      ],
+      [
+        "paper:2608 10480",
+        0.2857
+      ],
+      [
+        "paper:2608 17678",
+        0.2667
+      ]
+    ],
+    "paper:2608 17678": [
+      [
+        "paper:2608 10480",
+        0.5867
+      ],
+      [
+        "paper:2608 23646",
+        0.4
+      ],
+      [
+        "paper:2608 19121",
+        0.2667
+      ]
+    ],
+    "paper:2608 10480": [
+      [
+        "paper:2608 17678",
+        0.5867
+      ],
+      [
+        "paper:2608 23646",
+        0.4286
+      ],
+      [
+        "paper:2608 19121",
+        0.2857
+      ]
+    ],
+    "paper:2608 18438": [
+      [
+        "paper:2603 18239",
+        0.2667
+      ]
+    ],
+    "paper:2603 18239": [
+      [
+        "paper:2608 18438",
+        0.2667
+      ],
+      [
+        "paper:2605 22611",
+        0.1111
+      ],
+      [
+        "paper:2608 20315",
+        0.0667
+      ]
+    ],
+    "paper:2608 23153": [
+      [
+        "paper:2608 17678",
+        0.12
+      ],
+      [
+        "paper:2608 20315",
+        0.0667
+      ],
+      [
+        "paper:2608 16972",
+        0.0667
+      ]
+    ],
+    "paper:2608 26149": [
+      [
+        "paper:2608 20315",
+        0.0333
+      ],
+      [
+        "paper:2608 16972",
+        0.0333
+      ],
+      [
+        "paper:2605 22611",
+        0.0333
+      ]
+    ]
+  }
+}

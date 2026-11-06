@@ -1,0 +1,60 @@
+{
+  "temperatures": {
+    "T_lab": 1.014,
+    "T_field_all": 6.676
+  },
+  "lab_test": {
+    "raw": {
+      "accuracy": 0.9848,
+      "mean_confidence": 0.988,
+      "ece": 0.0078,
+      "nll": 0.0438
+    },
+    "T_lab": {
+      "accuracy": 0.9848,
+      "mean_confidence": 0.9878,
+      "ece": 0.0076,
+      "nll": 0.0437
+    }
+  },
+  "field_test": {
+    "raw": {
+      "accuracy": 0.25,
+      "mean_confidence": 0.8321,
+      "ece": 0.5844,
+      "nll": 5.2849
+    },
+    "T_lab": {
+      "accuracy": 0.25,
+      "mean_confidence": 0.8297,
+      "ece": 0.5821,
+      "nll": 5.2202
+    },
+    "T_field_all": {
+      "accuracy": 0.25,
+      "mean_confidence": 0.2892,
+      "ece": 0.047,
+      "nll": 2.0529
+    }
+  },
+  "field_budget": {
+    "N=25": {
+      "T_mean": 7.03,
+      "T_std": 1.063,
+      "ece_mean": 0.0499,
+      "ece_std": 0.0212
+    },
+    "N=50": {
+      "T_mean": 6.945,
+      "T_std": 1.034,
+      "ece_mean": 0.05,
+      "ece_std": 0.0231
+    },
+    "N=100": {
+      "T_mean": 6.65,
+      "T_std": 0.694,
+      "ece_mean": 0.054,
+      "ece_std": 0.0181
+    }
+  }
+}

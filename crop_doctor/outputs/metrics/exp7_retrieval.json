@@ -1,0 +1,197 @@
+{
+  "questions": 20,
+  "embeddings": {
+    "hit_at_1": 0.5,
+    "hit_at_3": 0.9,
+    "misses_at_1": [
+      {
+        "question": "Can I use an organic spray?",
+        "expected": "tomato_late_blight#Organic and low-cost options",
+        "got": [
+          "tomato_late_blight#Chemical options",
+          "general#Before spraying",
+          "tomato_late_blight#Organic and low-cost options"
+        ]
+      },
+      {
+        "question": "How do I stop the white insects?",
+        "expected": "tomato_yellow_curl_virus#What to do now",
+        "got": [
+          "tomato_yellow_curl_virus#Organic and low-cost options",
+          "tomato_yellow_curl_virus#What to do now",
+          "tomato_yellow_curl_virus#Chemical options"
+        ]
+      },
+      {
+        "question": "How do I clean my tools?",
+        "expected": "tomato_mosaic_virus#What to do now",
+        "got": [
+          "tomato_mosaic_virus#Organic and low-cost options",
+          "tomato_mosaic_virus#What to do now",
+          "general#While spraying"
+        ]
+      },
+      {
+        "question": "When can I pick the tomatoes after spraying?",
+        "expected": "general#After spraying",
+        "got": [
+          "tomato_septoria#Chemical options",
+          "general#After spraying",
+          "tomato_septoria#Organic and low-cost options"
+        ]
+      },
+      {
+        "question": "Should I burn or compost the sick plants?",
+        "expected": "potato_late_blight#What to do now",
+        "got": [
+          "potato_late_blight#Organic and low-cost options",
+          "potato_late_blight#What to do now",
+          "potato_late_blight#Prevention next season"
+        ]
+      },
+      {
+        "question": "Will copper spray work on this?",
+        "expected": "tomato_bacterial_spot#Organic and low-cost options",
+        "got": [
+          "tomato_bacterial_spot#Chemical options",
+          "tomato_bacterial_spot#Organic and low-cost options",
+          "general#While spraying"
+        ]
+      },
+      {
+        "question": "Can I save money and avoid chemicals?",
+        "expected": "tomato_yellow_curl_virus#Organic and low-cost options",
+        "got": [
+          "general#Before spraying",
+          "tomato_yellow_curl_virus#Chemical options",
+          "tomato_yellow_curl_virus#Organic and low-cost options"
+        ]
+      },
+      {
+        "question": "How do I prevent it from coming back?",
+        "expected": "tomato_early_blight#Prevention next season",
+        "got": [
+          "tomato_early_blight#What to do now",
+          "tomato_early_blight#Why it spreads",
+          "tomato_early_blight#Prevention next season"
+        ]
+      },
+      {
+        "question": "Should I water the plants differently?",
+        "expected": "tomato_septoria#What to do now",
+        "got": [
+          "general#After spraying",
+          "tomato_septoria#Organic and low-cost options",
+          "tomato_septoria#Chemical options"
+        ]
+      },
+      {
+        "question": "What does it do to the potatoes underground?",
+        "expected": "potato_late_blight#Symptoms",
+        "got": [
+          "potato_late_blight#Prevention next season",
+          "potato_late_blight#Organic and low-cost options",
+          "potato_late_blight#Why it spreads"
+        ]
+      }
+    ],
+    "backend_used": "embeddings"
+  },
+  "tfidf": {
+    "hit_at_1": 0.5,
+    "hit_at_3": 0.75,
+    "misses_at_1": [
+      {
+        "question": "How do I stop the white insects?",
+        "expected": "tomato_yellow_curl_virus#What to do now",
+        "got": [
+          "tomato_yellow_curl_virus#Symptoms",
+          "tomato_yellow_curl_virus#What to do now",
+          "tomato_yellow_curl_virus#Chemical options"
+        ]
+      },
+      {
+        "question": "Is there any medicine for this virus?",
+        "expected": "tomato_mosaic_virus#Chemical options",
+        "got": [
+          "tomato_mosaic_virus#Why it spreads",
+          "tomato_mosaic_virus#Chemical options",
+          "tomato_mosaic_virus#Prevention next season"
+        ]
+      },
+      {
+        "question": "How do I clean my tools?",
+        "expected": "tomato_mosaic_virus#What to do now",
+        "got": [
+          "tomato_mosaic_virus#Prevention next season",
+          "tomato_mosaic_virus#Organic and low-cost options",
+          "tomato_mosaic_virus#What to do now"
+        ]
+      },
+      {
+        "question": "Why did this happen to my plants?",
+        "expected": "tomato_septoria#Why it spreads",
+        "got": [
+          "tomato_septoria#What to do now",
+          "tomato_septoria#Organic and low-cost options",
+          "tomato_septoria#Prevention next season"
+        ]
+      },
+      {
+        "question": "When can I pick the tomatoes after spraying?",
+        "expected": "general#After spraying",
+        "got": [
+          "general#While spraying",
+          "tomato_septoria#Chemical options",
+          "tomato_septoria#Prevention next season"
+        ]
+      },
+      {
+        "question": "My greenhouse is very humid, what do I do?",
+        "expected": "tomato_leaf_mold#What to do now",
+        "got": [
+          "tomato_leaf_mold#Organic and low-cost options",
+          "tomato_leaf_mold#Chemical options",
+          "tomato_leaf_mold#Prevention next season"
+        ]
+      },
+      {
+        "question": "Will copper spray work on this?",
+        "expected": "tomato_bacterial_spot#Organic and low-cost options",
+        "got": [
+          "tomato_bacterial_spot#What to do now",
+          "tomato_bacterial_spot#Chemical options",
+          "tomato_bacterial_spot#Organic and low-cost options"
+        ]
+      },
+      {
+        "question": "What weather makes this disease worse?",
+        "expected": "tomato_late_blight#Why it spreads",
+        "got": [
+          "tomato_late_blight#Prevention next season",
+          "tomato_late_blight#Symptoms",
+          "tomato_late_blight#What to do now"
+        ]
+      },
+      {
+        "question": "How do I prevent it from coming back?",
+        "expected": "tomato_early_blight#Prevention next season",
+        "got": [
+          "tomato_early_blight#Organic and low-cost options",
+          "tomato_early_blight#Symptoms",
+          "tomato_early_blight#Prevention next season"
+        ]
+      },
+      {
+        "question": "What does it do to the potatoes underground?",
+        "expected": "potato_late_blight#Symptoms",
+        "got": [
+          "potato_late_blight#Organic and low-cost options",
+          "potato_late_blight#Prevention next season",
+          "potato_late_blight#Why it spreads"
+        ]
+      }
+    ],
+    "backend_used": "tfidf"
+  }
+}

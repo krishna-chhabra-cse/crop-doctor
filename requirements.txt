@@ -1,0 +1,18 @@
+# Day 1: data preparation
+pandas>=2.2
+pillow>=10
+scikit-learn>=1.5
+pytest>=8
+# Day 2: model. For NVIDIA GPUs install torch first with:
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cu128
+torch>=2.5
+torchvision>=0.20
+timm>=1.0
+matplotlib>=3.9
+# Day 5: photo checks
+opencv-python-headless>=4.10
+# Day 6: RAG + LLM
+sentence-transformers>=3.0
+anthropic>=2.0
+# Day 7: app
+streamlit>=1.40

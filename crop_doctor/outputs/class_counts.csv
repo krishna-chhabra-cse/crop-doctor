@@ -1,0 +1,12 @@
+label,lab_train,lab_val,lab_test,field_pool,field_test
+potato_early_blight,800,100,100,55,56
+potato_late_blight,800,100,100,50,50
+tomato_bacterial_spot,1701,213,213,54,55
+tomato_early_blight,800,100,100,44,44
+tomato_healthy,1268,158,159,32,31
+tomato_late_blight,1521,190,190,55,56
+tomato_leaf_mold,762,95,95,46,45
+tomato_mosaic_virus,298,38,37,27,27
+tomato_septoria,1417,177,177,74,75
+tomato_yellow_curl_virus,4285,536,536,38,37
+TOTAL,13652,1707,1707,475,476

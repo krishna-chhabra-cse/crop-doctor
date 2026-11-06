@@ -1,0 +1,69 @@
+{
+  "selection_on_field_val": {
+    "final_convnext_tiny.pt": {
+      "field_val_accuracy": 0.6105263157894737,
+      "field_val_nll": 1.562063727858414
+    },
+    "final_efficientnet_b0.pt": {
+      "field_val_accuracy": 0.5368421052631579,
+      "field_val_nll": 1.7865067774174617
+    }
+  },
+  "chosen": "final_convnext_tiny.pt",
+  "calibration_photos": 95,
+  "test_photos": 476,
+  "results": {
+    "baseline_lab_model": {
+      "temperature": 9.766387125139016,
+      "accuracy": 0.3550420168067227,
+      "macro_f1": 0.292827146219225,
+      "ece": 0.05135530587283102,
+      "per_crop_accuracy": {
+        "potato": 0.6037735849056604,
+        "tomato": 0.28378378378378377
+      },
+      "alpha_0.1": {
+        "qhat": 0.9046535395323252,
+        "coverage": 0.9432773109243697,
+        "avg_set_size": 5.466386554621849,
+        "empty_rate": 0.0,
+        "answered_rate": 0.03991596638655462,
+        "answered_accuracy": 0.6842105263157895
+      },
+      "alpha_0.2": {
+        "qhat": 0.8014761271759278,
+        "coverage": 0.8613445378151261,
+        "avg_set_size": 4.411764705882353,
+        "empty_rate": 0.0,
+        "answered_rate": 0.1092436974789916,
+        "answered_accuracy": 0.6538461538461539
+      }
+    },
+    "final_model": {
+      "temperature": 1.8911556159781817,
+      "accuracy": 0.6533613445378151,
+      "macro_f1": 0.6463815573366503,
+      "ece": 0.09961867217791211,
+      "per_crop_accuracy": {
+        "potato": 0.7169811320754716,
+        "tomato": 0.6351351351351351
+      },
+      "alpha_0.1": {
+        "qhat": 0.9270205318278967,
+        "coverage": 0.9096638655462185,
+        "avg_set_size": 2.880252100840336,
+        "empty_rate": 0.0063025210084033615,
+        "answered_rate": 0.25210084033613445,
+        "answered_accuracy": 0.7666666666666667
+      },
+      "alpha_0.2": {
+        "qhat": 0.8407507984709814,
+        "coverage": 0.8130252100840336,
+        "avg_set_size": 1.9936974789915967,
+        "empty_rate": 0.023109243697478993,
+        "answered_rate": 0.42857142857142855,
+        "answered_accuracy": 0.7696078431372549
+      }
+    }
+  }
+}

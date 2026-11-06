@@ -1,0 +1,2023 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "kind": "paper",
+      "label": "Explainable Transformer Models for Clinical Prediction Tasks on Structured Electronic Health Records",
+      "arxiv_id": "2608.20315",
+      "domain": "Clinical Prediction / EHR",
+      "difficulty": "High",
+      "timeline_weeks": 10,
+      "code_url": "",
+      "submitted": "20 August 2026",
+      "pdf_url": "https://arxiv.org/pdf/2608.20315.pdf",
+      "summary": "Predictive models over structured electronic health records (EHRs) remain central to clinical decision support. This work presents explainable transformer architectures for clinical prediction.",
+      "id": "paper:2608 20315"
+    },
+    {
+      "kind": "author",
+      "label": "Jun Ni Du",
+      "id": "author:jun ni du"
+    },
+    {
+      "kind": "author",
+      "label": "Lukas Adamek",
+      "id": "author:lukas adamek"
+    },
+    {
+      "kind": "author",
+      "label": "Maxim Kryukov",
+      "id": "author:maxim kryukov"
+    },
+    {
+      "kind": "author",
+      "label": "Flavio Dormont",
+      "id": "author:flavio dormont"
+    },
+    {
+      "kind": "author",
+      "label": "Ziv Bar-Joseph",
+      "id": "author:ziv bar joseph"
+    },
+    {
+      "kind": "author",
+      "label": "Sven Jager",
+      "id": "author:sven jager"
+    },
+    {
+      "kind": "author",
+      "label": "Brandon Rufino",
+      "id": "author:brandon rufino"
+    },
+    {
+      "kind": "concept",
+      "label": "Transformers",
+      "id": "concept:transformers"
+    },
+    {
+      "kind": "concept",
+      "label": "Explainable AI",
+      "id": "concept:explainable ai"
+    },
+    {
+      "kind": "concept",
+      "label": "EHR",
+      "id": "concept:ehr"
+    },
+    {
+      "kind": "dataset",
+      "label": "EHR datasets",
+      "id": "dataset:ehr datasets"
+    },
+    {
+      "kind": "dataset",
+      "label": "MIMIC",
+      "id": "dataset:mimic"
+    },
+    {
+      "kind": "dataset",
+      "label": "eICU",
+      "id": "dataset:eicu"
+    },
+    {
+      "kind": "domain",
+      "label": "Clinical Prediction / EHR",
+      "id": "domain:clinical prediction ehr"
+    },
+    {
+      "kind": "category",
+      "label": "cs.LG",
+      "id": "category:cs lg"
+    },
+    {
+      "kind": "paper",
+      "label": "MultiSigBERT: Beyond Survival Analysis through Multimodal and Sequential Modeling in Oncology",
+      "arxiv_id": "2608.16972",
+      "domain": "Clinical Prediction / EHR",
+      "difficulty": "High",
+      "timeline_weeks": 12,
+      "code_url": "",
+      "submitted": "17 August 2026",
+      "pdf_url": "https://arxiv.org/pdf/2608.16972.pdf",
+      "summary": "Multimodal and sequential modeling for oncology survival analysis using BERT-based architectures.",
+      "id": "paper:2608 16972"
+    },
+    {
+      "kind": "author",
+      "label": "Paul Minchella",
+      "id": "author:paul minchella"
+    },
+    {
+      "kind": "author",
+      "label": "St\u00e9phane Chr\u00e9tien",
+      "id": "author:st phane chr tien"
+    },
+    {
+      "kind": "author",
+      "label": "Guillaume Metzler",
+      "id": "author:guillaume metzler"
+    },
+    {
+      "kind": "author",
+      "label": "Lo\u00efc Verlingue",
+      "id": "author:lo c verlingue"
+    },
+    {
+      "kind": "author",
+      "label": "R\u00e9mi Vaucher",
+      "id": "author:r mi vaucher"
+    },
+    {
+      "kind": "concept",
+      "label": "Multimodal BERT",
+      "id": "concept:multimodal bert"
+    },
+    {
+      "kind": "concept",
+      "label": "Survival Analysis",
+      "id": "concept:survival analysis"
+    },
+    {
+      "kind": "concept",
+      "label": "Oncology",
+      "id": "concept:oncology"
+    },
+    {
+      "kind": "dataset",
+      "label": "Oncology clinical data",
+      "id": "dataset:oncology clinical data"
+    },
+    {
+      "kind": "paper",
+      "label": "Foresight-England: Development of a National-Scale Generative AI Model of Electronic Health Records for Medical Event Prediction across the COVID-19 Pandemic",
+      "arxiv_id": "2608.16273",
+      "domain": "Clinical Prediction / EHR",
+      "difficulty": "High",
+      "timeline_weeks": 12,
+      "code_url": "",
+      "submitted": "17 August 2026",
+      "pdf_url": "https://arxiv.org/pdf/2608.16273.pdf",
+      "summary": "National-scale generative AI model for EHR medical event prediction across COVID-19 pandemic.",
+      "id": "paper:2608 16273"
+    },
+    {
+      "kind": "author",
+      "label": "Simon Ellershaw",
+      "id": "author:simon ellershaw"
+    },
+    {
+      "kind": "author",
+      "label": "Christopher Tomlinson",
+      "id": "author:christopher tomlinson"
+    },
+    {
+      "kind": "author",
+      "label": "Zeljko Kraljevic",
+      "id": "author:zeljko kraljevic"
+    },
+    {
+      "kind": "author",
+      "label": "Spiros Denaxas",
+      "id": "author:spiros denaxas"
+    },
+    {
+      "kind": "author",
+      "label": "Harry Hemingway",
+      "id": "author:harry hemingway"
+    },
+    {
+      "kind": "author",
+      "label": "Cathie Sudlow",
+      "id": "author:cathie sudlow"
+    },
+    {
+      "kind": "author",
+      "label": "Angela M. Wood",
+      "id": "author:angela m wood"
+    },
+    {
+      "kind": "author",
+      "label": "Anoop D. Shah",
+      "id": "author:anoop d shah"
+    },
+    {
+      "kind": "author",
+      "label": "Richard Dobson",
+      "id": "author:richard dobson"
+    },
+    {
+      "kind": "concept",
+      "label": "Generative AI",
+      "id": "concept:generative ai"
+    },
+    {
+      "kind": "concept",
+      "label": "Large-scale EHR",
+      "id": "concept:large scale ehr"
+    },
+    {
+      "kind": "concept",
+      "label": "National-scale",
+      "id": "concept:national scale"
+    },
+    {
+      "kind": "dataset",
+      "label": "NHS England EHR data",
+      "id": "dataset:nhs england ehr data"
+    },
+    {
+      "kind": "paper",
+      "label": "SpurCon: Weighted Supervised Contrastive Learning for Mitigating Spurious Cues in Medical Imaging",
+      "arxiv_id": "2608.17598",
+      "domain": "Medical Imaging",
+      "difficulty": "High",
+      "timeline_weeks": 10,
+      "code_url": "",
+      "submitted": "18 August 2026",
+      "pdf_url": "https://arxiv.org/pdf/2608.17598.pdf",
+      "summary": "Contrastive learning approach to mitigate spurious correlations in medical imaging classification.",
+      "id": "paper:2608 17598"
+    },
+    {
+      "kind": "author",
+      "label": "Shenhav Nadir",
+      "id": "author:shenhav nadir"
+    },
+    {
+      "kind": "author",
+      "label": "Meir Yossef Levi",
+      "id": "author:meir yossef levi"
+    },
+    {
+      "kind": "author",
+      "label": "Eyal Gofer",
+      "id": "author:eyal gofer"
+    },
+    {
+      "kind": "author",
+      "label": "Guy Gilboa",
+      "id": "author:guy gilboa"
+    },
+    {
+      "kind": "concept",
+      "label": "Contrastive Learning",
+      "id": "concept:contrastive learning"
+    },
+    {
+      "kind": "concept",
+      "label": "Medical Imaging",
+      "id": "concept:medical imaging"
+    },
+    {
+      "kind": "concept",
+      "label": "Robustness",
+      "id": "concept:robustness"
+    },
+    {
+      "kind": "dataset",
+      "label": "Medical imaging datasets",
+      "id": "dataset:medical imaging datasets"
+    },
+    {
+      "kind": "domain",
+      "label": "Medical Imaging",
+      "id": "domain:medical imaging"
+    },
+    {
+      "kind": "category",
+      "label": "cs.CV",
+      "id": "category:cs cv"
+    },
+    {
+      "kind": "paper",
+      "label": "A comparison of CNN architectures for Alzheimer's disease detection in single-view MRI scans",
+      "arxiv_id": "2608.11762",
+      "domain": "Medical Imaging",
+      "difficulty": "Medium",
+      "timeline_weeks": 6,
+      "code_url": "",
+      "submitted": "12 August 2026",
+      "pdf_url": "https://arxiv.org/pdf/2608.11762.pdf",
+      "summary": "Benchmarking CNN architectures for Alzheimer's detection from single-view MRI.",
+      "id": "paper:2608 11762"
+    },
+    {
+      "kind": "author",
+      "label": "Hiram Zuniga",
+      "id": "author:hiram zuniga"
+    },
+    {
+      "kind": "author",
+      "label": "Ulises Orozco-Rosas",
+      "id": "author:ulises orozco rosas"
+    },
+    {
+      "kind": "author",
+      "label": "Kenia Picos",
+      "id": "author:kenia picos"
+    },
+    {
+      "kind": "concept",
+      "label": "CNN Benchmarking",
+      "id": "concept:cnn benchmarking"
+    },
+    {
+      "kind": "concept",
+      "label": "Alzheimer's",
+      "id": "concept:alzheimers"
+    },
+    {
+      "kind": "concept",
+      "label": "MRI",
+      "id": "concept:mri"
+    },
+    {
+      "kind": "dataset",
+      "label": "MRI datasets",
+      "id": "dataset:mri datasets"
+    },
+    {
+      "kind": "dataset",
+      "label": "ADNI",
+      "id": "dataset:adni"
+    },
+    {
+      "kind": "paper",
+      "label": "An Agentic AI Framework Overcomes Fundamental Limitations of Large Language Models for Glaucoma Detection from Fundus Photography",
+      "arxiv_id": "2608.07651",
+      "domain": "Medical Imaging",
+      "difficulty": "High",
+      "timeline_weeks": 10,
+      "code_url": "",
+      "submitted": "7 August 2026",
+      "pdf_url": "https://arxiv.org/pdf/2608.07651.pdf",
+      "summary": "Agentic AI framework for glaucoma detection from fundus photography overcoming LLM limitations.",
+      "id": "paper:2608 07651"
+    },
+    {
+      "kind": "author",
+      "label": "Jalil Jalili",
+      "id": "author:jalil jalili"
+    },
+    {
+      "kind": "author",
+      "label": "Hossein Taghizad",
+      "id": "author:hossein taghizad"
+    },
+    {
+      "kind": "author",
+      "label": "Anuwat Jiravarnsirikul",
+      "id": "author:anuwat jiravarnsirikul"
+    },
+    {
+      "kind": "author",
+      "label": "Christopher Bowd",
+      "id": "author:christopher bowd"
+    },
+    {
+      "kind": "author",
+      "label": "Akram Belghith",
+      "id": "author:akram belghith"
+    },
+    {
+      "kind": "author",
+      "label": "Raheleh Kafieh",
+      "id": "author:raheleh kafieh"
+    },
+    {
+      "kind": "author",
+      "label": "Christopher A. Girkin",
+      "id": "author:christopher a girkin"
+    },
+    {
+      "kind": "author",
+      "label": "Sally L. Baxter",
+      "id": "author:sally l baxter"
+    },
+    {
+      "kind": "author",
+      "label": "Robert N. Weinreb",
+      "id": "author:robert n weinreb"
+    },
+    {
+      "kind": "author",
+      "label": "Linda M. Zangwill",
+      "id": "author:linda m zangwill"
+    },
+    {
+      "kind": "author",
+      "label": "Mark Christopher",
+      "id": "author:mark christopher"
+    },
+    {
+      "kind": "concept",
+      "label": "Agentic AI",
+      "id": "concept:agentic ai"
+    },
+    {
+      "kind": "concept",
+      "label": "LLM",
+      "id": "concept:llm"
+    },
+    {
+      "kind": "concept",
+      "label": "Glaucoma",
+      "id": "concept:glaucoma"
+    },
+    {
+      "kind": "concept",
+      "label": "Fundus",
+      "id": "concept:fundus"
+    },
+    {
+      "kind": "dataset",
+      "label": "Fundus photography datasets",
+      "id": "dataset:fundus photography datasets"
+    },
+    {
+      "kind": "paper",
+      "label": "Aletheia: An Offline-First Clinical Decision Support System for Differential Diagnosis in Low-Resource Healthcare Settings",
+      "arxiv_id": "2607.24814",
+      "domain": "Clinical Decision Support",
+      "difficulty": "Medium-High",
+      "timeline_weeks": 8,
+      "code_url": "",
+      "submitted": "14 July 2026",
+      "pdf_url": "https://arxiv.org/pdf/2607.24814.pdf",
+      "summary": "Offline-first clinical decision support for differential diagnosis in low-resource settings.",
+      "id": "paper:2607 24814"
+    },
+    {
+      "kind": "author",
+      "label": "Joseph Walusimbi",
+      "id": "author:joseph walusimbi"
+    },
+    {
+      "kind": "author",
+      "label": "Ann Move Oguti",
+      "id": "author:ann move oguti"
+    },
+    {
+      "kind": "author",
+      "label": "Abubakhari Sserwadda",
+      "id": "author:abubakhari sserwadda"
+    },
+    {
+      "kind": "author",
+      "label": "Precious Boss Kasasira",
+      "id": "author:precious boss kasasira"
+    },
+    {
+      "kind": "author",
+      "label": "Charles Brian Okoboi",
+      "id": "author:charles brian okoboi"
+    },
+    {
+      "kind": "concept",
+      "label": "Offline CDSS",
+      "id": "concept:offline cdss"
+    },
+    {
+      "kind": "concept",
+      "label": "Low-resource",
+      "id": "concept:low resource"
+    },
+    {
+      "kind": "concept",
+      "label": "Differential Diagnosis",
+      "id": "concept:differential diagnosis"
+    },
+    {
+      "kind": "dataset",
+      "label": "Clinical diagnosis datasets",
+      "id": "dataset:clinical diagnosis datasets"
+    },
+    {
+      "kind": "domain",
+      "label": "Clinical Decision Support",
+      "id": "domain:clinical decision support"
+    },
+    {
+      "kind": "paper",
+      "label": "Benchmarking Machine Learning Architectures for Antimicrobial Stewardship in Pediatric ICUs",
+      "arxiv_id": "2605.22611",
+      "domain": "Clinical Decision Support",
+      "difficulty": "Medium-High",
+      "timeline_weeks": 8,
+      "code_url": "https://anonymous.4open.science/r/AMS_intervention_prediction-C024",
+      "submitted": "21 May 2026",
+      "pdf_url": "https://arxiv.org/pdf/2605.22611.pdf",
+      "summary": "Benchmarking ML architectures for antimicrobial stewardship prediction in pediatric ICUs.",
+      "id": "paper:2605 22611"
+    },
+    {
+      "kind": "author",
+      "label": "Niklas Raehse",
+      "id": "author:niklas raehse"
+    },
+    {
+      "kind": "author",
+      "label": "Luregn J. Schlapbach",
+      "id": "author:luregn j schlapbach"
+    },
+    {
+      "kind": "author",
+      "label": "Daphn\u00e9 Chopard",
+      "id": "author:daphn chopard"
+    },
+    {
+      "kind": "concept",
+      "label": "Benchmarking",
+      "id": "concept:benchmarking"
+    },
+    {
+      "kind": "concept",
+      "label": "Antimicrobial Stewardship",
+      "id": "concept:antimicrobial stewardship"
+    },
+    {
+      "kind": "concept",
+      "label": "Pediatric ICU",
+      "id": "concept:pediatric icu"
+    },
+    {
+      "kind": "dataset",
+      "label": "Pediatric ICU antimicrobial data",
+      "id": "dataset:pediatric icu antimicrobial data"
+    },
+    {
+      "kind": "paper",
+      "label": "From Prediction to Practice: A Task-Aware Evaluation Framework for Blood Glucose Forecasting",
+      "arxiv_id": "2605.00645",
+      "domain": "Clinical Decision Support",
+      "difficulty": "Medium-High",
+      "timeline_weeks": 8,
+      "code_url": "",
+      "submitted": "1 May 2026",
+      "pdf_url": "https://arxiv.org/pdf/2605.00645.pdf",
+      "summary": "Task-aware evaluation framework for blood glucose forecasting in diabetes management.",
+      "id": "paper:2605 00645"
+    },
+    {
+      "kind": "author",
+      "label": "Alireza Namazi",
+      "id": "author:alireza namazi"
+    },
+    {
+      "kind": "author",
+      "label": "Heman Shakeri",
+      "id": "author:heman shakeri"
+    },
+    {
+      "kind": "concept",
+      "label": "Time Series",
+      "id": "concept:time series"
+    },
+    {
+      "kind": "concept",
+      "label": "Glucose Forecasting",
+      "id": "concept:glucose forecasting"
+    },
+    {
+      "kind": "concept",
+      "label": "Diabetes",
+      "id": "concept:diabetes"
+    },
+    {
+      "kind": "dataset",
+      "label": "CGM/glucose monitoring data",
+      "id": "dataset:cgm glucose monitoring data"
+    },
+    {
+      "kind": "paper",
+      "label": "An interpretable prototype parts-based neural network for medical tabular data",
+      "arxiv_id": "2603.05423",
+      "domain": "Clinical Decision Support",
+      "difficulty": "High",
+      "timeline_weeks": 10,
+      "code_url": "",
+      "submitted": "5 March 2026",
+      "pdf_url": "https://arxiv.org/pdf/2603.05423.pdf",
+      "summary": "Interpretable prototype-based neural network for medical tabular data.",
+      "id": "paper:2603 05423"
+    },
+    {
+      "kind": "author",
+      "label": "Jacek Karolczak",
+      "id": "author:jacek karolczak"
+    },
+    {
+      "kind": "author",
+      "label": "Jerzy Stefanowski",
+      "id": "author:jerzy stefanowski"
+    },
+    {
+      "kind": "concept",
+      "label": "Prototype Learning",
+      "id": "concept:prototype learning"
+    },
+    {
+      "kind": "concept",
+      "label": "Interpretability",
+      "id": "concept:interpretability"
+    },
+    {
+      "kind": "concept",
+      "label": "Tabular",
+      "id": "concept:tabular"
+    },
+    {
+      "kind": "dataset",
+      "label": "Medical tabular datasets",
+      "id": "dataset:medical tabular datasets"
+    },
+    {
+      "kind": "paper",
+      "label": "MolEmb: Multimodal Large Language Models Can Be Strong Molecular Embedding Models",
+      "arxiv_id": "2608.23646",
+      "domain": "Drug Discovery / Molecular ML",
+      "difficulty": "High",
+      "timeline_weeks": 10,
+      "code_url": "",
+      "submitted": "24 August 2026",
+      "pdf_url": "https://arxiv.org/pdf/2608.23646.pdf",
+      "summary": "Multimodal LLMs as strong molecular embedding models for property prediction.",
+      "id": "paper:2608 23646"
+    },
+    {
+      "kind": "author",
+      "label": "Xinjian Zhao",
+      "id": "author:xinjian zhao"
+    },
+    {
+      "kind": "author",
+      "label": "Xiangru Jian",
+      "id": "author:xiangru jian"
+    },
+    {
+      "kind": "author",
+      "label": "Yaoyao Xu",
+      "id": "author:yaoyao xu"
+    },
+    {
+      "kind": "author",
+      "label": "Xiaozhuang Song",
+      "id": "author:xiaozhuang song"
+    },
+    {
+      "kind": "author",
+      "label": "Wei Pang",
+      "id": "author:wei pang"
+    },
+    {
+      "kind": "author",
+      "label": "Lei Bai",
+      "id": "author:lei bai"
+    },
+    {
+      "kind": "author",
+      "label": "Tianshu Yu",
+      "id": "author:tianshu yu"
+    },
+    {
+      "kind": "concept",
+      "label": "Multimodal LLM",
+      "id": "concept:multimodal llm"
+    },
+    {
+      "kind": "concept",
+      "label": "Molecular Embeddings",
+      "id": "concept:molecular embeddings"
+    },
+    {
+      "kind": "concept",
+      "label": "Drug Discovery",
+      "id": "concept:drug discovery"
+    },
+    {
+      "kind": "dataset",
+      "label": "Molecular property datasets",
+      "id": "dataset:molecular property datasets"
+    },
+    {
+      "kind": "dataset",
+      "label": "MoleculeNet",
+      "id": "dataset:moleculenet"
+    },
+    {
+      "kind": "domain",
+      "label": "Drug Discovery / Molecular ML",
+      "id": "domain:drug discovery molecular ml"
+    },
+    {
+      "kind": "paper",
+      "label": "PGFS++: Molecular Property Improvement under Synthesis and Diversity Constraints",
+      "arxiv_id": "2608.19121",
+      "domain": "Drug Discovery / Molecular ML",
+      "difficulty": "High",
+      "timeline_weeks": 10,
+      "code_url": "",
+      "submitted": "19 August 2026",
+      "pdf_url": "https://arxiv.org/pdf/2608.19121.pdf",
+      "summary": "Molecular property optimization with synthesis and diversity constraints.",
+      "id": "paper:2608 19121"
+    },
+    {
+      "kind": "author",
+      "label": "Boqiao Zhang",
+      "id": "author:boqiao zhang"
+    },
+    {
+      "kind": "author",
+      "label": "Godbless James",
+      "id": "author:godbless james"
+    },
+    {
+      "kind": "author",
+      "label": "Sai Krishna Gottipati",
+      "id": "author:sai krishna gottipati"
+    },
+    {
+      "kind": "author",
+      "label": "Andrew Fitzgibbon",
+      "id": "author:andrew fitzgibbon"
+    },
+    {
+      "kind": "concept",
+      "label": "Molecular Generation",
+      "id": "concept:molecular generation"
+    },
+    {
+      "kind": "concept",
+      "label": "Optimization",
+      "id": "concept:optimization"
+    },
+    {
+      "kind": "concept",
+      "label": "Synthesis-aware",
+      "id": "concept:synthesis aware"
+    },
+    {
+      "kind": "dataset",
+      "label": "Molecular datasets",
+      "id": "dataset:molecular datasets"
+    },
+    {
+      "kind": "paper",
+      "label": "Conformal Prediction for Molecular Properties under Label Shift",
+      "arxiv_id": "2608.17678",
+      "domain": "Drug Discovery / Molecular ML",
+      "difficulty": "High",
+      "timeline_weeks": 8,
+      "code_url": "",
+      "submitted": "18 August 2026",
+      "pdf_url": "https://arxiv.org/pdf/2608.17678.pdf",
+      "summary": "Conformal prediction for molecular property prediction under distribution shift.",
+      "id": "paper:2608 17678"
+    },
+    {
+      "kind": "author",
+      "label": "Hyeonsu Lee",
+      "id": "author:hyeonsu lee"
+    },
+    {
+      "kind": "author",
+      "label": "Juyeon Kim",
+      "id": "author:juyeon kim"
+    },
+    {
+      "kind": "author",
+      "label": "Erkhembayar Jadamba",
+      "id": "author:erkhembayar jadamba"
+    },
+    {
+      "kind": "author",
+      "label": "Seungjin Choi",
+      "id": "author:seungjin choi"
+    },
+    {
+      "kind": "author",
+      "label": "Hyunjin Shin",
+      "id": "author:hyunjin shin"
+    },
+    {
+      "kind": "concept",
+      "label": "Conformal Prediction",
+      "id": "concept:conformal prediction"
+    },
+    {
+      "kind": "concept",
+      "label": "Distribution Shift",
+      "id": "concept:distribution shift"
+    },
+    {
+      "kind": "concept",
+      "label": "Molecular",
+      "id": "concept:molecular"
+    },
+    {
+      "kind": "paper",
+      "label": "Multi-Granular Rationale-Guided Molecular LLM for Property Prediction",
+      "arxiv_id": "2608.10480",
+      "domain": "Drug Discovery / Molecular ML",
+      "difficulty": "High",
+      "timeline_weeks": 10,
+      "code_url": "https://github.com/skku-aihclab/MR-MoL",
+      "submitted": "11 August 2026",
+      "pdf_url": "https://arxiv.org/pdf/2608.10480.pdf",
+      "summary": "Rationale-guided molecular LLM with multi-granular explanations for property prediction.",
+      "id": "paper:2608 10480"
+    },
+    {
+      "kind": "author",
+      "label": "Junwoo Park",
+      "id": "author:junwoo park"
+    },
+    {
+      "kind": "author",
+      "label": "Minyoung Shin",
+      "id": "author:minyoung shin"
+    },
+    {
+      "kind": "author",
+      "label": "Cheol Soon Lee",
+      "id": "author:cheol soon lee"
+    },
+    {
+      "kind": "author",
+      "label": "Sujee Lee",
+      "id": "author:sujee lee"
+    },
+    {
+      "kind": "concept",
+      "label": "Rationale-guided LLM",
+      "id": "concept:rationale guided llm"
+    },
+    {
+      "kind": "paper",
+      "label": "Pedagogical AI in Mental Health: A Tri-Stream Fine-Tuned LLM Framework for Automated Clinical Supervision and Risk Triage",
+      "arxiv_id": "2608.18438",
+      "domain": "Mental Health / Digital Health",
+      "difficulty": "High",
+      "timeline_weeks": 8,
+      "code_url": "",
+      "submitted": "18 August 2026",
+      "pdf_url": "https://arxiv.org/pdf/2608.18438.pdf",
+      "summary": "Tri-stream fine-tuned LLM framework for mental health clinical supervision and risk triage.",
+      "id": "paper:2608 18438"
+    },
+    {
+      "kind": "author",
+      "label": "Shreeya Sharma",
+      "id": "author:shreeya sharma"
+    },
+    {
+      "kind": "author",
+      "label": "Ravish Gupta",
+      "id": "author:ravish gupta"
+    },
+    {
+      "kind": "author",
+      "label": "Saket Kumar",
+      "id": "author:saket kumar"
+    },
+    {
+      "kind": "author",
+      "label": "Abhishek Aggarwal",
+      "id": "author:abhishek aggarwal"
+    },
+    {
+      "kind": "concept",
+      "label": "LLM Fine-tuning",
+      "id": "concept:llm fine tuning"
+    },
+    {
+      "kind": "concept",
+      "label": "Mental Health",
+      "id": "concept:mental health"
+    },
+    {
+      "kind": "concept",
+      "label": "Risk Triage",
+      "id": "concept:risk triage"
+    },
+    {
+      "kind": "dataset",
+      "label": "Mental health clinical data",
+      "id": "dataset:mental health clinical data"
+    },
+    {
+      "kind": "domain",
+      "label": "Mental Health / Digital Health",
+      "id": "domain:mental health digital health"
+    },
+    {
+      "kind": "paper",
+      "label": "Impact of automatic speech recognition quality on Alzheimer's disease detection from spontaneous speech: a reproducible benchmark study with lexical modeling and statistical validation",
+      "arxiv_id": "2603.18239",
+      "domain": "Mental Health / Digital Health",
+      "difficulty": "Medium-High",
+      "timeline_weeks": 8,
+      "code_url": "",
+      "submitted": "18 March 2026",
+      "pdf_url": "https://arxiv.org/pdf/2603.18239.pdf",
+      "summary": "Benchmark study on ASR quality impact on Alzheimer's detection from speech.",
+      "id": "paper:2603 18239"
+    },
+    {
+      "kind": "author",
+      "label": "Himadri S Samanta",
+      "id": "author:himadri s samanta"
+    },
+    {
+      "kind": "concept",
+      "label": "Speech Processing",
+      "id": "concept:speech processing"
+    },
+    {
+      "kind": "concept",
+      "label": "ASR",
+      "id": "concept:asr"
+    },
+    {
+      "kind": "dataset",
+      "label": "Speech datasets for Alzheimer's",
+      "id": "dataset:speech datasets for alzheimers"
+    },
+    {
+      "kind": "paper",
+      "label": "Conformal Risk Minimization for Semi-Supervised Domain Adaptation via Optimal Transport",
+      "arxiv_id": "2608.23153",
+      "domain": "Domain Adaptation / Robustness",
+      "difficulty": "High",
+      "timeline_weeks": 10,
+      "code_url": "",
+      "submitted": "24 August 2026",
+      "pdf_url": "https://arxiv.org/pdf/2608.23153.pdf",
+      "summary": "Conformal risk minimization for domain adaptation in high-stakes healthcare applications.",
+      "id": "paper:2608 23153"
+    },
+    {
+      "kind": "author",
+      "label": "Manos Giannopoulos",
+      "id": "author:manos giannopoulos"
+    },
+    {
+      "kind": "author",
+      "label": "Yi Shen",
+      "id": "author:yi shen"
+    },
+    {
+      "kind": "author",
+      "label": "Michael M. Zavlanos",
+      "id": "author:michael m zavlanos"
+    },
+    {
+      "kind": "concept",
+      "label": "Domain Adaptation",
+      "id": "concept:domain adaptation"
+    },
+    {
+      "kind": "concept",
+      "label": "Optimal Transport",
+      "id": "concept:optimal transport"
+    },
+    {
+      "kind": "dataset",
+      "label": "Healthcare domain adaptation benchmarks",
+      "id": "dataset:healthcare domain adaptation benchmarks"
+    },
+    {
+      "kind": "domain",
+      "label": "Domain Adaptation / Robustness",
+      "id": "domain:domain adaptation robustness"
+    },
+    {
+      "kind": "paper",
+      "label": "Methodological and Conceptual Framework for 5D Multi-Table Analysis: A Unified Approach for Complex Data Reuse",
+      "arxiv_id": "2608.26149",
+      "domain": "Data Integration / Multi-table",
+      "difficulty": "Medium-High",
+      "timeline_weeks": 8,
+      "code_url": "",
+      "submitted": "1 July 2026",
+      "pdf_url": "https://arxiv.org/pdf/2608.26149.pdf",
+      "summary": "Framework for multi-table learning and complex data reuse in healthcare.",
+      "id": "paper:2608 26149"
+    },
+    {
+      "kind": "author",
+      "label": "Edouard Lansiaux",
+      "id": "author:edouard lansiaux"
+    },
+    {
+      "kind": "author",
+      "label": "Hugo Kazzi",
+      "id": "author:hugo kazzi"
+    },
+    {
+      "kind": "author",
+      "label": "Aur\u00e9lien Loison",
+      "id": "author:aur lien loison"
+    },
+    {
+      "kind": "author",
+      "label": "Slim Hammadi",
+      "id": "author:slim hammadi"
+    },
+    {
+      "kind": "author",
+      "label": "Emmanuel Chazard",
+      "id": "author:emmanuel chazard"
+    },
+    {
+      "kind": "concept",
+      "label": "Multi-table Learning",
+      "id": "concept:multi table learning"
+    },
+    {
+      "kind": "concept",
+      "label": "Data Integration",
+      "id": "concept:data integration"
+    },
+    {
+      "kind": "concept",
+      "label": "Complex Data",
+      "id": "concept:complex data"
+    },
+    {
+      "kind": "dataset",
+      "label": "Multi-table healthcare datasets",
+      "id": "dataset:multi table healthcare datasets"
+    },
+    {
+      "kind": "domain",
+      "label": "Data Integration / Multi-table",
+      "id": "domain:data integration multi table"
+    },
+    {
+      "kind": "category",
+      "label": "cs.AI",
+      "id": "category:cs ai"
+    }
+  ],
+  "links": [
+    {
+      "rel": "written_by",
+      "source": "paper:2608 20315",
+      "target": "author:jun ni du"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2608 20315",
+      "target": "author:lukas adamek"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2608 20315",
+      "target": "author:maxim kryukov"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2608 20315",
+      "target": "author:flavio dormont"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2608 20315",
+      "target": "author:ziv bar joseph"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2608 20315",
+      "target": "author:sven jager"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2608 20315",
+      "target": "author:brandon rufino"
+    },
+    {
+      "rel": "uses",
+      "source": "paper:2608 20315",
+      "target": "concept:transformers"
+    },
+    {
+      "rel": "uses",
+      "source": "paper:2608 20315",
+      "target": "concept:explainable ai"
+    },
+    {
+      "rel": "uses",
+      "source": "paper:2608 20315",
+      "target": "concept:ehr"
+    },
+    {
+      "rel": "evaluated_on",
+      "source": "paper:2608 20315",
+      "target": "dataset:ehr datasets"
+    },
+    {
+      "rel": "evaluated_on",
+      "source": "paper:2608 20315",
+      "target": "dataset:mimic"
+    },
+    {
+      "rel": "evaluated_on",
+      "source": "paper:2608 20315",
+      "target": "dataset:eicu"
+    },
+    {
+      "rel": "in_domain",
+      "source": "paper:2608 20315",
+      "target": "domain:clinical prediction ehr"
+    },
+    {
+      "rel": "listed_in",
+      "source": "paper:2608 20315",
+      "target": "category:cs lg"
+    },
+    {
+      "rel": "in_domain",
+      "source": "domain:clinical prediction ehr",
+      "target": "paper:2608 16972"
+    },
+    {
+      "rel": "in_domain",
+      "source": "domain:clinical prediction ehr",
+      "target": "paper:2608 16273"
+    },
+    {
+      "rel": "listed_in",
+      "source": "category:cs lg",
+      "target": "paper:2608 16972"
+    },
+    {
+      "rel": "listed_in",
+      "source": "category:cs lg",
+      "target": "paper:2605 22611"
+    },
+    {
+      "rel": "listed_in",
+      "source": "category:cs lg",
+      "target": "paper:2605 00645"
+    },
+    {
+      "rel": "listed_in",
+      "source": "category:cs lg",
+      "target": "paper:2603 05423"
+    },
+    {
+      "rel": "listed_in",
+      "source": "category:cs lg",
+      "target": "paper:2608 17678"
+    },
+    {
+      "rel": "listed_in",
+      "source": "category:cs lg",
+      "target": "paper:2603 18239"
+    },
+    {
+      "rel": "listed_in",
+      "source": "category:cs lg",
+      "target": "paper:2608 23153"
+    },
+    {
+      "rel": "listed_in",
+      "source": "category:cs lg",
+      "target": "paper:2608 26149"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2608 16972",
+      "target": "author:paul minchella"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2608 16972",
+      "target": "author:st phane chr tien"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2608 16972",
+      "target": "author:guillaume metzler"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2608 16972",
+      "target": "author:lo c verlingue"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2608 16972",
+      "target": "author:r mi vaucher"
+    },
+    {
+      "rel": "uses",
+      "source": "paper:2608 16972",
+      "target": "concept:multimodal bert"
+    },
+    {
+      "rel": "uses",
+      "source": "paper:2608 16972",
+      "target": "concept:survival analysis"
+    },
+    {
+      "rel": "uses",
+      "source": "paper:2608 16972",
+      "target": "concept:oncology"
+    },
+    {
+      "rel": "evaluated_on",
+      "source": "paper:2608 16972",
+      "target": "dataset:oncology clinical data"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2608 16273",
+      "target": "author:simon ellershaw"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2608 16273",
+      "target": "author:christopher tomlinson"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2608 16273",
+      "target": "author:zeljko kraljevic"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2608 16273",
+      "target": "author:spiros denaxas"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2608 16273",
+      "target": "author:harry hemingway"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2608 16273",
+      "target": "author:cathie sudlow"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2608 16273",
+      "target": "author:angela m wood"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2608 16273",
+      "target": "author:anoop d shah"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2608 16273",
+      "target": "author:richard dobson"
+    },
+    {
+      "rel": "uses",
+      "source": "paper:2608 16273",
+      "target": "concept:generative ai"
+    },
+    {
+      "rel": "uses",
+      "source": "paper:2608 16273",
+      "target": "concept:large scale ehr"
+    },
+    {
+      "rel": "uses",
+      "source": "paper:2608 16273",
+      "target": "concept:national scale"
+    },
+    {
+      "rel": "evaluated_on",
+      "source": "paper:2608 16273",
+      "target": "dataset:nhs england ehr data"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2608 17598",
+      "target": "author:shenhav nadir"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2608 17598",
+      "target": "author:meir yossef levi"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2608 17598",
+      "target": "author:eyal gofer"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2608 17598",
+      "target": "author:guy gilboa"
+    },
+    {
+      "rel": "uses",
+      "source": "paper:2608 17598",
+      "target": "concept:contrastive learning"
+    },
+    {
+      "rel": "uses",
+      "source": "paper:2608 17598",
+      "target": "concept:medical imaging"
+    },
+    {
+      "rel": "uses",
+      "source": "paper:2608 17598",
+      "target": "concept:robustness"
+    },
+    {
+      "rel": "evaluated_on",
+      "source": "paper:2608 17598",
+      "target": "dataset:medical imaging datasets"
+    },
+    {
+      "rel": "in_domain",
+      "source": "paper:2608 17598",
+      "target": "domain:medical imaging"
+    },
+    {
+      "rel": "listed_in",
+      "source": "paper:2608 17598",
+      "target": "category:cs cv"
+    },
+    {
+      "rel": "in_domain",
+      "source": "domain:medical imaging",
+      "target": "paper:2608 11762"
+    },
+    {
+      "rel": "in_domain",
+      "source": "domain:medical imaging",
+      "target": "paper:2608 07651"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2608 11762",
+      "target": "author:hiram zuniga"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2608 11762",
+      "target": "author:ulises orozco rosas"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2608 11762",
+      "target": "author:kenia picos"
+    },
+    {
+      "rel": "uses",
+      "source": "paper:2608 11762",
+      "target": "concept:cnn benchmarking"
+    },
+    {
+      "rel": "uses",
+      "source": "paper:2608 11762",
+      "target": "concept:alzheimers"
+    },
+    {
+      "rel": "uses",
+      "source": "paper:2608 11762",
+      "target": "concept:mri"
+    },
+    {
+      "rel": "evaluated_on",
+      "source": "paper:2608 11762",
+      "target": "dataset:mri datasets"
+    },
+    {
+      "rel": "evaluated_on",
+      "source": "paper:2608 11762",
+      "target": "dataset:adni"
+    },
+    {
+      "rel": "uses",
+      "source": "concept:alzheimers",
+      "target": "paper:2603 18239"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2608 07651",
+      "target": "author:jalil jalili"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2608 07651",
+      "target": "author:hossein taghizad"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2608 07651",
+      "target": "author:anuwat jiravarnsirikul"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2608 07651",
+      "target": "author:christopher bowd"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2608 07651",
+      "target": "author:akram belghith"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2608 07651",
+      "target": "author:raheleh kafieh"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2608 07651",
+      "target": "author:christopher a girkin"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2608 07651",
+      "target": "author:sally l baxter"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2608 07651",
+      "target": "author:robert n weinreb"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2608 07651",
+      "target": "author:linda m zangwill"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2608 07651",
+      "target": "author:mark christopher"
+    },
+    {
+      "rel": "uses",
+      "source": "paper:2608 07651",
+      "target": "concept:agentic ai"
+    },
+    {
+      "rel": "uses",
+      "source": "paper:2608 07651",
+      "target": "concept:llm"
+    },
+    {
+      "rel": "uses",
+      "source": "paper:2608 07651",
+      "target": "concept:glaucoma"
+    },
+    {
+      "rel": "uses",
+      "source": "paper:2608 07651",
+      "target": "concept:fundus"
+    },
+    {
+      "rel": "evaluated_on",
+      "source": "paper:2608 07651",
+      "target": "dataset:fundus photography datasets"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2607 24814",
+      "target": "author:joseph walusimbi"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2607 24814",
+      "target": "author:ann move oguti"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2607 24814",
+      "target": "author:abubakhari sserwadda"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2607 24814",
+      "target": "author:precious boss kasasira"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2607 24814",
+      "target": "author:charles brian okoboi"
+    },
+    {
+      "rel": "uses",
+      "source": "paper:2607 24814",
+      "target": "concept:offline cdss"
+    },
+    {
+      "rel": "uses",
+      "source": "paper:2607 24814",
+      "target": "concept:low resource"
+    },
+    {
+      "rel": "uses",
+      "source": "paper:2607 24814",
+      "target": "concept:differential diagnosis"
+    },
+    {
+      "rel": "evaluated_on",
+      "source": "paper:2607 24814",
+      "target": "dataset:clinical diagnosis datasets"
+    },
+    {
+      "rel": "in_domain",
+      "source": "paper:2607 24814",
+      "target": "domain:clinical decision support"
+    },
+    {
+      "rel": "in_domain",
+      "source": "domain:clinical decision support",
+      "target": "paper:2605 22611"
+    },
+    {
+      "rel": "in_domain",
+      "source": "domain:clinical decision support",
+      "target": "paper:2605 00645"
+    },
+    {
+      "rel": "in_domain",
+      "source": "domain:clinical decision support",
+      "target": "paper:2603 05423"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2605 22611",
+      "target": "author:niklas raehse"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2605 22611",
+      "target": "author:luregn j schlapbach"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2605 22611",
+      "target": "author:daphn chopard"
+    },
+    {
+      "rel": "uses",
+      "source": "paper:2605 22611",
+      "target": "concept:benchmarking"
+    },
+    {
+      "rel": "uses",
+      "source": "paper:2605 22611",
+      "target": "concept:antimicrobial stewardship"
+    },
+    {
+      "rel": "uses",
+      "source": "paper:2605 22611",
+      "target": "concept:pediatric icu"
+    },
+    {
+      "rel": "evaluated_on",
+      "source": "paper:2605 22611",
+      "target": "dataset:pediatric icu antimicrobial data"
+    },
+    {
+      "rel": "uses",
+      "source": "concept:benchmarking",
+      "target": "paper:2603 18239"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2605 00645",
+      "target": "author:alireza namazi"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2605 00645",
+      "target": "author:heman shakeri"
+    },
+    {
+      "rel": "uses",
+      "source": "paper:2605 00645",
+      "target": "concept:time series"
+    },
+    {
+      "rel": "uses",
+      "source": "paper:2605 00645",
+      "target": "concept:glucose forecasting"
+    },
+    {
+      "rel": "uses",
+      "source": "paper:2605 00645",
+      "target": "concept:diabetes"
+    },
+    {
+      "rel": "evaluated_on",
+      "source": "paper:2605 00645",
+      "target": "dataset:cgm glucose monitoring data"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2603 05423",
+      "target": "author:jacek karolczak"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2603 05423",
+      "target": "author:jerzy stefanowski"
+    },
+    {
+      "rel": "uses",
+      "source": "paper:2603 05423",
+      "target": "concept:prototype learning"
+    },
+    {
+      "rel": "uses",
+      "source": "paper:2603 05423",
+      "target": "concept:interpretability"
+    },
+    {
+      "rel": "uses",
+      "source": "paper:2603 05423",
+      "target": "concept:tabular"
+    },
+    {
+      "rel": "evaluated_on",
+      "source": "paper:2603 05423",
+      "target": "dataset:medical tabular datasets"
+    },
+    {
+      "rel": "uses",
+      "source": "concept:interpretability",
+      "target": "paper:2608 10480"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2608 23646",
+      "target": "author:xinjian zhao"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2608 23646",
+      "target": "author:xiangru jian"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2608 23646",
+      "target": "author:yaoyao xu"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2608 23646",
+      "target": "author:xiaozhuang song"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2608 23646",
+      "target": "author:wei pang"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2608 23646",
+      "target": "author:lei bai"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2608 23646",
+      "target": "author:tianshu yu"
+    },
+    {
+      "rel": "uses",
+      "source": "paper:2608 23646",
+      "target": "concept:multimodal llm"
+    },
+    {
+      "rel": "uses",
+      "source": "paper:2608 23646",
+      "target": "concept:molecular embeddings"
+    },
+    {
+      "rel": "uses",
+      "source": "paper:2608 23646",
+      "target": "concept:drug discovery"
+    },
+    {
+      "rel": "evaluated_on",
+      "source": "paper:2608 23646",
+      "target": "dataset:molecular property datasets"
+    },
+    {
+      "rel": "evaluated_on",
+      "source": "paper:2608 23646",
+      "target": "dataset:moleculenet"
+    },
+    {
+      "rel": "in_domain",
+      "source": "paper:2608 23646",
+      "target": "domain:drug discovery molecular ml"
+    },
+    {
+      "rel": "evaluated_on",
+      "source": "dataset:molecular property datasets",
+      "target": "paper:2608 17678"
+    },
+    {
+      "rel": "evaluated_on",
+      "source": "dataset:molecular property datasets",
+      "target": "paper:2608 10480"
+    },
+    {
+      "rel": "in_domain",
+      "source": "domain:drug discovery molecular ml",
+      "target": "paper:2608 19121"
+    },
+    {
+      "rel": "in_domain",
+      "source": "domain:drug discovery molecular ml",
+      "target": "paper:2608 17678"
+    },
+    {
+      "rel": "in_domain",
+      "source": "domain:drug discovery molecular ml",
+      "target": "paper:2608 10480"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2608 19121",
+      "target": "author:boqiao zhang"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2608 19121",
+      "target": "author:godbless james"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2608 19121",
+      "target": "author:sai krishna gottipati"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2608 19121",
+      "target": "author:andrew fitzgibbon"
+    },
+    {
+      "rel": "uses",
+      "source": "paper:2608 19121",
+      "target": "concept:molecular generation"
+    },
+    {
+      "rel": "uses",
+      "source": "paper:2608 19121",
+      "target": "concept:optimization"
+    },
+    {
+      "rel": "uses",
+      "source": "paper:2608 19121",
+      "target": "concept:synthesis aware"
+    },
+    {
+      "rel": "evaluated_on",
+      "source": "paper:2608 19121",
+      "target": "dataset:molecular datasets"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2608 17678",
+      "target": "author:hyeonsu lee"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2608 17678",
+      "target": "author:juyeon kim"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2608 17678",
+      "target": "author:erkhembayar jadamba"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2608 17678",
+      "target": "author:seungjin choi"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2608 17678",
+      "target": "author:hyunjin shin"
+    },
+    {
+      "rel": "uses",
+      "source": "paper:2608 17678",
+      "target": "concept:conformal prediction"
+    },
+    {
+      "rel": "uses",
+      "source": "paper:2608 17678",
+      "target": "concept:distribution shift"
+    },
+    {
+      "rel": "uses",
+      "source": "paper:2608 17678",
+      "target": "concept:molecular"
+    },
+    {
+      "rel": "uses",
+      "source": "concept:conformal prediction",
+      "target": "paper:2608 23153"
+    },
+    {
+      "rel": "uses",
+      "source": "concept:molecular",
+      "target": "paper:2608 10480"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2608 10480",
+      "target": "author:junwoo park"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2608 10480",
+      "target": "author:minyoung shin"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2608 10480",
+      "target": "author:cheol soon lee"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2608 10480",
+      "target": "author:sujee lee"
+    },
+    {
+      "rel": "uses",
+      "source": "paper:2608 10480",
+      "target": "concept:rationale guided llm"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2608 18438",
+      "target": "author:shreeya sharma"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2608 18438",
+      "target": "author:ravish gupta"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2608 18438",
+      "target": "author:saket kumar"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2608 18438",
+      "target": "author:abhishek aggarwal"
+    },
+    {
+      "rel": "uses",
+      "source": "paper:2608 18438",
+      "target": "concept:llm fine tuning"
+    },
+    {
+      "rel": "uses",
+      "source": "paper:2608 18438",
+      "target": "concept:mental health"
+    },
+    {
+      "rel": "uses",
+      "source": "paper:2608 18438",
+      "target": "concept:risk triage"
+    },
+    {
+      "rel": "evaluated_on",
+      "source": "paper:2608 18438",
+      "target": "dataset:mental health clinical data"
+    },
+    {
+      "rel": "in_domain",
+      "source": "paper:2608 18438",
+      "target": "domain:mental health digital health"
+    },
+    {
+      "rel": "in_domain",
+      "source": "domain:mental health digital health",
+      "target": "paper:2603 18239"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2603 18239",
+      "target": "author:himadri s samanta"
+    },
+    {
+      "rel": "uses",
+      "source": "paper:2603 18239",
+      "target": "concept:speech processing"
+    },
+    {
+      "rel": "uses",
+      "source": "paper:2603 18239",
+      "target": "concept:asr"
+    },
+    {
+      "rel": "evaluated_on",
+      "source": "paper:2603 18239",
+      "target": "dataset:speech datasets for alzheimers"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2608 23153",
+      "target": "author:manos giannopoulos"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2608 23153",
+      "target": "author:yi shen"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2608 23153",
+      "target": "author:michael m zavlanos"
+    },
+    {
+      "rel": "uses",
+      "source": "paper:2608 23153",
+      "target": "concept:domain adaptation"
+    },
+    {
+      "rel": "uses",
+      "source": "paper:2608 23153",
+      "target": "concept:optimal transport"
+    },
+    {
+      "rel": "evaluated_on",
+      "source": "paper:2608 23153",
+      "target": "dataset:healthcare domain adaptation benchmarks"
+    },
+    {
+      "rel": "in_domain",
+      "source": "paper:2608 23153",
+      "target": "domain:domain adaptation robustness"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2608 26149",
+      "target": "author:edouard lansiaux"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2608 26149",
+      "target": "author:hugo kazzi"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2608 26149",
+      "target": "author:aur lien loison"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2608 26149",
+      "target": "author:slim hammadi"
+    },
+    {
+      "rel": "written_by",
+      "source": "paper:2608 26149",
+      "target": "author:emmanuel chazard"
+    },
+    {
+      "rel": "uses",
+      "source": "paper:2608 26149",
+      "target": "concept:multi table learning"
+    },
+    {
+      "rel": "uses",
+      "source": "paper:2608 26149",
+      "target": "concept:data integration"
+    },
+    {
+      "rel": "uses",
+      "source": "paper:2608 26149",
+      "target": "concept:complex data"
+    },
+    {
+      "rel": "evaluated_on",
+      "source": "paper:2608 26149",
+      "target": "dataset:multi table healthcare datasets"
+    },
+    {
+      "rel": "in_domain",
+      "source": "paper:2608 26149",
+      "target": "domain:data integration multi table"
+    },
+    {
+      "rel": "listed_in",
+      "source": "paper:2608 26149",
+      "target": "category:cs ai"
+    }
+  ]
+}

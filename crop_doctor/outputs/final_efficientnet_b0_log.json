@@ -1,0 +1,38 @@
+{
+  "args": {
+    "arch": "efficientnet_b0",
+    "epochs": 4,
+    "workers": 4,
+    "smoke": false
+  },
+  "epochs": [
+    {
+      "epoch": 1,
+      "train_loss": 1.125,
+      "field_val_acc_crop_known": 0.5158,
+      "field_val_nll": 1.6475,
+      "seconds": 106.1
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.1914,
+      "field_val_acc_crop_known": 0.5263,
+      "field_val_nll": 1.6725,
+      "seconds": 41.8
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.1019,
+      "field_val_acc_crop_known": 0.5263,
+      "field_val_nll": 1.8651,
+      "seconds": 42.4
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.0703,
+      "field_val_acc_crop_known": 0.5368,
+      "field_val_nll": 1.7865,
+      "seconds": 40.9
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "lab_test": {
+    "accuracy": 0.9848,
+    "aurc": 0.0004,
+    "aurc_best_possible": 0.0001,
+    "aurc_random_ranking": 0.0152,
+    "error_when_answering_20pct": 0.0,
+    "error_when_answering_50pct": 0.0,
+    "error_when_answering_80pct": 0.0,
+    "error_when_answering_100pct": 0.0152
+  },
+  "field_test": {
+    "accuracy": 0.25,
+    "aurc": 0.7208,
+    "aurc_best_possible": 0.4042,
+    "aurc_random_ranking": 0.75,
+    "error_when_answering_20pct": 0.6771,
+    "error_when_answering_50pct": 0.7227,
+    "error_when_answering_80pct": 0.7349,
+    "error_when_answering_100pct": 0.75
+  },
+  "lab_threshold_transfer": {
+    "target_error": 0.02,
+    "lab_val": {
+      "threshold": 0.3718,
+      "coverage": 1.0,
+      "risk": 0.0123
+    },
+    "lab_test": {
+      "threshold": 0.3718,
+      "coverage": 1.0,
+      "risk": 0.0152
+    },
+    "field_test": {
+      "threshold": 0.3718,
+      "coverage": 0.9874,
+      "risk": 0.7511
+    }
+  }
+}

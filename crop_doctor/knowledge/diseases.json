@@ -1,0 +1,129 @@
+{
+  "_about": "Disease facts used by the decision pipeline: display names, how fast each disease spreads, visual cues for follow-up questions. Treatment advice is NOT here; it comes from the sourced notes in knowledge/docs (Day 6). Sources for the facts below are listed in knowledge/docs.",
+  "diseases": {
+    "potato_early_blight": {
+      "name": "Potato early blight",
+      "crop": "potato",
+      "cause": "fungus (Alternaria solani)",
+      "spread": "medium",
+      "key_signs": "brown spots with rings like a target, usually starting on older, lower leaves"
+    },
+    "potato_late_blight": {
+      "name": "Potato late blight",
+      "crop": "potato",
+      "cause": "water mould (Phytophthora infestans)",
+      "spread": "fast",
+      "key_signs": "large dark, water-soaked patches; white fuzzy growth under the leaf in damp weather; can destroy a field within days"
+    },
+    "tomato_bacterial_spot": {
+      "name": "Tomato bacterial spot",
+      "crop": "tomato",
+      "cause": "bacteria (Xanthomonas species)",
+      "spread": "medium",
+      "key_signs": "many small, dark, greasy-looking spots, sometimes with a yellow edge; spreads with rain splash"
+    },
+    "tomato_early_blight": {
+      "name": "Tomato early blight",
+      "crop": "tomato",
+      "cause": "fungus (Alternaria species)",
+      "spread": "medium",
+      "key_signs": "brown spots with rings like a target, often with a yellow area around them, starting on lower leaves"
+    },
+    "tomato_healthy": {
+      "name": "Healthy tomato leaf",
+      "crop": "tomato",
+      "cause": null,
+      "spread": "none",
+      "key_signs": "even green colour, no spots"
+    },
+    "tomato_late_blight": {
+      "name": "Tomato late blight",
+      "crop": "tomato",
+      "cause": "water mould (Phytophthora infestans)",
+      "spread": "fast",
+      "key_signs": "large dark, water-soaked patches; white fuzzy growth under the leaf in damp weather; spreads very quickly"
+    },
+    "tomato_leaf_mold": {
+      "name": "Tomato leaf mould",
+      "crop": "tomato",
+      "cause": "fungus (Passalora fulva)",
+      "spread": "medium",
+      "key_signs": "pale yellow patches on top of the leaf with olive-green or grey velvety mould underneath; common in humid greenhouses"
+    },
+    "tomato_mosaic_virus": {
+      "name": "Tomato mosaic virus",
+      "crop": "tomato",
+      "cause": "virus (tomato mosaic virus)",
+      "spread": "virus_contact",
+      "key_signs": "light and dark green mottled (patchwork) pattern, wrinkled or distorted leaves; spreads by hands, tools and seed"
+    },
+    "tomato_septoria": {
+      "name": "Tomato Septoria leaf spot",
+      "crop": "tomato",
+      "cause": "fungus (Septoria lycopersici)",
+      "spread": "medium",
+      "key_signs": "many small round spots with dark borders and pale grey centres, often with tiny black dots inside"
+    },
+    "tomato_yellow_curl_virus": {
+      "name": "Tomato yellow leaf curl virus",
+      "crop": "tomato",
+      "cause": "virus spread by whiteflies (TYLCV)",
+      "spread": "virus_insect",
+      "key_signs": "leaves curl upwards, yellow leaf edges, small leaves and stunted plants; whiteflies often present"
+    }
+  },
+  "follow_up_questions": [
+    {
+      "id": "rings_vs_small_spots",
+      "question": "Look closely at the spots. Which looks more like your leaf?",
+      "options": [
+        {"text": "Bigger brown spots with rings inside, like a target", "favours": ["tomato_early_blight", "potato_early_blight"]},
+        {"text": "Many small round spots with dark edges and pale centres", "favours": ["tomato_septoria"]},
+        {"text": "Many tiny dark spots that look greasy or wet", "favours": ["tomato_bacterial_spot"]}
+      ]
+    },
+    {
+      "id": "early_vs_late_blight",
+      "question": "How do the damaged areas look?",
+      "options": [
+        {"text": "Dry brown spots with rings, mostly on older lower leaves", "favours": ["tomato_early_blight", "potato_early_blight"]},
+        {"text": "Large dark patches that look wet, maybe white fuzz underneath, spreading fast", "favours": ["tomato_late_blight", "potato_late_blight"]}
+      ]
+    },
+    {
+      "id": "underside_mould",
+      "question": "Turn the leaf over. What do you see underneath?",
+      "options": [
+        {"text": "Olive-green or grey velvety mould under yellow patches", "favours": ["tomato_leaf_mold"]},
+        {"text": "White fuzzy growth at the edge of dark wet-looking patches", "favours": ["tomato_late_blight", "potato_late_blight"]},
+        {"text": "Nothing special underneath", "favours": ["tomato_early_blight", "tomato_septoria", "tomato_bacterial_spot", "tomato_healthy"]}
+      ]
+    },
+    {
+      "id": "virus_pattern",
+      "question": "Which describes the leaves better?",
+      "options": [
+        {"text": "Light and dark green patchwork pattern, leaves wrinkled", "favours": ["tomato_mosaic_virus"]},
+        {"text": "Leaves curling upwards with yellow edges, plant looks small", "favours": ["tomato_yellow_curl_virus"]},
+        {"text": "Leaves look normal and evenly green", "favours": ["tomato_healthy"]}
+      ]
+    },
+    {
+      "id": "spots_or_not",
+      "question": "Are there any spots or dead (brown) areas on the leaf?",
+      "options": [
+        {"text": "No, the leaf is evenly green", "favours": ["tomato_healthy"]},
+        {"text": "Yes, there are spots or brown areas", "favours": ["tomato_early_blight", "tomato_late_blight", "tomato_septoria", "tomato_bacterial_spot", "tomato_leaf_mold"]},
+        {"text": "No spots, but yellowing, curling or a patchy pattern", "favours": ["tomato_mosaic_virus", "tomato_yellow_curl_virus"]}
+      ]
+    }
+  ],
+  "extent_question": {
+    "question": "How much of your crop is affected?",
+    "options": [
+      {"text": "Just a few leaves", "value": "few"},
+      {"text": "Many leaves on one or two plants", "value": "some"},
+      {"text": "Many plants", "value": "many"}
+    ]
+  }
+}

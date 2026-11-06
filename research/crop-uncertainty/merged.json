@@ -1,0 +1,653 @@
+[
+  {
+    "id": "w1-01",
+    "worker": "w1",
+    "claim": "A GoogLeNet trained on PlantVillage (54,306 lab images, 38 classes, 14 crops) reaches 99.35% on held-out PlantVillage but only about 31% on small verified sets of internet images taken in other conditions.",
+    "evidence": "\"accuracy of 99.35% on a held-out test set\"; \"overall accuracy of 31.40% in dataset 1, and 31.69% in dataset 2\" (121 and 119 images)",
+    "source": "https://www.frontiersin.org/articles/10.3389/fpls.2016.01419/full",
+    "confidence": "high",
+    "kind": "result",
+    "links": [
+      "PlantVillage",
+      "Mohanty 2016"
+    ],
+    "plain": "A model that scores almost perfectly on clean lab photos gets only about 1 in 3 right on real-world photos.",
+    "project_use": "Reuse this as the main motivating number. Report in-domain and field accuracy separately and never treat PlantVillage test accuracy as evidence the model works in the field.",
+    "verdict": "verified",
+    "verdict_note": "Mohanty et al. 2016, Frontiers in Plant Science (peer-reviewed). 54,306 images, 38 classes, 14 crops; abstract says 99.35% held-out (results section says 99.34%). Internet sets: 121 images 31.40% (GoogLeNet segmented TL 80-20), 119 images 31.69% (GoogLeNet color TL 80-20)."
+  },
+  {
+    "id": "w1-02",
+    "worker": "w1",
+    "claim": "In the PlantDoc paper, CNNs trained only on PlantVillage reach 15-40% accuracy on PlantDoc field images. Pretraining on PlantVillage and then fine-tuning on PlantDoc field data raises this to 60-70% on cropped leaves.",
+    "evidence": "VGG16 PVD->PlantDoc uncropped 15.08%; PVD->cropped PlantDoc: VGG16 19.73%, InceptionV3 30.78%, InceptionResNetV2 39.87%; ImageNet+PVD then fine-tuned on C-PD: 60.41 / 62.06 / 70.53%",
+    "source": "https://ar5iv.labs.arxiv.org/html/1911.10317",
+    "confidence": "high",
+    "kind": "result",
+    "links": [
+      "PlantVillage",
+      "PlantDoc",
+      "VGG16",
+      "InceptionV3",
+      "InceptionResNetV2"
+    ],
+    "plain": "Lab-trained models mostly fail on field photos, but showing them some labelled field photos roughly doubles their accuracy.",
+    "project_use": "This is the natural baseline for our label-budget curve. Start from a PlantVillage-pretrained model, add k expert-labelled PlantDoc images per class, and track accuracy and selective-prediction metrics as k grows.",
+    "verdict": "verified",
+    "verdict_note": "PlantDoc (Singh et al., CoDS-COMAD 2020, peer-reviewed; arXiv 1911.10317). Table 1: VGG16 PVD->uncropped PlantDoc 15.08%. Table 2: ImageNet+PVD trained, tested on C-PD 19.73/30.78/39.87; ImageNet+PVD fine-tuned on C-PD 60.41/62.06/70.53. Note 'PlantVillage only' models still use ImageNet init; upper end is 70.5%, slightly above '60-70%'. Uncropped fine-tuned only reaches 29.73% (VGG16)."
+  },
+  {
+    "id": "w1-03",
+    "worker": "w1",
+    "claim": "PlantDoc is a small, publicly downloadable (CC-BY-4.0, GitHub) field dataset of 2,598 images over 13 species. Its class names were taken from PlantVillage's 38 classes, so most classes have a direct lab counterpart.",
+    "evidence": "\"2,598 data points in total across 13 plant species and up to 17 classes of diseases\"; images collected \"by using scientific and common names of 38 classes mentioned in the dataset by Mohanty et al.\"; train folders include Apple Scab/rust, Corn Gray leaf spot/leaf blight/rust, Potato early/late blight, Tomato (Early blight, Septoria, bacterial spot, late blight, mosaic virus, yellow virus, mold, spider mites), grape leaf black rot, plus healthy classes",
+    "source": "https://github.com/pratikkayal/PlantDoc-Dataset",
+    "confidence": "high",
+    "kind": "dataset",
+    "links": [
+      "PlantDoc",
+      "PlantVillage"
+    ],
+    "plain": "There is a free set of real-field leaf photos whose disease names mostly match the lab dataset, so we can train on lab photos and test on field photos with the same labels.",
+    "project_use": "Use PlantVillage as the source and PlantDoc as the target, restricted to the overlapping classes for tomato, potato, apple, corn and grape. PlantDoc is small, so expert-label budgets must be counted in tens per class.",
+    "verdict": "verified",
+    "verdict_note": "GitHub repo: CC-BY-4.0, 2,598 data points, 13 species, up to 17 disease classes (27 classes total incl. 10 healthy; train dir shows 28 folders). Paper: images collected 'by using scientific and common names of 38 classes mentioned in the dataset by Mohanty et al.' All listed train folders map to PlantVillage crop/disease classes (incl. bell pepper, blueberry, cherry, peach, raspberry, soybean, squash, strawberry). Listed folders match evidence."
+  },
+  {
+    "id": "w1-04",
+    "worker": "w1",
+    "claim": "PlantDoc has known label-noise and class-confusion problems: its authors admit some images may be mislabelled, and tomato bacterial spot and Septoria are hard to tell apart visually.",
+    "evidence": "authors state \"there are some images in the dataset which can potentially be wrongly classified\"; Tomato Bacterial leaf spot and Septoria \"looks similar and are hard to label using visual features alone\"",
+    "source": "https://ar5iv.labs.arxiv.org/html/1911.10317",
+    "confidence": "high",
+    "kind": "gap",
+    "links": [
+      "PlantDoc",
+      "label noise"
+    ],
+    "plain": "Some answers in the field test set may themselves be wrong, and some diseases look nearly identical even to people.",
+    "project_use": "Treat PlantDoc labels as noisy. Report results for confusable class pairs and check whether 'I'm not sure' abstentions cluster on visually ambiguous classes, which is where expert review adds most value.",
+    "verdict": "verified",
+    "verdict_note": "PlantDoc paper quotes confirmed: 'some images in the dataset which can potentially be wrongly classified' (attributed to lack of domain expertise); Fig. 6 caption says Tomato bacterial leaf spot and Septoria 'looks similar and are hard to label using visual features alone'."
+  },
+  {
+    "id": "w1-05",
+    "worker": "w1",
+    "claim": "The 2026 AgriPath-LF16 benchmark (111,307 images, 16 crops, 65 crop-disease pairs) shows that lab-only training collapses on field data: ResNet-50 macro-F1 falls from 96.7 to 4.3 and ConvNeXt-Tiny from 97.5 to 6.3. Even with mixed training, field F1 trails lab F1 by roughly 20-25% relative.",
+    "evidence": "Lab-only: ResNet-50 96.7 lab -> 4.3 field; ConvNeXt-Tiny 97.5 -> 6.3; full training ResNet-50 97.2 lab vs 69.9 field; average relative lab-to-field drop ~25.6% CNNs, ~20.2% generative VLMs",
+    "source": "https://arxiv.org/html/2603.13354",
+    "confidence": "high",
+    "kind": "result",
+    "links": [
+      "AgriPath-LF16",
+      "PlantVillage",
+      "PlantDoc",
+      "ResNet-50",
+      "ConvNeXt-Tiny",
+      "CLIP",
+      "Qwen2.5-VL"
+    ],
+    "plain": "A recent large benchmark confirms that models trained only on lab photos almost completely fail in the field, and even models that saw some field photos still do much worse on them.",
+    "project_use": "Gives an up-to-date number for the size of the shift. Its CNN vs CLIP/VLM comparison suggests a CLIP-style backbone is a reasonable second model if time allows.",
+    "verdict": "verified",
+    "verdict_note": "arXiv 2603.13354v3 (Apr 2026), preprint, no peer-reviewed venue. AgriPath-LF16: 111,307 images, 16 crops, 65 crop-disease pairs (41 diseases). Lab-only ResNet-50 96.7->4.3, ConvNeXt-Tiny 97.5->6.3; full training ResNet-50 97.2 lab vs 69.9 field; avg relative drop ~25.6% CNNs, ~20.2% generative VLMs (full training). Note: ResNet-50 single-model relative drop is ~28%; the 20-25% is an average."
+  },
+  {
+    "id": "w1-06",
+    "worker": "w1",
+    "claim": "Other in-the-wild datasets exist, but some lack downloadable labels or cover only one crop. PlantWild has 18,542 images in 89 classes (56 diseased, 33 healthy) with a release promised via its project page. Plant Pathology 2020 has 3,651 expert-annotated apple images (scab, cedar apple rust, healthy). Plant Pathology 2021 grew to more than 23,000 images, includes multi-disease leaves, and adds two more disease categories.",
+    "evidence": "PlantWild: \"18,542 plant images\", 89 classes, project page tqwei05.github.io/PlantWild; PP2020: \"manually captured 3,651 high-quality, real-life symptom images\", CNN \"97% accuracy on a held-out test set\"; PP2021: \"from 3,651 last year to more than 23,000\", task to \"identify individual disease from multiple disease symptoms on a single leaf image\"",
+    "source": "https://arxiv.org/html/2408.03120 ; https://arxiv.org/abs/2004.11958 ; https://sites.google.com/view/fgvc8/competitions/plantpathologychallenge2021",
+    "confidence": "medium",
+    "kind": "dataset",
+    "links": [
+      "PlantWild",
+      "Plant Pathology 2020",
+      "Plant Pathology 2021",
+      "FGVC"
+    ],
+    "plain": "There are a few other real-world plant disease photo collections, but each has a catch: some are hard to get, some are apple-only, and some have several diseases on one leaf.",
+    "project_use": "Keep PlantDoc as the main target. Plant Pathology (apple, overlaps PlantVillage apple scab and rust) could serve as a second shift test. Its multi-disease leaves are natural 'should abstain' cases, since a single-label classifier cannot be correct on them.",
+    "verdict": "refuted",
+    "verdict_note": "Mostly correct but one part is overstated. PlantWild (ACM MM 2024, peer-reviewed; arXiv 2408.03120): 18,542 images, 89 classes (56 diseased, 33 healthy), release promised in future tense via tqwei05.github.io/PlantWild. All confirmed. PP2021 (FGVC8 page): grew from 3,651 to more than 23,000 images, two disease categories added, multi-disease-per-leaf objective. Confirmed. Overstatement: in PP2020 (arXiv 2004.11958, preprint, used for the CVPR 2020 FGVC7 Kaggle challenge), the 3,651 images were manually captured, but only a pilot subset was expert-annotated for scab, cedar apple rust, and healthy. Not all 3,651 are 'expert-annotated'. The ~97% CNN accuracy on a held-out test set is confirmed."
+  },
+  {
+    "id": "w1-07",
+    "worker": "w1",
+    "claim": "Recent lab-to-field papers attribute the drop to shortcut learning on PlantVillage's uniform backgrounds but rarely measure calibration. AgriPath reports no ECE and only anecdotal evidence of confident wrong predictions.",
+    "evidence": "TinyCNN (arXiv 2609.20290) Grad-CAM shows \"off-leaf, background-driven attention consistent with shortcut learning\"; AgriPath reports no calibration metrics, with qualitative cases of a CNN putting ~66% on the wrong class vs CLIP splitting late/early blight 45%/42%",
+    "source": "https://arxiv.org/abs/2609.20290 ; https://arxiv.org/html/2603.13354",
+    "confidence": "medium",
+    "kind": "gap",
+    "links": [
+      "PlantVillage",
+      "PlantDoc",
+      "shortcut learning",
+      "calibration",
+      "TinyCNN",
+      "AgriPath"
+    ],
+    "plain": "Lab-trained models seem to learn the plain lab background instead of the disease, and few studies check whether the model knows when it is wrong.",
+    "project_use": "Measuring calibration (ECE, risk-coverage curves) on PlantDoc for a PlantVillage-trained model fills a real gap and is feasible in two weeks. Consider leaf cropping or background augmentation as a cheap shift mitigation.",
+    "verdict": "verified",
+    "verdict_note": "TinyCNN (arXiv 2609.20290, preprint, Ho-Lam & Nguyen) abstract has the quoted Grad-CAM phrase about off-leaf, background-driven attention and shortcut learning, under PlantVillage-to-PlantDoc evaluation. It reports no calibration metrics, only accuracy, macro-F1 and Wilson CIs. AgriPath (arXiv 2603.13354v3, preprint) reports no ECE or other calibration metric, only macro-F1/P/R and PSR. Section 4.6 has the qualitative cases: CNN ~66% on leaf spot for a corn common rust image (~28% on the correct class), and CLIP at 45% late blight vs 42% early blight. 'Rarely measure calibration' is an absence claim and best-effort: a quick search found a grape-field study that does report ECE, which fits 'rarely' rather than 'never'."
+  },
+  {
+    "id": "w2-01",
+    "worker": "w2",
+    "claim": "Modern deep CNNs are poorly calibrated (overconfident), and single-parameter temperature scaling fitted on a held-out validation set is a simple, effective post-hoc fix on in-distribution data.",
+    "evidence": "\"We discover that modern neural networks, unlike those from a decade ago, are poorly calibrated.\" Temperature scaling (a one-parameter variant of Platt scaling) is reported as surprisingly effective on most datasets (Guo et al., ICML 2017).",
+    "source": "https://arxiv.org/abs/1706.04599",
+    "confidence": "high",
+    "kind": "method",
+    "links": [
+      "temperature scaling",
+      "ECE",
+      "calibration",
+      "Guo et al. 2017"
+    ],
+    "plain": "A network that says it is 95% sure is often right much less than 95% of the time, but dividing its scores by one tuned number largely fixes this on familiar data.",
+    "project_use": "Report ECE and reliability diagrams before/after temperature scaling as our baseline calibration step, fitting T on a lab (PlantVillage-style) validation split.",
+    "verdict": "verified",
+    "verdict_note": "Guo et al., ICML 2017 (peer-reviewed). Abstract: modern networks 'are poorly calibrated'. Temperature scaling, a single-parameter variant of Platt scaling, is 'surprisingly effective' on most datasets. Fitting on a held-out validation set is standard in the paper body; the abstract doesn't state it. In-distribution framing is fair."
+  },
+  {
+    "id": "w2-02",
+    "worker": "w2",
+    "claim": "In a large benchmark of uncertainty methods under dataset shift, post-hoc calibration such as temperature scaling stops being reliable as data shifts, while methods that average over several models (deep ensembles) hold up best.",
+    "evidence": "Ovadia et al. (NeurIPS 2019): \"We find that traditional post-hoc calibration does indeed fall short\"; \"Some methods that marginalize over models give surprisingly strong results across a broad spectrum of tasks.\"",
+    "source": "https://arxiv.org/abs/1906.02530",
+    "confidence": "high",
+    "kind": "result",
+    "links": [
+      "dataset shift",
+      "temperature scaling",
+      "deep ensembles",
+      "Ovadia et al. 2019"
+    ],
+    "plain": "A confidence fix tuned on familiar photos tends to break when the photos look different, and combining several models is the most robust cheap remedy.",
+    "project_use": "Do not assume lab-fitted temperature transfers to field photos; compare temperature scaling vs a small (3-5 model) ensemble on the field test set.",
+    "verdict": "verified",
+    "verdict_note": "Ovadia et al., NeurIPS 2019 (peer-reviewed). Abstract quotes match exactly. The abstract says 'methods that marginalize over models' rather than 'ensembles', but the paper body finds deep ensembles perform best across most metrics under shift. Claim is consistent."
+  },
+  {
+    "id": "w2-03",
+    "worker": "w2",
+    "claim": "Selective classification lets a trained network abstain on low-confidence inputs to guarantee a user-chosen error rate, trading coverage for risk, which is evaluated with risk-coverage curves.",
+    "evidence": "Geifman & El-Yaniv (NeurIPS 2017): guaranteed 2% top-5 error on ImageNet with 99.9% probability while classifying almost 60% of inputs.",
+    "source": "https://arxiv.org/abs/1705.08500",
+    "confidence": "high",
+    "kind": "method",
+    "links": [
+      "selective classification",
+      "reject option",
+      "risk-coverage curve",
+      "AURC",
+      "Geifman & El-Yaniv 2017"
+    ],
+    "plain": "The model can be told to answer only when confident and pass the rest to a human, so the answers it does give are much more accurate.",
+    "project_use": "Core evaluation for the 'I'm not sure' feature: plot field-set risk vs coverage, report AURC and the coverage achievable at a target error (e.g. 5%), with abstained images routed to the expert.",
+    "verdict": "verified",
+    "verdict_note": "Geifman & El-Yaniv, 'Selective Classification for Deep Neural Networks', NeurIPS 2017 (peer-reviewed; the arXiv page lists no venue). Abstract: 2% top-5 ImageNet error guaranteed with probability 99.9% at almost 60% test coverage. Numbers match. The risk-coverage framing is from the paper body, not the abstract."
+  },
+  {
+    "id": "w2-04",
+    "worker": "w2",
+    "claim": "Maximum softmax probability is a simple baseline signal for detecting misclassified and out-of-distribution inputs, since correct predictions tend to get higher max-softmax scores, but it can be outperformed.",
+    "evidence": "Hendrycks & Gimpel (ICLR 2017): \"We present a simple baseline that utilizes probabilities from softmax distributions.\" Correctly classified examples tend to have greater maximum softmax probabilities than erroneous and OOD examples.",
+    "source": "https://arxiv.org/abs/1610.02136",
+    "confidence": "high",
+    "kind": "method",
+    "links": [
+      "maximum softmax probability",
+      "misclassification detection",
+      "OOD detection",
+      "Hendrycks & Gimpel 2017"
+    ],
+    "plain": "The model's top confidence score is a decent first warning sign that it is wrong, though not a perfect one.",
+    "project_use": "Use max-softmax as the default abstention score and measure its misclassification-detection AUROC on field photos; compare against ensemble/MC-dropout uncertainty.",
+    "verdict": "verified",
+    "verdict_note": "arXiv:1610.02136 abstract, peer-reviewed at ICLR 2017. It confirms the 'simple baseline' wording and that correctly classified examples get higher max softmax than misclassified and OOD examples. The authors only say the baseline 'can sometimes be surpassed', so 'can be outperformed' is correct but should not be read as 'always'."
+  },
+  {
+    "id": "w2-05",
+    "worker": "w2",
+    "claim": "On a leakage-free external grape-leaf field dataset, raw CNN predictions were badly miscalibrated (ECE about 0.29-0.31) and accuracy fell to about 71-72%, while temperature scaling fitted only on internal validation data cut ECE to about 0.04.",
+    "evidence": "Erg\u00fcn et al., Frontiers in Plant Science 2026, Table 4 (external Dataset3): ECE raw 0.287 / 0.312, TempScaling 0.038 / 0.042, MC Dropout 0.271 / 0.295, Ensemble 0.051 / 0.057 (EfficientNet-B0 / MobileNetV3-Large); raw accuracy 0.724 / 0.706 vs ~0.996 internal; \"raw predictions exhibited substantial overconfidence\"; T \"learned exclusively on the validation set\".",
+    "source": "https://www.frontiersin.org/journals/plant-science/articles/10.3389/fpls.2026.1839652/full",
+    "confidence": "medium",
+    "kind": "result",
+    "links": [
+      "temperature scaling",
+      "ECE",
+      "MC dropout",
+      "deep ensembles",
+      "field shift",
+      "grape leaf disease"
+    ],
+    "plain": "A grape disease model that was nearly perfect on its own data was right only about 7 times in 10 on new field photos and was far too sure of itself, but a simple confidence rescaling made its confidence much more honest.",
+    "project_use": "Closest precedent for our setup: expect a large accuracy drop and overconfidence on field photos; replicate the internal-vs-external ECE table. Note this is binary, single study, and contrasts with Ovadia's general finding, so verify on our own data.",
+    "verdict": "verified",
+    "verdict_note": "Ergun, Okumus, Cinar & Batan, Frontiers in Plant Science 2026 (peer-reviewed). Table 4 for Dataset3 matches exactly. ECE: raw 0.287/0.312, TempScaling 0.038/0.042, MC Dropout 0.271/0.295, Ensemble 0.051/0.057. Raw accuracy 0.724/0.706, against about 0.996 internal (Dataset1 binary CV). T was 'learned exclusively on the validation set'. Caveats: Dataset3 is small (500 iPhone vineyard photos, binary healthy/diseased, Turkey). 'Leakage-free' is the authors' own statement that the images were excluded from training and calibration, not independently verified. The ~0.996 internal figure comes from Dataset1 binary; Dataset2 raw was about 0.89."
+  },
+  {
+    "id": "w2-06",
+    "worker": "w2",
+    "claim": "The grape-leaf field study measured calibration only and did not evaluate abstention, rejection thresholds, or risk-coverage, and searches found no plant-disease paper reporting risk-coverage or conformal coverage on field photos (conformal work in plants targets species ID, e.g. Pl@ntNet).",
+    "evidence": "Erg\u00fcn et al. 2026 describe the ensemble as \"the most conservative configuration\" but define no threshold or rejection mechanism; Ding, Fermanian & Salmon (arXiv:2507.06867) apply conformal prediction to long-tailed plant species identification, not disease.",
+    "source": "https://arxiv.org/abs/2507.06867",
+    "confidence": "low",
+    "kind": "gap",
+    "links": [
+      "selective classification",
+      "conformal prediction",
+      "risk-coverage curve",
+      "plant disease",
+      "Pl@ntNet"
+    ],
+    "plain": "Nobody we found has measured how often a crop-disease app can safely say 'not sure' on real field photos, so that is open ground.",
+    "project_use": "Our contribution: risk-coverage/AURC under lab-to-field shift for crop disease, plus how many expert-labelled field images restore a target coverage at fixed error.",
+    "verdict": "verified",
+    "verdict_note": "Erguen et al. 2026 reports only calibration (ECE/Brier/NLL, reliability diagrams, ROC-AUC), with no abstention, threshold, risk-coverage or conformal analysis. I could not read the last ~26k characters of the page. The 'most conservative configuration' quote is confirmed. arXiv:2507.06867 (Ding, Fermanian, Salmon; listed as an ICLR 2026 poster) is conformal prediction for long-tailed species ID on Pl@ntNet-300K/iNaturalist with no disease labels. My quick searches found no plant-disease risk-coverage or conformal paper on field photos. The nearest is Melki & Bombrun ICCVW 2023, conformal APS for crop/weed classification, which is species-type, not disease. Absence claims are best-effort."
+  },
+  {
+    "id": "w3-01",
+    "worker": "w3",
+    "claim": "Split conformal prediction wraps any pre-trained classifier to output label sets that contain the true label with a user-chosen probability, with finite-sample, distribution-free validity that rests on calibration and test data being exchangeable.",
+    "evidence": "\"sets that are guaranteed to contain the ground truth with a user-specified probability, such as 90%\"; \"explicit, non-asymptotic guarantees even without distributional assumptions or model assumptions\"",
+    "source": "https://arxiv.org/abs/2107.07511",
+    "confidence": "high",
+    "kind": "method",
+    "links": [
+      "conformal prediction",
+      "coverage guarantee",
+      "exchangeability",
+      "Angelopoulos & Bates"
+    ],
+    "plain": "Instead of one guess, the model gives a short list of possible diseases and promises the right one is in the list, say, 90% of the time, as long as new photos look like the photos used to set it up.",
+    "project_use": "Use split conformal on top of our trained classifier as the 'I'm not sure' mechanism: a set with more than one disease means defer to the expert; the guarantee only holds if the calibration photos come from the same distribution as deployment photos.",
+    "verdict": "verified",
+    "verdict_note": "arXiv:2107.07511 (Angelopoulos & Bates, 'Gentle Introduction', arXiv preprint). Both abstract quotes and the 'any pre-trained model' wording are confirmed. Minor nuance: Theorem 1 is stated for i.i.d. calibration and test data, and the abstract says 'without distributional assumptions'. Exchangeability is the standard sufficient condition and fits the claim, but the paper's main theorem is phrased as i.i.d."
+  },
+  {
+    "id": "w3-02",
+    "worker": "w3",
+    "claim": "APS (Romano et al. 2020) and RAPS (Angelopoulos et al. 2021) are the standard prediction-set scores for image classifiers; RAPS adds regularisation to keep sets small while preserving coverage.",
+    "evidence": "APS: \"prediction sets with guaranteed marginal coverage\" and favourable \"approximate conditional coverage\"; RAPS: sets \"often factors of 5 to 10 smaller\" than a standalone Platt scaling baseline (ImageNet / ImageNet-V2 experiments)",
+    "source": "https://arxiv.org/abs/2009.14193",
+    "confidence": "high",
+    "kind": "method",
+    "links": [
+      "APS",
+      "RAPS",
+      "conformal prediction",
+      "https://arxiv.org/abs/2006.02544"
+    ],
+    "plain": "There are ready-made recipes for building these 'shortlists'; one (RAPS) is tuned to keep the shortlist short so it stays useful.",
+    "project_use": "Compare APS vs RAPS (plus simple LAC/threshold score) on field photos, reporting both empirical coverage and average set size, since set size drives how many cases go to the expert.",
+    "verdict": "verified",
+    "verdict_note": "RAPS, arXiv:2009.14193 (Angelopoulos, Bates, Malik, Jordan; ICLR 2021): sets are 'often factors of 5 to 10 smaller than a stand-alone Platt scaling baseline' on ImageNet/ImageNet-V2 with ResNet-152 and others. APS, arXiv:2006.02544 (Romano, Sesia, Candes; NeurIPS 2020): 'prediction sets with guaranteed marginal coverage' and favorable 'approximate conditional coverage', both confirmed. 'Standard' is a fair characterisation but is the finder's own judgement, not something a source states."
+  },
+  {
+    "id": "w3-03",
+    "worker": "w3",
+    "claim": "Weighted conformal prediction restores coverage under covariate shift by reweighting calibration points with the test/train likelihood ratio, which can be estimated from unlabelled target inputs.",
+    "evidence": "\"the test and training covariate distributions differ, but the likelihood ratio between these two distributions is known\"; it \"can be estimated accurately with access to a large set of unlabeled data (test covariate points)\"",
+    "source": "https://arxiv.org/abs/1904.06019",
+    "confidence": "high",
+    "kind": "method",
+    "links": [
+      "weighted conformal",
+      "covariate shift",
+      "Tibshirani et al. 2019",
+      "exchangeability"
+    ],
+    "plain": "If field photos differ from lab photos, you can give more weight to lab examples that look field-like, using unlabelled field photos to decide the weights.",
+    "project_use": "Optional baseline: train a lab-vs-field domain classifier on unlabelled field photos to get weights; but lab-to-field is not pure covariate shift (labels and class mix also change), so treat it as a comparison, not the main fix.",
+    "verdict": "verified",
+    "verdict_note": "Tibshirani, Barber, Candes, Ramdas, 'Conformal Prediction Under Covariate Shift' (arXiv 1904.06019). Abstract has both quoted phrases: the likelihood ratio is assumed known, and it 'can be estimated accurately' from a large unlabelled set of test covariates. The guarantee assumes the ratio is known; estimating it is a practical approximation with no guarantee attached. The arXiv page names no venue; the paper is generally cited as NeurIPS 2019, which I did not check against the venue's own listing."
+  },
+  {
+    "id": "w3-04",
+    "worker": "w3",
+    "claim": "In medical imaging, conformal coverage breaks under input and label distribution shift, but recalibrating on about 1,000 labelled target-domain images restored the guarantee; it is also unreliable per-class and of limited value with few classes.",
+    "evidence": "\"under domain-shift the coverage guarantee is not upheld\" (CAMELYON17, 90% target); \"after re-calibrating on a subset of size 1000 of the Camelyon17 domain-shifted images, we again observe the coverage guarantees\"; abstract: \"not reliable for subsets of the data, such as individual classes\"",
+    "source": "https://arxiv.org/abs/2506.18162",
+    "confidence": "high",
+    "kind": "result",
+    "links": [
+      "conformal prediction",
+      "distribution shift",
+      "recalibration",
+      "class-conditional coverage",
+      "Mehrtens et al. 2025"
+    ],
+    "plain": "A medical study found the 90% promise silently failed on photos from new hospitals, and was only fixed by re-tuning on about 1,000 expert-labelled photos from the new hospital.",
+    "project_use": "Directly frames our 'how many expert labels' question: run a sweep of target calibration sizes (e.g. 25-1000 field photos) and measure when lab-calibrated vs field-recalibrated coverage reaches 90%; also report per-class coverage.",
+    "verdict": "verified",
+    "verdict_note": "Mehrtens, Bucher, Brinker, 'Pitfalls of Conformal Predictions for Medical Image Classification' (arXiv 2506.18162, June 2025, labelled a preprint; the page links DOI 10.1007/978-3-031-44336-7_20, apparently a 2023 Springer proceedings version). The abstract says CP is unreliable under input and label shift, unreliable for subsets such as individual classes, and of limited value with few classes. The HTML has the CAMELYON17 sentence 'under domain-shift the coverage guarantee is not upheld' and says that re-calibrating on 1000 domain-shifted Camelyon17 images restores coverage. Caveats: the recalibration result is from one histopathology dataset only, and the 90% figure I found is an illustrative binary example, so I could not confirm 90% was the target in the Camelyon17 experiment."
+  },
+  {
+    "id": "w3-05",
+    "worker": "w3",
+    "claim": "Adaptive conformal inference (Gibbs & Candes 2021) keeps long-run coverage under arbitrary, changing distribution shift by continually updating one threshold parameter online as labelled feedback arrives.",
+    "evidence": "\"provably achieves the desired coverage frequency over long-time intervals irrespective of the true data generating process\"; \"robust to visible and significant distribution shifts\"",
+    "source": "https://arxiv.org/abs/2106.00170",
+    "confidence": "high",
+    "kind": "method",
+    "links": [
+      "adaptive conformal inference",
+      "ACI",
+      "online learning",
+      "distribution shift"
+    ],
+    "plain": "Each time the expert confirms or corrects a case, the system nudges how cautious it is, so over time it keeps its 90% promise even as conditions change.",
+    "project_use": "Natural fit for expert-in-the-loop: simulate a stream of field photos where each expert label updates the threshold; guarantee is long-run average, not per-photo, so state that limitation.",
+    "verdict": "verified",
+    "verdict_note": "Gibbs & Candes, 'Adaptive Conformal Inference Under Distribution Shift' (arXiv 2106.00170; arXiv lists no venue, widely cited as NeurIPS 2021). Abstract: shift is modelled as learning a single parameter that is re-estimated over time; the method 'provably achieves the desired coverage frequency over long-time intervals irrespective of the true data generating process'; it is robust on 2 real datasets with significant shift. The guarantee is long-run average coverage, not coverage at every time step."
+  },
+  {
+    "id": "w3-06",
+    "worker": "w3",
+    "claim": "In a real precision-weeding deployment, a conformalized image classifier kept 90% coverage on most farms under near out-of-distribution data, but coverage fell well below target on some farms.",
+    "evidence": "certify spraying \"at least 90% of the weeds\"; near-OOD: \"the coverage guarantee is maintained for most of the farms\" but for Farm 20 and Farm 23 \"the coverage is far from the required 90% level\"",
+    "source": "https://arxiv.org/html/2501.07185v1",
+    "confidence": "medium",
+    "kind": "result",
+    "links": [
+      "conformal prediction",
+      "agriculture",
+      "precision weeding",
+      "near out-of-distribution",
+      "Melki et al. 2025"
+    ],
+    "plain": "On real farms, the safety promise mostly held but broke on a couple of farms that looked different from the training data.",
+    "project_use": "Closest agricultural evidence: report coverage per field source/site, not just pooled, since site-level failures hide in averages.",
+    "verdict": "refuted",
+    "verdict_note": "Melki et al., 'Uncertainty Guarantees on Automated Precision Weeding using Conformal Prediction' (arXiv 2501.07185v1, preprint under review). The quotes are accurate: the 90% weed guarantee, 'the coverage guarantee is maintained for most of the farms' under near-OOD, and Farms 20 and 23 'far from the required 90% level'. But it is NOT a real deployment: it is an offline evaluation on an internal dataset of 510,600 images that simulates a near-OOD scenario, which the authors place between lab and real-world settings, with field testing left as future work. The formal 90% guarantee also applies only to the 'Weed in Set' decision rule. Correct to: 'In an offline, simulated near-OOD evaluation of a precision-weeding pipeline...'."
+  },
+  {
+    "id": "w3-07",
+    "worker": "w3",
+    "claim": "We found no peer-reviewed or arXiv paper (2023-2026) applying conformal prediction to crop disease image classification under lab-to-field shift; nearby agricultural work covers weeding, crop/weed and plant-species identification only.",
+    "evidence": "Searches surfaced Melki et al. (weeding, arXiv 2501.07185), group-conditional CP for crop/weed (arXiv 2308.15094), Pl@ntNet species ID (arXiv 2507.07150); the weeding paper cites disease identification only via a general ML survey (Domingues et al. 2022, Agriculture 12(9):1350)",
+    "source": "https://arxiv.org/html/2501.07185v1",
+    "confidence": "medium",
+    "kind": "gap",
+    "links": [
+      "conformal prediction",
+      "plant disease",
+      "PlantVillage",
+      "lab-to-field shift"
+    ],
+    "plain": "Nobody seems to have tested whether these shortlist guarantees survive when a leaf-disease model trained on lab photos meets real field photos.",
+    "project_use": "This is our novelty angle: first measurement of conformal coverage on lab-trained crop disease models evaluated on field photos, plus label budget for recalibration.",
+    "verdict": "refuted",
+    "verdict_note": "Core absence claim holds (best-effort): 2 quick searches found no conformal-prediction paper on crop disease image classification under lab-to-field shift. I also confirmed that the weeding paper's ref [18] is Domingues et al. 2022, Agriculture 12(9):1350, a general ML survey of crop disease and pest detection. Refuted because 'nearby agricultural work covers weeding, crop/weed and plant-species identification only' is wrong: Farag et al., 'Inductive Conformal Prediction for Harvest-Readiness Classification of Cauliflower Plants' (ICCV 2023 Workshops, CVPPA) is another agricultural CP image-classification paper. Drop the word 'only' or add harvest-readiness classification. Absence claims remain best-effort."
+  },
+  {
+    "id": "w4-01",
+    "worker": "w4",
+    "claim": "Maximum softmax probability (MSP) is the standard baseline for flagging both misclassified and out-of-distribution inputs, because correct predictions tend to have higher max softmax, but the authors note it can be beaten.",
+    "evidence": "\"Correctly classified examples tend to have greater maximum softmax probabilities\"; \"the baseline can sometimes be surpassed\" (Hendrycks & Gimpel, arXiv:1610.02136)",
+    "source": "https://arxiv.org/abs/1610.02136",
+    "confidence": "high",
+    "kind": "method",
+    "links": [
+      "max softmax probability",
+      "misclassification detection",
+      "OOD detection"
+    ],
+    "plain": "If the model's top guess has low confidence, that is a cheap first warning that the photo may be wrong or unfamiliar.",
+    "project_use": "Implement MSP as the zero-cost baseline 'I'm not sure' score that every other method must beat.",
+    "verdict": "verified",
+    "verdict_note": "arXiv abs 1610.02136 (Hendrycks & Gimpel; published at ICLR 2017). The abstract covers both misclassification and OOD detection, says correctly classified examples tend to have higher max softmax probability, and says the baseline can sometimes be surpassed. Both quotes match."
+  },
+  {
+    "id": "w4-02",
+    "worker": "w4",
+    "claim": "The energy score (logsumexp of logits) is a drop-in post-hoc replacement for softmax confidence that reduces average FPR@TPR95 by 18.03% on a CIFAR-10 WideResNet.",
+    "evidence": "\"using the energy score reduces the average FPR (at TPR 95%) by 18.03% compared to the softmax confidence score\"; softmax methods \"suffer from overconfident posterior distributions for OOD data\" (Liu et al., arXiv:2010.03759)",
+    "source": "https://arxiv.org/abs/2010.03759",
+    "confidence": "high",
+    "kind": "result",
+    "links": [
+      "energy score",
+      "max softmax probability",
+      "FPR95"
+    ],
+    "plain": "A slightly different formula on the same model outputs catches noticeably more unfamiliar photos than plain confidence.",
+    "project_use": "Compute energy alongside MSP from the same logits (one line of code) for the OOD test on non-leaf / other-crop photos.",
+    "verdict": "verified",
+    "verdict_note": "arXiv abs 2010.03759 (Liu et al., NeurIPS 2020). The abstract states the 18.03% reduction in average FPR at TPR 95% versus the softmax score, measured on a CIFAR-10 pretrained WideResNet. The setting matches the claim and is limited to that model and dataset, not a general result."
+  },
+  {
+    "id": "w4-04",
+    "worker": "w4",
+    "claim": "Misclassification detection and OOD detection need different scores: OOD detectors evaluated for selective classification with OOD data rank differently and generally fail to beat the softmax baseline.",
+    "evidence": "\"existing post-hoc methods perform quite differently compared to when evaluated only on OOD detection\"; SIRC \"is able to consistently match or outperform the baseline for SCOD\" while existing OOD methods \"fail to do so\" (Xia & Bouganis, arXiv:2207.07506)",
+    "source": "https://arxiv.org/abs/2207.07506",
+    "confidence": "high",
+    "kind": "result",
+    "links": [
+      "misclassification detection",
+      "selective classification",
+      "SIRC",
+      "energy score"
+    ],
+    "plain": "The best alarm for 'this is not a leaf at all' is not the same as the best alarm for 'I probably got this disease wrong'.",
+    "project_use": "Report two separate evaluations: AURC/accuracy-vs-coverage on field photos (use MSP) and AUROC/FPR95 for unknown photos (use energy/KNN); possibly combine both scores.",
+    "verdict": "verified",
+    "verdict_note": "arXiv abs 2207.07506 (Xia & Bouganis, ACCV 2022, Best Paper). Both quotes match the abstract. The abstract does not name the baseline as MSP; 'softmax baseline' is the finding's own reading, consistent with the paper's SCOD setup. 'Generally fail' paraphrases 'fail to do so [consistently match or outperform]'."
+  },
+  {
+    "id": "w4-05",
+    "worker": "w4",
+    "claim": "On a fine-grained 8-disease strawberry dataset, open-set methods with outlier exposure detect unknown diseases with AUROC about 0.97, while OpenMax without outlier exposure reached only 70.1% accuracy.",
+    "evidence": "Two-head network AUROC 0.972, unknown recall 94.9%; OpenMatch AUROC 0.971; \"assuming outlier exposure during training is helpful for detecting unknown diseases\"; \"The outlier exposure provided a significant 16.4% increase in accuracy\" (Frontiers in Plant Science 2022)",
+    "source": "https://www.frontiersin.org/articles/10.3389/fpls.2022.989086/full",
+    "confidence": "medium",
+    "kind": "paper",
+    "links": [
+      "open-set recognition",
+      "outlier exposure",
+      "OpenMatch",
+      "strawberry disease"
+    ],
+    "plain": "Showing the model some examples of 'other stuff' during training helps it say 'this is a disease I don't know'.",
+    "project_use": "If time allows, add an 'other/unknown' outlier set (healthy parts, held-out diseases, random images) during fine-tuning; otherwise hold out 2-3 PlantVillage classes as simulated unseen diseases for evaluation.",
+    "verdict": "verified",
+    "verdict_note": "Frontiers in Plant Science 2022 (peer-reviewed), doi 10.3389/fpls.2022.989086. Dataset: 8 known strawberry diseases plus unknowns, 13,089 images. Two-head AUROC 0.972 with unknown recall 94.9%; OpenMatch AUROC 0.971; OpenMax accuracy 70.1% (AUROC 0.812). Caveat: the 16.4% gain is OpenMatch with outliers (86.5%) minus OpenMax (70.1%). The authors admit these are structurally different methods, so this is a cross-method comparison, not a controlled ablation of outlier exposure."
+  },
+  {
+    "id": "w4-06",
+    "worker": "w4",
+    "claim": "Across five public plant-disease datasets, max-logit OOD scoring on a visual-prompt-tuned pretrained model reaches AUROC 94.8% with only 8 shots per class, close to 95.2% with full fine-tuning on all data.",
+    "evidence": "\"the max-logit-based on visual prompt tuning achieves an AUROC score of 94.8% in the 8-shot setting\" vs 95.2% full fine-tuning (Dong et al., Scientific Reports 14:17900, 2024)",
+    "source": "https://pure.jbnu.ac.kr/en/publications/the-impact-of-fine-tuning-paradigms-on-unknown-plant-diseases-rec/",
+    "confidence": "medium",
+    "kind": "result",
+    "links": [
+      "max-logit",
+      "visual prompt tuning",
+      "few-shot",
+      "unknown plant disease"
+    ],
+    "plain": "A big pretrained model needs only about 8 examples per disease to become good at flagging diseases it was never taught.",
+    "project_use": "Supports using a frozen/lightly tuned pretrained backbone and suggests few expert labels per class may suffice for unknown detection; use max-logit as another free score.",
+    "verdict": "verified",
+    "verdict_note": "Dong et al., Scientific Reports 14:17900 (2024), doi 10.1038/s41598-024-66958-2, peer-reviewed; checked the JBNU Pure abstract page. The abstract says five public datasets, VPT max-logit AUROC 94.8% at 8-shot, and full fine-tuning 95.2% on the full dataset. Caveat: the full text was not accessible (Nature/PMC blocked), so I could not confirm whether 94.8/95.2 is an average over all five datasets or a single-dataset figure. 'Across five datasets' may overstate."
+  },
+  {
+    "id": "w4-07",
+    "worker": "w4",
+    "claim": "Vision-language (CLIP-style) anomaly detection performs poorly on plant diseases (zero-shot CLIP AUROC 58.47%), and a knowledge-ensemble fix cuts 16-shot FPR@TPR95 from 43.88% to 7.05%.",
+    "evidence": "\"current state-of-the-art anomaly detection methods based on vision-language models perform poorly on plant disease detection tasks\"; \"reduces the FPR@TPR95 from 43.88% to 7.05%\" (16-shot); all-shot 15.38% to 0.71% (Dong et al., Front. Plant Sci. 2025)",
+    "source": "https://www.frontiersin.org/journals/plant-science/articles/10.3389/fpls.2025.1623907/full",
+    "confidence": "medium",
+    "kind": "gap",
+    "links": [
+      "CLIP",
+      "vision-language models",
+      "anomaly detection",
+      "knowledge ensemble"
+    ],
+    "plain": "General image-text AI models are bad at noticing unfamiliar plant diseases out of the box.",
+    "project_use": "Do not rely on zero-shot CLIP as the 'not sure' detector; use a fine-tuned image backbone's own scores.",
+    "verdict": "verified",
+    "verdict_note": "Dong et al., Front. Plant Sci. 2025 (peer-reviewed). The quote on VLM anomaly detection performing poorly is present. Zero-shot CLIP AUROC is 58.47% (Sec 4.6). FPR@TPR95 goes 43.88->7.05 at 16-shot and 15.38->0.71 at all-shot (Table 3, abstract). Caveats: all results are on PlantVillage only, with 12 healthy classes as known and 26 diseased as unknown. The 43.88/15.38 figures are the VLPT-MCM baseline, not zero-shot CLIP."
+  },
+  {
+    "id": "w4-08",
+    "worker": "w4",
+    "claim": "OOD scores can be used as non-conformity scores in conformal prediction, and conformal prediction can correct overly optimistic finite-sample OOD evaluation metrics.",
+    "evidence": "\"evaluation metrics can be overly optimistic due to the finite sample size of the test dataset\"; uses \"OOD scores as non-conformity scores\"; \"the two fields may be inherently intertwined\" (Novello, Dalmau, Andeol, arXiv:2403.11532)",
+    "source": "https://arxiv.org/abs/2403.11532",
+    "confidence": "high",
+    "kind": "method",
+    "links": [
+      "conformal prediction",
+      "non-conformity score",
+      "OOD detection"
+    ],
+    "plain": "The same 'strangeness' score that flags unfamiliar photos can be plugged into conformal prediction to give guaranteed-rate warnings.",
+    "project_use": "Calibrate the OOD threshold conformally on a small expert-labelled field set so the false-alarm rate on known diseases is controlled; report finite-sample uncertainty on FPR95.",
+    "verdict": "verified",
+    "verdict_note": "Novello, Dalmau, Andeol, arXiv:2403.11532, a preprint (no peer-reviewed venue listed). The abstract has all three quotes. It proposes conformal AUROC and conformal FPR@TPR95 as corrections with probabilistic conservativeness guarantees. 'Intertwined' is hedged with 'may be'."
+  },
+  {
+    "id": "w5-01",
+    "worker": "w5",
+    "claim": "In the low-budget regime, uncertainty-based active learning performs no better than (or worse than) random selection, and representative 'typical' examples should be queried instead (TypiClust).",
+    "evidence": "\"the uncertainty principle is only suited for the high-budget regime\"; \"all other baseline AL methods perform on par with random selection or worse\"; FlexMatch with 10 TypiClust-chosen CIFAR-10 labels reaches 93.2%, +39.4% over random selection.",
+    "source": "https://arxiv.org/abs/2202.02794",
+    "confidence": "high",
+    "kind": "paper",
+    "links": [
+      "active learning",
+      "cold start",
+      "uncertainty sampling",
+      "TypiClust",
+      "low budget"
+    ],
+    "plain": "When you can only afford a few expert labels, asking about the photos the model is most confused by works no better than picking photos at random; picking typical, representative photos works better.",
+    "project_use": "For the first rounds of expert labeling (tens of field photos), use random or clustering/typicality-based selection rather than lowest-confidence selection; switch to uncertainty only once the budget grows.",
+    "verdict": "verified",
+    "verdict_note": "Hacohen, Dekel, Weinshall, ICML 2022 (peer-reviewed). Both quotes are present: 'the uncertainty principle is only suited for the high-budget regime' (Intro) and 'perform on par with random selection or worse' (Sec 4.2.1). The abstract gives 93.2% on CIFAR-10 with 10 labels, +39.4% over random. The SSL framework is FlexMatch (Secs 4.1/4.2.3), but the abstract says only 'state-of-the-art semi-supervised methods'."
+  },
+  {
+    "id": "w5-02",
+    "worker": "w5",
+    "claim": "Under domain shift, entropy-based uncertainty sampling frequently underperforms random sampling because target-domain uncertainty is miscalibrated, while CLUE (uncertainty-weighted clustering) gives modest consistent gains.",
+    "evidence": "\"Uncertainty and diversity sampling are less effective for Active DA, frequently underperforming even random sampling.\" SVHN->MNIST with 30 labels: Random 77.7%, Entropy 65.8%, CLUE 83.9%; DomainNet R->C at 1k labels: Random 51.5, Entropy 48.1, CLUE 52.9.",
+    "source": "https://arxiv.org/abs/2010.08666",
+    "confidence": "high",
+    "kind": "method",
+    "links": [
+      "active domain adaptation",
+      "CLUE",
+      "uncertainty sampling",
+      "domain shift",
+      "calibration"
+    ],
+    "plain": "When the new photos look different from the training photos, the model's 'I'm unsure' signal is unreliable, so using it alone to pick photos for experts can be worse than picking at random.",
+    "project_use": "Include random sampling as a mandatory baseline and try a CLUE-style (uncertain AND diverse) selector for choosing which field photos the expert labels.",
+    "verdict": "verified",
+    "verdict_note": "Prabhu et al., CLUE, ICCV 2021 (peer-reviewed). The text says uncertainty/diversity sampling are 'frequently underperforming even random sampling' (Sec 4.4). Numbers match. SVHN->MNIST at 30 labels: Random 77.7, Entropy 65.8, CLUE 83.9. DomainNet R->C at 1k labels: Random 51.5, Entropy 48.1, CLUE 52.9. The gains are modest except at very low budgets, e.g. +6.2 on SVHN->MNIST at 30 labels."
+  },
+  {
+    "id": "w5-03",
+    "worker": "w5",
+    "claim": "Gains of smart label selection over random under shift are small and shrink as the label budget grows; with very few target labels, fine-tuning recovers much of the accuracy.",
+    "evidence": "CLUE paper, SVHN->MNIST finetuning: Random 77.7 / 88.2 / 95.2% at 30 / 60 / 150 labels vs CLUE 83.9 / 89.4 / 94.5%; DSLR->Amazon: Random 54.3 / 58.0 / 67.5 vs CLUE 56.4 / 60.5 / 70.5 at 30 / 60 / 150 labels.",
+    "source": "https://arxiv.org/abs/2010.08666",
+    "confidence": "medium",
+    "kind": "result",
+    "links": [
+      "label budget",
+      "fine-tuning",
+      "domain shift",
+      "random baseline"
+    ],
+    "plain": "A few dozen to a few hundred labeled examples from the new setting can raise accuracy a lot, and clever choosing of which ones to label helps most when you have very few.",
+    "project_use": "Plot accuracy vs number of expert field labels (e.g. 10/30/60/150) for random vs uncertainty vs diversity selection; expect diminishing differences at larger budgets. Note these are non-agricultural benchmarks.",
+    "verdict": "refuted",
+    "verdict_note": "The numbers are correct (CLUE paper, ICCV 2021). SVHN->MNIST: Random 77.7/88.2/95.2 vs CLUE 83.9/89.4/94.5. DSLR->Amazon: Random 54.3/58.0/67.5 vs CLUE 56.4/60.5/70.5. The generalization is overstated. Gains shrink with budget only on SVHN->MNIST (+6.2, +1.2, -0.7). On DSLR->Amazon they grow (+2.1, +2.5, +3.0). 'Shrink as budget grows' holds for one of the two cited shifts, not in general."
+  },
+  {
+    "id": "w5-04",
+    "worker": "w5",
+    "claim": "Training on the model's own predictions (naive pseudo-labeling) overfits to its own mistakes due to confirmation bias, mitigated by soft labels, mixup and keeping a minimum number of truly labeled samples per mini-batch.",
+    "evidence": "\"a naive pseudo-labeling overfits to incorrect pseudo-labels due to the so-called confirmation bias\"; \"mixup augmentation and setting a minimum number of labeled samples per mini-batch are effective regularization techniques.\"",
+    "source": "https://arxiv.org/abs/1908.02983",
+    "confidence": "high",
+    "kind": "paper",
+    "links": [
+      "self-training",
+      "pseudo-labeling",
+      "confirmation bias",
+      "noisy feedback"
+    ],
+    "plain": "If the app learns from its own guesses (or unverified farmer confirmations), it can reinforce its own errors.",
+    "project_use": "Only retrain on expert-verified field labels; do not feed back the model's own confident predictions or farmer clicks without expert check, or if used, mix every batch with verified labels.",
+    "verdict": "verified",
+    "verdict_note": "arXiv 1908.02983 (Arazo et al., 'Pseudo-Labeling and Confirmation Bias in Deep Semi-Supervised Learning'). The abstract contains both quotes and uses soft pseudo-labels; mixup and a minimum number of labeled samples per mini-batch are named as the regularizers. The arXiv page lists no venue, so I treated it as a preprint; I believe it appeared at IJCNN 2020, but I did not confirm that. The results are on generic SSL image benchmarks (CIFAR, Mini-ImageNet etc.), not agriculture."
+  },
+  {
+    "id": "w5-05",
+    "worker": "w5",
+    "claim": "In an agricultural (broccoli disease/defect) instance-segmentation task, uncertainty-based active learning (MaskAL) reached the same performance with 900 images that random sampling needed 2300 images for.",
+    "evidence": "\"MaskAL had the same performance after sampling 900 images as the random sampling had after 2300 images\"; MaskAL reached 93.9% of full-data (14,000 images) performance with 17.9% of the data vs random 81.9% with 16.4%.",
+    "source": "https://arxiv.org/abs/2112.06586",
+    "confidence": "medium",
+    "kind": "result",
+    "links": [
+      "active learning",
+      "agriculture",
+      "uncertainty sampling",
+      "annotation cost"
+    ],
+    "plain": "In a farm-image task, picking uncertain images for labeling saved more than half the labeling work compared with random picking, but only at budgets of hundreds of images.",
+    "project_use": "Supports that uncertainty sampling pays off at medium/high budgets (hundreds of labels) in agriculture, consistent with w5-01; our 2-week budget is likely smaller, so report it as context, not an expected gain.",
+    "verdict": "verified",
+    "verdict_note": "arXiv 2112.06586 (MaskAL), peer-reviewed in Computers and Electronics in Agriculture vol. 197 (2022). The abstract confirms a broccoli dataset with 5 visually similar classes, Mask R-CNN, 900 vs 2300 images, 93.9% of full performance with 17.9% of the data vs random's 81.9% with 16.4%, and a 14,000-image full training set. The 'disease/defect' label is a gloss: the abstract only says 5 classes. The result is for a single dataset."
+  },
+  {
+    "id": "w5-06",
+    "worker": "w5",
+    "claim": "On plant phenotyping data (soybean stress incl. diseases, controlled imaging; field weed images), DBAL, entropy, least-confidence and core-set acquisition beat random sampling at a fixed labeling budget, starting from a random 5% seed set.",
+    "evidence": "Abstract: \"the classification performance of deep learning models with active learning-based acquisition strategies is better than random sampling-based acquisition\" (no gain size in abstract).",
+    "source": "https://arxiv.org/abs/2006.04255",
+    "confidence": "medium",
+    "kind": "paper",
+    "links": [
+      "active learning",
+      "plant phenotyping",
+      "plant disease",
+      "random baseline"
+    ],
+    "plain": "For plant images, smart picking of which photos to label beat random picking, once a small random starter set was labeled first.",
+    "project_use": "Use a random seed set first (cold-start fix), then active selection; note the soybean disease images were controlled-condition, not field, so lab-to-field AL evidence remains a gap.",
+    "verdict": "refuted",
+    "verdict_note": "arXiv 2006.04255, preprint with no venue listed (checked the ar5iv full text). Two errors. (1) The initial labeled set is a random batch of 1000 samples spread across classes, not a 5% seed; the 5% is a randomly selected validation split. (2) Not all four methods beat random on both datasets: on soybean (8 stress classes + healthy, indoor imaging with constant illumination), Least Confidence, Entropy and DBAL beat random but Coreset did worse than random. On the field weed dataset (9 species), all four beat random. The abstract's general statement that AL beats random overstates the Coreset result."
+  },
+  {
+    "id": "w5-07",
+    "worker": "w5",
+    "claim": "Training with in-the-wild field images (PlantDoc, only 2,598 images across 13 species) can raise plant disease classification accuracy by up to 31%, showing that a small amount of field data matters under lab-to-field shift.",
+    "evidence": "\"modelling using our dataset can increase the classification accuracy by up to 31%\"; \"Our dataset contains 2,598 data points in total across 13 plant species.\"",
+    "source": "https://arxiv.org/abs/1911.10317",
+    "confidence": "medium",
+    "kind": "dataset",
+    "links": [
+      "PlantDoc",
+      "PlantVillage",
+      "lab-to-field shift",
+      "fine-tuning"
+    ],
+    "plain": "Adding a modest set of real-field photos made disease recognition much more accurate than using only clean lab-style photos.",
+    "project_use": "Use PlantDoc as the 'field' pool from which simulated expert labels are drawn; the paper reports no per-class label curve, so how many labels are needed remains a gap our experiment should measure.",
+    "verdict": "verified",
+    "verdict_note": "arXiv 1911.10317 (PlantDoc), peer-reviewed at CoDS-COMAD 2020 (ACM). The abstract confirms 'up to 31%', 2,598 images (9,216 cropped leaf boxes), 13 species, 27 classes (17 disease). The paper words the gain both as accuracy and, in the intro, as error reduction. From the tables, the closest match is InceptionResNetV2 trained on PlantVillage only, 39.87% on field images, vs 70.53% after fine-tuning on PlantDoc, about +30.7 pp. VGG16 shows a larger gap (19.73% to 60.41%), so the paper's 'up to 31%' is loose. 'Small amount of field data matters' is an interpretation, but the lab-to-field framing fits."
+  }
+]

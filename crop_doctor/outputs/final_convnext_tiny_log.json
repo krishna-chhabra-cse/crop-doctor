@@ -1,0 +1,38 @@
+{
+  "args": {
+    "arch": "convnext_tiny.fb_in22k_ft_in1k",
+    "epochs": 4,
+    "workers": 4,
+    "smoke": false
+  },
+  "epochs": [
+    {
+      "epoch": 1,
+      "train_loss": 0.6874,
+      "field_val_acc_crop_known": 0.5789,
+      "field_val_nll": 1.301,
+      "seconds": 144.6
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.0923,
+      "field_val_acc_crop_known": 0.5684,
+      "field_val_nll": 1.4819,
+      "seconds": 81.0
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.0376,
+      "field_val_acc_crop_known": 0.6105,
+      "field_val_nll": 1.5621,
+      "seconds": 81.9
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.0208,
+      "field_val_acc_crop_known": 0.5895,
+      "field_val_nll": 1.5479,
+      "seconds": 82.0
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "args": {
+    "epochs": 5,
+    "batch_size": 48,
+    "lr": 0.0003,
+    "workers": 4,
+    "limit": null
+  },
+  "epochs": [
+    {
+      "epoch": 1,
+      "train_loss": 0.2615,
+      "val_acc": 0.9654,
+      "seconds": 101.0
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.046,
+      "val_acc": 0.9789,
+      "seconds": 41.6
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.0224,
+      "val_acc": 0.9801,
+      "seconds": 41.4
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.0132,
+      "val_acc": 0.9807,
+      "seconds": 41.3
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.0081,
+      "val_acc": 0.9877,
+      "seconds": 41.4
+    }
+  ]
+}

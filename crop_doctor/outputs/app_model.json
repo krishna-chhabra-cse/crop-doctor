@@ -1,0 +1,23 @@
+{
+  "checkpoint": "final_convnext_tiny.pt",
+  "classes": [
+    "potato_early_blight",
+    "potato_late_blight",
+    "tomato_bacterial_spot",
+    "tomato_early_blight",
+    "tomato_healthy",
+    "tomato_late_blight",
+    "tomato_leaf_mold",
+    "tomato_mosaic_virus",
+    "tomato_septoria",
+    "tomato_yellow_curl_virus"
+  ],
+  "temperature": 1.8911556159781817,
+  "qhat": {
+    "0.1": 0.9270205318278967,
+    "0.2": 0.8407507984709814
+  },
+  "default_alpha": 0.1,
+  "calibrated_on": "final_field_cal",
+  "noise_note": "app uses fresh uniform noise per photo (randomised APS)"
+}
