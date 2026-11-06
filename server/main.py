@@ -76,7 +76,11 @@ def disease_view(label: str | None) -> dict | None:
     if not label:
         return None
     d = knowledge()["diseases"].get(label)
-    return {"label": label, "name": disease_name(label) if d else label, "crop": d["crop"] if d else None}
+    if not d:
+        return {"label": label, "name": label, "crop": None}
+    # cause/spread/signs let the website explain the disease with pictures (fungus, bacteria, virus...).
+    return {"label": label, "name": disease_name(label), "crop": d["crop"], "cause": d.get("cause"),
+            "spread": d.get("spread"), "signs": d.get("key_signs")}
 
 
 def assessment_view(a: dict) -> dict:
