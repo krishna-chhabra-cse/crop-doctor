@@ -9,6 +9,8 @@ Inputs: crop-aware, temperature-scaled probabilities, plus the conformal shortli
     shortlist 2-3 diseases     -> QUESTION  (a visual question that separates them), then
                                   answer updates the probabilities (Bayes rule) -> DIAGNOSIS or EXPERT
     shortlist > 3              -> EXPERT
+    top answer = "something else" (v3 model, Exp 10) -> EXPERT ("this looks like a problem I wasn't taught")
+    "something else" is never given as a diagnosis, not even after a follow-up answer.
 
 Urgency comes from how fast the disease spreads, how much of the crop the farmer says is affected,
 and (only as a tie-breaker) the colour-based severity estimate of the photo.
@@ -27,6 +29,14 @@ KNOWLEDGE = Path(__file__).resolve().parent.parent / "knowledge" / "diseases.jso
 MAX_QUESTION_SET = 3
 ANSWER_TRUST = 0.8          # we assume the farmer's answer to a visual question is right 80% of the time
 AFTER_ANSWER_THRESHOLD = 0.75
+SOMETHING_ELSE = "tomato_something_else"   # 12th class (Exp 10, outlier exposure): "not one of my diseases"
+SOMETHING_ELSE_REASON = "this looks like a different problem, not one of the diseases I was taught"
+
+
+def is_something_else(label: str | None) -> bool:
+    return label == SOMETHING_ELSE
+
+
 def is_healthy(label: str) -> bool:
     return label.endswith("_healthy")
 
@@ -107,12 +117,16 @@ def decide(probs: np.ndarray, classes: list[str], qhat: float, u: float,
         j = int(post.argmax())
         out["after_answer"] = [{"label": classes[i], "probability": round(float(post[i]), 3)}
                                for i in np.argsort(-post)[:3] if post[i] > 0]
+        if is_something_else(classes[j]):
+            return {**out, "status": "expert", "something_else": True, "reason": SOMETHING_ELSE_REASON}
         if post[j] >= AFTER_ANSWER_THRESHOLD and classes[j] in shortlist:
             status = "healthy" if is_healthy(classes[j]) else "diagnosis"
             return {**out, "status": status, "label": classes[j], "probability": round(float(post[j]), 3),
                     "via": "follow_up_question"}
         return {**out, "status": "expert", "reason": "still unsure after your answer"}
 
+    if is_something_else(classes[int(order[0])]) or shortlist == [SOMETHING_ELSE]:
+        return {**out, "status": "expert", "something_else": True, "reason": SOMETHING_ELSE_REASON}
     if len(shortlist) == 0:
         return {**out, "status": "expert", "reason": "the photo doesn't look like the diseases I know well"}
     if len(shortlist) == 1:

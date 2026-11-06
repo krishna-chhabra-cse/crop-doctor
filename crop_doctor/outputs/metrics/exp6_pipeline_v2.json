@@ -1,0 +1,50 @@
+{
+  "assistant_on_field_test": {
+    "careful": {
+      "photos": 1306,
+      "status_share": {
+        "diagnosis": 0.5544,
+        "expert": 0.2067,
+        "retake": 0.0276,
+        "healthy": 0.2113
+      },
+      "asked_a_question": 0.1363,
+      "answered_by_assistant": 0.7657,
+      "accuracy_when_answered": 0.958,
+      "accuracy_answered_directly": 0.9657,
+      "accuracy_answered_after_question": 0.904,
+      "questions_resolved": 0.7022,
+      "sent_to_expert": 0.2067
+    },
+    "typical": {
+      "photos": 1306,
+      "status_share": {
+        "diagnosis": 0.5459,
+        "expert": 0.2167,
+        "retake": 0.0276,
+        "healthy": 0.2098
+      },
+      "asked_a_question": 0.1363,
+      "answered_by_assistant": 0.7557,
+      "accuracy_when_answered": 0.9493,
+      "accuracy_answered_directly": 0.9657,
+      "accuracy_answered_after_question": 0.8214,
+      "questions_resolved": 0.6292,
+      "sent_to_expert": 0.2167
+    }
+  },
+  "tools": {
+    "lab_test": {
+      "gate_pass_rate": 0.9906,
+      "severity_median_healthy": 0.067,
+      "severity_median_diseased": 0.084,
+      "severity_auroc_diseased_vs_healthy": 0.544
+    },
+    "field_test": {
+      "gate_pass_rate": 0.9811,
+      "severity_median_healthy": 0.14,
+      "severity_median_diseased": 0.216,
+      "severity_auroc_diseased_vs_healthy": 0.618
+    }
+  }
+}

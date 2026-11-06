@@ -85,7 +85,7 @@ def disease_view(label: str | None) -> dict | None:
 
 def assessment_view(a: dict) -> dict:
     keep = ("status", "crop", "probability", "via", "reason", "message", "urgency", "severity_estimate", "quality",
-            "after_answer", "unfamiliar", "familiarity")
+            "after_answer", "unfamiliar", "familiarity", "something_else")
     out = {k: a.get(k) for k in keep if k in a}
     out["disease"] = disease_view(a.get("label"))
     out["shortlist"] = [disease_view(c) for c in a.get("shortlist", [])]

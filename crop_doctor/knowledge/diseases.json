@@ -77,6 +77,13 @@
       "cause": "virus spread by whiteflies (TYLCV)",
       "spread": "virus_insect",
       "key_signs": "leaves curl upwards, yellow leaf edges, small leaves and stunted plants; whiteflies often present"
+    },
+    "tomato_something_else": {
+      "name": "A different tomato problem",
+      "crop": "tomato",
+      "cause": null,
+      "spread": "none",
+      "key_signs": "not one of the diseases the assistant was taught (for example pests or nutrient problems); an expert checks it"
     }
   },
   "follow_up_questions": [

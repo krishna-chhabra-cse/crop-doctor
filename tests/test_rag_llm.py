@@ -18,7 +18,7 @@ def retriever():
 
 def test_every_disease_has_a_sourced_note():
     chunks = load_chunks()
-    diseases = set(knowledge()["diseases"])
+    diseases = set(knowledge()["diseases"]) - {"tomato_something_else"}   # Exp 10: never gets treatment advice
     by_disease = {}
     for c in chunks:
         by_disease.setdefault(c.disease, set()).add(c.section)

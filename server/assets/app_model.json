@@ -11,35 +11,36 @@
     "tomato_leaf_mold",
     "tomato_mosaic_virus",
     "tomato_septoria",
-    "tomato_yellow_curl_virus"
+    "tomato_yellow_curl_virus",
+    "tomato_something_else"
   ],
   "splits": {
-    "dir": "crop_doctor/data/splits_v2",
+    "dir": "crop_doctor/data/splits_v3",
     "lab": "lab_val",
     "cal": "field_cal",
     "simulate": "field_val",
     "monitor": "field_test"
   },
   "mondrian": "crop",
-  "temperature": 1.6770871751152927,
+  "temperature": 1.652091832763256,
   "qhat": {
     "0.1": {
-      "potato": 0.8696336062637192,
-      "tomato": 0.9450409970454512
+      "potato": 0.8771351152343201,
+      "tomato": 0.9514614390735799
     },
     "0.2": {
-      "potato": 0.7827187072209726,
-      "tomato": 0.8744101758460241
+      "potato": 0.7748667840000202,
+      "tomato": 0.9158894599685083
     }
   },
   "default_alpha": 0.1,
   "calibrated_on": "field_cal",
-  "source_checkpoint": "final_v2_convnext_tiny.pt",
+  "source_checkpoint": "final_v3_convnext_tiny.pt",
   "check": {
     "top1_agreement_with_pytorch": 1.0,
-    "field_test_accuracy_pytorch": 0.8744257274119449,
-    "field_test_accuracy_onnx": 0.8744257274119449,
-    "field_test_coverage_90": 0.8989280245022971,
-    "field_test_avg_set_size": 1.510719754977029
+    "field_test_accuracy_pytorch": 0.8652373660030628,
+    "field_test_accuracy_onnx": 0.8652373660030628,
+    "field_test_coverage_90": 0.9050535987748851,
+    "field_test_avg_set_size": 1.6623277182235834
   }
 }

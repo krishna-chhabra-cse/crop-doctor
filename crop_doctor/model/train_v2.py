@@ -10,6 +10,13 @@ What "training properly" means here:
 - Strong augmentation (crops, rotation, lighting, blur) to mimic phone photos.
 - AdamW + one-cycle learning-rate schedule with warm-up; mixed precision on the GPU.
 - The best epoch is chosen by MACRO-F1 on field_val (every class counts equally), never on a test set.
+
+v3 (Exp 10, outlier exposure): the same recipe on splits_v3, which adds a 12th class "tomato_something_else":
+
+    python -m crop_doctor.model.train_v2 --splits splits_v3 --tag final_v3_convnext_tiny
+
+If the splits folder has other_train.csv / other_val.csv, those photos join the FIELD training group / the
+validation set (so the best epoch is chosen by 12-class macro-F1). v2 has neither file, so v2 is unchanged.
 """
 from __future__ import annotations
 
@@ -29,7 +36,7 @@ from crop_doctor.model.crops import crops_from_labels, mask_logits
 from crop_doctor.model.train import set_seed
 from crop_doctor.model.train_final import logits_of, strong_train_transform
 
-SPLITS = config.ROOT / "crop_doctor" / "data" / "splits_v2"
+SPLITS_ROOT = config.ROOT / "crop_doctor" / "data"
 ARCH = "convnext_tiny.fb_in22k_ft_in1k"
 LAB_SHARE = 0.4
 
@@ -48,16 +55,23 @@ def main() -> None:
     ap.add_argument("--batch-size", type=int, default=32)
     ap.add_argument("--workers", type=int, default=6)
     ap.add_argument("--smoke", action="store_true")
+    ap.add_argument("--splits", default="splits_v2", help="folder under crop_doctor/data/")
+    ap.add_argument("--tag", default="final_v2_convnext_tiny", help="checkpoint name in crop_doctor/outputs/")
     args = ap.parse_args()
     if args.smoke:
         args.epochs, args.samples_per_epoch = 1, 256
 
     set_seed(config.SEED)
     dev = device()
-    classes = json.loads((SPLITS / "classes.json").read_text())
-    lab = pd.read_csv(SPLITS / "lab_train.csv")
-    field = pd.read_csv(SPLITS / "field_train.csv")
-    val = pd.read_csv(SPLITS / "field_val.csv")
+    splits = SPLITS_ROOT / args.splits
+    classes = json.loads((splits / "classes.json").read_text())
+    lab = pd.read_csv(splits / "lab_train.csv")
+    field = pd.read_csv(splits / "field_train.csv")
+    val = pd.read_csv(splits / "field_val.csv")
+    if (splits / "other_train.csv").exists():          # v3: "something else" photos (outlier exposure)
+        field = pd.concat([field, pd.read_csv(splits / "other_train.csv")], ignore_index=True)
+    if (splits / "other_val.csv").exists():
+        val = pd.concat([val, pd.read_csv(splits / "other_val.csv")], ignore_index=True)
     if args.smoke:
         val = val.sample(64, random_state=0)
 
@@ -78,7 +92,7 @@ def main() -> None:
     scaler = torch.amp.GradScaler(enabled=dev.type == "cuda")
     loss_fn = torch.nn.CrossEntropyLoss()
 
-    tag = "final_v2_convnext_tiny" + ("_smoke" if args.smoke else "")
+    tag = args.tag + ("_smoke" if args.smoke else "")
     ckpt = config.OUTPUTS_DIR / f"{tag}.pt"
     best, log = -1.0, []
     print(f"lab {len(lab)} + field {len(field)} train photos ({field['source'].value_counts().to_dict()}), "

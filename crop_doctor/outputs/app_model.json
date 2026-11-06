@@ -1,5 +1,5 @@
 {
-  "checkpoint": "final_v2_convnext_tiny.pt",
+  "checkpoint": "final_v3_convnext_tiny.pt",
   "classes": [
     "potato_early_blight",
     "potato_healthy",
@@ -11,24 +11,26 @@
     "tomato_leaf_mold",
     "tomato_mosaic_virus",
     "tomato_septoria",
-    "tomato_yellow_curl_virus"
+    "tomato_yellow_curl_virus",
+    "tomato_something_else"
   ],
-  "temperature": 1.6770871751152927,
+  "temperature": 1.652091832763256,
   "qhat": {
     "0.1": {
-      "potato": 0.869591692832633,
-      "tomato": 0.9450327594338652
+      "potato": 0.8771317697199839,
+      "tomato": 0.9514800829273873
     },
     "0.2": {
-      "potato": 0.7826929917205658,
-      "tomato": 0.8744534889324734
+      "potato": 0.7749183897224209,
+      "tomato": 0.9154964973665232
     }
   },
   "mondrian": "crop",
   "default_alpha": 0.1,
-  "calibrated_on": "splits_v2/field_cal",
+  "calibrated_on": "splits_v3/field_cal",
+  "something_else": "tomato_something_else",
   "splits": {
-    "dir": "crop_doctor/data/splits_v2",
+    "dir": "crop_doctor/data/splits_v3",
     "lab": "lab_val",
     "cal": "field_cal",
     "simulate": "field_val",

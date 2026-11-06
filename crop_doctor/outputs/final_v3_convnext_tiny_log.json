@@ -1,0 +1,134 @@
+{
+  "args": {
+    "epochs": 10,
+    "samples_per_epoch": 16000,
+    "lr": 0.0001,
+    "batch_size": 32,
+    "workers": 6,
+    "smoke": false,
+    "splits": "splits_v3",
+    "tag": "final_v3_convnext_tiny"
+  },
+  "epochs": [
+    {
+      "epoch": 1,
+      "train_loss": 0.8721,
+      "val_macro_f1": 0.5704,
+      "val_acc": 0.9012,
+      "val_acc_by_source": {
+        "plantdoc": 0.4947,
+        "tanzania": 0.9933,
+        "tomato_village": 0.8915
+      },
+      "seconds": 176.3
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.2105,
+      "val_macro_f1": 0.6487,
+      "val_acc": 0.9429,
+      "val_acc_by_source": {
+        "plantdoc": 0.5684,
+        "tanzania": 1.0,
+        "tomato_village": 0.9763
+      },
+      "seconds": 95.6
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.1252,
+      "val_macro_f1": 0.6753,
+      "val_acc": 0.9405,
+      "val_acc_by_source": {
+        "plantdoc": 0.5579,
+        "tanzania": 0.9978,
+        "tomato_village": 0.9763
+      },
+      "seconds": 95.4
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.088,
+      "val_macro_f1": 0.6547,
+      "val_acc": 0.9381,
+      "val_acc_by_source": {
+        "plantdoc": 0.5684,
+        "tanzania": 0.9978,
+        "tomato_village": 0.9661
+      },
+      "seconds": 95.6
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.0704,
+      "val_macro_f1": 0.6789,
+      "val_acc": 0.9369,
+      "val_acc_by_source": {
+        "plantdoc": 0.5579,
+        "tanzania": 0.9956,
+        "tomato_village": 0.9695
+      },
+      "seconds": 96.1
+    },
+    {
+      "epoch": 6,
+      "train_loss": 0.0533,
+      "val_macro_f1": 0.6812,
+      "val_acc": 0.9488,
+      "val_acc_by_source": {
+        "plantdoc": 0.5789,
+        "tanzania": 1.0,
+        "tomato_village": 0.9898
+      },
+      "seconds": 96.4
+    },
+    {
+      "epoch": 7,
+      "train_loss": 0.0408,
+      "val_macro_f1": 0.6525,
+      "val_acc": 0.9357,
+      "val_acc_by_source": {
+        "plantdoc": 0.5368,
+        "tanzania": 0.9956,
+        "tomato_village": 0.9729
+      },
+      "seconds": 138.9
+    },
+    {
+      "epoch": 8,
+      "train_loss": 0.0286,
+      "val_macro_f1": 0.7069,
+      "val_acc": 0.9464,
+      "val_acc_by_source": {
+        "plantdoc": 0.5895,
+        "tanzania": 0.9956,
+        "tomato_village": 0.9864
+      },
+      "seconds": 99.0
+    },
+    {
+      "epoch": 9,
+      "train_loss": 0.0301,
+      "val_macro_f1": 0.67,
+      "val_acc": 0.944,
+      "val_acc_by_source": {
+        "plantdoc": 0.5684,
+        "tanzania": 0.9978,
+        "tomato_village": 0.9831
+      },
+      "seconds": 99.4
+    },
+    {
+      "epoch": 10,
+      "train_loss": 0.0257,
+      "val_macro_f1": 0.662,
+      "val_acc": 0.944,
+      "val_acc_by_source": {
+        "plantdoc": 0.5579,
+        "tanzania": 1.0,
+        "tomato_village": 0.9831
+      },
+      "seconds": 327.8
+    }
+  ]
+}

@@ -89,6 +89,8 @@ def gather_notes(assessment: dict, question: str | None) -> list[Chunk]:
         return r.search(question, disease=label, k=4)
     if label:
         return r.first_reply_context(label)
+    if assessment.get("something_else"):        # a problem we weren't taught: no disease-specific advice
+        return r.search("before spraying safety", disease="general", k=1)
     # No single disease: give "what to do now" for the top candidates + general safety.
     notes = [c for lab in assessment.get("shortlist", [])[:2] for c in r.search("what to do now", disease=lab, k=1)]
     return notes + r.search("before spraying safety", disease="general", k=1)
@@ -130,7 +132,7 @@ def mentions_forbidden_disease(text: str, allowed: list[str]) -> str | None:
     """Return the name of a disease the reply mentions but isn't allowed to (guardrail 2)."""
     low = text.lower()
     for label, d in knowledge()["diseases"].items():
-        if label in allowed or label.endswith("healthy"):
+        if label in allowed or label.endswith("healthy") or label == "tomato_something_else":
             continue
         names = {d["name"].lower(), d["name"].lower().replace("tomato ", "").replace("potato ", "")}
         # Same disease name on the other crop (e.g. "early blight" for potato vs tomato) is fine.

@@ -21,7 +21,7 @@ from scipy.special import logsumexp
 from PIL import Image
 
 from crop_doctor import config
-from crop_doctor.assistant.decision import disease_name, decide, knowledge, urgency
+from crop_doctor.assistant.decision import SOMETHING_ELSE, disease_name, decide, knowledge, urgency
 from crop_doctor.model.backends import load_backend
 from crop_doctor.model.crops import crop_mask
 from crop_doctor.uncertainty.calibration import softmax
@@ -88,6 +88,10 @@ class CropDoctor:
             answer = {"question_id": question_id, "favours": q["options"][option]["favours"]}
             asked = {question_id}
         result.update(decide(probs, self.classes, self.qhat_for(crop), u, answer=answer, asked=asked))
+        if result.get("something_else"):
+            # Exp 10: the model's top answer is "something else" (a problem it wasn't taught) -> expert, and the
+            # website shows its "unusual photo" banner.
+            result.update(unfamiliar=True, question=None)
         if thr is not None and familiarity < thr:
             result.update(status="expert", unfamiliar=True, question=None,
                           reason="this photo doesn't look much like the diseases I learned")
@@ -120,7 +124,7 @@ def summary_message(r: dict) -> str:
         names = ", ".join(disease_name(c) for c in r["shortlist"])
         return f"It could be: {names}. One question to tell them apart: {r['question']['question']}"
     if s == "expert":
-        names = ", ".join(disease_name(c) for c in r["shortlist"][:3])
+        names = ", ".join(disease_name(c) for c in r["shortlist"][:3] if c != SOMETHING_ELSE)
         possible = f" Possible: {names}." if names else ""
         return f"I'm not sure ({r['reason']}).{possible} I've sent your photo to an expert, who will reply soon."
     return r.get("message", "")

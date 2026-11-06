@@ -558,7 +558,7 @@ photos come from Tomato-Village, whose setup (leaves on paper) was in training, 
 photos are messy. **Confidence scores can't tell "new disease" from "familiar-looking photo".** Shipping it would send
 4.2% of correct answers to experts and catch nothing, so the script ships a gate only if it cuts the wrong answers by
 ≥10 points; here it doesn't, so it's off (the code and tests stay). Next step: an explicit "something else" class trained
-with examples of other diseases (outlier exposure), tested on held-out diseases.
+with examples of other diseases (outlier exposure), tested on held-out diseases. **Done: see Exp 10 (Day 10).**
 
 ### Website for farmers (picture-first, Hindi, dark mode)
 - Every key fact is a picture as well as words: urgency traffic light, a leaf that fills brown with the damage,
@@ -595,3 +595,97 @@ rest to an expert. That's the honest behaviour we want: it answers less where it
 - Website (Vercel): https://crop-doctor-snowy.vercel.app
 - API (Render): https://crop-doctor-api-fz3n.onrender.com/api/health (website also at https://cropdoctor.cv)
 - Code: private GitHub repo krishna-chhabra-cse/crop-doctor
+
+## Day 10: A "something else" class (Exp 10): fixing the unknown-disease weakness
+
+`crop_doctor/experiments/exp10_something_else.py`, splits from `crop_doctor/data/prepare_v3.py`, model
+`final_v3_convnext_tiny.pt` (same recipe as v2: `python -m crop_doctor.model.train_v2 --splits splits_v3 --tag final_v3_convnext_tiny`).
+
+### The idea (say it simply)
+Exp 9 showed that confidence scores can't spot a disease the model was never taught. So we **taught it what "not one of
+my diseases" looks like**: a 12th class, *"something else"* (tomato only), trained on photos of *other* tomato problems.
+This is called **outlier exposure** (Hendrycks et al., 2019). If the model's top answer is "something else", the
+assistant never names a disease: it sends the photo to an expert.
+
+### The split that makes the test honest: by DISEASE, never by photo
+| Tomato-Village problem | Used for |
+|---|---|
+| Leaf Miner, Magnesium Deficiency | taught as "something else" (1,664 train / 295 validation photos) |
+| **Spotted Wilt Virus, Nitrogen Deficiency, Potassium Deficiency** | **held out: never seen** (948 photos) |
+
+So the question is: *does "something else" fire on a problem the model has NEVER seen?* Teaching one leaf-miner photo
+and testing another would be cheating. Tomato-Village has rotated near-copies, so photos were grouped by a
+rotation-aware perceptual hash and no group crosses a split (1 leaking photo removed from each side).
+v2's splits are untouched; v3 writes `crop_doctor/data/splits_v3/` (class order: v2's 11, then "something else").
+
+**Rules fixed before seeing any result:** temperature and per-crop conformal thresholds fitted on `field_cal` (known
+photos only, as for v2); route to an expert when "something else" is the top answer; ship only if "names one known
+disease" on the held-out unknowns drops by **≥ 10 points**, known-photo accuracy drops by **≤ 1 point**, and coverage
+stays **≥ 88.5%**.
+
+### Results
+**Held-out unknown problems (948 photos, never seen by either model):**
+| | v2 | **v3** |
+|---|---|---|
+| names exactly one known disease (a confident wrong answer) | 53.9% | **18.9%** |
+| says "something else" → expert | n/a | 54.3% |
+| sent to an expert (any reason) | 3.3% | **57.1%** |
+| asks a follow-up question | 42.8% | 24.1% |
+| names one disease: Spotted Wilt Virus / Nitrogen def. / Potassium def. | 62% / 45% / 39% | 22% / 18% / **0%** |
+
+(Why 53.9% and not the 43.6% quoted on Day 9: that was all five unknown problems; leaf miner and magnesium deficiency
+were the "easier" ones. Here v2 and v3 are compared on exactly the same 948 photos.)
+
+**Known field test (1,306 photos, the same set as v2):**
+| | v2 | **v3** |
+|---|---|---|
+| accuracy | 87.4% | 86.5% |
+| PlantDoc (476 independent web photos) | 66.8% | 63.7% |
+| Tanzania (830 farm photos) | 99.3% | 99.5% |
+| Mondrian coverage (target 90%) | 89.9% | **90.5%** |
+| average shortlist length | 1.51 | 1.66 |
+| "something else" is the top answer (wrongly) | n/a | **0.0%** |
+| answered alone (one disease) / sent to expert | 69.6% / 16.1% | 67.4% / 18.1% |
+
+The ONNX export the server runs gives **identical** answers to PyTorch on all 1,306 photos.
+
+**Whole assistant (Exp 6 rerun, typical farmer who answers follow-up questions right 80% of the time):** answers
+**73.0%** of known photos itself (v2: 75.6%) at **95.3%** accuracy (v2: 94.9%); 24.2% go to an expert (v2: 21.7%).
+Slightly fewer answers, equally accurate answers.
+
+### The confound (say this before the teacher does)
+Every "something else" training photo **and** every held-out unknown photo is a Tomato-Village leaf **on paper**. The
+class could have learned "a paper photo that isn't early blight, late blight or healthy". Checks:
+- **166 known Tomato-Village photos** (early/late blight, healthy) were removed from v3's training on purpose. Same
+  paper, same camera, known diseases. "Something else" is the top answer on only **0.6%** of them (accuracy 98.8%).
+  So it did **not** simply learn "paper". It does appear inside the shortlist on 17.5% of them, which makes the
+  shortlist a little longer.
+- On real-background PlantDoc tomato photos it is never the top answer (0%), though it enters 11.8% of PlantDoc
+  shortlists.
+- **What we cannot test:** unknown diseases photographed in a real field. We have no such photos. So "54% caught" is
+  a lab-style result on Tomato-Village; on farm photos it could be lower. The honest claim is: *it catches unseen
+  problems from the same kind of photos, without hurting known diseases.*
+
+### Costs (be honest)
+- Overall accuracy dropped 0.9 points, which just passes the ≤ 1-point rule. Most of the drop is on PlantDoc
+  (−3.2 points, ~15 photos). A paired test (McNemar) says neither gap is significant (all photos p = 0.16;
+  PlantDoc p = 0.10), and the drop does **not** come from the new class (it is never the top answer on a known photo),
+  so it's most likely run-to-run training noise plus 166 fewer Tomato-Village training photos. We'd need several
+  training seeds to say for sure.
+- Shortlists are a bit longer (1.51 → 1.66): on PlantDoc, answered alone 34% → 29%, more photos go to an expert.
+  That is the price of being more careful.
+
+### Decision: **shipped**
+Unknown "names one disease" fell by **35 points** (rule: ≥ 10), accuracy fell 0.99 points (rule: ≤ 1), coverage
+90.5% (rule: ≥ 88.5%). In the app: "something else" on top → expert, with the website's "unusual photo" banner; it is
+never shown as a diagnosis, never gets treatment advice (only general safety notes), and is masked out for potato.
+Live recalibration notices the model changed (12 outputs instead of 11) and restarts from the field calibration set.
+
+### Likely questions
+- *Isn't 57% still letting a lot through?* Yes: 19% of never-seen problems still get one disease named. It's a big
+  improvement (54% → 19%), not a solution. More kinds of "something else" (other pests, deficiencies, field photos)
+  is the way to push it further.
+- *Why not just lower the confidence threshold?* Exp 9: confidence can't tell an unknown disease from a familiar-looking
+  photo (AUROC 0.18). Teaching the model examples of "other" works where confidence failed.
+- *Did you tune anything on the held-out diseases?* No. The split, the routing rule and the ship thresholds were fixed
+  before evaluation; the best epoch was chosen on field_val + the *taught* diseases' validation photos only.

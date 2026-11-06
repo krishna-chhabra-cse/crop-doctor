@@ -327,6 +327,7 @@ const SERVER_HI: Record<string, string> = {
   "Tomato mosaic virus": "टमाटर मोज़ेक वायरस",
   "Tomato Septoria leaf spot": "टमाटर का सेप्टोरिया पत्ती धब्बा",
   "Tomato yellow leaf curl virus": "टमाटर पीला पत्ता मोड़ वायरस",
+  "A different tomato problem": "टमाटर की कोई दूसरी समस्या",
   // key signs
   "brown spots with rings like a target, usually starting on older, lower leaves": "निशाने जैसे छल्लों वाले भूरे धब्बे, आमतौर पर पुराने, निचले पत्तों से शुरू",
   "even green colour, no spots or dark patches": "एक जैसा हरा रंग, कोई धब्बा या काला हिस्सा नहीं",
@@ -339,6 +340,7 @@ const SERVER_HI: Record<string, string> = {
   "light and dark green mottled (patchwork) pattern, wrinkled or distorted leaves; spreads by hands, tools and seed": "हल्के और गहरे हरे रंग का चितकबरा पैटर्न, सिकुड़े या टेढ़े पत्ते; हाथों, औज़ारों और बीज से फैलता है",
   "many small round spots with dark borders and pale grey centres, often with tiny black dots inside": "काले किनारों और हल्के स्लेटी बीच वाले कई छोटे गोल धब्बे, अक्सर अंदर छोटे काले बिंदु",
   "leaves curl upwards, yellow leaf edges, small leaves and stunted plants; whiteflies often present": "पत्ते ऊपर की ओर मुड़ते हैं, किनारे पीले, छोटे पत्ते और बौने पौधे; अक्सर सफ़ेद मक्खियाँ दिखती हैं",
+  "not one of the diseases the assistant was taught (for example pests or nutrient problems); an expert checks it": "उन रोगों में से नहीं जो सहायक ने सीखे (जैसे कीट या पोषक तत्वों की कमी); विशेषज्ञ इसे जाँचेगा",
   // follow-up questions
   "Look closely at the spots. Which looks more like your leaf?": "धब्बों को ध्यान से देखें। आपका पत्ता किसके जैसा दिखता है?",
   "Bigger brown spots with rings inside, like a target": "अंदर छल्लों वाले बड़े भूरे धब्बे, निशाने जैसे",

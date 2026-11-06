@@ -1,0 +1,248 @@
+{
+  "rules": {
+    "route_to_expert": "'something else' is the top answer",
+    "alpha": 0.1,
+    "ship_if": {
+      "unknown_named_one_known_drop_at_least": 0.1,
+      "field_test_accuracy_drop_at_most": 0.01,
+      "field_test_coverage_at_least": 0.885
+    }
+  },
+  "photos": {
+    "field_cal": 545,
+    "field_test": 1306,
+    "tv_known_holdout": 166,
+    "other_val": 295,
+    "unknown_heldout": 948
+  },
+  "v2": {
+    "temperature": 1.6770871751152927,
+    "qhat": {
+      "potato": 0.869591692832633,
+      "tomato": 0.9450327594338652
+    },
+    "field_test": {
+      "accuracy": 0.8744,
+      "coverage": 0.8989280245022971,
+      "avg_set_size": 1.510719754977029,
+      "empty_rate": 0.06049004594180704,
+      "answered_rate": 0.6960183767228177,
+      "answered_accuracy": 0.9614961496149615,
+      "assistant": {
+        "named_one_known": 0.696,
+        "something_else_top": 0.0,
+        "question": 0.1432,
+        "expert": 0.1608,
+        "something_else_in_shortlist": 0.0
+      },
+      "by_source": {
+        "plantdoc": {
+          "photos": 476,
+          "accuracy": 0.6681,
+          "coverage": 0.8865546218487395,
+          "avg_set_size": 2.542016806722689,
+          "empty_rate": 0.008403361344537815,
+          "answered_rate": 0.3403361344537815,
+          "answered_accuracy": 0.8024691358024691,
+          "assistant": {
+            "named_one_known": 0.3403,
+            "something_else_top": 0.0,
+            "question": 0.3761,
+            "expert": 0.2836,
+            "something_else_in_shortlist": 0.0
+          }
+        },
+        "tanzania": {
+          "photos": 830,
+          "accuracy": 0.9928,
+          "coverage": 0.9060240963855422,
+          "avg_set_size": 0.9192771084337349,
+          "empty_rate": 0.09036144578313253,
+          "answered_rate": 0.9,
+          "answered_accuracy": 0.9959839357429718,
+          "assistant": {
+            "named_one_known": 0.9,
+            "something_else_top": 0.0,
+            "question": 0.0096,
+            "expert": 0.0904,
+            "something_else_in_shortlist": 0.0
+          }
+        }
+      },
+      "plantdoc_tomato_something_else_top": 0.0
+    },
+    "unknown_heldout": {
+      "all": {
+        "named_one_known": 0.539,
+        "something_else_top": 0.0,
+        "question": 0.4283,
+        "expert": 0.0327,
+        "something_else_in_shortlist": 0.0
+      },
+      "by_disease": {
+        "Nitrogen Deficiency": {
+          "named_one_known": 0.4485,
+          "something_else_top": 0.0,
+          "question": 0.493,
+          "expert": 0.0585,
+          "something_else_in_shortlist": 0.0
+        },
+        "Pottassium Deficiency": {
+          "named_one_known": 0.3889,
+          "something_else_top": 0.0,
+          "question": 0.6111,
+          "expert": 0.0,
+          "something_else_in_shortlist": 0.0
+        },
+        "Spotted Wilt Virus": {
+          "named_one_known": 0.6228,
+          "something_else_top": 0.0,
+          "question": 0.3578,
+          "expert": 0.0193,
+          "something_else_in_shortlist": 0.0
+        }
+      }
+    },
+    "other_val_taught_diseases_new_photos": {
+      "named_one_known": 0.4373,
+      "something_else_top": 0.0,
+      "question": 0.5085,
+      "expert": 0.0542,
+      "something_else_in_shortlist": 0.0
+    },
+    "tv_known_holdout": {
+      "accuracy": 1.0,
+      "coverage": 0.9698795180722891,
+      "avg_set_size": 1.0,
+      "empty_rate": 0.030120481927710843,
+      "answered_rate": 0.9397590361445783,
+      "answered_accuracy": 1.0,
+      "assistant": {
+        "named_one_known": 0.9398,
+        "something_else_top": 0.0,
+        "question": 0.0301,
+        "expert": 0.0301,
+        "something_else_in_shortlist": 0.0
+      },
+      "note": "v2 trained on these photos"
+    }
+  },
+  "v3": {
+    "temperature": 1.652091832763256,
+    "qhat": {
+      "potato": 0.8771317697199839,
+      "tomato": 0.9514800829273873
+    },
+    "field_test": {
+      "accuracy": 0.8645,
+      "coverage": 0.9050535987748851,
+      "avg_set_size": 1.6623277182235834,
+      "empty_rate": 0.05742725880551302,
+      "answered_rate": 0.6738131699846861,
+      "answered_accuracy": 0.9636363636363636,
+      "assistant": {
+        "named_one_known": 0.6738,
+        "something_else_top": 0.0,
+        "question": 0.1455,
+        "expert": 0.1807,
+        "something_else_in_shortlist": 0.0429
+      },
+      "by_source": {
+        "plantdoc": {
+          "photos": 476,
+          "accuracy": 0.6366,
+          "coverage": 0.8970588235294118,
+          "avg_set_size": 2.94327731092437,
+          "empty_rate": 0.004201680672268907,
+          "answered_rate": 0.2857142857142857,
+          "answered_accuracy": 0.7794117647058824,
+          "assistant": {
+            "named_one_known": 0.2857,
+            "something_else_top": 0.0,
+            "question": 0.3718,
+            "expert": 0.3424,
+            "something_else_in_shortlist": 0.1176
+          }
+        },
+        "tanzania": {
+          "photos": 830,
+          "accuracy": 0.9952,
+          "coverage": 0.9096385542168675,
+          "avg_set_size": 0.927710843373494,
+          "empty_rate": 0.08795180722891566,
+          "answered_rate": 0.8963855421686747,
+          "answered_accuracy": 0.9973118279569892,
+          "assistant": {
+            "named_one_known": 0.8964,
+            "something_else_top": 0.0,
+            "question": 0.0157,
+            "expert": 0.088,
+            "something_else_in_shortlist": 0.0
+          }
+        }
+      },
+      "plantdoc_tomato_something_else_top": 0.0
+    },
+    "unknown_heldout": {
+      "all": {
+        "named_one_known": 0.1888,
+        "something_else_top": 0.5432,
+        "question": 0.2405,
+        "expert": 0.5707,
+        "something_else_in_shortlist": 0.7605
+      },
+      "by_disease": {
+        "Nitrogen Deficiency": {
+          "named_one_known": 0.1838,
+          "something_else_top": 0.6574,
+          "question": 0.1365,
+          "expert": 0.6797,
+          "something_else_in_shortlist": 0.7827
+        },
+        "Pottassium Deficiency": {
+          "named_one_known": 0.0,
+          "something_else_top": 1.0,
+          "question": 0.0,
+          "expert": 1.0,
+          "something_else_in_shortlist": 0.9028
+        },
+        "Spotted Wilt Virus": {
+          "named_one_known": 0.2186,
+          "something_else_top": 0.4004,
+          "question": 0.3462,
+          "expert": 0.4352,
+          "something_else_in_shortlist": 0.7253
+        }
+      }
+    },
+    "other_val_taught_diseases_new_photos": {
+      "named_one_known": 0.0,
+      "something_else_top": 0.9864,
+      "question": 0.0136,
+      "expert": 0.9864,
+      "something_else_in_shortlist": 0.9763
+    },
+    "tv_known_holdout": {
+      "accuracy": 0.988,
+      "coverage": 0.9759036144578314,
+      "avg_set_size": 1.2349397590361446,
+      "empty_rate": 0.018072289156626505,
+      "answered_rate": 0.7831325301204819,
+      "answered_accuracy": 0.9923076923076923,
+      "assistant": {
+        "named_one_known": 0.7771,
+        "something_else_top": 0.006,
+        "question": 0.1867,
+        "expert": 0.0361,
+        "something_else_in_shortlist": 0.1747
+      },
+      "note": "never trained on"
+    }
+  },
+  "decision": {
+    "unknown_named_one_known_drop": 0.3502,
+    "field_test_accuracy_drop": 0.0099,
+    "v3_field_test_coverage": 0.9050535987748851,
+    "ship": true
+  }
+}
