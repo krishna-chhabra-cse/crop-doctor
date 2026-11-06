@@ -39,6 +39,10 @@ How you work:
 - Reply in {language}."""
 
 
+def llm_available() -> bool:
+    return bool(os.environ.get("ANTHROPIC_API_KEY") or os.environ.get("ANTHROPIC_AUTH_TOKEN"))
+
+
 @dataclass
 class Reply:
     text: str

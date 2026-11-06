@@ -9,7 +9,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[3]))  # project root, so
 import pandas as pd  # noqa: E402
 import streamlit as st  # noqa: E402
 
-from crop_doctor.app import db  # noqa: E402
+from crop_doctor.app import db, service  # noqa: E402
 from crop_doctor.app.ui import calibrated_doctor  # noqa: E402
 from crop_doctor.assistant import live_calibration as lc  # noqa: E402
 from crop_doctor.assistant.decision import disease_name, knowledge  # noqa: E402
@@ -21,10 +21,7 @@ OTHER, UNUSABLE = "Other disease / not in the list", "Photo unusable"
 
 def submit(case: dict, choice: str, note: str) -> None:
     label = next((c for c in doc.classes if disease_name(c) == choice), choice)
-    db.expert_answer(case["id"], label, note)
-    verdict = disease_name(label) if label in doc.classes else choice
-    db.add_message(case["id"], "expert", f"{verdict}. {note}".strip())
-    run = lc.add_expert_label(doc, case, label)
+    run = service.expert_answer(doc, case["id"], label, note)
     if run:
         st.toast(f"Random audit added to calibration: monitor coverage now {run['monitor_coverage']:.0%}, "
                  f"avg shortlist {run['monitor_set_size']:.1f}")

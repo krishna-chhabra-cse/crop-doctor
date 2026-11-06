@@ -1,7 +1,6 @@
 """Farmer chat: send a leaf photo, get an honest answer (or an expert), ask follow-up questions."""
 from __future__ import annotations
 
-import io
 import sys
 import uuid
 from pathlib import Path
@@ -9,13 +8,9 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[3]))  # project root, so `crop_doctor` imports work
 
 import streamlit as st  # noqa: E402
-from PIL import Image  # noqa: E402
 
-from crop_doctor.app import db  # noqa: E402
-import random  # noqa: E402
-
+from crop_doctor.app import db, service  # noqa: E402
 from crop_doctor.app.ui import SAMPLES_DIR, calibrated_doctor, diagnosis_card, llm_enabled, samples  # noqa: E402
-from crop_doctor.assistant import llm  # noqa: E402
 from crop_doctor.assistant.decision import knowledge  # noqa: E402
 
 st.set_page_config(page_title="Crop Doctor: Farmer Chat", layout="centered")
@@ -30,64 +25,21 @@ CAPTURE_GUIDE = """**How to take a good photo**
 - Optional: a second photo of the whole plant"""
 
 
-# ---------- actions ----------
+# ---------- actions (the logic lives in crop_doctor/app/service.py, shared with the website API) ----------
 
 def start_case(img_bytes: bytes, crop: str, seed: int | None = None) -> None:
-    img = Image.open(io.BytesIO(img_bytes))
-    a = calibrated_doctor().assess(img, crop, seed=seed)
-    name = db.save_image(img_bytes)
-    # Random audit: some photos the assistant answers are ALSO checked by an expert. Chosen at random, so
-    # they are a fair sample: the only expert labels allowed to recalibrate the assistant.
-    audit = a["status"] in ("diagnosis", "healthy") and random.random() < ss.get("audit_rate", db.AUDIT_RATE)
-    cid = db.create_case(ss.session_id, crop, name, a, audit=audit)
-    db.add_message(cid, "farmer", f"[photo of a {crop} leaf]", {"image": name})
-    ss.case_id, ss.answers = cid, {}
-    post_reply(cid, a)
-    if audit:
-        db.add_message(cid, "assistant", "An expert will also double-check this answer (we check some answers at "
-                       "random to keep the assistant honest). You'll see their reply here.", {"status": "audit"})
-
-
-def post_reply(cid: int, a: dict, question: str | None = None) -> None:
-    history = [{"role": "user" if m["role"] == "farmer" else "assistant",
-                "content": m["text"] if m["role"] != "expert" else f"Expert said: {m['text']}"}
-               for m in db.messages(cid)[-6:]]
-    with st.spinner("Writing a reply ..."):
-        r = llm.reply(a, question=question, history=history if question else None, language=ss.get("language", "English"))
-    db.add_message(cid, "assistant", r.text, {"sources": r.sources, "used_llm": r.used_llm,
-                                              "fallback": r.fallback_reason, "status": a["status"]})
-
-
-def reassess(cid: int, **kwargs) -> dict:
-    case = db.get_case(cid)
-    prev = case["assessment"]
-    img = Image.open(io.BytesIO(db.load_image(case["image_path"])))
-    a = calibrated_doctor().assess(img, case["crop"], seed=case["seed"],
-                        question_id=kwargs.get("question_id", ss.answers.get("question_id")),
-                        option=kwargs.get("option", ss.answers.get("option")),
-                        extent=kwargs.get("extent", prev.get("_extent")))
-    a["_extent"] = kwargs.get("extent", prev.get("_extent"))
-    db.update_assessment(cid, a)
-    return a
+    with st.spinner("Checking your photo ..."):
+        ss.case_id = service.start_case(calibrated_doctor(), img_bytes, crop, ss.session_id, seed=seed,
+                                        audit_rate=ss.get("audit_rate", db.AUDIT_RATE),
+                                        language=ss.get("language", "English"))
 
 
 def answer_question(cid: int, qid: str, option: int | None, text: str) -> None:
-    db.add_message(cid, "farmer", text)
-    if option is None:                                  # "Not sure": send to expert
-        a = db.get_case(cid)["assessment"] | {"status": "expert", "reason": "the farmer wasn't sure"}
-        a["message"] = "No problem. I've sent your photo to an expert, who will reply soon."
-        db.update_assessment(cid, a)
-    else:
-        ss.answers = {"question_id": qid, "option": option}
-        a = reassess(cid, question_id=qid, option=option)
-    post_reply(cid, a)
+    service.answer_question(calibrated_doctor(), cid, option, language=ss.get("language", "English"))
 
 
 def answer_extent(cid: int, value: str, text: str) -> None:
-    db.add_message(cid, "farmer", text)
-    a = reassess(cid, extent=value)
-    u = a["urgency"]
-    db.add_message(cid, "assistant", f"Thanks. Act within **{u['act_within']}**. {u['why']}", {"status": a["status"]})
+    service.answer_extent(calibrated_doctor(), cid, value)
 
 
 # ---------- sidebar ----------
@@ -185,6 +137,6 @@ elif a["status"] == "retake":
 if a["status"] != "retake":
     text = st.chat_input("Ask a question about this disease ...")
     if text:
-        db.add_message(cid, "farmer", text)
-        post_reply(cid, db.get_case(cid)["assessment"], question=text)
+        with st.spinner("Writing a reply ..."):
+            service.ask(cid, text, language=ss.get("language", "English"))
         st.rerun()
