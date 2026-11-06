@@ -91,8 +91,10 @@ def check_tools() -> dict:
 
 
 def main() -> None:
-    test = pd.read_csv(config.SPLITS_DIR / "field_test.csv")
     doc = CropDoctor(alpha=0.1)
+    # The test split of whichever model the app uses (v2: PlantDoc + Tanzania held-out field photos).
+    split_dir = config.ROOT / doc.cfg.get("splits", {}).get("dir", "crop_doctor/data/splits")
+    test = pd.read_csv(split_dir / "field_test.csv")
     res = {"assistant_on_field_test": run_assistant(doc, test), "tools": check_tools()}
     save_metrics("exp6_pipeline", res)
     for farmer, r in res["assistant_on_field_test"].items():

@@ -1,0 +1,30 @@
+{
+  "onnx": "model_w16.onnx",
+  "classes": [
+    "potato_early_blight",
+    "potato_late_blight",
+    "tomato_bacterial_spot",
+    "tomato_early_blight",
+    "tomato_healthy",
+    "tomato_late_blight",
+    "tomato_leaf_mold",
+    "tomato_mosaic_virus",
+    "tomato_septoria",
+    "tomato_yellow_curl_virus"
+  ],
+  "temperature": 1.8930486646428246,
+  "qhat": {
+    "0.1": 0.9269026411213014,
+    "0.2": 0.8406552654557734
+  },
+  "default_alpha": 0.1,
+  "calibrated_on": "final_field_cal",
+  "source_checkpoint": "final_convnext_tiny.pt",
+  "check": {
+    "top1_agreement_with_pytorch": 1.0,
+    "field_test_accuracy_pytorch": 0.6533613445378151,
+    "field_test_accuracy_onnx": 0.6533613445378151,
+    "field_test_coverage_90": 0.9096638655462185,
+    "field_test_avg_set_size": 2.880252100840336
+  }
+}

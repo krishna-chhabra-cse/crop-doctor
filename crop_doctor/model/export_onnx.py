@@ -27,7 +27,6 @@ from crop_doctor.uncertainty.calibration import fit_temperature, softmax
 from crop_doctor.uncertainty.conformal import aps_scores, conformal_quantile, evaluate_sets, prediction_sets, uniform_noise
 
 ASSETS = config.ROOT / "server" / "assets"
-SPLITS = ["lab_val", "final_field_cal", "final_field_val", "field_test"]
 ALPHAS = (0.1, 0.2)
 
 
@@ -54,7 +53,10 @@ def main() -> None:
     print(f"  fp32 {fp32.stat().st_size / 1e6:.1f} MB -> int8 {int8.stat().st_size / 1e6:.1f} MB")
 
     # 3. Agreement check against PyTorch on field_test.
-    test = pd.read_csv(config.SPLITS_DIR / "field_test.csv")
+    sp = {"dir": "crop_doctor/data/splits", "lab": "lab_val", "cal": "final_field_cal", "simulate": "final_field_val",
+          "monitor": "field_test", **app.get("splits", {})}
+    split_dir = config.ROOT / sp["dir"]
+    test = pd.read_csv(split_dir / f"{sp['monitor']}.csv")
     y = test["label_idx"].to_numpy()
     from crop_doctor.model.backends import TorchBackend
     tb = TorchBackend(config.OUTPUTS_DIR / app["checkpoint"], dev=torch.device("cpu"))
@@ -96,20 +98,20 @@ def main() -> None:
     logits_dir = ASSETS / "logits"
     logits_dir.mkdir(exist_ok=True)
     cache = {}
-    for split in SPLITS:
-        df = pd.read_csv(config.SPLITS_DIR / f"{split}.csv")
+    for split in (sp["lab"], sp["cal"], sp["simulate"], sp["monitor"]):
+        df = pd.read_csv(split_dir / f"{split}.csv")
         yy = df["label_idx"].to_numpy()
         lg = mask_logits(onnx_logits(backend, df), classes, crops_from_labels(yy, classes))
         np.savez_compressed(logits_dir / f"{split}.npz", logits=lg, labels=yy)
         cache[split] = (lg, yy)
         print(f"  cached {split}: {len(yy)} photos")
-    cal_l, cal_y = cache["final_field_cal"]
+    cal_l, cal_y = cache[sp["cal"]]
     t = fit_temperature(cal_l, cal_y)
     qhat = {str(a): conformal_quantile(aps_scores(softmax(cal_l, t), cal_y, uniform_noise(len(cal_y), 7)), a) for a in ALPHAS}
-    mon_l, mon_y = cache["field_test"]
+    mon_l, mon_y = cache[sp["monitor"]]
     m = evaluate_sets(prediction_sets(softmax(mon_l, t), qhat["0.1"], uniform_noise(len(mon_y), 12345)), mon_y)
-    out = {"onnx": use.name, "classes": classes, "temperature": t, "qhat": qhat, "default_alpha": 0.1,
-           "calibrated_on": "final_field_cal", "source_checkpoint": app["checkpoint"],
+    out = {"onnx": use.name, "classes": classes, "splits": sp, "temperature": t, "qhat": qhat, "default_alpha": 0.1,
+           "calibrated_on": sp["cal"], "source_checkpoint": app["checkpoint"],
            "check": {"top1_agreement_with_pytorch": agree, "field_test_accuracy_pytorch": acc_pt,
                      "field_test_accuracy_onnx": acc_q8, "field_test_coverage_90": m["coverage"],
                      "field_test_avg_set_size": m["avg_set_size"]}}

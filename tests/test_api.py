@@ -1,6 +1,9 @@
 """The website's API, end to end with FastAPI's TestClient (real model, temporary database)."""
 from __future__ import annotations
 
+import json
+from pathlib import Path
+
 import pytest
 from fastapi.testclient import TestClient
 
@@ -22,8 +25,12 @@ def client(tmp_path_factory):
 EXPERT = {"X-Expert-Key": "test-key"}
 
 
-def sample(client, title_part: str) -> dict:
-    s = next(s for s in client.get("/api/meta").json()["samples"] if title_part in s["title"])
+SAMPLE_STATUS = {s["file"]: s["expected_status"] for s in json.loads(
+    (Path(__file__).resolve().parents[1] / "crop_doctor" / "app" / "samples" / "samples.json").read_text())}
+
+
+def sample(client, status: str) -> dict:
+    s = next(s for s in client.get("/api/meta").json()["samples"] if SAMPLE_STATUS[s["file"]] == status)
     r = client.post("/api/cases", data={"crop": s["crop"], "sample": s["file"]}, headers={"X-Session-Id": "t1"})
     assert r.status_code == 200, r.text
     return r.json()
@@ -36,7 +43,7 @@ def test_meta_and_health(client):
 
 
 def test_upload_flow_diagnosis_extent_and_question(client):
-    c = sample(client, "clear case")
+    c = sample(client, "diagnosis")
     assert c["assessment"]["status"] == "diagnosis" and c["assessment"]["disease"]["name"]
     assert c["ask_extent"] and c["messages"][0]["image"].startswith("/api/images/")
     assert client.get(c["messages"][0]["image"]).status_code == 200
@@ -47,7 +54,7 @@ def test_upload_flow_diagnosis_extent_and_question(client):
 
 
 def test_question_flow(client):
-    c = sample(client, "needs one question")
+    c = sample(client, "question")
     assert c["assessment"]["status"] == "question" and c["assessment"]["question"]["options"]
     c2 = client.post(f"/api/cases/{c['id']}/question", json={"option": 0}).json()
     assert c2["assessment"]["status"] in ("diagnosis", "expert", "healthy")
@@ -63,7 +70,7 @@ def test_bad_inputs(client):
 
 def test_expert_endpoints_need_the_key_and_work(client):
     assert client.get("/api/expert/queue").status_code == 401
-    c = sample(client, "goes to expert")
+    c = sample(client, "expert")
     queue = client.get("/api/expert/queue", headers=EXPERT).json()
     item = next(q for q in queue if q["id"] == c["id"])
     assert item["kind"] == "unsure" and item["options"]
