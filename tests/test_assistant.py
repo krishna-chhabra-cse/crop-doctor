@@ -8,7 +8,7 @@ from crop_doctor.assistant.decision import apply_answer, choose_question, decide
 from crop_doctor.config import CLASS_MAP
 from crop_doctor.vision_extras import quality_gate, severity
 
-CLASSES = sorted(c for c in CLASS_MAP if c != "tomato_spider_mites")
+CLASSES = sorted([c for c in CLASS_MAP if c != "tomato_spider_mites"] + ["potato_healthy"])
 
 
 def _leaf(lesion_radius: int = 0, size: int = 400) -> Image.Image:

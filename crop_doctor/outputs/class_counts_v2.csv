@@ -1,0 +1,14 @@
+split,field_cal,field_cal,field_test,field_test,field_train,field_train,field_train,field_val,field_val,lab_test,lab_train,lab_val
+source,plantdoc,tanzania,plantdoc,tanzania,plantdoc,tanzania,tomato_village,plantdoc,tanzania,plantvillage,plantvillage,plantvillage
+label,,,,,,,,,,,,
+potato_early_blight,11,150,56,249,33,1200,0,11,150,100,800,100
+potato_healthy,0,150,0,296,0,1200,0,0,150,16,121,15
+potato_late_blight,10,150,50,285,30,1200,0,10,150,100,800,100
+tomato_bacterial_spot,11,0,55,0,32,0,0,11,0,213,1701,213
+tomato_early_blight,9,0,44,0,27,0,496,8,0,100,800,100
+tomato_healthy,6,0,31,0,19,0,216,7,0,159,1268,158
+tomato_late_blight,11,0,56,0,33,0,904,11,0,190,1521,190
+tomato_leaf_mold,9,0,45,0,28,0,0,9,0,95,762,95
+tomato_mosaic_virus,6,0,27,0,16,0,0,5,0,37,298,38
+tomato_septoria,15,0,75,0,44,0,0,15,0,177,1417,177
+tomato_yellow_curl_virus,7,0,37,0,23,0,0,8,0,536,4285,536

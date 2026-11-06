@@ -41,6 +41,7 @@ class CropDoctor:
         self.temperature = cfg["temperature"]
         self.qhat = cfg["qhat"][str(alpha)]
         self.alpha = alpha
+        self.cfg = cfg                                       # includes the calibration "splits" for live recalibration
         self.crops = sorted({knowledge()["diseases"][c]["crop"] for c in self.classes})
 
     def set_calibration(self, temperature: float, qhat: float) -> None:

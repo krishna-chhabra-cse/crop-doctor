@@ -25,7 +25,7 @@ def test_every_disease_has_a_sourced_note():
         assert c.sources, f"{c.id} has no sources"
         assert all(s.split(": ")[-1].startswith("http") for s in c.sources), c.sources
     assert diseases <= set(by_disease)
-    for d in diseases - {"tomato_healthy"}:
+    for d in {x for x in diseases if not x.endswith("_healthy")}:
         assert STANDARD <= by_disease[d], (d, STANDARD - by_disease[d])
 
 

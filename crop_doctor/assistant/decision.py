@@ -27,7 +27,8 @@ KNOWLEDGE = Path(__file__).resolve().parent.parent / "knowledge" / "diseases.jso
 MAX_QUESTION_SET = 3
 ANSWER_TRUST = 0.8          # we assume the farmer's answer to a visual question is right 80% of the time
 AFTER_ANSWER_THRESHOLD = 0.75
-HEALTHY = "tomato_healthy"
+def is_healthy(label: str) -> bool:
+    return label.endswith("_healthy")
 
 
 @lru_cache(maxsize=1)
@@ -107,7 +108,7 @@ def decide(probs: np.ndarray, classes: list[str], qhat: float, u: float,
         out["after_answer"] = [{"label": classes[i], "probability": round(float(post[i]), 3)}
                                for i in np.argsort(-post)[:3] if post[i] > 0]
         if post[j] >= AFTER_ANSWER_THRESHOLD and classes[j] in shortlist:
-            status = "healthy" if classes[j] == HEALTHY else "diagnosis"
+            status = "healthy" if is_healthy(classes[j]) else "diagnosis"
             return {**out, "status": status, "label": classes[j], "probability": round(float(post[j]), 3),
                     "via": "follow_up_question"}
         return {**out, "status": "expert", "reason": "still unsure after your answer"}
@@ -116,7 +117,7 @@ def decide(probs: np.ndarray, classes: list[str], qhat: float, u: float,
         return {**out, "status": "expert", "reason": "the photo doesn't look like the diseases I know well"}
     if len(shortlist) == 1:
         label = shortlist[0]
-        return {**out, "status": "healthy" if label == HEALTHY else "diagnosis", "label": label,
+        return {**out, "status": "healthy" if is_healthy(label) else "diagnosis", "label": label,
                 "probability": round(float(probs[classes.index(label)]), 3), "via": "model"}
     if len(shortlist) <= MAX_QUESTION_SET:
         q = choose_question(shortlist, asked)

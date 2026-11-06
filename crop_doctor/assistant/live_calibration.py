@@ -33,15 +33,34 @@ from crop_doctor.uncertainty.conformal import (
 ALPHA = 0.1
 LAB = "lab_val"
 FIELD_SOURCES = ("field_cal", "expert_audit", "simulated_expert")
-SPLIT_FOR_SOURCE = {"lab_val": "lab_val", "field_cal": "final_field_cal", "simulated_expert": "final_field_val"}
-MONITOR_SPLIT = "field_test"
-# Cached model outputs per split. The live server ships these files (it has no datasets or PyTorch).
-CACHE = Path(os.environ.get("CROP_DOCTOR_LOGITS_DIR", config.OUTPUTS_DIR / "live_logits"))
+# Which data splits feed calibration. Comes from the app config ("splits"); default = the v1 model's splits.
+DEFAULT_SPLITS = {"dir": "crop_doctor/data/splits", "lab": "lab_val", "cal": "final_field_cal",
+                  "simulate": "final_field_val", "monitor": "field_test"}
+
+
+def splits(doctor) -> dict:
+    return {**DEFAULT_SPLITS, **(getattr(doctor, "cfg", {}) or {}).get("splits", {})}
+
+
+def split_for_source(doctor, source: str) -> str:
+    s = splits(doctor)
+    return {"lab_val": s["lab"], "field_cal": s["cal"], "simulated_expert": s["simulate"]}[source]
+
+
+def cache_dir(doctor) -> Path:
+    """Cached model outputs per split. The live server ships these files (it has no datasets or PyTorch).
+    Locally the cache is per model, so switching models never reuses another model's outputs."""
+    env = os.environ.get("CROP_DOCTOR_LOGITS_DIR")
+    if env:
+        return Path(env)
+    cfg = getattr(doctor, "cfg", {}) or {}
+    tag = Path(cfg.get("checkpoint") or cfg.get("onnx") or "model").stem
+    return config.OUTPUTS_DIR / "live_logits" / tag
 
 
 def split_logits(split: str, doctor) -> tuple[np.ndarray, np.ndarray]:
     """Crop-masked logits of the app's model on a split (computed once, then cached on disk)."""
-    path = CACHE / f"{split}.npz"
+    path = cache_dir(doctor) / f"{split}.npz"
     if path.exists():
         d = np.load(path)
         return d["logits"], d["labels"]
@@ -50,11 +69,11 @@ def split_logits(split: str, doctor) -> tuple[np.ndarray, np.ndarray]:
 
     from crop_doctor.model.common import FrameDataset, eval_transform
     from crop_doctor.model.train_final import logits_of
-    df = pd.read_csv(config.SPLITS_DIR / f"{split}.csv")
+    df = pd.read_csv(config.ROOT / splits(doctor)["dir"] / f"{split}.csv")
     y = df["label_idx"].to_numpy()
     dl = DataLoader(FrameDataset(df, eval_transform()), batch_size=64, num_workers=0)
     logits = mask_logits(logits_of(doctor.model, dl, doctor.dev), doctor.classes, crops_from_labels(y, doctor.classes))
-    CACHE.mkdir(parents=True, exist_ok=True)
+    path.parent.mkdir(parents=True, exist_ok=True)
     np.savez_compressed(path, logits=logits, labels=y)
     return logits, y
 
@@ -81,7 +100,7 @@ def recalibrate(doctor, note: str = "") -> dict:
     logits, labels, n_field = calibration_set(points)
     t, qhat = fit(logits, labels)
     doctor.set_calibration(t, qhat)
-    mon_logits, mon_y = split_logits(MONITOR_SPLIT, doctor)
+    mon_logits, mon_y = split_logits(splits(doctor)["monitor"], doctor)
     sets = prediction_sets(softmax(mon_logits, t), qhat, uniform_noise(len(mon_y), 12345))
     m = evaluate_sets(sets, mon_y)
     run = {"n_points": len(labels), "n_field_points": n_field, "temperature": t, "qhat": qhat,
@@ -95,7 +114,7 @@ def reset(doctor, base: str) -> dict:
     """base='field' (normal: start from the 95 field calibration photos) or 'lab' (demo: lab photos only)."""
     db.clear_calibration_points()
     source = "field_cal" if base == "field" else "lab_val"
-    logits, y = split_logits(SPLIT_FOR_SOURCE[source], doctor)
+    logits, y = split_logits(split_for_source(doctor, source), doctor)
     db.add_calibration_points([(source, None, int(yy), list(lg)) for lg, yy in zip(logits, y)])
     return recalibrate(doctor, note=f"reset to {base} calibration")
 
@@ -122,9 +141,9 @@ def add_expert_label(doctor, case: dict, label: str) -> dict | None:
 
 
 def simulate_expert_labels(doctor, k: int, seed: int) -> dict:
-    """Demo: k random photos from final_field_val (not used for training or calibration) arrive with labels."""
-    logits, y = split_logits(SPLIT_FOR_SOURCE["simulated_expert"], doctor)
-    # For simulated points, case_id holds the photo's row number in final_field_val, so none is used twice.
+    """Demo: k random photos from the "simulate" split (field_val: not used for training or calibration) arrive with labels."""
+    logits, y = split_logits(split_for_source(doctor, "simulated_expert"), doctor)
+    # For simulated points, case_id holds the photo's row number in that split, so none is used twice.
     used = {p["case_id"] for p in db.calibration_points() if p["source"] == "simulated_expert"}
     fresh = [i for i in range(len(y)) if i not in used]
     pick = np.random.default_rng(seed).choice(fresh, size=min(k, len(fresh)), replace=False) if fresh else []

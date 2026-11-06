@@ -38,12 +38,33 @@ def preprocess(img: Image.Image) -> np.ndarray:
     return x.transpose(2, 0, 1)[None].astype(np.float32)
 
 
+def _upcast_w16(path: Path) -> bytes:
+    """Weights were stored as 16-bit floats to halve the file; turn them back into 32-bit floats in memory."""
+    import onnx
+    from onnx import numpy_helper
+    m = onnx.load(str(path))
+    for init in m.graph.initializer:
+        if init.data_type == onnx.TensorProto.FLOAT16:
+            init.CopyFrom(numpy_helper.from_array(numpy_helper.to_array(init).astype(np.float32), init.name))
+    return m.SerializeToString()
+
+
 class OnnxBackend:
     def __init__(self, model_path: Path, classes: list[str], threads: int = 2):
         import onnxruntime as ort
         opts = ort.SessionOptions()
         opts.intra_op_num_threads = threads       # small server: don't oversubscribe the CPU
-        self.session = ort.InferenceSession(str(model_path), opts, providers=["CPUExecutionProvider"])
+        opts.enable_cpu_mem_arena = False         # don't keep a big memory pool: the free server has 512 MB
+        opts.enable_mem_pattern = False
+        source: str | bytes = str(model_path)
+        if Path(model_path).stem.endswith("_w16"):
+            built = Path(model_path).with_name(Path(model_path).stem[:-4] + "_fp32.onnx")
+            if built.exists():                    # expanded once at build time (server/build_assets.py)
+                source = str(built)
+            else:
+                source = _upcast_w16(Path(model_path))
+        self.session = ort.InferenceSession(source, opts, providers=["CPUExecutionProvider"])
+        del source
         self.input_name = self.session.get_inputs()[0].name
         self.classes = classes
 

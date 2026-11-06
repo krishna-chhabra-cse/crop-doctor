@@ -1,0 +1,15 @@
+# Live server (Render free plan, 512 MB RAM): no PyTorch. The model runs with ONNX Runtime on CPU.
+fastapi>=0.115
+uvicorn[standard]>=0.30
+python-multipart>=0.0.9
+numpy>=1.26,<3
+pillow>=10
+opencv-python-headless>=4.10
+onnx>=1.16
+onnxruntime>=1.19
+tokenizers>=0.19          # tokenizer for the small MiniLM embedding model (retrieval)
+huggingface_hub>=0.24     # downloads that model once at build time
+scikit-learn>=1.5        # only for the keyword-search fallback if the embedding model can't load
+sqlalchemy>=2.0
+psycopg[binary]>=3.2     # Postgres driver for Supabase
+anthropic>=2.0

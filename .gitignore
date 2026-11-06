@@ -9,3 +9,10 @@ __pycache__/
 app_data/
 .claude/
 *.log
+
+# Live-server assets: the shipped model and its cached calibration outputs ARE committed
+!server/assets/**/*.npz
+!server/assets/*.onnx
+
+# built on the server at deploy time
+server/assets/*_fp32.onnx

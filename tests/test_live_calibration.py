@@ -13,6 +13,7 @@ CLASSES = ["potato_a", "potato_b", "tomato_a", "tomato_b", "tomato_c"]
 
 class FakeDoctor:
     classes = CLASSES
+    cfg = {}   # default (v1) split names
 
     def __init__(self):
         self.temperature, self.qhat = 1.0, 0.9

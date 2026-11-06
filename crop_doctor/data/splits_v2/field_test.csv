@@ -1,0 +1,1307 @@
+path,label,label_idx,source,md5
+plantdoc/test/Potato leaf early blight/early-blight-alternaria-alternata-leaf-spotting-on-potato-leaf-X91XJE.jpg,potato_early_blight,0,plantdoc,d5582b28e71b5ae29bc2dd1e1a78ef1f
+plantdoc/test/Potato leaf early blight/early-blight-or-target-spot-alternaria-solani-lesions-on-a-tomato-AXK6AY.jpg,potato_early_blight,0,plantdoc,8acaafcb003accb550c9e4bb2e319b1c
+plantdoc/test/Potato leaf early blight/earlyblightpotato.jpg,potato_early_blight,0,plantdoc,be11519577cb929d21a68170b2ec88f1
+plantdoc/test/Potato leaf early blight/potatobd001.jpg,potato_early_blight,0,plantdoc,f7fddb0ddc3a19175b6e3cb1163513d8
+plantdoc/test/Potato leaf late blight/20090710-lateblight.jpg,potato_late_blight,2,plantdoc,557b53be37510b137a6a89215df7e7f5
+plantdoc/test/Potato leaf late blight/2540_600.jpg,potato_late_blight,2,plantdoc,df975f28a42854efa43ff4b50bbbaa4f
+plantdoc/test/Potato leaf late blight/B2750109-Late_blight_on_a_potato_plant-SPL.jpg,potato_late_blight,2,plantdoc,3d7a06e801052f02897af9105af5042c
+plantdoc/test/Potato leaf late blight/LateBlight04.jpg,potato_late_blight,2,plantdoc,423f28e300b0be4cd15d4ca29af8c463
+plantdoc/test/Potato leaf late blight/potato-late-blight.jpg,potato_late_blight,2,plantdoc,02368ff020170e9d8297805efa07f1e8
+plantdoc/test/Tomato Early blight leaf/1234080-Early-Blight.jpg,tomato_early_blight,4,plantdoc,6114d7f45b62074ece1bb5d77ad8b6ef
+plantdoc/test/Tomato Early blight leaf/Shoemaker_7068.JPG.jpg,tomato_early_blight,4,plantdoc,4ecee7e4e00ea1442d6c94733a3ed06e
+plantdoc/test/Tomato Early blight leaf/dscn3175.jpg,tomato_early_blight,4,plantdoc,e06ec54e5983c45e532511695f00cf49
+plantdoc/test/Tomato Septoria leaf spot/0.jpg,tomato_septoria,9,plantdoc,a27db6dc8df5f08762c1d32c2ebafc0f
+plantdoc/test/Tomato Septoria leaf spot/2septoria-tomato.jpg,tomato_septoria,9,plantdoc,b04b58d04bbe3d5c097962dd0b036be9
+plantdoc/test/Tomato Septoria leaf spot/55830b60a7cf2.image.jpg,tomato_septoria,9,plantdoc,18bc2156b3f4e0976b38426523601a69
+plantdoc/test/Tomato Septoria leaf spot/6134794031202304.jpeg.jpg,tomato_septoria,9,plantdoc,e97e953f4a591d3f2b2c164751c59186
+plantdoc/test/Tomato Septoria leaf spot/636227737977191231-septoria-leaf-spot-VT.jpg,tomato_septoria,9,plantdoc,59b2bf9f04abfa10fd38279d8e5024d2
+plantdoc/test/Tomato Septoria leaf spot/sept4disease-019.jpg,tomato_septoria,9,plantdoc,ffc53979fe36cf2ea2a39ffdd24d8a9e
+plantdoc/test/Tomato leaf bacterial spot/%2320+Bacterial+Spot+and+Speck.jpg,tomato_bacterial_spot,3,plantdoc,f3b92dadcc0b2272223af4dfc4496d66
+plantdoc/test/Tomato leaf bacterial spot/07.17.18-Common_Tomato_Diseases_Canker-258x300.jpg,tomato_bacterial_spot,3,plantdoc,03471392f4ed6981b8c1ee9635859489
+plantdoc/test/Tomato leaf bacterial spot/Bacterial_spots563.jpg,tomato_bacterial_spot,3,plantdoc,c44b095e2690b59821b3b84323d92cba
+plantdoc/test/Tomato leaf bacterial spot/bact-spot-fig-1.jpg,tomato_bacterial_spot,3,plantdoc,cf445f58fb1e8a95b56360cf99b458f3
+plantdoc/test/Tomato leaf late blight/110822-206-Tomato-blight.jpg,tomato_late_blight,6,plantdoc,607b5aa33f274e54f7b72ae46eba0887
+plantdoc/test/Tomato leaf late blight/18c.jpg,tomato_late_blight,6,plantdoc,71bb3f82647e48b5e1884e41566508e3
+plantdoc/test/Tomato leaf late blight/70.jpg,tomato_late_blight,6,plantdoc,329f895409e64044ce54d63b17adced4
+plantdoc/test/Tomato leaf late blight/dsc_8148cs.jpg,tomato_late_blight,6,plantdoc,723c0872b986580159443a60b9b0b828
+plantdoc/test/Tomato leaf late blight/late_blight_tomato_leaf_spore1x1200.jpg,tomato_late_blight,6,plantdoc,f07ae8593f2c5ac37ee411ea7f9e33d0
+plantdoc/test/Tomato leaf mosaic virus/9511.img.jpg,tomato_mosaic_virus,8,plantdoc,95f0203d40fa96ed214211d2f0f5c72f
+plantdoc/test/Tomato leaf mosaic virus/Tomato-Mosaic-1wdr2jx-300x225.jpg,tomato_mosaic_virus,8,plantdoc,058dc257a5e740ec81b9d7f9e71e7877
+plantdoc/test/Tomato leaf mosaic virus/tmv-tomato-9.jpg,tomato_mosaic_virus,8,plantdoc,9653bd5df7542ddb8add5fe64c1c5d41
+plantdoc/test/Tomato leaf mosaic virus/tomato_virus_04_zoom.jpg,tomato_mosaic_virus,8,plantdoc,2890c5d6340a8fab600c56c5fe29b415
+plantdoc/test/Tomato leaf yellow virus/17fc47.jpg,tomato_yellow_curl_virus,10,plantdoc,0c79b0563d44ad16229d8e68acd5658e
+plantdoc/test/Tomato leaf yellow virus/8226402877_9abf151b5b_b.jpg,tomato_yellow_curl_virus,10,plantdoc,148c8d901a6614814a8eb70bf915882c
+plantdoc/test/Tomato leaf yellow virus/fwa2013313115151.jpg,tomato_yellow_curl_virus,10,plantdoc,ddb7c415c0a4ed658cb3a8645b8177d5
+plantdoc/test/Tomato leaf/1684.jpg,tomato_healthy,5,plantdoc,69ae07dce6d928cbfccd6cf7298520f1
+plantdoc/test/Tomato leaf/DSCN1015.JPG.jpg,tomato_healthy,5,plantdoc,2ddd7bd009591273e9f3b1815812445c
+plantdoc/test/Tomato leaf/IMG_1246.jpg,tomato_healthy,5,plantdoc,f186cb79af2939404c4f64e948c734a9
+plantdoc/test/Tomato leaf/Tomato59.JPG.jpg,tomato_healthy,5,plantdoc,03b9bdff3190393a64e957e12a208467
+plantdoc/test/Tomato leaf/main-qimg-d9c2a93f60568485c989670d9bbf703b.jpg,tomato_healthy,5,plantdoc,d9c2a93f60568485c989670d9bbf703b
+plantdoc/test/Tomato mold leaf/49%20Leafmold%20Bottom.jpg,tomato_leaf_mold,7,plantdoc,40d2477dd857a2effea9cb3d386964f9
+plantdoc/test/Tomato mold leaf/50%20Leafmold%20Top.jpg,tomato_leaf_mold,7,plantdoc,d946f18b4b98acc20594e159f18b1a07
+plantdoc/test/Tomato mold leaf/black_leaf_mold_in_zina_tina.jpg,tomato_leaf_mold,7,plantdoc,c3696abe681df0d51789c5f44442ace5
+plantdoc/test/Tomato mold leaf/dscn6689.jpg,tomato_leaf_mold,7,plantdoc,43347aca4e96b62a12670cd5327f2ff4
+plantdoc/train/Potato leaf early blight/0042241.jpg,potato_early_blight,0,plantdoc,c42511b35cd3f5145747537b6a5a623a
+plantdoc/train/Potato leaf early blight/14321627273_58d893c3e2_potato-plant.jpg,potato_early_blight,0,plantdoc,9dab38688ade3dabc8974a5036c06af0
+plantdoc/train/Potato leaf early blight/1573852-Early-Blight-e1515624612559.jpg,potato_early_blight,0,plantdoc,d46f5a804dc1175677838ea7bc85f67f
+plantdoc/train/Potato leaf early blight/20100816earlyblight.jpg,potato_early_blight,0,plantdoc,87117d4e95c529d9aa3785384502c170
+plantdoc/train/Potato leaf early blight/27013702151_95bd415ba9_o.jpg,potato_early_blight,0,plantdoc,5a4c7df6456d1ed038c9641f087c88e2
+plantdoc/train/Potato leaf early blight/2D1A9552.jpg,potato_early_blight,0,plantdoc,c2c0a6f3a2026aa45dbf653b869d6e9a
+plantdoc/train/Potato leaf early blight/36-early-blight-concentric-rings.jpg,potato_early_blight,0,plantdoc,e829f347b0a2d89aebe04977849fac14
+plantdoc/train/Potato leaf early blight/3785483636_d888419c98_o.jpg,potato_early_blight,0,plantdoc,6d065fb05b9dffe3991abd1af84ad437
+plantdoc/train/Potato leaf early blight/45035_1.jpg,potato_early_blight,0,plantdoc,c1ea46f5d0b9f1171a65cb4ac5e06e93
+plantdoc/train/Potato leaf early blight/87A_Pot_Early.jpg,potato_early_blight,0,plantdoc,a963f7a725f1e00d3bf5d683074492ed
+plantdoc/train/Potato leaf early blight/B2650214-Potato_leaf_blight-SPL.jpg,potato_early_blight,0,plantdoc,bf54944c605f3ecabd06e006c19d2940
+plantdoc/train/Potato leaf early blight/Early%20Blight%20-%20Potatoes.ashx_w=350.jpg,potato_early_blight,0,plantdoc,cf5abb9f79cd2fd269004823f96fd09f
+plantdoc/train/Potato leaf early blight/Early-Blight-Leaves-56a348bf3df78cf7727cb35e.jpg,potato_early_blight,0,plantdoc,639012008e7379e0ff3d783004fcbf15
+plantdoc/train/Potato leaf early blight/Early_blight_on_tomato_leaves_7871930010-Fairfax.jpg,potato_early_blight,0,plantdoc,2d68ff427cbdb9fed429a8cef9cb8fad
+plantdoc/train/Potato leaf early blight/Leaves-with-early-blight-need-to-be-removed-225x300.jpg,potato_early_blight,0,plantdoc,870cf1583b54be6cfd1b439452f4b560
+plantdoc/train/Potato leaf early blight/Potato-Blight-Infecting-Leaves.jpg,potato_early_blight,0,plantdoc,19a962ff80ded586cf2b9908e3170507
+plantdoc/train/Potato leaf early blight/Potato-Blight-on-Leaves.jpg,potato_early_blight,0,plantdoc,a2caf0285d00662688392544d02e8696
+plantdoc/train/Potato leaf early blight/Potato-blight-leaves-B.jpg,potato_early_blight,0,plantdoc,6ffaf52651d9be9695db4a3862c9fa63
+plantdoc/train/Potato leaf early blight/Potato-blight-on-leaf.jpg,potato_early_blight,0,plantdoc,927f26fca9616762eeb728a7ef74c3ce
+plantdoc/train/Potato leaf early blight/Potato-earlyblight2.jpg,potato_early_blight,0,plantdoc,6b8d63fe4694679c8c28ce67273f7cc7
+plantdoc/train/Potato leaf early blight/Potato_Early_Blight_%26_Late_Blight.jpg,potato_early_blight,0,plantdoc,f0e825d5c8ec583257c1a04f5be10854
+plantdoc/train/Potato leaf early blight/alternaria%20%2824%29.JPG.jpg,potato_early_blight,0,plantdoc,469fea508b806a736e1d11dbb41fe188
+plantdoc/train/Potato leaf early blight/backus-045-potato-blight.jpg,potato_early_blight,0,plantdoc,a7710b5901ba1f8e9759ef7576cd9f09
+plantdoc/train/Potato leaf early blight/blight-2x.jpg,potato_early_blight,0,plantdoc,db390c7e017b45068a4a39f232fff96a
+plantdoc/train/Potato leaf early blight/blight-leaf-top.jpg,potato_early_blight,0,plantdoc,55fac197afb3179fc4852d622a35bb10
+plantdoc/train/Potato leaf early blight/blighted-potatoe-leave.jpg,potato_early_blight,0,plantdoc,bb702053497d7a1ddc9f5b83371688c6
+plantdoc/train/Potato leaf early blight/early%20blight.tom_.jpg,potato_early_blight,0,plantdoc,83864b05770af35b46f2822283fe87d0
+plantdoc/train/Potato leaf early blight/early-blight-potatoes.jpg,potato_early_blight,0,plantdoc,068a2eba992bb85d4a5771ed5fe5d0a6
+plantdoc/train/Potato leaf early blight/earlyblight21.jpg,potato_early_blight,0,plantdoc,5586debcba61e237212f2d5f35e7d3f8
+plantdoc/train/Potato leaf early blight/eb2.jpg,potato_early_blight,0,plantdoc,b66781c238bd756778e47a16b2389f8b
+plantdoc/train/Potato leaf early blight/f204d9b6516c961f48502e0b7ae3f746.jpg,potato_early_blight,0,plantdoc,7dc11f27ae017796d0a4ebc8f4d7f5e8
+plantdoc/train/Potato leaf early blight/maxresdefault.jpg,potato_early_blight,0,plantdoc,783533139f9ecfb64f841ee8b7e70439
+plantdoc/train/Potato leaf early blight/pe-mi-lateblightleaf.jpg,potato_early_blight,0,plantdoc,5bb815fe69aaf84618fa289565254675
+plantdoc/train/Potato leaf early blight/potato-blight-leaf.jpg,potato_early_blight,0,plantdoc,a51a125d71c2d4adefd5b2151e60d5b5
+plantdoc/train/Potato leaf early blight/potato-blight-phytophora-infestans-close-up-of-infected-leaf-showing-A60HXN.jpg,potato_early_blight,0,plantdoc,e6debff37e0e5bf4d676b536d9ef010f
+plantdoc/train/Potato leaf early blight/potato-blight-phytophora-infestans-close-up-of-infected-leaf-top-surface-a60hxg.jpg,potato_early_blight,0,plantdoc,1d1f8e3e79a0543c32b879ab31636f20
+plantdoc/train/Potato leaf early blight/potato-early-blight-alternaria-alternata-discreet-lesions-on-a-potato-BY651F.jpg,potato_early_blight,0,plantdoc,6bdda1a5c6f3423d6f98f049366a34cc
+plantdoc/train/Potato leaf early blight/potato-early-blight-alternaria-alternata-lesion-on-a-potato-leaf-X96EFD.jpg,potato_early_blight,0,plantdoc,9345db15f54118b75aedb5c7d550a4d4
+plantdoc/train/Potato leaf early blight/potato-early-blight-alternaria-alternata-lesions-on-potato-leaf-XDF64E.jpg,potato_early_blight,0,plantdoc,522e869794a1eba51f7a4313b0b48adc
+plantdoc/train/Potato leaf early blight/potato-early-blight-alternaria-alternata-target-spot-lesion-on-a-potato-leaf-x63fwh.jpg,potato_early_blight,0,plantdoc,b0c5c60be674e7b16d7507389fe8eda7
+plantdoc/train/Potato leaf early blight/potato-early-blight-lesion-on-a-potato-leaf-picture-id81781211.jpg,potato_early_blight,0,plantdoc,997cb68bec7587e441cbf8498ae12aef
+plantdoc/train/Potato leaf early blight/potato_alternaria_03_zoom.jpg,potato_early_blight,0,plantdoc,283135728cdfd80ade77171a3f52a3ed
+plantdoc/train/Potato leaf early blight/potato_alternaria_04_zoom.jpg,potato_early_blight,0,plantdoc,a59f3cf33671b7ab3cbd8bd39a987af6
+plantdoc/train/Potato leaf early blight/potato_early-blight_01_zoom.jpg,potato_early_blight,0,plantdoc,3178f147f0f14ecda0aa52782d7df380
+plantdoc/train/Potato leaf early blight/potato_early-blight_02_zoom.jpg,potato_early_blight,0,plantdoc,2f97c7f7cf13671ae32f25b38faf568e
+plantdoc/train/Potato leaf early blight/potato_early-blight_03_zoom.jpg,potato_early_blight,0,plantdoc,cb8a3fd43f135627f7e61777e41cbc9f
+plantdoc/train/Potato leaf early blight/potato_early-blight_04_zoom.jpg,potato_early_blight,0,plantdoc,8fb6f12f7d493e5673c68f71f3100e78
+plantdoc/train/Potato leaf early blight/potato_early-blight_06_zoom.jpg,potato_early_blight,0,plantdoc,acef6df9499a456fec56a491ee00e2fe
+plantdoc/train/Potato leaf early blight/potatoaltkc.jpg,potato_early_blight,0,plantdoc,d742901acf2a6a3145b9ce8a4c9bb303
+plantdoc/train/Potato leaf early blight/potatoearlyblight.jpg,potato_early_blight,0,plantdoc,5e326d3f824eef6f41b47d6b45382a10
+plantdoc/train/Potato leaf early blight/potatoearlyblightcloseup_pdc.jpg,potato_early_blight,0,plantdoc,3589ba3e83bc8869f99028fb088f9bff
+plantdoc/train/Potato leaf early blight/potatolb_small_leaf_lesionx1200.jpg,potato_early_blight,0,plantdoc,bf8ec1ecb68622004fc83590a452a441
+plantdoc/train/Potato leaf late blight/14321627273_58d893c3e2_b.jpg,potato_late_blight,2,plantdoc,cdee12b7ee9249dee06311d96b2de0bc
+plantdoc/train/Potato leaf late blight/22-late%20blight-advanced%20symptoms%20potato.jpg,potato_late_blight,2,plantdoc,d5f593afb33e683e8022d236b1aaf303
+plantdoc/train/Potato leaf late blight/2619_600.jpg,potato_late_blight,2,plantdoc,26f7f692b035386a330ad43fe2359abf
+plantdoc/train/Potato leaf late blight/3720946948_339251cc94_z.jpg,potato_late_blight,2,plantdoc,bb51f5ae82b9289b374cc98e4b26ad6c
+plantdoc/train/Potato leaf late blight/3782849713_398f3a1086_b.jpg,potato_late_blight,2,plantdoc,f94c3c6f511a67bb90104c3f8c513ceb
+plantdoc/train/Potato leaf late blight/39-late-blight-mold.jpg,potato_late_blight,2,plantdoc,bc33a8a993b134853aae59bd03aae303
+plantdoc/train/Potato leaf late blight/4-late-blight-cmyk-opt.jpeg.jpg,potato_late_blight,2,plantdoc,78fc2de56f761a52ac5dbf74ac6e08c5
+plantdoc/train/Potato leaf late blight/Blog-3.jpg,potato_late_blight,2,plantdoc,6ac907aee38fb9b5698ecdc4e4716e37
+plantdoc/train/Potato leaf late blight/CzFxqKtWEAA4U3g.jpg,potato_late_blight,2,plantdoc,1084d30879c578f8b7e9c3728394ff27
+plantdoc/train/Potato leaf late blight/IMG_5813-1024x768.jpg,potato_late_blight,2,plantdoc,5e7d02479e21ee88bc33943b2941597c
+plantdoc/train/Potato leaf late blight/Jessore-potato-late-blight-8-2h2fdkl.jpg,potato_late_blight,2,plantdoc,edb232c88280a66e210f776934b7b0b2
+plantdoc/train/Potato leaf late blight/LB_potato_leaf_topside.jpg,potato_late_blight,2,plantdoc,212f07e4dbe44d7bfd82cf55757de75e
+plantdoc/train/Potato leaf late blight/Late-Blight-336x437.jpg,potato_late_blight,2,plantdoc,825719cd1e3cfb05171c4872ea4cd757
+plantdoc/train/Potato leaf late blight/Late-Blight-56a34bc55f9b58b7d0d15210.jpg,potato_late_blight,2,plantdoc,022c2bafe34b31eaffd15ab31120de8c
+plantdoc/train/Potato leaf late blight/Late-blight-infected-potato-plants_2.jpg,potato_late_blight,2,plantdoc,171d304e92b44fb16d25f374946f5561
+plantdoc/train/Potato leaf late blight/Late-blight-leaves_261x240.jpg,potato_late_blight,2,plantdoc,8e73fb6a965b6c9a7990a6b055ab8fee
+plantdoc/train/Potato leaf late blight/Late-blight-on-leaf-email.jpg,potato_late_blight,2,plantdoc,793740cb3883c4ce9d9909f6e00c4cd7
+plantdoc/train/Potato leaf late blight/Late-blight.jpg,potato_late_blight,2,plantdoc,efbed0a31977675389fab11680f767b8
+plantdoc/train/Potato leaf late blight/LateBlightFig3new.jpg,potato_late_blight,2,plantdoc,2c6fd94c27222552504b63b0a471d731
+plantdoc/train/Potato leaf late blight/Late_blight_on_potato_leaf.jpg,potato_late_blight,2,plantdoc,4b8c26952071dbafe8d4bd3ccbc36311
+plantdoc/train/Potato leaf late blight/Late_blight_on_potato_leaf_3-58bcf5055f9b58af5c27bf74.jpg,potato_late_blight,2,plantdoc,440a437f921762af056b2dd613210e4c
+plantdoc/train/Potato leaf late blight/Lateblight.jpg,potato_late_blight,2,plantdoc,df5f9d8dd4861043766d5fbaba711f55
+plantdoc/train/Potato leaf late blight/Potato-Late-Blight-3-06202014.jpeg.jpg,potato_late_blight,2,plantdoc,5d49024192ab6e53a9387796b559dd11
+plantdoc/train/Potato leaf late blight/Potato-late-blight-caused-by-Phytophthora-infestans_Q320.jpg,potato_late_blight,2,plantdoc,85f19ccc26918a7012f0252ecd4845ea
+plantdoc/train/Potato leaf late blight/Potato-late-blight-in-field-trial-1.jpg,potato_late_blight,2,plantdoc,f978eac9b3b75aa92d023cec14df74d7
+plantdoc/train/Potato leaf late blight/White-mould-potato-blight.jpg,potato_late_blight,2,plantdoc,293d0d0c8a5e6d052c54523a64214ee4
+plantdoc/train/Potato leaf late blight/b3a52d4eda0deedc34260c4dee847a5b.jpg,potato_late_blight,2,plantdoc,f3ea0ceea8f55471a8b1f22e0d7b8c05
+plantdoc/train/Potato leaf late blight/blight-on-potato-leaves.jpg,potato_late_blight,2,plantdoc,15c65b8ba1256f3a10f278609541d4ff
+plantdoc/train/Potato leaf late blight/fi000293.jpg,potato_late_blight,2,plantdoc,ae60dd78cc3ca611ee614a6ef9890dfc
+plantdoc/train/Potato leaf late blight/fig1a_500.jpg,potato_late_blight,2,plantdoc,6f532a13d9f1ee6d655752c02823ad36
+plantdoc/train/Potato leaf late blight/gcp_A-2_Late_Blight_of_potatoes_callout1.jpg,potato_late_blight,2,plantdoc,2933f0fd702f2e7705f1b17bfda8221f
+plantdoc/train/Potato leaf late blight/late-blight-leaf-figure1.jpg,potato_late_blight,2,plantdoc,d6196b058f5f3b4d87cffae7280886bd
+plantdoc/train/Potato leaf late blight/late-blight-leaves.jpg,potato_late_blight,2,plantdoc,7aa7bff945bc32157f2e1ab0bbe04c9b
+plantdoc/train/Potato leaf late blight/late_blight.jpg,potato_late_blight,2,plantdoc,8b83174a7064c0710490d66e37474295
+plantdoc/train/Potato leaf late blight/late_blight_potato_leaf_500.jpg,potato_late_blight,2,plantdoc,bbfda624c354b7bdb3fb28038c18db52
+plantdoc/train/Potato leaf late blight/lateblight1.JPG.jpg,potato_late_blight,2,plantdoc,a27ea3fb624c8f17f9a0492d1f4d3016
+plantdoc/train/Potato leaf late blight/lateblight2.JPG.jpg,potato_late_blight,2,plantdoc,27a8ca832b6d7b8a244765aa3b9f2245
+plantdoc/train/Potato leaf late blight/lateblight8.jpg,potato_late_blight,2,plantdoc,1ebd93bded6f0541ff278ea1aa3eac60
+plantdoc/train/Potato leaf late blight/lb4_l.jpg,potato_late_blight,2,plantdoc,e48113e61021b816d9d1de6c276a821c
+plantdoc/train/Potato leaf late blight/potato-late-blight-symptom-on-leaves-PGB5NJ.jpg,potato_late_blight,2,plantdoc,23d3173c036cc8ba7bb9509dc489e133
+plantdoc/train/Potato leaf late blight/potato_ocw_botrytis-lateblight.jpg,potato_late_blight,2,plantdoc,cdce46d242be225636990ebacdf999d4
+plantdoc/train/Potato leaf late blight/potato_ocw_lateblight-earlyblight.jpg,potato_late_blight,2,plantdoc,a51ff24bb82ee011703fc0e23366a6cb
+plantdoc/train/Potato leaf late blight/potatolb_branchx500.jpg,potato_late_blight,2,plantdoc,887661d74f0c1d920f229554598e616b
+plantdoc/train/Potato leaf late blight/potatolb_upper_leafcux1200.jpg,potato_late_blight,2,plantdoc,9ac93b08f048b34d50c5ff4a93c3c5d7
+plantdoc/train/Potato leaf late blight/wur-late-blight-in-potato-809.jpg,potato_late_blight,2,plantdoc,fa1a21ecfd8c4f9e7c5a74e73e504053
+plantdoc/train/Tomato Early blight leaf/2373320.jpg,tomato_early_blight,4,plantdoc,f681e415dc0343e21ad1dc49bb4ca8f6
+plantdoc/train/Tomato Early blight leaf/30053_original.jpg,tomato_early_blight,4,plantdoc,3be150b0269ef46b4d3c3d0d47355717
+plantdoc/train/Tomato Early blight leaf/3606630.jpg,tomato_early_blight,4,plantdoc,ca851266c265ef3715c2f2c0b827266a
+plantdoc/train/Tomato Early blight leaf/8%20mistakes%204.jpg,tomato_early_blight,4,plantdoc,ff178d94a713917654cc7f418effa855
+plantdoc/train/Tomato Early blight leaf/8950022d45978228d5e44a35183efdb9--tomatoes-dyi.jpg,tomato_early_blight,4,plantdoc,ae1ca3b7fd5506a13d8e22c5223246d2
+plantdoc/train/Tomato Early blight leaf/BCH%20medium%20thumbnail%20for%20upload%20%2836%29.jpg,tomato_early_blight,4,plantdoc,285045da2a107633776d2f95f86aae39
+plantdoc/train/Tomato Early blight leaf/Diseased-Tomato-Plant.jpg,tomato_early_blight,4,plantdoc,eef02b1252b15499dd3a2cf17aacc2c7
+plantdoc/train/Tomato Early blight leaf/EBTomato.jpg,tomato_early_blight,4,plantdoc,d527d69b83a030ec964d77008f997348
+plantdoc/train/Tomato Early blight leaf/Early-bligh_t.jpg,tomato_early_blight,4,plantdoc,90ae33308d3ede91b59f904c63978bfc
+plantdoc/train/Tomato Early blight leaf/Early-blight-660x440.jpg,tomato_early_blight,4,plantdoc,60ed86831cb1f351ccb1cc82dadcceec
+plantdoc/train/Tomato Early blight leaf/Early_Blight_of_Tomato1687.jpg,tomato_early_blight,4,plantdoc,a7714c526d891b3318486bcde1ad9b56
+plantdoc/train/Tomato Early blight leaf/Early_blight_1.jpg_1376579808.jpg,tomato_early_blight,4,plantdoc,f157329c3e4db74f37d1e336021f11c1
+plantdoc/train/Tomato Early blight leaf/FS547-2-big.jpg,tomato_early_blight,4,plantdoc,ae16de397264ee3280140c2d41ff7522
+plantdoc/train/Tomato Early blight leaf/IMG_0591.jpg,tomato_early_blight,4,plantdoc,641b3bebf1971b7454ad5283787f7e61
+plantdoc/train/Tomato Early blight leaf/MPC105550.jpg.rendition.largest.ss.jpg,tomato_early_blight,4,plantdoc,91b73883bde1fea344b6cbff96d73a43
+plantdoc/train/Tomato Early blight leaf/Tomato%20early%20blight%20target%20like%20leaf%20spot.jpg,tomato_early_blight,4,plantdoc,d0635abc6353ff74a2426702cd30909e
+plantdoc/train/Tomato Early blight leaf/Tomato-Early-Blight-Leaves-Cornell-University.jpg,tomato_early_blight,4,plantdoc,566b963f7695a83ebb1c0989fed15725
+plantdoc/train/Tomato Early blight leaf/Tomato-Early-Blight.jpg,tomato_early_blight,4,plantdoc,2b5935ae5741589ff2ffcb05d23dd802
+plantdoc/train/Tomato Early blight leaf/Tomato-diseases-prevention-treatment.-Early-blight..jpg,tomato_early_blight,4,plantdoc,4f9ce949b194c882e314f99650f154ed
+plantdoc/train/Tomato Early blight leaf/august-11-early-leaf-blight-single-leaf.jpg,tomato_early_blight,4,plantdoc,91a4146c5f59af84ed9fa3f5a020ddf8
+plantdoc/train/Tomato Early blight leaf/b54d0e40027ff5e90e8ba7e1e9abf9bd--garden-guide-garden-ideas.jpg,tomato_early_blight,4,plantdoc,9041ce3fb39bd7fa81f09c2a0dafb84c
+plantdoc/train/Tomato Early blight leaf/blog_early_blight_628.jpg,tomato_early_blight,4,plantdoc,f71e367a174d9f848949c1546c11d0f2
+plantdoc/train/Tomato Early blight leaf/confused-bacterial-canker-early-blight-zoom.JPG.jpg,tomato_early_blight,4,plantdoc,ff4897a4603b2c324c1223f2bacedcbb
+plantdoc/train/Tomato Early blight leaf/ealryblight.jpg,tomato_early_blight,4,plantdoc,f77e54c2525119d7c950131273970de3
+plantdoc/train/Tomato Early blight leaf/early%20blight%20%283%29.jpg_itok=UMYWI0xr.jpg,tomato_early_blight,4,plantdoc,b875174e85282183d747de4e83b23aa5
+plantdoc/train/Tomato Early blight leaf/early-blight-in-high-tunnel-tomatoes-19tm74h.jpg,tomato_early_blight,4,plantdoc,63dd54199343dfab41ec19e919b72bea
+plantdoc/train/Tomato Early blight leaf/early-blight-of-tomato-tomato-1.jpg,tomato_early_blight,4,plantdoc,24150aa99cc0d84647680ad990d0bbae
+plantdoc/train/Tomato Early blight leaf/early-blight-or-target-spot-alternaria-solani-lesions-on-a-tomato-BH3TH0.jpg,tomato_early_blight,4,plantdoc,d20d7c10836294d8bbeb60421176b231
+plantdoc/train/Tomato Early blight leaf/early-blight-or-target-spot-alternaria-solani-lesions-on-a-tomato-BY9J8R.jpg,tomato_early_blight,4,plantdoc,1297af1094b8a057d489ae108c5f1980
+plantdoc/train/Tomato Early blight leaf/early-tomato-blight.jpg,tomato_early_blight,4,plantdoc,2ae4165c4a9c263c65e91c74d162704f
+plantdoc/train/Tomato Early blight leaf/early_blight_spots_l.jpg,tomato_early_blight,4,plantdoc,77dbb29e94ee5af3340e025ef1b1c42f
+plantdoc/train/Tomato Early blight leaf/earlyblight.jpg,tomato_early_blight,4,plantdoc,a8022c7fdb8cc7642b5d8f105f576904
+plantdoc/train/Tomato Early blight leaf/earlyblightpotato.jpg,tomato_early_blight,4,plantdoc,d2c45e81c5de5a2f731829ed491e8df5
+plantdoc/train/Tomato Early blight leaf/earlyblightresize.jpg,tomato_early_blight,4,plantdoc,22cbc5406b1bd134c4463a469bc1fee9
+plantdoc/train/Tomato Early blight leaf/ebleafb.jpg,tomato_early_blight,4,plantdoc,eac496b99c4965b4cb1271c88e3d0796
+plantdoc/train/Tomato Early blight leaf/p1020084s.jpg,tomato_early_blight,4,plantdoc,a035219b31920b7eb720785b74822fa1
+plantdoc/train/Tomato Early blight leaf/tomato_D2b-Early-blight---RPitblado_zoom.jpg,tomato_early_blight,4,plantdoc,03c6180ad14e4c1107471567aa0d7c8e
+plantdoc/train/Tomato Early blight leaf/tomato_early-blight_02_zoom.jpg,tomato_early_blight,4,plantdoc,7f8f6f238226098e4b007fec42da07a5
+plantdoc/train/Tomato Early blight leaf/tomato_q1hq-early-blight-5052_zoom.jpg,tomato_early_blight,4,plantdoc,e41d721b1a95fdae688ea609798b5ca0
+plantdoc/train/Tomato Early blight leaf/tomatoblight.jpg,tomato_early_blight,4,plantdoc,9299b55ac1bc6c646b15e29673038cd7
+plantdoc/train/Tomato Early blight leaf/web1_copy_early-blight-6-_0.jpg,tomato_early_blight,4,plantdoc,1c1f20434f0f2300df02eddae7d9e85e
+plantdoc/train/Tomato Septoria leaf spot/128110613-56a6d3633df78cf7729070ad.jpg,tomato_septoria,9,plantdoc,5127da2b43c3bb75d6e1369c0f951366
+plantdoc/train/Tomato Septoria leaf spot/1b.jpg,tomato_septoria,9,plantdoc,a12cde80d574431743db47ee5887f7e2
+plantdoc/train/Tomato Septoria leaf spot/20100824septoria.jpg,tomato_septoria,9,plantdoc,34702ab0a40559d84bd583489b71ac4b
+plantdoc/train/Tomato Septoria leaf spot/3893.jpg,tomato_septoria,9,plantdoc,fe27af68e35f95de11730c421e54d138
+plantdoc/train/Tomato Septoria leaf spot/49-Septoria-leaf-spot.jpg,tomato_septoria,9,plantdoc,93755ab9163f18e1dce5e19ea6715de5
+plantdoc/train/Tomato Septoria leaf spot/5008922249_880e15c21f.jpg,tomato_septoria,9,plantdoc,d370a6dc424fcc78142b80324b5c3a0d
+plantdoc/train/Tomato Septoria leaf spot/5336411888680960-600x272.jpeg.jpg,tomato_septoria,9,plantdoc,83dcea4ad5df89493a7f43a88d2a8517
+plantdoc/train/Tomato Septoria leaf spot/5516100468998144-600x272.jpeg.jpg,tomato_septoria,9,plantdoc,30ff995e2c50886faca39380c02dc7ff
+plantdoc/train/Tomato Septoria leaf spot/5516100468998144.jpeg.jpg,tomato_septoria,9,plantdoc,c90873847d2d60a6c7f13232e2f1c177
+plantdoc/train/Tomato Septoria leaf spot/5579e3247db73.image.jpg,tomato_septoria,9,plantdoc,c829aac8caba8099bc36e61b1590386d
+plantdoc/train/Tomato Septoria leaf spot/5866245865865216.jpeg.jpg,tomato_septoria,9,plantdoc,3c1889447e069dda1f03557341467446
+plantdoc/train/Tomato Septoria leaf spot/5c77186a4ea326e5495c9d03cd89ce16.jpg,tomato_septoria,9,plantdoc,bb3cf358590742f0a063e77d1df92c47
+plantdoc/train/Tomato Septoria leaf spot/6+1+09+019.jpg,tomato_septoria,9,plantdoc,9cc919d8a97499718bd18e832acb91c2
+plantdoc/train/Tomato Septoria leaf spot/66e7583ebe11cf0bd06435e4167bd4fd.jpg,tomato_septoria,9,plantdoc,dfdf2c3bb94e79c64f3ccf8154e87ef5
+plantdoc/train/Tomato Septoria leaf spot/Bean-rust-on-leaves.jpg,tomato_septoria,9,plantdoc,f441d6f996650b57ee9f54d95a4f9d51
+plantdoc/train/Tomato Septoria leaf spot/IMG_0863_1500x1500%253E.jpg,tomato_septoria,9,plantdoc,3ed681f7afa0f9bbbc097f2fc0cf124b
+plantdoc/train/Tomato Septoria leaf spot/IMG_3175.jpg,tomato_septoria,9,plantdoc,863eccb758d3a4ab3a0eb17a9d18ef6e
+plantdoc/train/Tomato Septoria leaf spot/IMG_4452_1500x1500%253E.JPG_1407883119.jpg,tomato_septoria,9,plantdoc,d90e3fa037580cb55ab40d40dd4ab3b8
+plantdoc/train/Tomato Septoria leaf spot/Leaf%20spot.jpg,tomato_septoria,9,plantdoc,c1a5fc772cb34cee74d2eb0efb653e1d
+plantdoc/train/Tomato Septoria leaf spot/MPC105550.jpg.rendition.largest.550.jpg,tomato_septoria,9,plantdoc,7777388ec16d3d242c94b632b2ba3854
+plantdoc/train/Tomato Septoria leaf spot/PHOTO_1333642732277.jpg,tomato_septoria,9,plantdoc,6b4550abe4c1df6beffef8b5553698ef
+plantdoc/train/Tomato Septoria leaf spot/Sept9-300x225.jpg,tomato_septoria,9,plantdoc,98f239a387ca5596eadb27016462c6a9
+plantdoc/train/Tomato Septoria leaf spot/Septoria+Leaf+Spot.jpg,tomato_septoria,9,plantdoc,2d43fbb8c553e5452994650d9a5ac055
+plantdoc/train/Tomato Septoria leaf spot/Septoria-leaf-spot-hc.jpg,tomato_septoria,9,plantdoc,521eeff5d9bffb154fd91d737356ed01
+plantdoc/train/Tomato Septoria leaf spot/Septoria-leaf-spot-on-tomato-FOR-WEB.jpg,tomato_septoria,9,plantdoc,53a672e441da56e8f23c3462f853a6ef
+plantdoc/train/Tomato Septoria leaf spot/SeptoriaLeaf_T3.jpg,tomato_septoria,9,plantdoc,2bfda7d6cc167e7f350db05bca98eb90
+plantdoc/train/Tomato Septoria leaf spot/SeptoriaTomato-B.jpg,tomato_septoria,9,plantdoc,387509336fe66cba6f503dd2d3aa7bbf
+plantdoc/train/Tomato Septoria leaf spot/Septoria_Leaf_Spot.jpg,tomato_septoria,9,plantdoc,9ac71b76d6be1af9918737e00227ddf0
+plantdoc/train/Tomato Septoria leaf spot/Tom_Sept1.jpg,tomato_septoria,9,plantdoc,0be2429ce3ad0954f3769fbfde488315
+plantdoc/train/Tomato Septoria leaf spot/Tom_Sept4.jpg,tomato_septoria,9,plantdoc,a2114c28ec69b516bdea655bab0a542c
+plantdoc/train/Tomato Septoria leaf spot/Tomato%20bacterial%20spot%20closeup-050S.JPG.jpg,tomato_septoria,9,plantdoc,95bb8754364a716d841ee86a80c59a6f
+plantdoc/train/Tomato Septoria leaf spot/Tomato+Problems+Septoria+Leaf+Spot.jpg,tomato_septoria,9,plantdoc,c46ab3f911fc4dccc3ce8646c390f78a
+plantdoc/train/Tomato Septoria leaf spot/TomatoDisease_IMG_2744_2016Jul01_original.JPG_1472858324.jpg,tomato_septoria,9,plantdoc,32c6c51dfd999111f1a5c9d8f86acadb
+plantdoc/train/Tomato Septoria leaf spot/Tomato_Septoria_Leaf_Spot.jpg,tomato_septoria,9,plantdoc,7324fd1e058f5cfd990e68ada54faa57
+plantdoc/train/Tomato Septoria leaf spot/b54d0e40027ff5e90e8ba7e1e9abf9bd.jpg,tomato_septoria,9,plantdoc,3c75c12e343c2c9a6f15e2ec86df593f
+plantdoc/train/Tomato Septoria leaf spot/bd0b83af4c5e4b739ccc6c36fa66f141.jpg,tomato_septoria,9,plantdoc,f88d519340ff4d91c87112975de85ef4
+plantdoc/train/Tomato Septoria leaf spot/bigseptoria01.jpg,tomato_septoria,9,plantdoc,7022eb1a0f47ff6701f8de4029e6077b
+plantdoc/train/Tomato Septoria leaf spot/bnX8Q.jpg,tomato_septoria,9,plantdoc,c6119efc586544419b3422fd667adb77
+plantdoc/train/Tomato Septoria leaf spot/caf212ccf4696675469a0beaa9e57213.jpg,tomato_septoria,9,plantdoc,3e49f171f970440e7d9fee0cde7406be
+plantdoc/train/Tomato Septoria leaf spot/classic-septoria.jpg,tomato_septoria,9,plantdoc,df93f720f55c93caf7dfe388e8b85e49
+plantdoc/train/Tomato Septoria leaf spot/img_6564.jpg,tomato_septoria,9,plantdoc,80acefb0d148bbb3b9975564eb483bfd
+plantdoc/train/Tomato Septoria leaf spot/septoria+leaf+spota.jpg,tomato_septoria,9,plantdoc,5102ffb991e24ae62df3f84409960b37
+plantdoc/train/Tomato Septoria leaf spot/septoria+on+rudbeckia.jpg,tomato_septoria,9,plantdoc,74926625cfd6973fc585e2c15fe99e82
+plantdoc/train/Tomato Septoria leaf spot/septoria-leaf-spot-in-tomatoes.jpg,tomato_septoria,9,plantdoc,c7658d3d693476e5caa8c9521f4f273b
+plantdoc/train/Tomato Septoria leaf spot/septoria-leaf-spot-on-tomato-1.jpg,tomato_septoria,9,plantdoc,75a09c275db8b56d5ff489e6a238f9a5
+plantdoc/train/Tomato Septoria leaf spot/septoria-leaf-spot-tomatoes1x2400-17g2jzo.jpg,tomato_septoria,9,plantdoc,ce871e6e559d5d5b16a3dd30e086f9b0
+plantdoc/train/Tomato Septoria leaf spot/septoria-leaf-spot-tomatoes2x2400-202yoxg.jpg,tomato_septoria,9,plantdoc,73e2a70a72127932a0bb3ef6e3226a58
+plantdoc/train/Tomato Septoria leaf spot/septoria-leafspot-on-tomato-leaf-rp-c.jpg,tomato_septoria,9,plantdoc,8176cf896add2c5169551782ac9e8c76
+plantdoc/train/Tomato Septoria leaf spot/septoria-lycopersici-ascomycota-common-fungal-leaf-disease-of-tomato-picture-id128110611.jpg,tomato_septoria,9,plantdoc,996357891ee6ec85c10f5eef3039c130
+plantdoc/train/Tomato Septoria leaf spot/septoria3.jpg,tomato_septoria,9,plantdoc,819576e6ff531d09f2ae7d4a5372a016
+plantdoc/train/Tomato Septoria leaf spot/septoria_leaf_spot_of_tomato-1500x750.jpg,tomato_septoria,9,plantdoc,b23f69281a4edc29cfff36716aa52faf
+plantdoc/train/Tomato Septoria leaf spot/septoria_tom_leaves1x1200.jpg,tomato_septoria,9,plantdoc,2c2931b84389b7b9de0a120404eca586
+plantdoc/train/Tomato Septoria leaf spot/septorialeafspot2.jpg,tomato_septoria,9,plantdoc,aad0746859c0b409a6c854f492c87190
+plantdoc/train/Tomato Septoria leaf spot/slide21-n.jpg,tomato_septoria,9,plantdoc,dfb6ae9190cbb722802267f142bcb665
+plantdoc/train/Tomato Septoria leaf spot/sls1.jpg,tomato_septoria,9,plantdoc,e19cec566889c8eb00d7270630d4d43a
+plantdoc/train/Tomato Septoria leaf spot/tomato-badleaves.jpg,tomato_septoria,9,plantdoc,ec094106e0f16a9602348cef115b2c65
+plantdoc/train/Tomato Septoria leaf spot/tomato-blight-treatment-blight.jpg,tomato_septoria,9,plantdoc,2a8951c9b23e8d42e66af582f4c024ba
+plantdoc/train/Tomato Septoria leaf spot/tomato-disease-septoria-leaf-spot-d7e1x9.jpg,tomato_septoria,9,plantdoc,3ac542cbceaa8b0d37be0097e6302f25
+plantdoc/train/Tomato Septoria leaf spot/tomato-disease-septoria-leaf-spot-d7e1xm.jpg,tomato_septoria,9,plantdoc,6a6bcb9cadfe5e9338b472308cb746ca
+plantdoc/train/Tomato Septoria leaf spot/tomato-leaf-spot-septoria-lycopersici-leaf-spotting-on-tomato-at9jap.jpg,tomato_septoria,9,plantdoc,1299c684df99674809d178be2ef26584
+plantdoc/train/Tomato Septoria leaf spot/tomato-leaf-spot-septoria-lycopersici-on-a-tomato-leaflet-acg9j5.jpg,tomato_septoria,9,plantdoc,2e3202f62e2ccb6d4ce2838ad76d6a81
+plantdoc/train/Tomato Septoria leaf spot/tomato-plant-is-infected-with-septoria-leaf-spot-1.jpg,tomato_septoria,9,plantdoc,c4666f7940e8db54f3958830f3846c0a
+plantdoc/train/Tomato Septoria leaf spot/tomato-septoria-3-500x384.jpg,tomato_septoria,9,plantdoc,eeb3e13b19782e5496179807c4ccc67f
+plantdoc/train/Tomato Septoria leaf spot/tomato-septoria-5.jpg,tomato_septoria,9,plantdoc,2a77257ef365a868f121f5c688f687a6
+plantdoc/train/Tomato Septoria leaf spot/tomato-septoria-leaf-spot--.jpg,tomato_septoria,9,plantdoc,8c41e0be04f8815006c4ebd9df1f4c89
+plantdoc/train/Tomato Septoria leaf spot/tomato_septoria_05_zoom.jpg,tomato_septoria,9,plantdoc,42dbc5d816c0adb56eaf177568eb6ca0
+plantdoc/train/Tomato Septoria leaf spot/tomato_septoria_alternaria_1.jpg,tomato_septoria,9,plantdoc,60b34856d753669af6df5245c1a0f6e7
+plantdoc/train/Tomato Septoria leaf spot/tomatofactsheet.png.png,tomato_septoria,9,plantdoc,814358a9ce6040ea6b03864fdf1e5a79
+plantdoc/train/Tomato Septoria leaf spot/vdu-tomato-sept-eb-285x300.jpg,tomato_septoria,9,plantdoc,1c778f04f8256a201f79ea6e02211a86
+plantdoc/train/Tomato leaf bacterial spot/05-069f9.jpg,tomato_bacterial_spot,3,plantdoc,14611750f3a418ff9ad9583f817ee226
+plantdoc/train/Tomato leaf bacterial spot/266914753eb19d87b80567baed1a0f66.jpg,tomato_bacterial_spot,3,plantdoc,1415a7dc8a7e09e5968821073af10639
+plantdoc/train/Tomato leaf bacterial spot/30290.jpg,tomato_bacterial_spot,3,plantdoc,d8a0abddaff3b263d07abfaad7864361
+plantdoc/train/Tomato leaf bacterial spot/38849847120_7ae02bd6c3_b.jpg,tomato_bacterial_spot,3,plantdoc,71834a03ec74620d0fef6896bd3a88b7
+plantdoc/train/Tomato leaf bacterial spot/39765006175_e2f0da764d_b.jpg,tomato_bacterial_spot,3,plantdoc,c48de8bf47077f093c2edf2129e2f704
+plantdoc/train/Tomato leaf bacterial spot/5114949114265600-600x272.jpeg.jpg,tomato_bacterial_spot,3,plantdoc,194a67e9a51e789e5f6ce8de39f3ef5d
+plantdoc/train/Tomato leaf bacterial spot/59380.jpg,tomato_bacterial_spot,3,plantdoc,3cda361821345fbd11728165f97ab57d
+plantdoc/train/Tomato leaf bacterial spot/BCH%20medium%20thumbnail%20for%20upload%20%2814%29.jpg,tomato_bacterial_spot,3,plantdoc,20457e036e3336bea6e58c4bc4b0d3a9
+plantdoc/train/Tomato leaf bacterial spot/Bacterial-Spot-of-Tomato-Img-2.jpg,tomato_bacterial_spot,3,plantdoc,62142193717aaf8ea8dacacd8641a074
+plantdoc/train/Tomato leaf bacterial spot/Bacterial-speck-tomato-leaves.jpg,tomato_bacterial_spot,3,plantdoc,7c7b0b5d1c1918326e4841d19a2881d2
+plantdoc/train/Tomato leaf bacterial spot/Bacterial-spot-on-tomato-leaves.jpg,tomato_bacterial_spot,3,plantdoc,910d313766da1d1f701f6d92ea4153df
+plantdoc/train/Tomato leaf bacterial spot/BacterialSpot07.jpg,tomato_bacterial_spot,3,plantdoc,b7c5e35c229985ba76b9051f178f65bc
+plantdoc/train/Tomato leaf bacterial spot/Bacterial_spots2276.jpg,tomato_bacterial_spot,3,plantdoc,a10e62f1f7557bc7e3fd9ea65c7ef5b2
+plantdoc/train/Tomato leaf bacterial spot/Bacterial_spots2277.jpg,tomato_bacterial_spot,3,plantdoc,31cf71c04bb572705d1fafd6c3be7a3e
+plantdoc/train/Tomato leaf bacterial spot/Bacterial_spots562.jpg,tomato_bacterial_spot,3,plantdoc,d82d46f50586f29a9dba94d5a7aa376d
+plantdoc/train/Tomato leaf bacterial spot/Canker-GHTom-CAG-leaf-collapse-copy-50-QUALITY-1ur7cyk.jpg,tomato_bacterial_spot,3,plantdoc,c23a204e0fd0d99cf4aa203477a0bc67
+plantdoc/train/Tomato leaf bacterial spot/CankerRhiemsFiring1-copy-50-QUALITY-16lcw30.jpg,tomato_bacterial_spot,3,plantdoc,48253604661d2812aa401d93eed9cabc
+plantdoc/train/Tomato leaf bacterial spot/IMG_2348.jpg,tomato_bacterial_spot,3,plantdoc,6bc3fb3660e0cc21a0264ba45b50d8a7
+plantdoc/train/Tomato leaf bacterial spot/IN0335.jpg,tomato_bacterial_spot,3,plantdoc,c5011a2a5a3cb1a91687e8c5da7faeaf
+plantdoc/train/Tomato leaf bacterial spot/Jeter%20Mtn%20Farm_7053.JPG.jpg,tomato_bacterial_spot,3,plantdoc,a2bda3ae1d5bb90f9c09d05ba71ccaa2
+plantdoc/train/Tomato leaf bacterial spot/Leaf%2Bsymptoms%2BMDA.jpg,tomato_bacterial_spot,3,plantdoc,8dca58ac180bb461e74b6bb51556ae04
+plantdoc/train/Tomato leaf bacterial spot/Leaf-Spot-300x253.jpg,tomato_bacterial_spot,3,plantdoc,7320c9d188488d20984dc0d051de27ba
+plantdoc/train/Tomato leaf bacterial spot/Leafspotx450xBugwood.jpg,tomato_bacterial_spot,3,plantdoc,db5cb463758b7758aed2e272178daa6a
+plantdoc/train/Tomato leaf bacterial spot/LyraEDISServlet.jpg,tomato_bacterial_spot,3,plantdoc,4fc6a7545b6c69450feacdd7e2b113e4
+plantdoc/train/Tomato leaf bacterial spot/Paret-Fig-1-tomato-bacterial-leaf-spot.jpg,tomato_bacterial_spot,3,plantdoc,538b5dbe04d3dfbd23d76097ef49a004
+plantdoc/train/Tomato leaf bacterial spot/RyBx7MH.jpg,tomato_bacterial_spot,3,plantdoc,136ff0732fb3769e3c5c50323e576d76
+plantdoc/train/Tomato leaf bacterial spot/TC3.jpg,tomato_bacterial_spot,3,plantdoc,439c73983fed44be69b409a90f842816
+plantdoc/train/Tomato leaf bacterial spot/TC6-300x194.jpg,tomato_bacterial_spot,3,plantdoc,f637d931caffccd778cecec016ff4c56
+plantdoc/train/Tomato leaf bacterial spot/a3fb24f84fe70e5d37352d13106531d6.jpg,tomato_bacterial_spot,3,plantdoc,f93860b40dde3d9e04a29c5a24d06b88
+plantdoc/train/Tomato leaf bacterial spot/alter_cank2-150x150.jpg,tomato_bacterial_spot,3,plantdoc,93d0fcd229c89b9b362f9d9b5791ac30
+plantdoc/train/Tomato leaf bacterial spot/b-speck.jpg,tomato_bacterial_spot,3,plantdoc,59809840f48a9ecd116852e244bd2728
+plantdoc/train/Tomato leaf bacterial spot/bac-canker.jpg,tomato_bacterial_spot,3,plantdoc,c7eb4dbb910cc9a85bfaadbf45d0a58a
+plantdoc/train/Tomato leaf bacterial spot/bac-spot.jpg,tomato_bacterial_spot,3,plantdoc,03696a8b9540e87823cf6bba32b1be37
+plantdoc/train/Tomato leaf bacterial spot/bac.jpg,tomato_bacterial_spot,3,plantdoc,90660b1d43fa99819682f693fa20f2e6
+plantdoc/train/Tomato leaf bacterial spot/bac_spot1-300x298.jpg,tomato_bacterial_spot,3,plantdoc,6fd52a9efb76f2e573ae7c40f4586c29
+plantdoc/train/Tomato leaf bacterial spot/bact-spot-leaf-big.jpg,tomato_bacterial_spot,3,plantdoc,3923cc206ea04004295d54488b4c3d8b
+plantdoc/train/Tomato leaf bacterial spot/bacterial%20leaf%20spot.jpg,tomato_bacterial_spot,3,plantdoc,06b1b3caacdc974189d0d8144d0a3f88
+plantdoc/train/Tomato leaf bacterial spot/bacterial-speck-tomato-2.jpg,tomato_bacterial_spot,3,plantdoc,cac5af75dbdff0dd8e3f12d9bfe5529e
+plantdoc/train/Tomato leaf bacterial spot/bacterial-speck-tomato-3.jpg,tomato_bacterial_spot,3,plantdoc,584580e02737ff526cbae406f9a45020
+plantdoc/train/Tomato leaf bacterial spot/bacterial-spot-of-tomato-7-638.jpg,tomato_bacterial_spot,3,plantdoc,6bc90da5c35bdcd50540fb72307fd2af
+plantdoc/train/Tomato leaf bacterial spot/bacterialLeafSpot07-2jqdlmz.jpg,tomato_bacterial_spot,3,plantdoc,b626bacd697561bf6aa5ca7d1e996f96
+plantdoc/train/Tomato leaf bacterial spot/bacterialSpeck03510339f27656b-1scmgh1.jpg,tomato_bacterial_spot,3,plantdoc,7193983adaee5c086a29a8243bd351b7
+plantdoc/train/Tomato leaf bacterial spot/bacterialspottomato2.jpg,tomato_bacterial_spot,3,plantdoc,b3e75238c93b939e483d5cb6f72508cf
+plantdoc/train/Tomato leaf bacterial spot/beg.jpg,tomato_bacterial_spot,3,plantdoc,abd032a877b5899ded92b2b651a56d94
+plantdoc/train/Tomato leaf bacterial spot/clothes014.jpg,tomato_bacterial_spot,3,plantdoc,893dcd5c1929b116b7723944cbf73b31
+plantdoc/train/Tomato leaf bacterial spot/image3_original.JPG_1472755422.jpg,tomato_bacterial_spot,3,plantdoc,bb1ae5c222e5c913436482c331286aa7
+plantdoc/train/Tomato leaf bacterial spot/pp1244-05.jpeg.jpg,tomato_bacterial_spot,3,plantdoc,fb6052b2e3267da7e45a1d4d80f205f1
+plantdoc/train/Tomato leaf bacterial spot/stock-photo-bacterial-spot-on-tomato-559799107.jpg,tomato_bacterial_spot,3,plantdoc,aa8dc27d9f6ffed3b9b3994e3312e381
+plantdoc/train/Tomato leaf bacterial spot/tomato-plant-diseases-identification-leaf-spot-tomato-disease-tomato-plant-fungus-identification.jpg,tomato_bacterial_spot,3,plantdoc,fa64d22c56c925f7485ab4a53419f1fa
+plantdoc/train/Tomato leaf bacterial spot/tomato_bacterial-speck_03_zoom.jpg,tomato_bacterial_spot,3,plantdoc,a9866d68cbcf65e80f6d698739947cfc
+plantdoc/train/Tomato leaf bacterial spot/tomato_xanthomonas_foliage.jpg,tomato_bacterial_spot,3,plantdoc,12ac88a17e6ad1be6c444ca32fa4dbe0
+plantdoc/train/Tomato leaf late blight/20150619d.jpg,tomato_late_blight,6,plantdoc,964714b0a9634931bd704577d75c26c3
+plantdoc/train/Tomato leaf late blight/2017-08-27%2B-%2BLate%2BBlight%2Bon%2BGypsy%2B1.jpg,tomato_late_blight,6,plantdoc,55996f3c1e28af109ae0d8271f964dfb
+plantdoc/train/Tomato leaf late blight/7262-drought.jpg,tomato_late_blight,6,plantdoc,b3a380e6edb322b32c3d16d8c9a356f0
+plantdoc/train/Tomato leaf late blight/924977LateBlightLeaf.jpg,tomato_late_blight,6,plantdoc,fb0239a637aa1529978ebd23336b53a9
+plantdoc/train/Tomato leaf late blight/F%294.jpg,tomato_late_blight,6,plantdoc,4d9e79f18fb9d6122734596d4feacc2a
+plantdoc/train/Tomato leaf late blight/IMG_2254.JPG.jpg,tomato_late_blight,6,plantdoc,87211790c33baed33429c58e65865e26
+plantdoc/train/Tomato leaf late blight/IMG_4182.JPG.jpg,tomato_late_blight,6,plantdoc,1ba2d3b746ca5835cfddf5bd8c38f139
+plantdoc/train/Tomato leaf late blight/IMG_5368.jpg,tomato_late_blight,6,plantdoc,71b43f4bac0ae004402fd2b69386d5b4
+plantdoc/train/Tomato leaf late blight/LBleaf2INIA_0.jpg,tomato_late_blight,6,plantdoc,4babaedef1709d2ecac2a55d78a22b8b
+plantdoc/train/Tomato leaf late blight/Late-Blight-on-Tomato-4JDill.jpg,tomato_late_blight,6,plantdoc,548a25e7a12238f90035d87180ab960f
+plantdoc/train/Tomato leaf late blight/Late-blight-foliar-leasion-on-tomato.jpg,tomato_late_blight,6,plantdoc,d89d60d261b94ee1b3008f2cb69ee8c3
+plantdoc/train/Tomato leaf late blight/Late-blight-on-a-tomato-leaf.jpg,tomato_late_blight,6,plantdoc,12dee4a0cce0225fa729a7b30ca17e66
+plantdoc/train/Tomato leaf late blight/Late-blight-symptoms-on-tomato-leaves-1r3uhy2.jpg,tomato_late_blight,6,plantdoc,f106d2a34d9feed7c82a79e5bff8913b
+plantdoc/train/Tomato leaf late blight/LateBlightLeaf.jpg,tomato_late_blight,6,plantdoc,3aa9dcdfd99883b664a08e0590e09ddb
+plantdoc/train/Tomato leaf late blight/LateBlt09_05.jpg,tomato_late_blight,6,plantdoc,6f05b1ba0ef627c056ffea3749744b0b
+plantdoc/train/Tomato leaf late blight/Late_blight_on_tomato_leaf_%287871756748%29.jpg,tomato_late_blight,6,plantdoc,154bd61cbe18e62d06752261157e46a4
+plantdoc/train/Tomato leaf late blight/Pest2369.jpg,tomato_late_blight,6,plantdoc,497466f89ddffe44c142082b69ff3ffe
+plantdoc/train/Tomato leaf late blight/ToamtoLateBlight3-Version-3-oohvze.jpg,tomato_late_blight,6,plantdoc,e288bf9c2e36461bbd4d7b9058dfc462
+plantdoc/train/Tomato leaf late blight/Tomato-Late-BlightBM.jpg,tomato_late_blight,6,plantdoc,0afcd112fa2cbe046108ae8d2c310b1a
+plantdoc/train/Tomato leaf late blight/TomatoBlight.JPG.jpg,tomato_late_blight,6,plantdoc,9eac06eefb2710201687e2bf6027d281
+plantdoc/train/Tomato leaf late blight/TomatoLateBlight-3-Underside-2ebj05b-300x225.jpg,tomato_late_blight,6,plantdoc,83012a7e96576aac4338730beda488a8
+plantdoc/train/Tomato leaf late blight/TomatoLateBlightTop.jpg,tomato_late_blight,6,plantdoc,5933e6ad1e9750e59f5fd2ad9e65cc02
+plantdoc/train/Tomato leaf late blight/gardening-moisture-lateblight-tomato-leaf.jpg,tomato_late_blight,6,plantdoc,9d20e0bb32ccbca146e78fb4ac18b336
+plantdoc/train/Tomato leaf late blight/late-blight-phytophthora-infestans-damage-to-tomato-leaves-and-fruit-cmnxnf.jpg,tomato_late_blight,6,plantdoc,e128f8b2137b811ff029b7f6949cd9ad
+plantdoc/train/Tomato leaf late blight/late_blight1.jpg,tomato_late_blight,6,plantdoc,f1701ac8b7174afad0e184b51ee71507
+plantdoc/train/Tomato leaf late blight/late_blight_2013_longisland2x1200.jpg,tomato_late_blight,6,plantdoc,fd394b607d52a333697ae312210fae0f
+plantdoc/train/Tomato leaf late blight/late_blight_drought_leavescuux1200.jpg,tomato_late_blight,6,plantdoc,6cf6c8f47bf6a191d990f991a8d11314
+plantdoc/train/Tomato leaf late blight/late_blight_tomato_leavesx500.jpg,tomato_late_blight,6,plantdoc,a7d6412682d6286ee40885a0b810eb33
+plantdoc/train/Tomato leaf late blight/late_blight_tomato_transplant2x1200.jpg,tomato_late_blight,6,plantdoc,61879f610deb3167a1a0bb1c2f7bf0ed
+plantdoc/train/Tomato leaf late blight/late_blight_tomato_unusual-symptomsx1200.jpg,tomato_late_blight,6,plantdoc,0cc4b8d1fb781c25faa0a0a1804a50b8
+plantdoc/train/Tomato leaf late blight/lateblight2.jpg,tomato_late_blight,6,plantdoc,a17999341efcb76be494e26f580cf244
+plantdoc/train/Tomato leaf late blight/lateblightTom_lesion.jpg,tomato_late_blight,6,plantdoc,06f25a0765a089e2cc656616e81ac482
+plantdoc/train/Tomato leaf late blight/lateblightTom_lesion3.jpg,tomato_late_blight,6,plantdoc,e977e02883f3b1feed160ecc4e47a7d2
+plantdoc/train/Tomato leaf late blight/lb2.jpg,tomato_late_blight,6,plantdoc,efc4ae4996c6d203104a8743902eaa17
+plantdoc/train/Tomato leaf late blight/lb_leaf_lesions2x1200.jpg,tomato_late_blight,6,plantdoc,f190f0487e67a98300f20e3d2a03e59a
+plantdoc/train/Tomato leaf late blight/lb_leaf_lesions3x1200.jpg,tomato_late_blight,6,plantdoc,eb6d705522aaf9f6ae21ff97df7ee8c8
+plantdoc/train/Tomato leaf late blight/lb_leaf_lesions4x1200.jpg,tomato_late_blight,6,plantdoc,9ffe6f83d644f5798a348461632daab0
+plantdoc/train/Tomato leaf late blight/lbleaf.jpg,tomato_late_blight,6,plantdoc,8711bd211866c4b9bc29e52ec292a513
+plantdoc/train/Tomato leaf late blight/photo-2.jpg,tomato_late_blight,6,plantdoc,c860634931e21038a4a0b2a8fefbe7cf
+plantdoc/train/Tomato leaf late blight/photo-9.jpg,tomato_late_blight,6,plantdoc,ab93d2feda8045c160f22e3bc0d69df4
+plantdoc/train/Tomato leaf late blight/stock-photo-tomato-plants-infected-by-the-late-blight-plant-pathogen-phytophthora-infestans-macro-539209615.jpg,tomato_late_blight,6,plantdoc,cb5d6e0a01bdbc5cb6484832af03603b
+plantdoc/train/Tomato leaf late blight/tomato+blight.jpg,tomato_late_blight,6,plantdoc,b50ce7a9dbd36f773590add5cb75ee14
+plantdoc/train/Tomato leaf late blight/tomato-blight-phytophthora-infestans-close-up-of-infected-leaf-b5n95x.jpg,tomato_late_blight,6,plantdoc,bdbbbf086e8a2f4556f67eb74b98896f
+plantdoc/train/Tomato leaf late blight/tomato-late-blight-conn-2015-137c.jpg,tomato_late_blight,6,plantdoc,9ce8ba5433c5cd263b8466f94e3bf847
+plantdoc/train/Tomato leaf late blight/tomato-late-blight-phytophthora-infestans-lesions-on-greenhouse-grown-ATA11J.jpg,tomato_late_blight,6,plantdoc,59b1cf5825ce1ba06ac45ac9a0125d42
+plantdoc/train/Tomato leaf late blight/tomato-late-blight-phytophthora-infestans-mycelium-and-lesions-on-a15yr2.jpg,tomato_late_blight,6,plantdoc,bbcdb44dd4c28d2407cccba3bb09f5f1
+plantdoc/train/Tomato leaf late blight/tomato-late-blight-phytophthora-infestans-necrosis-sporulation-on-a-tomato-leaf-underside-X5YDDP.jpg,tomato_late_blight,6,plantdoc,07ccdc1e2fdf832441c2677c3fa358cc
+plantdoc/train/Tomato leaf late blight/tomato-late-blight-phytophthora-infestans-necrosis-sporulation-on-a-tomato-leaf-underside-XA233C.jpg,tomato_late_blight,6,plantdoc,441372e9942d6808a6ac1ff057941a03
+plantdoc/train/Tomato leaf late blight/tomato-late-blight-phytophthora-infestans-on-tomato-leaves-a15ym0.jpg,tomato_late_blight,6,plantdoc,48efe203fc64d6177323067a37dd4efc
+plantdoc/train/Tomato leaf late blight/tomato_D33a-Late-blight-015-OMAFHRT_zoom.jpg,tomato_late_blight,6,plantdoc,d346ea538dcd6d461d5d6e0feff89baa
+plantdoc/train/Tomato leaf late blight/tomato_late-blight_01_zoom.jpg,tomato_late_blight,6,plantdoc,753838f09f8240a2f5778d64bdc0ed9c
+plantdoc/train/Tomato leaf mosaic virus/1422_0.jpeg.jpg,tomato_mosaic_virus,8,plantdoc,6286b57b67995251113d9e6e9c4fce72
+plantdoc/train/Tomato leaf mosaic virus/3-tomato-mosaic-virus_web.jpg,tomato_mosaic_virus,8,plantdoc,f46eedcc5ad2cde9a524a55d3ff66f84
+plantdoc/train/Tomato leaf mosaic virus/51196-004-61703A1B.jpg,tomato_mosaic_virus,8,plantdoc,6120aadf3ec843374a15b811b76ef6f5
+plantdoc/train/Tomato leaf mosaic virus/5Tomato+Mosaic+Virus.jpg,tomato_mosaic_virus,8,plantdoc,ed815fd0d20376f48a1058826cf7e634
+plantdoc/train/Tomato leaf mosaic virus/DSC02246.JPG.jpg,tomato_mosaic_virus,8,plantdoc,e773d2a356a16a1ce1eeeb2bb6ea2dae
+plantdoc/train/Tomato leaf mosaic virus/TNRV2.jpg,tomato_mosaic_virus,8,plantdoc,7f85952ee0a482f3fd399e0595ad2ccc
+plantdoc/train/Tomato leaf mosaic virus/d41c86a650e49b8066d6b347d8e9d3ad.jpg,tomato_mosaic_virus,8,plantdoc,9ae583c460385d1f07a8bb91ac6b1a5e
+plantdoc/train/Tomato leaf mosaic virus/dahliaviralsymptoms2lowresjpg.jpg,tomato_mosaic_virus,8,plantdoc,93fa178f94f8117fb98ee82770948cd6
+plantdoc/train/Tomato leaf mosaic virus/fig1-2k11-163-165.jpg,tomato_mosaic_virus,8,plantdoc,2bc257537da26e8ff35f77143410c106
+plantdoc/train/Tomato leaf mosaic virus/image018.jpg,tomato_mosaic_virus,8,plantdoc,53b34d1efd1b866086e13b841814cea0
+plantdoc/train/Tomato leaf mosaic virus/image022.jpg,tomato_mosaic_virus,8,plantdoc,b9a39f099d425b5eeaad527106a136d5
+plantdoc/train/Tomato leaf mosaic virus/mosaic-virus-foliage.jpg,tomato_mosaic_virus,8,plantdoc,b8997a678cb75769d9bbfc93ab8c1e47
+plantdoc/train/Tomato leaf mosaic virus/mosaic_virus_tomato.jpg,tomato_mosaic_virus,8,plantdoc,62690bd0d9403dba227b0a5480fb302c
+plantdoc/train/Tomato leaf mosaic virus/mosiac-virus3.jpg,tomato_mosaic_virus,8,plantdoc,2783485c6c31abcd9799f3ab074a5dca
+plantdoc/train/Tomato leaf mosaic virus/stock-photo-tomato-mosaic-virus-disease-on-tomato-559799668.jpg,tomato_mosaic_virus,8,plantdoc,e14401a87520cca296a337ee0fe99023
+plantdoc/train/Tomato leaf mosaic virus/thumb-500.jpg,tomato_mosaic_virus,8,plantdoc,599553dea4e2adf61b894f45aecd0eb4
+plantdoc/train/Tomato leaf mosaic virus/tmv-tomato-16.jpg,tomato_mosaic_virus,8,plantdoc,a404c6ed88dec027526d860e85db7472
+plantdoc/train/Tomato leaf mosaic virus/tomato-fern-leaf-a-symptom-of-tmv-cmv-or-pepmv-virus-on-tomato-plants-h6ey8w.jpg,tomato_mosaic_virus,8,plantdoc,2c34e86630e55d46a35ba82c6a5f5e24
+plantdoc/train/Tomato leaf mosaic virus/tomato-mosaic-virus-1.jpg,tomato_mosaic_virus,8,plantdoc,871a01286ac67a0e4850e7c3eb4f776d
+plantdoc/train/Tomato leaf mosaic virus/tomato-mosaic-virus-disease-on-260nw-625499777.jpg,tomato_mosaic_virus,8,plantdoc,82deaf023a36a0898a4ad449bebbff52
+plantdoc/train/Tomato leaf mosaic virus/tomato-mosaic-virus.jpg,tomato_mosaic_virus,8,plantdoc,d60c4708d7eb2edf6c8e41957ded8d2b
+plantdoc/train/Tomato leaf mosaic virus/tomato_leaf_curl_ND_on_luffah_KC3701030-3.jpg,tomato_mosaic_virus,8,plantdoc,dd6deef4d28dd6b6ee32b62359fb27b3
+plantdoc/train/Tomato leaf mosaic virus/tomato_virus_01_zoom.jpg,tomato_mosaic_virus,8,plantdoc,2256a962bf72aa73ffdf2e282eb77e15
+plantdoc/train/Tomato leaf yellow virus/072.jpg,tomato_yellow_curl_virus,10,plantdoc,e367de7c0998d08f296f038e2d05dff7
+plantdoc/train/Tomato leaf yellow virus/18071.img.jpg,tomato_yellow_curl_virus,10,plantdoc,92cc5022e44bccb39275d49cf80ae87f
+plantdoc/train/Tomato leaf yellow virus/29994445671_b6914b44d0_b.jpg,tomato_yellow_curl_virus,10,plantdoc,e5f597e1c910190bd536181c8440aa45
+plantdoc/train/Tomato leaf yellow virus/36ca1410e232eec4a8003fe411246820.jpg,tomato_yellow_curl_virus,10,plantdoc,ebe1b7a103df1b7739ae29057495a969
+plantdoc/train/Tomato leaf yellow virus/5146.jpg,tomato_yellow_curl_virus,10,plantdoc,f8fc9685857320cfecb0a267bea1ee3e
+plantdoc/train/Tomato leaf yellow virus/7585001780_4b89e826b7.jpg,tomato_yellow_curl_virus,10,plantdoc,fb6a5c7c25d7a9cda42c3790dfa74d9c
+"plantdoc/train/Tomato leaf yellow virus/8.--Virus-Damaged-foliage-at-top-versus-healthy,-non-infected-bottom-foliage.jpg",tomato_yellow_curl_virus,10,plantdoc,a515bdc575f4e2a85006a718beaa0a38
+plantdoc/train/Tomato leaf yellow virus/8227475116_0d40e8f21c_b.jpg,tomato_yellow_curl_virus,10,plantdoc,cbb9dd083076f9542d7ed456a4df528a
+plantdoc/train/Tomato leaf yellow virus/DSC01999.JPG.jpg,tomato_yellow_curl_virus,10,plantdoc,529804142681eb0bcaf4596e73bd794b
+plantdoc/train/Tomato leaf yellow virus/DSC02006.JPG.jpg,tomato_yellow_curl_virus,10,plantdoc,7ceed02cedccc90328e25d10a843da02
+plantdoc/train/Tomato leaf yellow virus/DSC_3019_320x209.jpg,tomato_yellow_curl_virus,10,plantdoc,73a8b9871c7590581ff8bda534ca635e
+plantdoc/train/Tomato leaf yellow virus/Figure-4.jpg,tomato_yellow_curl_virus,10,plantdoc,ceda39db60bb3b9fb470333c9ea6e6f8
+plantdoc/train/Tomato leaf yellow virus/IMG_2686.JPG.jpg,tomato_yellow_curl_virus,10,plantdoc,2042df64c80230d16fb4f34ed38261e6
+plantdoc/train/Tomato leaf yellow virus/TYLCV-tomate-DB-445-171.jpg,tomato_yellow_curl_virus,10,plantdoc,061bf61cb6e520c9c8d082d125fd0a4b
+plantdoc/train/Tomato leaf yellow virus/TYLCV2.jpg,tomato_yellow_curl_virus,10,plantdoc,e117bd767a09bd9ebd24090ae48c0db4
+plantdoc/train/Tomato leaf yellow virus/TYLCV4.jpg,tomato_yellow_curl_virus,10,plantdoc,af5ec86d45757faa270740c2e2295d96
+plantdoc/train/Tomato leaf yellow virus/TYLCVDFerrinlr.jpg,tomato_yellow_curl_virus,10,plantdoc,cd7f7dba42e2bc3f1d144c67b3808b46
+plantdoc/train/Tomato leaf yellow virus/Tomato2.jpg,tomato_yellow_curl_virus,10,plantdoc,60bec767d9774d36d1cb08ce793e5e2d
+plantdoc/train/Tomato leaf yellow virus/dscn1652cropped.jpg,tomato_yellow_curl_virus,10,plantdoc,e2533442246cefc26fd290e4aa289190
+plantdoc/train/Tomato leaf yellow virus/leaf%20curl_3.jpg,tomato_yellow_curl_virus,10,plantdoc,fb28ea60af8d88f14f6f8064b1d38fa9
+plantdoc/train/Tomato leaf yellow virus/s-prasanth-kumar-young-scientist-awarded-presentation-2-728.jpg,tomato_yellow_curl_virus,10,plantdoc,0fdb151a18847e09b96fabfb0a0b7ed7
+plantdoc/train/Tomato leaf yellow virus/tlcv-tomato-leaf-curl-virus-symptoms-on-a-glasshouse-tomato-plant-bmyh62.jpg,tomato_yellow_curl_virus,10,plantdoc,db9199ed1f9967267e09c51cebeb20ac
+plantdoc/train/Tomato leaf yellow virus/tomato-plant-virus-tomato-yellow-leaf-curl-virus-tomato-plant-disease-mosaic-virus.jpg,tomato_yellow_curl_virus,10,plantdoc,2fe3ae1e3cf562f0aac2092f5e0da7a4
+plantdoc/train/Tomato leaf yellow virus/tomato-yellow-closeup-2.jpg,tomato_yellow_curl_virus,10,plantdoc,c4992eb508dbcaaae6991b966252d718
+plantdoc/train/Tomato leaf yellow virus/tomato-yellow-closeup-3.jpg,tomato_yellow_curl_virus,10,plantdoc,67e8fb5e7c56474ba2195988068fb4c5
+plantdoc/train/Tomato leaf yellow virus/tomato-yellow-closeup-4.jpg,tomato_yellow_curl_virus,10,plantdoc,a95d811dc784f6205a77065214a518c7
+plantdoc/train/Tomato leaf yellow virus/tomato-yellow-leaf-curl-disease-260nw-1006958086.jpg,tomato_yellow_curl_virus,10,plantdoc,2f268239adb73e68353a809f3b982335
+plantdoc/train/Tomato leaf yellow virus/tomato-yellow-leaf-curl-virus-symptoms-on-tomato-leaves-on-plants-ACGAME.jpg,tomato_yellow_curl_virus,10,plantdoc,26ff277afb28b17bdf729471f45e0dd0
+plantdoc/train/Tomato leaf yellow virus/tomato-yellow-leaf-curl-virus-symptoms-on-tomato-leaves-on-plants-AXKWFY.jpg,tomato_yellow_curl_virus,10,plantdoc,574895f7ca354d6a6d24100b7839a497
+plantdoc/train/Tomato leaf yellow virus/tomato-yellow-leaf-curl-virus-tylvcv-symptoms-on-a-tomato-plant-under-BMYHXY.jpg,tomato_yellow_curl_virus,10,plantdoc,00794a9bd9ca7f02ef5c505913d7c3d2
+plantdoc/train/Tomato leaf yellow virus/tomato_yellow_leaf_curl_virus.jpg,tomato_yellow_curl_virus,10,plantdoc,96f0995a1e99ac3dfcb7917fd7355456
+plantdoc/train/Tomato leaf yellow virus/tylcv.jpg,tomato_yellow_curl_virus,10,plantdoc,67e3733325b3fa0f4197148a41ace97d
+plantdoc/train/Tomato leaf yellow virus/tylcv1-.jpg,tomato_yellow_curl_virus,10,plantdoc,0cf24da1890a3aff251af42fcc0e8fb5
+plantdoc/train/Tomato leaf yellow virus/virus2.jpg,tomato_yellow_curl_virus,10,plantdoc,66a040b8efa44eb9527f470d353d3b31
+plantdoc/train/Tomato leaf/003.JPG.jpg,tomato_healthy,5,plantdoc,c43ee7aec83bf4b8e057029dfedfc22b
+plantdoc/train/Tomato leaf/15481477375.jpg,tomato_healthy,5,plantdoc,24d03aa0db1c74f59606dd251bbad83c
+plantdoc/train/Tomato leaf/1686.jpg,tomato_healthy,5,plantdoc,08ee184134eedab6ca96957a5c2549c7
+plantdoc/train/Tomato leaf/2013-08-20-03.jpg,tomato_healthy,5,plantdoc,7267dc21e8b9038a5464831f120bbc2e
+plantdoc/train/Tomato leaf/2013-08-20-04.jpg,tomato_healthy,5,plantdoc,299f2dc66a1c186036b5052302e7edc3
+plantdoc/train/Tomato leaf/20140818-tomato-sauce-vicky-wasik-1.jpg,tomato_healthy,5,plantdoc,6dafe6390ecc61ba712492265ceed870
+plantdoc/train/Tomato leaf/Bacterial-leaf-spot-transplants1.jpg,tomato_healthy,5,plantdoc,6669978c64e2f9271537299fe4c000f0
+plantdoc/train/Tomato leaf/DSCN1016.JPG.jpg,tomato_healthy,5,plantdoc,9f531b91c7d732774788ef4f1a62f177
+plantdoc/train/Tomato leaf/IMG_2061.JPG.jpg,tomato_healthy,5,plantdoc,50097f00157991005e74b3b77910ce68
+plantdoc/train/Tomato leaf/IMG_3192.JPG.jpg,tomato_healthy,5,plantdoc,c34c64067043c58b66d9a8e94fce0992
+plantdoc/train/Tomato leaf/Leaves-of-Tomato.jpg,tomato_healthy,5,plantdoc,9e270fecb70fc6233155dc29ff60143c
+plantdoc/train/Tomato leaf/curling-issues.jpg,tomato_healthy,5,plantdoc,26680066f28674f7776850e01b87f32e
+plantdoc/train/Tomato leaf/depositphotos_143371585-stock-photo-tomato-leaf-closeup-isolated-on.jpg,tomato_healthy,5,plantdoc,e14b1a6b2ff987575374cdf68f45e15b
+plantdoc/train/Tomato leaf/flies.jpg,tomato_healthy,5,plantdoc,d45dc13a4ef19e875e35cf127a8a5fd2
+plantdoc/train/Tomato leaf/fpls-08-01602-g001.jpg,tomato_healthy,5,plantdoc,5b2f1abbd4b4f7d66676bea595a4063c
+plantdoc/train/Tomato leaf/img_1028.jpg,tomato_healthy,5,plantdoc,0142561860d459a41de530c2f7dd19bc
+plantdoc/train/Tomato leaf/img_6635.jpg,tomato_healthy,5,plantdoc,0775eee0240c07b1b5c0a1ca742f34c7
+plantdoc/train/Tomato leaf/late_blight_tomato_leaf4x1200.jpg,tomato_healthy,5,plantdoc,730b3a62ffbe187709ff5bafad4b1045
+plantdoc/train/Tomato leaf/mortgage-lifter-yellow-leaves-2.jpg,tomato_healthy,5,plantdoc,9d637807a85352005cde8b03f13e4a6b
+plantdoc/train/Tomato leaf/russian-2-319-dt-2010-leaves-high-tunnel-9-29-2014-c.jpg,tomato_healthy,5,plantdoc,f67029ccfa719afd700fb58572416651
+plantdoc/train/Tomato leaf/stock-photo-tomato-leaves-close-up-macro-shot-isolated-on-white-background-78796204.jpg,tomato_healthy,5,plantdoc,23cf8f511a15baf61f7c7f5a09532378
+plantdoc/train/Tomato leaf/stock-vector-set-of-vector-elements-for-your-design-red-ripe-tomatoes-with-water-drops-tomato-leaves-and-tomato-203297116.jpg,tomato_healthy,5,plantdoc,7099713fddb713dea084f013c271143e
+plantdoc/train/Tomato leaf/tomato-leaf-20728368.jpg,tomato_healthy,5,plantdoc,3b38beb09ae959e24cafc6d26300bdfa
+plantdoc/train/Tomato leaf/tomato-leaf-close-up.jpg,tomato_healthy,5,plantdoc,bf6983dfe85d834722709d7cb2b05af0
+plantdoc/train/Tomato leaf/tomato-leaves-17427786.jpg,tomato_healthy,5,plantdoc,229491463314ba74fb116c5f86894f19
+plantdoc/train/Tomato leaf/tomato-leaves-9025906.jpg,tomato_healthy,5,plantdoc,165178156f9680280225213b6d1385b7
+plantdoc/train/Tomato mold leaf/100_4542.jpg,tomato_leaf_mold,7,plantdoc,4c01105bda13d458422614b4cbfa7629
+plantdoc/train/Tomato mold leaf/119B_Tom_Mold.jpg,tomato_leaf_mold,7,plantdoc,d351d9401e493762a9eafcd204135b4f
+plantdoc/train/Tomato mold leaf/2195890.jpg,tomato_leaf_mold,7,plantdoc,4d8c8dbb450544dcf9d16abc6f51aee3
+plantdoc/train/Tomato mold leaf/4118c92ffde66d327ee14e4023320bf7.jpg,tomato_leaf_mold,7,plantdoc,22f56dbb5fc25b1f337239f21c60f815
+plantdoc/train/Tomato mold leaf/5830204360_757cd7fdfc_z.jpg,tomato_leaf_mold,7,plantdoc,fcb41691da6adec718ab1f95ab8afd37
+plantdoc/train/Tomato mold leaf/6032331.JPG.jpg,tomato_leaf_mold,7,plantdoc,ed7d621ee1fb53273334c389e109e4bf
+plantdoc/train/Tomato mold leaf/607-155-0.jpg,tomato_leaf_mold,7,plantdoc,f6ec9c7c880bf1b29247c73ea9183a0c
+plantdoc/train/Tomato mold leaf/607-155-1.jpg,tomato_leaf_mold,7,plantdoc,270e3c50b2e3cc7a6925b918e0201347
+plantdoc/train/Tomato mold leaf/8915974546_00664cefe3_z.jpg,tomato_leaf_mold,7,plantdoc,c214cb7f55a30968894585990779cf99
+plantdoc/train/Tomato mold leaf/BlackLeafMold2.jpg,tomato_leaf_mold,7,plantdoc,9d7a909766e27c2ab74caa92423e9a87
+plantdoc/train/Tomato mold leaf/Botrytis-Tomato-Seedlings-2-copy-50QUALITY-17wck0d.jpg,tomato_leaf_mold,7,plantdoc,8f5ecfa32d2a7145b6ee70dd4f792389
+plantdoc/train/Tomato mold leaf/Fig.%2015_opta.jpg,tomato_leaf_mold,7,plantdoc,4bd8cf638aa0a7728f8a5d13e1913ece
+plantdoc/train/Tomato mold leaf/GIVXB.jpg,tomato_leaf_mold,7,plantdoc,4232f284234ff8671e6a05b1458fdc05
+plantdoc/train/Tomato mold leaf/HighTunnel_TLM6.jpg,tomato_leaf_mold,7,plantdoc,c82859d144397c52848f1be7d8d2e715
+plantdoc/train/Tomato mold leaf/Leaf+mold+tomato+%25283%2529.JPG.jpg,tomato_leaf_mold,7,plantdoc,b95267428be8cd97cd5c00a2acd0c464
+plantdoc/train/Tomato mold leaf/Leaf-mold-web.jpg,tomato_leaf_mold,7,plantdoc,581a6ec9fe5638f4d63e916d04c2e863
+plantdoc/train/Tomato mold leaf/Leaf-mold3.jpg,tomato_leaf_mold,7,plantdoc,94444a9eb7f37a0a76ab91227b842f68
+plantdoc/train/Tomato mold leaf/OLU13.jpg,tomato_leaf_mold,7,plantdoc,12203c5faed9f4162b72d809d33069b8
+plantdoc/train/Tomato mold leaf/Ormvn.jpg,tomato_leaf_mold,7,plantdoc,f3f99a2b5cb0e9262d2f1bb5539ef530
+plantdoc/train/Tomato mold leaf/Problem-2a.jpg,tomato_leaf_mold,7,plantdoc,eb961d87f4edc58c6407805cc6a5d5fa
+plantdoc/train/Tomato mold leaf/TomatoLeafMold1-50QUALITY-16lgkq6.jpg,tomato_leaf_mold,7,plantdoc,39751cc21d33631c87b4b5d679db9b6c
+plantdoc/train/Tomato mold leaf/TomatoLeafMold2-50QUALITY-1b89zfs.jpg,tomato_leaf_mold,7,plantdoc,4d9e5a7566d32934ceae4677ebf01319
+plantdoc/train/Tomato mold leaf/black%20leaf%20mold%20%284%29.JPG_itok=DIIUw9JU.jpg,tomato_leaf_mold,7,plantdoc,4506935be828f31f1ec9b31c0fa1774a
+plantdoc/train/Tomato mold leaf/dscf2712.jpg,tomato_leaf_mold,7,plantdoc,67218bb7d0fcac16af25e6fb490c5dc9
+plantdoc/train/Tomato mold leaf/gray-mold-on-tomato-leaf.jpg,tomato_leaf_mold,7,plantdoc,7f5f40e761797a0453572b470f5e27dd
+plantdoc/train/Tomato mold leaf/grey-mould-botrytis-cinerea-on-bottom-of-a-tomato-leaf-late-in-the-AFRDAN.jpg,tomato_leaf_mold,7,plantdoc,dfcbeac915d8df0fe5946da644421d68
+plantdoc/train/Tomato mold leaf/leaf%2Binf%2B800%2B1.jpg,tomato_leaf_mold,7,plantdoc,ba0b16ab5cbf855e025403eeebc6da9d
+plantdoc/train/Tomato mold leaf/leaf_mold1.jpg,tomato_leaf_mold,7,plantdoc,7efadfce56e6626e47b0226a6f0d44da
+plantdoc/train/Tomato mold leaf/leafmoldtomato2.jpg,tomato_leaf_mold,7,plantdoc,82aee4671cd45c0718f393303096f76c
+plantdoc/train/Tomato mold leaf/pm3.jpg,tomato_leaf_mold,7,plantdoc,aeaa9f7ae20e19ad4d1e786714ce77bd
+plantdoc/train/Tomato mold leaf/tdisease12.jpg,tomato_leaf_mold,7,plantdoc,77a6c13a411038cd240e52498dce4c6b
+plantdoc/train/Tomato mold leaf/tdisease6.jpg,tomato_leaf_mold,7,plantdoc,22a16fd3bcd911a993fcaf2ba8e14981
+plantdoc/train/Tomato mold leaf/tdisease7.jpg,tomato_leaf_mold,7,plantdoc,aea1212d9b1e6104c01373fb04bd72a6
+plantdoc/train/Tomato mold leaf/tomato-gray-leaf-spot.jpg,tomato_leaf_mold,7,plantdoc,79173e9d2fca078a10b2e1a3d2ad91b5
+plantdoc/train/Tomato mold leaf/tomato-leaf-mold-2.jpg,tomato_leaf_mold,7,plantdoc,2b105a8a6cb66b6f8628a21f38955b95
+plantdoc/train/Tomato mold leaf/tomato-leaf-mold.jpg,tomato_leaf_mold,7,plantdoc,1d031435ac4b8d72d918eb24a76c6632
+plantdoc/train/Tomato mold leaf/tomato_fulvia.jpg,tomato_leaf_mold,7,plantdoc,19704bb430c832502eb9ca0041e7da9e
+plantdoc/train/Tomato mold leaf/tomato_fulvia2.jpg,tomato_leaf_mold,7,plantdoc,aa568bafc9381b924272a9e1387efb20
+plantdoc/train/Tomato mold leaf/tomato_leaf-mold_01_zoom.jpg,tomato_leaf_mold,7,plantdoc,8e6b8636d52c4b9a976dc738a0bfefea
+plantdoc/train/Tomato mold leaf/tomato_leaf-mold_02_zoom.jpg,tomato_leaf_mold,7,plantdoc,207a4c33f3bb5247252e6add2aca3ecd
+plantdoc/train/Tomato mold leaf/top-leaf-mold-Fulva-fulvea-WN.jpg,tomato_leaf_mold,7,plantdoc,5a9a05e665ac35dbd6f9bbc78e4b0c0d
+tanzania_potato/images/earlyblt/earlyblt10052.jpg,potato_early_blight,0,tanzania,3ad98ce4fb66e3e674cb6576c55ca8ad
+tanzania_potato/images/earlyblt/earlyblt10059.jpg,potato_early_blight,0,tanzania,7f86dcf594dfc0e8e4d40faaafdf9670
+tanzania_potato/images/earlyblt/earlyblt10113.jpg,potato_early_blight,0,tanzania,e96740e96aa3a6b477f6485af3c5c98d
+tanzania_potato/images/earlyblt/earlyblt10137.jpg,potato_early_blight,0,tanzania,2e5506079719e5a22ac6474affa657c2
+tanzania_potato/images/earlyblt/earlyblt10138.jpg,potato_early_blight,0,tanzania,1d5e5ed5d36033657dfabccbd406fb6b
+tanzania_potato/images/earlyblt/earlyblt10180.jpg,potato_early_blight,0,tanzania,06d605fba83215490a98b8405e04d330
+tanzania_potato/images/earlyblt/earlyblt10192.jpg,potato_early_blight,0,tanzania,a40dc1e927d9389884e42fe426daa87a
+tanzania_potato/images/earlyblt/earlyblt10242.jpg,potato_early_blight,0,tanzania,e18bf2caf4bfbcac5630af84ca1fa71a
+tanzania_potato/images/earlyblt/earlyblt10247.jpg,potato_early_blight,0,tanzania,c0cccc44b9dc5ea5661685b6fdeafd4c
+tanzania_potato/images/earlyblt/earlyblt10255.jpg,potato_early_blight,0,tanzania,2a20de6a4b9a401ba9ca35163e8c5053
+tanzania_potato/images/earlyblt/earlyblt10281.jpg,potato_early_blight,0,tanzania,9c1e6e8876b996636718e13b3c8f11ba
+tanzania_potato/images/earlyblt/earlyblt10324.jpg,potato_early_blight,0,tanzania,307f137ab2fb1cf6649258b65172c184
+tanzania_potato/images/earlyblt/earlyblt10334.jpg,potato_early_blight,0,tanzania,c04363e74e04eba96ed4cf34c852db2e
+tanzania_potato/images/earlyblt/earlyblt10379.jpg,potato_early_blight,0,tanzania,887808cf1c82d69453915630d6461d30
+tanzania_potato/images/earlyblt/earlyblt10395.jpg,potato_early_blight,0,tanzania,a52925d4ce23f9a9ac229a11f7946cd9
+tanzania_potato/images/earlyblt/earlyblt10423.jpg,potato_early_blight,0,tanzania,4ee78ed66274562cd5a5c89a8ccfa4d4
+tanzania_potato/images/earlyblt/earlyblt1047.jpg,potato_early_blight,0,tanzania,7945b71bdf78275406d0134695066b4d
+tanzania_potato/images/earlyblt/earlyblt10475.jpg,potato_early_blight,0,tanzania,1d04e51d4c1df799c2d336f728e41407
+tanzania_potato/images/earlyblt/earlyblt10477.jpg,potato_early_blight,0,tanzania,4179bbbc24663cb5a5cf3773bf856b05
+tanzania_potato/images/earlyblt/earlyblt10504.jpg,potato_early_blight,0,tanzania,3c5300d8628171e17e9f878f5056a30c
+tanzania_potato/images/earlyblt/earlyblt10514.jpg,potato_early_blight,0,tanzania,ec238e8d145b3f1b7c43954736239302
+tanzania_potato/images/earlyblt/earlyblt10519.jpg,potato_early_blight,0,tanzania,1f313aab3e0b477537134252fab64832
+tanzania_potato/images/earlyblt/earlyblt10534.jpg,potato_early_blight,0,tanzania,bed76369fecca022fac33669e08a7548
+tanzania_potato/images/earlyblt/earlyblt10553.jpg,potato_early_blight,0,tanzania,ee86351e0ee0d61d3b621f487b8a67a6
+tanzania_potato/images/earlyblt/earlyblt10557.jpg,potato_early_blight,0,tanzania,a316d9286ef4372106ac1838bd8fd4a2
+tanzania_potato/images/earlyblt/earlyblt10563.jpg,potato_early_blight,0,tanzania,3960cf1852c88904159ba0253f75b051
+tanzania_potato/images/earlyblt/earlyblt10663.jpg,potato_early_blight,0,tanzania,e440c9c96a495d848f1957aeed7ff910
+tanzania_potato/images/earlyblt/earlyblt10670.jpg,potato_early_blight,0,tanzania,31887cdbea4e433e7da87a885493875f
+tanzania_potato/images/earlyblt/earlyblt10681.jpg,potato_early_blight,0,tanzania,0cada27fdd03fbfe0f1815cbdc8e33af
+tanzania_potato/images/earlyblt/earlyblt10706.jpg,potato_early_blight,0,tanzania,e61aab6ac1f68b03164ac77fa78b9509
+tanzania_potato/images/earlyblt/earlyblt10734.jpg,potato_early_blight,0,tanzania,471a78b6c6aec5fdf8ec65670268171f
+tanzania_potato/images/earlyblt/earlyblt10762.jpg,potato_early_blight,0,tanzania,0822fac56de434370cf72d9ea9d80b7c
+tanzania_potato/images/earlyblt/earlyblt10773.jpg,potato_early_blight,0,tanzania,6d84240d132242bc9eeb13c9ee0e653f
+tanzania_potato/images/earlyblt/earlyblt10807.jpg,potato_early_blight,0,tanzania,28ba238e2db7d544c505751e7b82ccd0
+tanzania_potato/images/earlyblt/earlyblt10814.jpg,potato_early_blight,0,tanzania,b1ababfcfe37e5934cd290e5336ab9c1
+tanzania_potato/images/earlyblt/earlyblt10827.jpg,potato_early_blight,0,tanzania,ac3496ad0d01873b9314b7f59451dd55
+tanzania_potato/images/earlyblt/earlyblt10861.jpg,potato_early_blight,0,tanzania,1a7ee99a7031fdf53a649fe6589b0da5
+tanzania_potato/images/earlyblt/earlyblt10874.jpg,potato_early_blight,0,tanzania,d94e56a5240904c72a0e0074c673b89c
+tanzania_potato/images/earlyblt/earlyblt10886.jpg,potato_early_blight,0,tanzania,b9159d94aeb38feac29ac4caabad4492
+tanzania_potato/images/earlyblt/earlyblt10983.jpg,potato_early_blight,0,tanzania,df97bdfa1e8ab9d205c3ce5b0cf189f4
+tanzania_potato/images/earlyblt/earlyblt11020.jpg,potato_early_blight,0,tanzania,730bc4b79188fa0e0cf8e7faedddfd65
+tanzania_potato/images/earlyblt/earlyblt11033.jpg,potato_early_blight,0,tanzania,a6721300a80751dcb8873a9e37b5ef48
+tanzania_potato/images/earlyblt/earlyblt11057.jpg,potato_early_blight,0,tanzania,79c722ec12ba49ed2f7f85e6ab1293d8
+tanzania_potato/images/earlyblt/earlyblt11061.jpg,potato_early_blight,0,tanzania,8d18a68856f57d2b8937fdfea3279eaa
+tanzania_potato/images/earlyblt/earlyblt11099.jpg,potato_early_blight,0,tanzania,f6f79790287990f1b5b4b38a82b874d9
+tanzania_potato/images/earlyblt/earlyblt11103.jpg,potato_early_blight,0,tanzania,dc33c4393c1946d185623796a4c01c2b
+tanzania_potato/images/earlyblt/earlyblt11179.jpg,potato_early_blight,0,tanzania,edd155aaccb221eb52a67c5e7ba91272
+tanzania_potato/images/earlyblt/earlyblt11207.jpg,potato_early_blight,0,tanzania,505a4c0a8112bd624566aa3d8df48697
+tanzania_potato/images/earlyblt/earlyblt11272.jpg,potato_early_blight,0,tanzania,03afca97bd0290006df02df111244f14
+tanzania_potato/images/earlyblt/earlyblt11290.jpg,potato_early_blight,0,tanzania,0b5ecb4cd4d5bac2bfe9850504f48730
+tanzania_potato/images/earlyblt/earlyblt11341.jpg,potato_early_blight,0,tanzania,af6adc4b4ab20bf3cf8014cca311e476
+tanzania_potato/images/earlyblt/earlyblt11445.jpg,potato_early_blight,0,tanzania,151e8a323e765662840d28c2939e6567
+tanzania_potato/images/earlyblt/earlyblt11512.jpg,potato_early_blight,0,tanzania,e3312732c1f2508120aae123c9e3054c
+tanzania_potato/images/earlyblt/earlyblt11515.jpg,potato_early_blight,0,tanzania,677b3ea498a09d403a22d3c419e82795
+tanzania_potato/images/earlyblt/earlyblt11552.jpg,potato_early_blight,0,tanzania,217be9316070e454682cf8d33377dea2
+tanzania_potato/images/earlyblt/earlyblt11627.jpg,potato_early_blight,0,tanzania,ffd551b2a997f5d3cbf1aa4e382b07d6
+tanzania_potato/images/earlyblt/earlyblt11735.jpg,potato_early_blight,0,tanzania,9480c178cbcfbcb977865c928eee78d2
+tanzania_potato/images/earlyblt/earlyblt11739.jpg,potato_early_blight,0,tanzania,cb99a28a7633b98583ca117390f86dc4
+tanzania_potato/images/earlyblt/earlyblt11744.jpg,potato_early_blight,0,tanzania,d7c2f0b94cda63960706f9700378a23b
+tanzania_potato/images/earlyblt/earlyblt11759.jpg,potato_early_blight,0,tanzania,a4ab93446692ef26446d36f30b34a983
+tanzania_potato/images/earlyblt/earlyblt11798.jpg,potato_early_blight,0,tanzania,db8beb6a0bfa72f9c07ce996af607ff1
+tanzania_potato/images/earlyblt/earlyblt11864.jpg,potato_early_blight,0,tanzania,2212237b02aca21e45b3571b50219bb2
+tanzania_potato/images/earlyblt/earlyblt11888.jpg,potato_early_blight,0,tanzania,90c30befc319e36dd06f5c307b4f92de
+tanzania_potato/images/earlyblt/earlyblt12000.jpg,potato_early_blight,0,tanzania,86b403151fdf6dcc6b7da96003ce0f4c
+tanzania_potato/images/earlyblt/earlyblt12074.jpg,potato_early_blight,0,tanzania,78d1b39fa9d770df3fc57c491bfa157d
+tanzania_potato/images/earlyblt/earlyblt12146.jpg,potato_early_blight,0,tanzania,f0cc3d30c78fdeded5414aba85a3755b
+tanzania_potato/images/earlyblt/earlyblt12157.jpg,potato_early_blight,0,tanzania,3282e4a418914ea017ccc08bb79eb72e
+tanzania_potato/images/earlyblt/earlyblt12199.jpg,potato_early_blight,0,tanzania,ae4533546f087848c781b8862080dfaf
+tanzania_potato/images/earlyblt/earlyblt12228.jpg,potato_early_blight,0,tanzania,832cdd4fe1af2f19ed00a59a21731f46
+tanzania_potato/images/earlyblt/earlyblt12256.jpg,potato_early_blight,0,tanzania,5c39215ea90a8a74382e63bf6837778e
+tanzania_potato/images/earlyblt/earlyblt12376.jpg,potato_early_blight,0,tanzania,4619548f69e3269cffacec2c8f74e546
+tanzania_potato/images/earlyblt/earlyblt12377.jpg,potato_early_blight,0,tanzania,064d8e027f4ce293432fecfa87a65291
+tanzania_potato/images/earlyblt/earlyblt12386.jpg,potato_early_blight,0,tanzania,df8795e12a32f0d652244ca58eab0a62
+tanzania_potato/images/earlyblt/earlyblt12395.jpg,potato_early_blight,0,tanzania,dcef9ce7f197b2c2263a1d1d4d552699
+tanzania_potato/images/earlyblt/earlyblt1242.jpg,potato_early_blight,0,tanzania,be6bf0b555e3d5f2b82ac9a672abd631
+tanzania_potato/images/earlyblt/earlyblt12424.jpg,potato_early_blight,0,tanzania,adff323857eb2f57f3e135413bb8bf96
+tanzania_potato/images/earlyblt/earlyblt12460.jpg,potato_early_blight,0,tanzania,7507ffec7508ab72fbf264c53123951f
+tanzania_potato/images/earlyblt/earlyblt12555.jpg,potato_early_blight,0,tanzania,2aabb3cb70777827581e0f8df445a326
+tanzania_potato/images/earlyblt/earlyblt12721.jpg,potato_early_blight,0,tanzania,c6bdc223b79594e2078307c1c0d4c962
+tanzania_potato/images/earlyblt/earlyblt12725.jpg,potato_early_blight,0,tanzania,7170a108a085ae3b64321bb8f80c0d10
+tanzania_potato/images/earlyblt/earlyblt12766.jpg,potato_early_blight,0,tanzania,c58b1d9b90f730a65ed76a6759ecb717
+tanzania_potato/images/earlyblt/earlyblt12769.jpg,potato_early_blight,0,tanzania,3c7ab0c850038c53279a003d0a7b98ae
+tanzania_potato/images/earlyblt/earlyblt12784.jpg,potato_early_blight,0,tanzania,de6edd7f0546b984308546f0419a631d
+tanzania_potato/images/earlyblt/earlyblt12818.jpg,potato_early_blight,0,tanzania,427b25ac67f3328dd4a92045f2d3467f
+tanzania_potato/images/earlyblt/earlyblt12900.jpg,potato_early_blight,0,tanzania,7f6cf533a82de576cf82300a1f8a748f
+tanzania_potato/images/earlyblt/earlyblt12936.jpg,potato_early_blight,0,tanzania,b8893dd8771572918476ace79e6833e0
+tanzania_potato/images/earlyblt/earlyblt12977.jpg,potato_early_blight,0,tanzania,65250c5b3a42e14aaa8c7ec0cfcb4834
+tanzania_potato/images/earlyblt/earlyblt13074.jpg,potato_early_blight,0,tanzania,366e18aaa087d958fe27ab6da20d5137
+tanzania_potato/images/earlyblt/earlyblt13161.jpg,potato_early_blight,0,tanzania,0d9e34aab67a832aa25f52400e9f4b8d
+tanzania_potato/images/earlyblt/earlyblt13197.jpg,potato_early_blight,0,tanzania,842df4969aaa39632a7acbf1b120a623
+tanzania_potato/images/earlyblt/earlyblt13207.jpg,potato_early_blight,0,tanzania,2bf5b59bd4fce7aee9bdab4c22718a22
+tanzania_potato/images/earlyblt/earlyblt13234.jpg,potato_early_blight,0,tanzania,3a68ca0eea68afed5159ededf54af120
+tanzania_potato/images/earlyblt/earlyblt13249.jpg,potato_early_blight,0,tanzania,3eeef55d2d2504fed018d9e79c53846c
+tanzania_potato/images/earlyblt/earlyblt13254.jpg,potato_early_blight,0,tanzania,b70b14b1cdba5449a0fe63f71a6fac28
+tanzania_potato/images/earlyblt/earlyblt13260.jpg,potato_early_blight,0,tanzania,c06ddca2846b3afa89d13058ce7e5e2b
+tanzania_potato/images/earlyblt/earlyblt13278.jpg,potato_early_blight,0,tanzania,6c79f499099cc99c84004ccda997f9af
+tanzania_potato/images/earlyblt/earlyblt13292.jpg,potato_early_blight,0,tanzania,f8d9113fc86c5a6dfb5e5fc2b7a5c15f
+tanzania_potato/images/earlyblt/earlyblt13305.jpg,potato_early_blight,0,tanzania,78fecf7100d887317ddeae82db3c87f2
+tanzania_potato/images/earlyblt/earlyblt13307.jpg,potato_early_blight,0,tanzania,593019d2d79d5c529f1e27b89335bea3
+tanzania_potato/images/earlyblt/earlyblt13310.jpg,potato_early_blight,0,tanzania,88ec5cb937bb1e0c852d5e5ccd2602d6
+tanzania_potato/images/earlyblt/earlyblt13348.jpg,potato_early_blight,0,tanzania,fd84b7b4f5e81aacd50c8077bbf18103
+tanzania_potato/images/earlyblt/earlyblt13364.jpg,potato_early_blight,0,tanzania,f9cc94035a6cb53b7df0187e694bc8b9
+tanzania_potato/images/earlyblt/earlyblt13384.jpg,potato_early_blight,0,tanzania,9e43d8994d4997138aaa61ccac421f36
+tanzania_potato/images/earlyblt/earlyblt13452.jpg,potato_early_blight,0,tanzania,2d5628a85dbc564c284333e22efb9f45
+tanzania_potato/images/earlyblt/earlyblt13530.jpg,potato_early_blight,0,tanzania,a5cc13a6836ee5eed4241c5071ad4d7d
+tanzania_potato/images/earlyblt/earlyblt13562.jpg,potato_early_blight,0,tanzania,5686f73e8fbf0da31a0d00852b57322b
+tanzania_potato/images/earlyblt/earlyblt13588.jpg,potato_early_blight,0,tanzania,3ad16450b2782c358adbc16ace5c2f53
+tanzania_potato/images/earlyblt/earlyblt13595.jpg,potato_early_blight,0,tanzania,9188b0828edf3565efce5bac24999bd2
+tanzania_potato/images/earlyblt/earlyblt13603.jpg,potato_early_blight,0,tanzania,77d6bc547141d6b4b64023647ef43ee5
+tanzania_potato/images/earlyblt/earlyblt13608.jpg,potato_early_blight,0,tanzania,100d0ae2fa279a765e22fc296664ff99
+tanzania_potato/images/earlyblt/earlyblt13615.jpg,potato_early_blight,0,tanzania,2b3b624691d6f262ef247c383a107505
+tanzania_potato/images/earlyblt/earlyblt13624.jpg,potato_early_blight,0,tanzania,6ace6164b9c13fb4420c3176bf59989c
+tanzania_potato/images/earlyblt/earlyblt13659.jpg,potato_early_blight,0,tanzania,683d727396cd14a51b3e2e7a35e9f834
+tanzania_potato/images/earlyblt/earlyblt13688.jpg,potato_early_blight,0,tanzania,bfb90528bab1e1d5585743bd4f772280
+tanzania_potato/images/earlyblt/earlyblt13692.jpg,potato_early_blight,0,tanzania,45b00fe814aa8578a40e1887aa825864
+tanzania_potato/images/earlyblt/earlyblt13721.jpg,potato_early_blight,0,tanzania,ca03c87763ee03a964a4010f76dcd7c2
+tanzania_potato/images/earlyblt/earlyblt13729.jpg,potato_early_blight,0,tanzania,f72b7ecb1ee5f322758405a89615844c
+tanzania_potato/images/earlyblt/earlyblt13752.jpg,potato_early_blight,0,tanzania,3b3e3372a21b60691e0e11b5f2b68224
+tanzania_potato/images/earlyblt/earlyblt13769.jpg,potato_early_blight,0,tanzania,68e0998206714ded8e158b5ea2d73e59
+tanzania_potato/images/earlyblt/earlyblt13794.jpg,potato_early_blight,0,tanzania,fd6d816a68de2aceac7e342568fd86e7
+tanzania_potato/images/earlyblt/earlyblt13813.jpg,potato_early_blight,0,tanzania,233524af2185996e3536b352525fb724
+tanzania_potato/images/earlyblt/earlyblt13818.jpg,potato_early_blight,0,tanzania,cd7f834538ee83a369a7a10a79720fee
+tanzania_potato/images/earlyblt/earlyblt13823.jpg,potato_early_blight,0,tanzania,6d84af42f485bb00a940f473855a5a0c
+tanzania_potato/images/earlyblt/earlyblt13872.jpg,potato_early_blight,0,tanzania,7fbfa737bdbd01c03a11bcd44c6190a3
+tanzania_potato/images/earlyblt/earlyblt13891.jpg,potato_early_blight,0,tanzania,9761cdab20ecfc9b4fdab8d0f83b714a
+tanzania_potato/images/earlyblt/earlyblt13904.jpg,potato_early_blight,0,tanzania,612bfb4346383e60e3343be5bf534043
+tanzania_potato/images/earlyblt/earlyblt13909.jpg,potato_early_blight,0,tanzania,ef65c6e351ce567861fbc1260fad54ac
+tanzania_potato/images/earlyblt/earlyblt13912.jpg,potato_early_blight,0,tanzania,0bc6689f177ab6382754bb0b3cc2fbbf
+tanzania_potato/images/earlyblt/earlyblt13923.jpg,potato_early_blight,0,tanzania,b25fc474d5d9a610f035302d59844bba
+tanzania_potato/images/earlyblt/earlyblt1394.jpg,potato_early_blight,0,tanzania,56e81b30955789d2fd3f2bc8993d8038
+tanzania_potato/images/earlyblt/earlyblt14049.jpg,potato_early_blight,0,tanzania,3a24c9f49777b1c0b99c7f9fd21191df
+tanzania_potato/images/earlyblt/earlyblt14064.jpg,potato_early_blight,0,tanzania,a835bf0e793b074cdec1239e47a5a47e
+tanzania_potato/images/earlyblt/earlyblt14089.jpg,potato_early_blight,0,tanzania,aedddd091c3b96f3f7edeb8f303b75a8
+tanzania_potato/images/earlyblt/earlyblt14124.jpg,potato_early_blight,0,tanzania,e4c639c4e833ec60952c3ad4a6917668
+tanzania_potato/images/earlyblt/earlyblt14128.jpg,potato_early_blight,0,tanzania,f9feb22e7be72de9303780cc85870f57
+tanzania_potato/images/earlyblt/earlyblt14170.jpg,potato_early_blight,0,tanzania,3f50747f394cef52ba04cdfaa30746a3
+tanzania_potato/images/earlyblt/earlyblt14181.jpg,potato_early_blight,0,tanzania,d89982136f86b0306308d9d50fcdcaeb
+tanzania_potato/images/earlyblt/earlyblt14317.jpg,potato_early_blight,0,tanzania,b0531cfa9ef836b5f4e3f49a2ddc0ec9
+tanzania_potato/images/earlyblt/earlyblt14322.jpg,potato_early_blight,0,tanzania,68d0dc837c3bb4958e18aadc22c40bde
+tanzania_potato/images/earlyblt/earlyblt14348.jpg,potato_early_blight,0,tanzania,160cda04647a4b1c30f07662a9411027
+tanzania_potato/images/earlyblt/earlyblt144.jpg,potato_early_blight,0,tanzania,0790f9291ab982ebeef76e81f6fa4b5d
+tanzania_potato/images/earlyblt/earlyblt14532.jpg,potato_early_blight,0,tanzania,bf7ad64d432930528992ba45406a951a
+tanzania_potato/images/earlyblt/earlyblt14669.jpg,potato_early_blight,0,tanzania,f71fcf9a83b451049119404cdce6498c
+tanzania_potato/images/earlyblt/earlyblt14763.jpg,potato_early_blight,0,tanzania,0fd226473d1b8bc24bcd3eb4993473e3
+tanzania_potato/images/earlyblt/earlyblt14791.jpg,potato_early_blight,0,tanzania,05d538d6f311beebfa1cf7bef6dc0ff5
+tanzania_potato/images/earlyblt/earlyblt14870.jpg,potato_early_blight,0,tanzania,424e281111bca7bfd3d5a568ca8e204c
+tanzania_potato/images/earlyblt/earlyblt14934.jpg,potato_early_blight,0,tanzania,493ee83e2995857176d7ec329f287c83
+tanzania_potato/images/earlyblt/earlyblt14946.jpg,potato_early_blight,0,tanzania,8db9ec61a090d6cc4625c2ef7b4092d1
+tanzania_potato/images/earlyblt/earlyblt14956.jpg,potato_early_blight,0,tanzania,556d931950f4ff08643204f5ff2ab4c9
+tanzania_potato/images/earlyblt/earlyblt14986.jpg,potato_early_blight,0,tanzania,e95472c8fbd093499d8671f199811d68
+tanzania_potato/images/earlyblt/earlyblt14993.jpg,potato_early_blight,0,tanzania,ac0c224a273cbace6395a0b010b58aaa
+tanzania_potato/images/earlyblt/earlyblt15027.jpg,potato_early_blight,0,tanzania,0dd259519435cba6129fe8478a8c898e
+tanzania_potato/images/earlyblt/earlyblt15053.jpg,potato_early_blight,0,tanzania,8b366bb8c68e7c6fbf2e0431f26d114b
+tanzania_potato/images/earlyblt/earlyblt15122.jpg,potato_early_blight,0,tanzania,64a27c2acbbfd0dc412ebb8fbfaf7470
+tanzania_potato/images/earlyblt/earlyblt15150.jpg,potato_early_blight,0,tanzania,05812ce689a4d7c600c437f025f7c449
+tanzania_potato/images/earlyblt/earlyblt15165.jpg,potato_early_blight,0,tanzania,a0994c68dfe807820bcb399db2ede640
+tanzania_potato/images/earlyblt/earlyblt15166.jpg,potato_early_blight,0,tanzania,6173779301e2260ddfd8ece46ffc73c5
+tanzania_potato/images/earlyblt/earlyblt15167.jpg,potato_early_blight,0,tanzania,c3aac42b547cf8c2ba70b6188ef79eea
+tanzania_potato/images/earlyblt/earlyblt15183.jpg,potato_early_blight,0,tanzania,18e4721d1f6ea44a1a289b70c16f6fec
+tanzania_potato/images/earlyblt/earlyblt15236.jpg,potato_early_blight,0,tanzania,ce7025d7dcc748566b7def8b1b580eeb
+tanzania_potato/images/earlyblt/earlyblt15288.jpg,potato_early_blight,0,tanzania,b8ee271eb37cb647a4c0e1457e6d1e76
+tanzania_potato/images/earlyblt/earlyblt15307.jpg,potato_early_blight,0,tanzania,df1ec5d4fe84fb13c885a45a4e599c01
+tanzania_potato/images/earlyblt/earlyblt15431.jpg,potato_early_blight,0,tanzania,1a0cf634cd35ceb488d0533d815d551a
+tanzania_potato/images/earlyblt/earlyblt15447.jpg,potato_early_blight,0,tanzania,c4774548deb174be68af286fa824fc9f
+tanzania_potato/images/earlyblt/earlyblt15453.jpg,potato_early_blight,0,tanzania,988ffa1bcc42a2df5726b329f94fe794
+tanzania_potato/images/earlyblt/earlyblt15460.jpg,potato_early_blight,0,tanzania,a3ad5b3bf824a747d5f29dc2c5fc25df
+tanzania_potato/images/earlyblt/earlyblt15597.jpg,potato_early_blight,0,tanzania,312927c322f7a7aa020b3bd4b6e1dded
+tanzania_potato/images/earlyblt/earlyblt15658.jpg,potato_early_blight,0,tanzania,4f190c49eb7555c46fb1c0a4b2207325
+tanzania_potato/images/earlyblt/earlyblt15708.jpg,potato_early_blight,0,tanzania,7401c2c174ebec71833c3cc8913024a9
+tanzania_potato/images/earlyblt/earlyblt15976.jpg,potato_early_blight,0,tanzania,cee1c20d2a293ebe55fe98f12fd868fb
+tanzania_potato/images/earlyblt/earlyblt16122.jpg,potato_early_blight,0,tanzania,408ab6e49f6c71ae3f54597732f77c9a
+tanzania_potato/images/earlyblt/earlyblt16242.jpg,potato_early_blight,0,tanzania,ff7c6d99dad872c726ead4cfb1723531
+tanzania_potato/images/earlyblt/earlyblt16323.jpg,potato_early_blight,0,tanzania,2c013a5e5223d4e3e8a9730a1781104f
+tanzania_potato/images/earlyblt/earlyblt16387.jpg,potato_early_blight,0,tanzania,15e78f1607f588f3f9bacdc13327f748
+tanzania_potato/images/earlyblt/earlyblt16393.jpg,potato_early_blight,0,tanzania,7958cbaa51ed037e8324960fc595c36e
+tanzania_potato/images/earlyblt/earlyblt16427.jpg,potato_early_blight,0,tanzania,ab1ca1656f46c5ab8300dfa24b997022
+tanzania_potato/images/earlyblt/earlyblt16488.jpg,potato_early_blight,0,tanzania,6475a055224c17e19bb032fe250a64fd
+tanzania_potato/images/earlyblt/earlyblt16490.jpg,potato_early_blight,0,tanzania,825d4f584de2f71597ba1636cacbd31c
+tanzania_potato/images/earlyblt/earlyblt16620.jpg,potato_early_blight,0,tanzania,0842ef7efff0a685f0c238ac6562c562
+tanzania_potato/images/earlyblt/earlyblt16654.jpg,potato_early_blight,0,tanzania,25e6eb8c41c9b24a1141cb246d444c82
+tanzania_potato/images/earlyblt/earlyblt16681.jpg,potato_early_blight,0,tanzania,cfcf8968f952191ff5c7783093f8327f
+tanzania_potato/images/earlyblt/earlyblt16723.jpg,potato_early_blight,0,tanzania,1ba2d2169d808e3b4f3273756a36e588
+tanzania_potato/images/earlyblt/earlyblt16727.jpg,potato_early_blight,0,tanzania,6dbfa99299a9b48b228c06c108af52a9
+tanzania_potato/images/earlyblt/earlyblt16769.jpg,potato_early_blight,0,tanzania,04fb8c4ecf3d727ab21c7ab867e3f8ce
+tanzania_potato/images/earlyblt/earlyblt16784.jpg,potato_early_blight,0,tanzania,ce155df3effea0aad137d9e6b7fa13ca
+tanzania_potato/images/earlyblt/earlyblt16834.jpg,potato_early_blight,0,tanzania,05c650dadd8eaa3d25c4c7b02ec2a96d
+tanzania_potato/images/earlyblt/earlyblt16867.jpg,potato_early_blight,0,tanzania,843796ec0d60eaff1cbca22443bc146f
+tanzania_potato/images/earlyblt/earlyblt16868.jpg,potato_early_blight,0,tanzania,797701b1102577d28d106398240c73da
+tanzania_potato/images/earlyblt/earlyblt16893.jpg,potato_early_blight,0,tanzania,3dbb8c1a264c5cec0d76675aed1807de
+tanzania_potato/images/earlyblt/earlyblt16979.jpg,potato_early_blight,0,tanzania,c20efa892d623b089c242166a8a141d7
+tanzania_potato/images/earlyblt/earlyblt17003.jpg,potato_early_blight,0,tanzania,5366dc7cb3f4891117677c0d6d3ba21b
+tanzania_potato/images/earlyblt/earlyblt171.jpg,potato_early_blight,0,tanzania,6a8d980cf443e2bc95e61f45d3dab3f3
+tanzania_potato/images/earlyblt/earlyblt17138.jpg,potato_early_blight,0,tanzania,aa6f949ae3d16d880cf17cd0ba0142d7
+tanzania_potato/images/earlyblt/earlyblt17216.jpg,potato_early_blight,0,tanzania,254d2741843b806d6df52b523ef13b4e
+tanzania_potato/images/earlyblt/earlyblt17240.jpg,potato_early_blight,0,tanzania,31632a6b9557ab5032f3fb795e4eb18e
+tanzania_potato/images/earlyblt/earlyblt17295.jpg,potato_early_blight,0,tanzania,817d7101c1c160746acc30a9eb87ba28
+tanzania_potato/images/earlyblt/earlyblt17302.jpg,potato_early_blight,0,tanzania,b7484c4269a3d4a7f10b7529d9bb98d8
+tanzania_potato/images/earlyblt/earlyblt17338.jpg,potato_early_blight,0,tanzania,32dbb639ee9fa6ec3dc3b1df41e08222
+tanzania_potato/images/earlyblt/earlyblt17365.jpg,potato_early_blight,0,tanzania,747d340d36f7ad7cb9fe20d318797902
+tanzania_potato/images/earlyblt/earlyblt17374.jpg,potato_early_blight,0,tanzania,323d6aeade3e40c5c7af6982366720e2
+tanzania_potato/images/earlyblt/earlyblt17414.jpg,potato_early_blight,0,tanzania,80bad27852f8348caf90c23ff7473dd9
+tanzania_potato/images/earlyblt/earlyblt17447.jpg,potato_early_blight,0,tanzania,2cab44713b1723aff19eec4887c15de2
+tanzania_potato/images/earlyblt/earlyblt17483.jpg,potato_early_blight,0,tanzania,22298631a6a6001c157ea843b15f05cc
+tanzania_potato/images/earlyblt/earlyblt17489.jpg,potato_early_blight,0,tanzania,424e9623b063c8852447caba9acf0be8
+tanzania_potato/images/earlyblt/earlyblt17540.jpg,potato_early_blight,0,tanzania,69eb8b30582c27837ce558c59d116558
+tanzania_potato/images/earlyblt/earlyblt17553.jpg,potato_early_blight,0,tanzania,e90159ab225ebaf9fece3b1b72eb853f
+tanzania_potato/images/earlyblt/earlyblt17557.jpg,potato_early_blight,0,tanzania,c98cb2ab9cefcba39adc3b057853a863
+tanzania_potato/images/earlyblt/earlyblt17571.jpg,potato_early_blight,0,tanzania,aaca401f507f0c6c9e9cdc641b84ed83
+tanzania_potato/images/earlyblt/earlyblt17586.jpg,potato_early_blight,0,tanzania,862cd9e8682372eaa4f1aa6df983a867
+tanzania_potato/images/earlyblt/earlyblt17613.jpg,potato_early_blight,0,tanzania,61a30c9c371f10427dffdf3096ccba20
+tanzania_potato/images/earlyblt/earlyblt17665.jpg,potato_early_blight,0,tanzania,ccc75da27bded5d6d2b4d410d30aa832
+tanzania_potato/images/earlyblt/earlyblt178.jpg,potato_early_blight,0,tanzania,f4df42b79977c5cf434204626190d402
+tanzania_potato/images/earlyblt/earlyblt204.jpg,potato_early_blight,0,tanzania,da7741eabb09c9447ea0f84147497d5a
+tanzania_potato/images/earlyblt/earlyblt276.jpg,potato_early_blight,0,tanzania,3c56ee374a4cb9bd95c6b2fa3aab1278
+tanzania_potato/images/earlyblt/earlyblt320.jpg,potato_early_blight,0,tanzania,a70f524b1d7ef6341920effcb66a3be6
+tanzania_potato/images/earlyblt/earlyblt38.jpg,potato_early_blight,0,tanzania,7bfee8f6ee2f1961b68de172f9c54543
+tanzania_potato/images/earlyblt/earlyblt4177.jpg,potato_early_blight,0,tanzania,56bf8ea0aec72c002a21c20b9d1de00f
+tanzania_potato/images/earlyblt/earlyblt427.jpg,potato_early_blight,0,tanzania,f1a31231cf364b18afc793dcb3ba0f16
+tanzania_potato/images/earlyblt/earlyblt5201.jpg,potato_early_blight,0,tanzania,b0adab0e26c484412d229f575e4e7700
+tanzania_potato/images/earlyblt/earlyblt5221.jpg,potato_early_blight,0,tanzania,a1192184c6f2280abf44e7bfee42626e
+tanzania_potato/images/earlyblt/earlyblt5345.jpg,potato_early_blight,0,tanzania,3fda1e1a178839a8e82d43a0a83fc8aa
+tanzania_potato/images/earlyblt/earlyblt5579.jpg,potato_early_blight,0,tanzania,c31b24e085a88c11536a1e453949b81a
+tanzania_potato/images/earlyblt/earlyblt5580.jpg,potato_early_blight,0,tanzania,57a6a02059c01de8c6ffaa80271a2bb5
+tanzania_potato/images/earlyblt/earlyblt5668.jpg,potato_early_blight,0,tanzania,b05aed75495eac45a4036ad6d5fdcfce
+tanzania_potato/images/earlyblt/earlyblt5920.jpg,potato_early_blight,0,tanzania,0faa6ce3c4874658c3154b96b94065b9
+tanzania_potato/images/earlyblt/earlyblt5964.jpg,potato_early_blight,0,tanzania,c610d8b48b8bc51abe90693ad9d736f1
+tanzania_potato/images/earlyblt/earlyblt6001.jpg,potato_early_blight,0,tanzania,49548749956784702f4de27f5d8036d1
+tanzania_potato/images/earlyblt/earlyblt6022.jpg,potato_early_blight,0,tanzania,054dea76fab42839050e82890cfaaa4b
+tanzania_potato/images/earlyblt/earlyblt6309.jpg,potato_early_blight,0,tanzania,18fc5403ea5b4d9664ca4cce8491c6d3
+tanzania_potato/images/earlyblt/earlyblt6314.jpg,potato_early_blight,0,tanzania,fd4c1724cd67c6c3ca457b42b6bb9bd8
+tanzania_potato/images/earlyblt/earlyblt6319.jpg,potato_early_blight,0,tanzania,5330c9cdccd724569edea0694572817c
+tanzania_potato/images/earlyblt/earlyblt6403.jpg,potato_early_blight,0,tanzania,3ceef831d4dd39a44c92244b9f6c441f
+tanzania_potato/images/earlyblt/earlyblt6504.jpg,potato_early_blight,0,tanzania,fdcb001c9f865e2dcb9e26482511761d
+tanzania_potato/images/earlyblt/earlyblt6782.jpg,potato_early_blight,0,tanzania,cdc0e7c46e2dc3e0eb7e7dd54fc080be
+tanzania_potato/images/earlyblt/earlyblt6824.jpg,potato_early_blight,0,tanzania,840cca4839b267133908fce541100dc0
+tanzania_potato/images/earlyblt/earlyblt7045.jpg,potato_early_blight,0,tanzania,a7b56fe548554405b75aa0844b0c0e3a
+tanzania_potato/images/earlyblt/earlyblt761.jpg,potato_early_blight,0,tanzania,b24af6842ff65c0ed44e5cbc50a8e521
+tanzania_potato/images/earlyblt/earlyblt7771.jpg,potato_early_blight,0,tanzania,194b1d8d41daf4536c3850df419cc427
+tanzania_potato/images/earlyblt/earlyblt794.jpg,potato_early_blight,0,tanzania,af19a987aa140fbf85e3213e5dd3b3ee
+tanzania_potato/images/earlyblt/earlyblt814.jpg,potato_early_blight,0,tanzania,191c70ecaf9f2da6d03144890024146a
+tanzania_potato/images/earlyblt/earlyblt821.jpg,potato_early_blight,0,tanzania,edc683995bc014f0b9d1c734e13b01b1
+tanzania_potato/images/earlyblt/earlyblt85.jpg,potato_early_blight,0,tanzania,9b07e6a2237f871fc14c448787c1058b
+tanzania_potato/images/earlyblt/earlyblt8579.jpg,potato_early_blight,0,tanzania,86e4ad55ee2013a005590df3d30167b7
+tanzania_potato/images/earlyblt/earlyblt8621.jpg,potato_early_blight,0,tanzania,b854232aed17a4c51ecbc80c121dde7e
+tanzania_potato/images/earlyblt/earlyblt8948.jpg,potato_early_blight,0,tanzania,34b03cbf5a1059b795f526a704893d1d
+tanzania_potato/images/earlyblt/earlyblt9140.jpg,potato_early_blight,0,tanzania,c73bc20bc4e1a88744d7fa2cd1b6d3e7
+tanzania_potato/images/earlyblt/earlyblt9165.jpg,potato_early_blight,0,tanzania,6a0131bc9c66b12f17aa99ab21848c30
+tanzania_potato/images/earlyblt/earlyblt9277.jpg,potato_early_blight,0,tanzania,1a767c87ec57b9965e0afc67b4bda6eb
+tanzania_potato/images/earlyblt/earlyblt9279.jpg,potato_early_blight,0,tanzania,a3fb9ada6de87c3c7d69ee0ca7e32088
+tanzania_potato/images/healthy/healthy10012.jpg,potato_healthy,1,tanzania,82723e96819fb9e015d41b3c4546725e
+tanzania_potato/images/healthy/healthy10075.jpg,potato_healthy,1,tanzania,16e882da235e6e0152b18ff1efd03085
+tanzania_potato/images/healthy/healthy10208.jpg,potato_healthy,1,tanzania,895c7d7b8b068b2141aadc2311398896
+tanzania_potato/images/healthy/healthy10223.jpg,potato_healthy,1,tanzania,7a5cc1ab34b187feb4bee284ea38b72e
+tanzania_potato/images/healthy/healthy10238.jpg,potato_healthy,1,tanzania,1594f57602a7e215e4ed7edafa9ff5b3
+tanzania_potato/images/healthy/healthy10274.jpg,potato_healthy,1,tanzania,5aeb26d5ca5eaa62d629c5bd68bee8f5
+tanzania_potato/images/healthy/healthy10481.jpg,potato_healthy,1,tanzania,376c9b2231de7d949154ccb165a6505e
+tanzania_potato/images/healthy/healthy1058.jpg,potato_healthy,1,tanzania,89ad72b2e6844772449bc5ad7b7e420d
+tanzania_potato/images/healthy/healthy10581.jpg,potato_healthy,1,tanzania,90b1b746f652336ec8c2825ba0c0a697
+tanzania_potato/images/healthy/healthy1071.jpg,potato_healthy,1,tanzania,b38f98b16f8a9653c56ffbe89135dcc5
+tanzania_potato/images/healthy/healthy10792.jpg,potato_healthy,1,tanzania,1630f53a6fee515699f2a440e590d8a1
+tanzania_potato/images/healthy/healthy1080.jpg,potato_healthy,1,tanzania,5f4d25edea84bf114974f7c9f2366e3e
+tanzania_potato/images/healthy/healthy1094.jpg,potato_healthy,1,tanzania,0a34fd22e84ebbd872d2182dc9e6e1ea
+tanzania_potato/images/healthy/healthy11123.jpg,potato_healthy,1,tanzania,8b30bed55a45bda018da4ce3aca74307
+tanzania_potato/images/healthy/healthy11162.jpg,potato_healthy,1,tanzania,d8f9c41b3c5d3c03f37c3c9393e61af6
+tanzania_potato/images/healthy/healthy11164.jpg,potato_healthy,1,tanzania,b641e72fa9cedc6faae0e7236d871f61
+tanzania_potato/images/healthy/healthy11177.jpg,potato_healthy,1,tanzania,4d323e3c255001ef73e3133e9604c350
+tanzania_potato/images/healthy/healthy1120.jpg,potato_healthy,1,tanzania,9b35aa1840085f46f9385d0ea4c4869c
+tanzania_potato/images/healthy/healthy11291.jpg,potato_healthy,1,tanzania,ac9e7a889a3d5383a49d05ea05716d43
+tanzania_potato/images/healthy/healthy11323.jpg,potato_healthy,1,tanzania,2169be7aa5d6ccb6b94fafde2d41b99f
+tanzania_potato/images/healthy/healthy11334.jpg,potato_healthy,1,tanzania,86f918849ab7c307e1a18a1259affef0
+tanzania_potato/images/healthy/healthy11342.jpg,potato_healthy,1,tanzania,e4b27b9e14b017f2c3f8837e0e6f60dc
+tanzania_potato/images/healthy/healthy1135.jpg,potato_healthy,1,tanzania,9b3849cddeb56f88c1f1ce675dfd7100
+tanzania_potato/images/healthy/healthy11383.jpg,potato_healthy,1,tanzania,6a90a1707e4310b2504f55c842f05fd3
+tanzania_potato/images/healthy/healthy11405.jpg,potato_healthy,1,tanzania,71f01c221e4c41e4a8cbf67737c543f7
+tanzania_potato/images/healthy/healthy11561.jpg,potato_healthy,1,tanzania,76c9f5e07c9c09d828a24e57bb5077af
+tanzania_potato/images/healthy/healthy11567.jpg,potato_healthy,1,tanzania,acd59b2b6129b83fb48b218018d8b8e4
+tanzania_potato/images/healthy/healthy11583.jpg,potato_healthy,1,tanzania,636f9133bc7ad9d8a673c51ab715188c
+tanzania_potato/images/healthy/healthy11625.jpg,potato_healthy,1,tanzania,8038c015622fecc32ee9d70820623ff1
+tanzania_potato/images/healthy/healthy11642.jpg,potato_healthy,1,tanzania,e02203096e0da7d3aeccfcd76d3416ad
+tanzania_potato/images/healthy/healthy11643.jpg,potato_healthy,1,tanzania,87ca830d0cc8cd1cc946412d631d5220
+tanzania_potato/images/healthy/healthy11754.jpg,potato_healthy,1,tanzania,c16a1225b73998168f2671c38c0fab99
+tanzania_potato/images/healthy/healthy11814.jpg,potato_healthy,1,tanzania,b22402c45747501d76c3ef27880eb4f1
+tanzania_potato/images/healthy/healthy11816.jpg,potato_healthy,1,tanzania,58e7792ceeef86caf40c5f6036874f16
+tanzania_potato/images/healthy/healthy1191.jpg,potato_healthy,1,tanzania,6a8ea01f7715b0595cf5a4776a4811b1
+tanzania_potato/images/healthy/healthy12071.jpg,potato_healthy,1,tanzania,9e27ebf8c853ba62247fe0fb1701116a
+tanzania_potato/images/healthy/healthy12092.jpg,potato_healthy,1,tanzania,0dc8ca06192202eff4efdea0bcc1806e
+tanzania_potato/images/healthy/healthy12103.jpg,potato_healthy,1,tanzania,33e1246d25e6539c3648b05d10f512d8
+tanzania_potato/images/healthy/healthy12203.jpg,potato_healthy,1,tanzania,3cbace2cef9f87fe46789549de2ffd17
+tanzania_potato/images/healthy/healthy12230.jpg,potato_healthy,1,tanzania,43c8167147bb5bde554390e44f56e9fc
+tanzania_potato/images/healthy/healthy12240.jpg,potato_healthy,1,tanzania,6a8aea7b8df825f1d372cf24e9b49b86
+tanzania_potato/images/healthy/healthy12273.jpg,potato_healthy,1,tanzania,7150fc1b28ff5e984fa112e41c5ec213
+tanzania_potato/images/healthy/healthy12296.jpg,potato_healthy,1,tanzania,22d05313c10e479d468f86675e9bee3b
+tanzania_potato/images/healthy/healthy12450.jpg,potato_healthy,1,tanzania,1aa0fb0e7d3af525d0b70742e9678049
+tanzania_potato/images/healthy/healthy12461.jpg,potato_healthy,1,tanzania,af8639c68e11acfe8e2748c27451ec49
+tanzania_potato/images/healthy/healthy12473.jpg,potato_healthy,1,tanzania,c23b8765452a1041622bd013c194822b
+tanzania_potato/images/healthy/healthy12529.jpg,potato_healthy,1,tanzania,c764aa697e8c74e65ea4ea4f417b8641
+tanzania_potato/images/healthy/healthy12543.jpg,potato_healthy,1,tanzania,d89992613f33119cc7ab7a496052d784
+tanzania_potato/images/healthy/healthy12581.jpg,potato_healthy,1,tanzania,f7c02b0325304bd2fa99f7ce0fb95760
+tanzania_potato/images/healthy/healthy1260.jpg,potato_healthy,1,tanzania,d6adc077c787aa6484cc253d4ed6a9cb
+tanzania_potato/images/healthy/healthy12621.jpg,potato_healthy,1,tanzania,990e2b2721b6270832cf1a7ae0293326
+tanzania_potato/images/healthy/healthy13015.jpg,potato_healthy,1,tanzania,354bd717bb7f7ffec2bf80b0e143e62f
+tanzania_potato/images/healthy/healthy13299.jpg,potato_healthy,1,tanzania,17fc7d31cc1a3ae50c1d9c5a729b4d7a
+tanzania_potato/images/healthy/healthy13324.jpg,potato_healthy,1,tanzania,045c639aff0a994f9dbcebc94d152c28
+tanzania_potato/images/healthy/healthy13466.jpg,potato_healthy,1,tanzania,15aeaa33090679f0957dc10d4aca5b2d
+tanzania_potato/images/healthy/healthy13485.jpg,potato_healthy,1,tanzania,4fe1ad67e2c93100a22645ecbae4eebf
+tanzania_potato/images/healthy/healthy13506.jpg,potato_healthy,1,tanzania,fb7ed25a609cde5f1db7a1811ebfaa76
+tanzania_potato/images/healthy/healthy13623.jpg,potato_healthy,1,tanzania,b49d1b5727a78418998fae974b06f656
+tanzania_potato/images/healthy/healthy1367.jpg,potato_healthy,1,tanzania,bab6ba98fc10634217438ee874f2fb23
+tanzania_potato/images/healthy/healthy13767.jpg,potato_healthy,1,tanzania,3f406bb7a5c73b5b9431d359061357bc
+tanzania_potato/images/healthy/healthy13877.jpg,potato_healthy,1,tanzania,9f12e1fbcc22bd0628bd72b5110b3832
+tanzania_potato/images/healthy/healthy13879.jpg,potato_healthy,1,tanzania,9451b28d270e96034f87041d414797fd
+tanzania_potato/images/healthy/healthy13959.jpg,potato_healthy,1,tanzania,23509c6edf8574d64aef5ca80e39cdf3
+tanzania_potato/images/healthy/healthy13991.jpg,potato_healthy,1,tanzania,272a348934bbe9896cc0264eb6178b61
+tanzania_potato/images/healthy/healthy14025.jpg,potato_healthy,1,tanzania,864b46f1fc3db20ecac31473eb57df7e
+tanzania_potato/images/healthy/healthy1419.jpg,potato_healthy,1,tanzania,f0800e26d14eba7829691518aa557bf4
+tanzania_potato/images/healthy/healthy14265.jpg,potato_healthy,1,tanzania,77878a9411070e18114fa723b9fe680a
+tanzania_potato/images/healthy/healthy14362.jpg,potato_healthy,1,tanzania,705adee66cc5ab8e785ddb521808a786
+tanzania_potato/images/healthy/healthy14448.jpg,potato_healthy,1,tanzania,9a998034bf9c152634023b8659d9ad1a
+tanzania_potato/images/healthy/healthy14545.jpg,potato_healthy,1,tanzania,ad59c94dad836ff7596b903e80804da9
+tanzania_potato/images/healthy/healthy14548.jpg,potato_healthy,1,tanzania,487bbe9c5335fb504245937ac5e05e7f
+tanzania_potato/images/healthy/healthy14590.jpg,potato_healthy,1,tanzania,b0fd8bf16f8116a14258c0c9d724152d
+tanzania_potato/images/healthy/healthy14654.jpg,potato_healthy,1,tanzania,997858b775d1ac1f6aaf639aec34c806
+tanzania_potato/images/healthy/healthy14660.jpg,potato_healthy,1,tanzania,ab1a081129a63631faba8ece1d0b7a7f
+tanzania_potato/images/healthy/healthy14806.jpg,potato_healthy,1,tanzania,b917dc2043935dff79d8f47f5e0eb0ea
+tanzania_potato/images/healthy/healthy14816.jpg,potato_healthy,1,tanzania,5a029f10778641aca4fc89ece2523b26
+tanzania_potato/images/healthy/healthy14879.jpg,potato_healthy,1,tanzania,fe2d0aaab331fe8e429f345301f1356d
+tanzania_potato/images/healthy/healthy14894.jpg,potato_healthy,1,tanzania,cf49d6ec6b5b2dcee6497de80a5f2490
+tanzania_potato/images/healthy/healthy14931.jpg,potato_healthy,1,tanzania,d638324ebe5d00ad653b20262488aace
+tanzania_potato/images/healthy/healthy14954.jpg,potato_healthy,1,tanzania,5f69a47a57f2328d83e16941b517639b
+tanzania_potato/images/healthy/healthy14996.jpg,potato_healthy,1,tanzania,e697aa63a7c4bc1f11d3378154683257
+tanzania_potato/images/healthy/healthy15076.jpg,potato_healthy,1,tanzania,155dd55123965eb602726179bc39aa4c
+tanzania_potato/images/healthy/healthy15107.jpg,potato_healthy,1,tanzania,857be7b672fd00f5d6fddd52ca4c1fe7
+tanzania_potato/images/healthy/healthy15152.jpg,potato_healthy,1,tanzania,102a25d822f273024e9938c6d5513ecc
+tanzania_potato/images/healthy/healthy15196.jpg,potato_healthy,1,tanzania,dabb1c2d5f34381e33f005fb3589707c
+tanzania_potato/images/healthy/healthy15220.jpg,potato_healthy,1,tanzania,f868091f8c0bab77ab672f7e604a3b74
+tanzania_potato/images/healthy/healthy1524.jpg,potato_healthy,1,tanzania,159a299a567c90811b56b3fa4527402c
+tanzania_potato/images/healthy/healthy15244.jpg,potato_healthy,1,tanzania,3f771d7cd3ffb4363737f9fba0e144e5
+tanzania_potato/images/healthy/healthy15375.jpg,potato_healthy,1,tanzania,f0fd8d1e964d11978a401c4cc4cc5769
+tanzania_potato/images/healthy/healthy15521.jpg,potato_healthy,1,tanzania,99ea0545b8913b33bf6f3c47000df842
+tanzania_potato/images/healthy/healthy15644.jpg,potato_healthy,1,tanzania,ab409f4d28d6a8c1f9f6eb91bc7f04fc
+tanzania_potato/images/healthy/healthy15664.jpg,potato_healthy,1,tanzania,532b3625d06f1df9541981a0108132d7
+tanzania_potato/images/healthy/healthy15775.jpg,potato_healthy,1,tanzania,095ef5394c7ba4870b0d1a3585b61d3f
+tanzania_potato/images/healthy/healthy15853.jpg,potato_healthy,1,tanzania,10064a6425fa7376b53a5e8476579060
+tanzania_potato/images/healthy/healthy15988.jpg,potato_healthy,1,tanzania,21af80c53c0fa0a2cc0f004f80ea99da
+tanzania_potato/images/healthy/healthy16039.jpg,potato_healthy,1,tanzania,ae317027de3d76eb36b440b08e272f49
+tanzania_potato/images/healthy/healthy16121.jpg,potato_healthy,1,tanzania,cc9da617bdbb17d241680f42b42b5bab
+tanzania_potato/images/healthy/healthy16142.jpg,potato_healthy,1,tanzania,534e24b5b6b2df09fddf27a550cc507b
+tanzania_potato/images/healthy/healthy16229.jpg,potato_healthy,1,tanzania,91460c0a50f53a16595a8294ca3e45f2
+tanzania_potato/images/healthy/healthy16381.jpg,potato_healthy,1,tanzania,3492b07d00e3eced4e7952a8104af3c2
+tanzania_potato/images/healthy/healthy16441.jpg,potato_healthy,1,tanzania,e85ad9793cc2f308f7b40cd0491a42c3
+tanzania_potato/images/healthy/healthy16443.jpg,potato_healthy,1,tanzania,002e4d61acd5e6883f9da00ddd502a80
+tanzania_potato/images/healthy/healthy16469.jpg,potato_healthy,1,tanzania,bc462ce7f27584ea25418ea720e19b12
+tanzania_potato/images/healthy/healthy16563.jpg,potato_healthy,1,tanzania,9553fc7af7ace0f71964dcd06ceb9d94
+tanzania_potato/images/healthy/healthy1664.jpg,potato_healthy,1,tanzania,9b22c0e76e126b586d531742da621bcf
+tanzania_potato/images/healthy/healthy16694.jpg,potato_healthy,1,tanzania,c6fbd429c82dcc3a2a3a5e87c1c7bce0
+tanzania_potato/images/healthy/healthy16695.jpg,potato_healthy,1,tanzania,401589712878ff8b4d6a6422d4895fd4
+tanzania_potato/images/healthy/healthy16696.jpg,potato_healthy,1,tanzania,6445916740a52ec64df9999df06a47d6
+tanzania_potato/images/healthy/healthy16837.jpg,potato_healthy,1,tanzania,4a2abcc7c3db27d1576124e59a290b9f
+tanzania_potato/images/healthy/healthy16849.jpg,potato_healthy,1,tanzania,1f66bc36aac0a68c88cbbc860e731e56
+tanzania_potato/images/healthy/healthy16945.jpg,potato_healthy,1,tanzania,d0d1a5a1708c6afc75f2bb6f001d00a8
+tanzania_potato/images/healthy/healthy17045.jpg,potato_healthy,1,tanzania,c9dc4c801fd35cd768beb4ee5940a36a
+tanzania_potato/images/healthy/healthy17088.jpg,potato_healthy,1,tanzania,025d6df48f83303ba178e79002953766
+tanzania_potato/images/healthy/healthy17110.jpg,potato_healthy,1,tanzania,087919cadc67cf6dbef3424e235cad10
+tanzania_potato/images/healthy/healthy17180.jpg,potato_healthy,1,tanzania,041a61cd2228bf3e65018791d8bb8b5a
+tanzania_potato/images/healthy/healthy17209.jpg,potato_healthy,1,tanzania,bbd0298fdc71c08fdb35272c3623f06c
+tanzania_potato/images/healthy/healthy17235.jpg,potato_healthy,1,tanzania,d0881a26f87ab7dd83e5ab219c6333bb
+tanzania_potato/images/healthy/healthy17290.jpg,potato_healthy,1,tanzania,04b51d8e1013e07c2ca844f74a531660
+tanzania_potato/images/healthy/healthy17323.jpg,potato_healthy,1,tanzania,4eafaa3d1fb739b15a73aa0524a39d0b
+tanzania_potato/images/healthy/healthy17329.jpg,potato_healthy,1,tanzania,b04717d5a1afee9bd2684086b9208b46
+tanzania_potato/images/healthy/healthy17332.jpg,potato_healthy,1,tanzania,d7a21f9fca9104fdaae3d8aa6717965b
+tanzania_potato/images/healthy/healthy17413.jpg,potato_healthy,1,tanzania,08c5f7a992f20277e84bb7df930c5521
+tanzania_potato/images/healthy/healthy17514.jpg,potato_healthy,1,tanzania,16f3e33582cc5a5450d3b41f291076ba
+tanzania_potato/images/healthy/healthy1755.jpg,potato_healthy,1,tanzania,7dcce011d7fea82ca6ea5b97f91503b3
+tanzania_potato/images/healthy/healthy17604.jpg,potato_healthy,1,tanzania,897f85eaf04b33bef45c4cfcc9d7d7c0
+tanzania_potato/images/healthy/healthy17816.jpg,potato_healthy,1,tanzania,e8fafbd91156a8abdb0d675271d4339e
+tanzania_potato/images/healthy/healthy18023.jpg,potato_healthy,1,tanzania,4a7d82c51f04d08979208d4f4c705512
+tanzania_potato/images/healthy/healthy18133.jpg,potato_healthy,1,tanzania,f12fd5c85fe0aae16387679b9c074bd7
+tanzania_potato/images/healthy/healthy18179.jpg,potato_healthy,1,tanzania,f76fb006ae2a362781537d90f48735da
+tanzania_potato/images/healthy/healthy18375.jpg,potato_healthy,1,tanzania,34838b336a42869b04ad970172a239d3
+tanzania_potato/images/healthy/healthy18416.jpg,potato_healthy,1,tanzania,2676db078bf47a719f455b9c6d810616
+tanzania_potato/images/healthy/healthy18538.jpg,potato_healthy,1,tanzania,2ad4a58dd0b7d8a0438c2de09c4f2a41
+tanzania_potato/images/healthy/healthy1854.jpg,potato_healthy,1,tanzania,88ae808732ce56af9dcfa18e2402310b
+tanzania_potato/images/healthy/healthy18540.jpg,potato_healthy,1,tanzania,b3c743b9f22279b4ba72dae63e9f3b06
+tanzania_potato/images/healthy/healthy18559.jpg,potato_healthy,1,tanzania,531d73384961031e34f4440f4425360a
+tanzania_potato/images/healthy/healthy18577.jpg,potato_healthy,1,tanzania,8352148eb192c36e8574e6e3751e6f27
+tanzania_potato/images/healthy/healthy18717.jpg,potato_healthy,1,tanzania,c50a7907f78fb081da4bfcbc2ee3768b
+tanzania_potato/images/healthy/healthy18726.jpg,potato_healthy,1,tanzania,44a1eaccd5664a7d1052bcc2096aa8ef
+tanzania_potato/images/healthy/healthy18747.jpg,potato_healthy,1,tanzania,0ff16a98e689ef4ac9f0c520b8c8e4d2
+tanzania_potato/images/healthy/healthy18789.jpg,potato_healthy,1,tanzania,5231a5b208f13427066dd082669e953f
+tanzania_potato/images/healthy/healthy18831.jpg,potato_healthy,1,tanzania,236fc02326f24a2d9732d8d6bd62c654
+tanzania_potato/images/healthy/healthy18840.jpg,potato_healthy,1,tanzania,e11c401c14f98151fbde43ad0a280712
+tanzania_potato/images/healthy/healthy18849.jpg,potato_healthy,1,tanzania,5e56c768458813eb5110223fda199151
+tanzania_potato/images/healthy/healthy18862.jpg,potato_healthy,1,tanzania,8c7888b17ee35917a1b5298caa6e047a
+tanzania_potato/images/healthy/healthy18877.jpg,potato_healthy,1,tanzania,128b631e8a5676f1222fe11418203610
+tanzania_potato/images/healthy/healthy18904.jpg,potato_healthy,1,tanzania,a2fcf27c85b702fc0d3d6083b6e8986d
+tanzania_potato/images/healthy/healthy1896.jpg,potato_healthy,1,tanzania,2a054ce6f1cb4d010a4c4199ae6dd3dd
+tanzania_potato/images/healthy/healthy18986.jpg,potato_healthy,1,tanzania,5b145ed35758571fb75a83be6675f67a
+tanzania_potato/images/healthy/healthy19033.jpg,potato_healthy,1,tanzania,5145d2fb03338fb02aba39009590cd84
+tanzania_potato/images/healthy/healthy19076.jpg,potato_healthy,1,tanzania,0a7c10bd16082c20c4264dc035d87c05
+tanzania_potato/images/healthy/healthy19077.jpg,potato_healthy,1,tanzania,ef4faec03204362b48d7cacf2cb5d1e4
+tanzania_potato/images/healthy/healthy1908.jpg,potato_healthy,1,tanzania,1d1080343d563897e1a75fd2a5173800
+tanzania_potato/images/healthy/healthy19222.jpg,potato_healthy,1,tanzania,807183e7823df50553c866c70d6421a3
+tanzania_potato/images/healthy/healthy19257.jpg,potato_healthy,1,tanzania,8015b1d35cda544b03358ef4dbbf59f2
+tanzania_potato/images/healthy/healthy19354.jpg,potato_healthy,1,tanzania,680ac0c49508f7b23516f44805d7af11
+tanzania_potato/images/healthy/healthy1938.jpg,potato_healthy,1,tanzania,0fdc10bcbabce56841d868af15540787
+tanzania_potato/images/healthy/healthy19490.jpg,potato_healthy,1,tanzania,96af96793b08b66e76fac456a09f04e7
+tanzania_potato/images/healthy/healthy19586.jpg,potato_healthy,1,tanzania,efc27c66f1b282ae8449133a0d216265
+tanzania_potato/images/healthy/healthy19609.jpg,potato_healthy,1,tanzania,50105efb9d0440628244761dd8d911ed
+tanzania_potato/images/healthy/healthy19717.jpg,potato_healthy,1,tanzania,d4f385b9b8116a5488b2c42a3285791a
+tanzania_potato/images/healthy/healthy19760.jpg,potato_healthy,1,tanzania,60d95edf116f664d215495dc5dfbb642
+tanzania_potato/images/healthy/healthy1989.jpg,potato_healthy,1,tanzania,e50f5089cabe2dbd5fce1af478862352
+tanzania_potato/images/healthy/healthy1999.jpg,potato_healthy,1,tanzania,b460ab5f190243652a65de60c1a3f664
+tanzania_potato/images/healthy/healthy20013.jpg,potato_healthy,1,tanzania,06c31d9942c8cb78749a65b0f47142cd
+tanzania_potato/images/healthy/healthy2012.jpg,potato_healthy,1,tanzania,3a47c9136eeefedb2f276bbd2c8d3e42
+tanzania_potato/images/healthy/healthy20166.jpg,potato_healthy,1,tanzania,6aa4caa55eba350600ece6aa256868ae
+tanzania_potato/images/healthy/healthy20176.jpg,potato_healthy,1,tanzania,eab7ade8b41f4b7e904190bd1ecc5529
+tanzania_potato/images/healthy/healthy20298.jpg,potato_healthy,1,tanzania,3a6888d87f442dd87303495d898fd7de
+tanzania_potato/images/healthy/healthy20305.jpg,potato_healthy,1,tanzania,b3af92eebdd4340941aec4541e90ee22
+tanzania_potato/images/healthy/healthy20314.jpg,potato_healthy,1,tanzania,c0805000c6b7932b0550d4bcf62adaea
+tanzania_potato/images/healthy/healthy20338.jpg,potato_healthy,1,tanzania,c7114734198f6d619b628fed8ceaae86
+tanzania_potato/images/healthy/healthy20396.jpg,potato_healthy,1,tanzania,183e83f8d3ceb18519d52bda77afe369
+tanzania_potato/images/healthy/healthy2124.jpg,potato_healthy,1,tanzania,c9eb3bf5195af94c5f9a2da4e8b7b3b9
+tanzania_potato/images/healthy/healthy2141.jpg,potato_healthy,1,tanzania,ca56d871a103b10e2c35fa2929933dc3
+tanzania_potato/images/healthy/healthy2151.jpg,potato_healthy,1,tanzania,07856a89dd938808db3972229b155470
+tanzania_potato/images/healthy/healthy2183.jpg,potato_healthy,1,tanzania,8d5478fec67ae4140c016450a7dff09b
+tanzania_potato/images/healthy/healthy2194.jpg,potato_healthy,1,tanzania,82eae27a96255b381cf0ebb2f67123be
+tanzania_potato/images/healthy/healthy2374.jpg,potato_healthy,1,tanzania,bdd703e2bd067ade2736411dac64ca3e
+tanzania_potato/images/healthy/healthy2414.jpg,potato_healthy,1,tanzania,c4119b5fbf8460ba1eca30a20cdd7384
+tanzania_potato/images/healthy/healthy2529.jpg,potato_healthy,1,tanzania,be78ee9a38c775c90b658eaebc913f9a
+tanzania_potato/images/healthy/healthy2542.jpg,potato_healthy,1,tanzania,28631905abf695eb9c74b9fbd589b545
+tanzania_potato/images/healthy/healthy2565.jpg,potato_healthy,1,tanzania,42971bd6725555506ad9f5d105f7c6fb
+tanzania_potato/images/healthy/healthy2602.jpg,potato_healthy,1,tanzania,c5a0214b2b70aa675fda46c2ee13c71e
+tanzania_potato/images/healthy/healthy2653.jpg,potato_healthy,1,tanzania,e19ba996e01c6647fe1832c635489a4a
+tanzania_potato/images/healthy/healthy2703.jpg,potato_healthy,1,tanzania,0861df33e42b2bee2e26e3d611185d33
+tanzania_potato/images/healthy/healthy2763.jpg,potato_healthy,1,tanzania,caaa733ca5b71e78fe4f1511d9133ae5
+tanzania_potato/images/healthy/healthy2811.jpg,potato_healthy,1,tanzania,b7d9e74ba4319f7f154ec60c97707337
+tanzania_potato/images/healthy/healthy2838.jpg,potato_healthy,1,tanzania,84b3b3b4ad85ffcf86fb70f135214149
+tanzania_potato/images/healthy/healthy2846.jpg,potato_healthy,1,tanzania,6dd034ea677d232233ac45fe9427c083
+tanzania_potato/images/healthy/healthy2852.jpg,potato_healthy,1,tanzania,4c3346ab93959c874b478304116d41d6
+tanzania_potato/images/healthy/healthy291.jpg,potato_healthy,1,tanzania,9e3bdea7767f17dd2907dd567b32c671
+tanzania_potato/images/healthy/healthy2921.jpg,potato_healthy,1,tanzania,a5363656084993c5575d6b74b1ed2cfb
+tanzania_potato/images/healthy/healthy2939.jpg,potato_healthy,1,tanzania,092693de294eccf1014bb79e1076fc1e
+tanzania_potato/images/healthy/healthy3010.jpg,potato_healthy,1,tanzania,fc77e44d35520674366a3b5154fbdd08
+tanzania_potato/images/healthy/healthy3011.jpg,potato_healthy,1,tanzania,1f8a3ea5be751a0c1155fa3cf7d98492
+tanzania_potato/images/healthy/healthy3076.jpg,potato_healthy,1,tanzania,60ca9e6dff02a7f55d60bde19e365953
+tanzania_potato/images/healthy/healthy3106.jpg,potato_healthy,1,tanzania,4a5be0cc1fbcdeb314d979f189212dc4
+tanzania_potato/images/healthy/healthy3125.jpg,potato_healthy,1,tanzania,ded25556fa575cc483e0de2ecf893322
+tanzania_potato/images/healthy/healthy3207.jpg,potato_healthy,1,tanzania,d3f7dec34c5b0e0b634d7b7f63f071f4
+tanzania_potato/images/healthy/healthy3290.jpg,potato_healthy,1,tanzania,04f4f8cf4864dbe89817c72147a7f395
+tanzania_potato/images/healthy/healthy3473.jpg,potato_healthy,1,tanzania,13216bde87fcb0fe31e0b330ddabc203
+tanzania_potato/images/healthy/healthy3507.jpg,potato_healthy,1,tanzania,3a42198a7bad480d0fa723056f0cca0d
+tanzania_potato/images/healthy/healthy357.jpg,potato_healthy,1,tanzania,710f0c0333a5c0bde19ebd3b1008c53f
+tanzania_potato/images/healthy/healthy3594.jpg,potato_healthy,1,tanzania,0e0d61138d1b1de63a82b8db8a7332b2
+tanzania_potato/images/healthy/healthy3597.jpg,potato_healthy,1,tanzania,adb183ef852d1010f502041b67a823f1
+tanzania_potato/images/healthy/healthy3689.jpg,potato_healthy,1,tanzania,c574fae0e491fdc4a49cf1209bcc0260
+tanzania_potato/images/healthy/healthy3946.jpg,potato_healthy,1,tanzania,6d0fa998e3eb485476d8b5bb9395ac4c
+tanzania_potato/images/healthy/healthy3954.jpg,potato_healthy,1,tanzania,18287b88b4dcf56f9f22fd4a6e0b9aa3
+tanzania_potato/images/healthy/healthy4041.jpg,potato_healthy,1,tanzania,a927444f15d77be6ab3987e48187fd16
+tanzania_potato/images/healthy/healthy4073.jpg,potato_healthy,1,tanzania,7a22feb526d22deaf282dc95615dd969
+tanzania_potato/images/healthy/healthy4181.jpg,potato_healthy,1,tanzania,b40e63b46f9031032d50a6757ecea341
+tanzania_potato/images/healthy/healthy4206.jpg,potato_healthy,1,tanzania,7172d0df54f843d811213fcacb10e231
+tanzania_potato/images/healthy/healthy4222.jpg,potato_healthy,1,tanzania,a122355ac78ae15acd5ac1d9399a3c75
+tanzania_potato/images/healthy/healthy4250.jpg,potato_healthy,1,tanzania,230581240ebae51a03f2491b567df1af
+tanzania_potato/images/healthy/healthy4474.jpg,potato_healthy,1,tanzania,3b318487ade3f3211e6db9bf75b7bf6e
+tanzania_potato/images/healthy/healthy4547.jpg,potato_healthy,1,tanzania,a87364347235fa030f54a37e9ef9ce2a
+tanzania_potato/images/healthy/healthy4563.jpg,potato_healthy,1,tanzania,d69228e008204b3337bcaf275d953d34
+tanzania_potato/images/healthy/healthy4605.jpg,potato_healthy,1,tanzania,637632b4ff60385729467af4486d0508
+tanzania_potato/images/healthy/healthy4618.jpg,potato_healthy,1,tanzania,87114cb144fbbbf695b30f115a804a5b
+tanzania_potato/images/healthy/healthy4740.jpg,potato_healthy,1,tanzania,2602e27a91968425f9d35bdf0175821c
+tanzania_potato/images/healthy/healthy4791.jpg,potato_healthy,1,tanzania,a66ca063fd8d39cf0d356215647a3d87
+tanzania_potato/images/healthy/healthy4797.jpg,potato_healthy,1,tanzania,ab9bb498e2370c0c441599eb0c3941ba
+tanzania_potato/images/healthy/healthy4860.jpg,potato_healthy,1,tanzania,e507830561400db8a692e3a8b4ef85bb
+tanzania_potato/images/healthy/healthy4873.jpg,potato_healthy,1,tanzania,30bd916a2e48022e7e775946af7b298e
+tanzania_potato/images/healthy/healthy4887.jpg,potato_healthy,1,tanzania,f0ed2d1c2a6e54378ba8612ca3428d58
+tanzania_potato/images/healthy/healthy4904.jpg,potato_healthy,1,tanzania,ece98779cfa4a969aadfbbf05cadece0
+tanzania_potato/images/healthy/healthy491.jpg,potato_healthy,1,tanzania,6fafc2bbec15d49a7151cc2bc8abce38
+tanzania_potato/images/healthy/healthy4948.jpg,potato_healthy,1,tanzania,0a0dd42c1a620a04590e23196af3f929
+tanzania_potato/images/healthy/healthy5196.jpg,potato_healthy,1,tanzania,f8220c486c3d68afe28124bc0d263235
+tanzania_potato/images/healthy/healthy5229.jpg,potato_healthy,1,tanzania,bee59568324ee39e7747ce2e66a52dd1
+tanzania_potato/images/healthy/healthy5268.jpg,potato_healthy,1,tanzania,6c3cda90bfde26f41a71b141380ed687
+tanzania_potato/images/healthy/healthy5370.jpg,potato_healthy,1,tanzania,93ebca4214352ccb283cfbe39a1b49b5
+tanzania_potato/images/healthy/healthy5467.jpg,potato_healthy,1,tanzania,666f956b393e9e0f4431ddc313e5ed94
+tanzania_potato/images/healthy/healthy5662.jpg,potato_healthy,1,tanzania,645248f14ec47e8232286cad38f0fd16
+tanzania_potato/images/healthy/healthy5683.jpg,potato_healthy,1,tanzania,9587fcf2a62ec5c357d9eec920dc77f7
+tanzania_potato/images/healthy/healthy5723.jpg,potato_healthy,1,tanzania,cd89cca594eed0c5e940a02ded4f7699
+tanzania_potato/images/healthy/healthy5811.jpg,potato_healthy,1,tanzania,828785dc761b9b19840e021d6e3bd937
+tanzania_potato/images/healthy/healthy5878.jpg,potato_healthy,1,tanzania,894636780e0cb56cf211e44555272805
+tanzania_potato/images/healthy/healthy588.jpg,potato_healthy,1,tanzania,25be52ff9f87aab80862997dc89143cc
+tanzania_potato/images/healthy/healthy6056.jpg,potato_healthy,1,tanzania,abe0d50fef606dfa3a1ec1adbcde96b3
+tanzania_potato/images/healthy/healthy6099.jpg,potato_healthy,1,tanzania,867319843d3e42a5ff0e4842f4fec84e
+tanzania_potato/images/healthy/healthy6107.jpg,potato_healthy,1,tanzania,b03bfa9f519c176968980ab6d976ff9a
+tanzania_potato/images/healthy/healthy6120.jpg,potato_healthy,1,tanzania,9b9c7b04648007bbd9f1789755287fdb
+tanzania_potato/images/healthy/healthy616.jpg,potato_healthy,1,tanzania,064d8c2c788627cbeccd6e3c5219b434
+tanzania_potato/images/healthy/healthy6234.jpg,potato_healthy,1,tanzania,70833c7fc97029756cb45850ca67db8b
+tanzania_potato/images/healthy/healthy6294.jpg,potato_healthy,1,tanzania,ae56e5477f395e84f368a4b3cc67a205
+tanzania_potato/images/healthy/healthy6424.jpg,potato_healthy,1,tanzania,d3bd30bc72137688c9be258f6d6281f0
+tanzania_potato/images/healthy/healthy6541.jpg,potato_healthy,1,tanzania,cb2aa0764a1da6bc1a8a5ed75a577d84
+tanzania_potato/images/healthy/healthy6551.jpg,potato_healthy,1,tanzania,16dece1a930a6c49484548a8825d75b4
+tanzania_potato/images/healthy/healthy660.jpg,potato_healthy,1,tanzania,ae7da30538fe95361fb50028cb49cc4b
+tanzania_potato/images/healthy/healthy6626.jpg,potato_healthy,1,tanzania,ff0b80d2108aae37c56b06ac0c5d7090
+tanzania_potato/images/healthy/healthy6859.jpg,potato_healthy,1,tanzania,2d5854e4d06a6ab9b1e41d654cffe347
+tanzania_potato/images/healthy/healthy6980.jpg,potato_healthy,1,tanzania,9f7a5dc46ffa09040bcf950f4b37d614
+tanzania_potato/images/healthy/healthy7004.jpg,potato_healthy,1,tanzania,2216b1862b4487b90095f9a7b88f8b5d
+tanzania_potato/images/healthy/healthy7157.jpg,potato_healthy,1,tanzania,141956ea48df6af82fdb0051546a42cb
+tanzania_potato/images/healthy/healthy7251.jpg,potato_healthy,1,tanzania,35ad44d87351ae979670d4483704953f
+tanzania_potato/images/healthy/healthy7390.jpg,potato_healthy,1,tanzania,fd3a527f1954f03f528d27f5101e358f
+tanzania_potato/images/healthy/healthy7392.jpg,potato_healthy,1,tanzania,91470f39c191fc5611aff8ae2eff93f4
+tanzania_potato/images/healthy/healthy7622.jpg,potato_healthy,1,tanzania,b24767408f3f8633b4de3c95633cbcba
+tanzania_potato/images/healthy/healthy763.jpg,potato_healthy,1,tanzania,f1756ce323af398520c7d4fcf68f4fd7
+tanzania_potato/images/healthy/healthy7641.jpg,potato_healthy,1,tanzania,c1a3422b2a067989a90f6676dd3e9fff
+tanzania_potato/images/healthy/healthy7728.jpg,potato_healthy,1,tanzania,e18b86f5932498b99592271177fd7879
+tanzania_potato/images/healthy/healthy776.jpg,potato_healthy,1,tanzania,f151ae8d080a77829f9ab1311c596a79
+tanzania_potato/images/healthy/healthy7773.jpg,potato_healthy,1,tanzania,f9b55dd9afe69fd979e6527bf06e054c
+tanzania_potato/images/healthy/healthy7923.jpg,potato_healthy,1,tanzania,49195311dd12fa1f2f06cf8260e2dae3
+tanzania_potato/images/healthy/healthy7980.jpg,potato_healthy,1,tanzania,8333473250b312153e6819fae202ac9e
+tanzania_potato/images/healthy/healthy7989.jpg,potato_healthy,1,tanzania,362f6ee6216b2d4a4a7d3c2c7084a414
+tanzania_potato/images/healthy/healthy8200.jpg,potato_healthy,1,tanzania,dac9f1be469e3e64bad521ee3ec6ebff
+tanzania_potato/images/healthy/healthy8226.jpg,potato_healthy,1,tanzania,0c8758543b90475326363eebda2f6cb5
+tanzania_potato/images/healthy/healthy832.jpg,potato_healthy,1,tanzania,84fe8bd25b691fd85b5957bb58844761
+tanzania_potato/images/healthy/healthy8328.jpg,potato_healthy,1,tanzania,cbdeeb226c97946b406885e837df8003
+tanzania_potato/images/healthy/healthy8382.jpg,potato_healthy,1,tanzania,cf659e66780fa4d14a83b270fdcc9cc8
+tanzania_potato/images/healthy/healthy8417.jpg,potato_healthy,1,tanzania,cbdaac60be789ba39ae9793fa1687847
+tanzania_potato/images/healthy/healthy8543.jpg,potato_healthy,1,tanzania,df21fcee7d69eff41ed6ef3420e998f8
+tanzania_potato/images/healthy/healthy8588.jpg,potato_healthy,1,tanzania,52f2f79b363ee22224bf7b82b9b1da22
+tanzania_potato/images/healthy/healthy8652.jpg,potato_healthy,1,tanzania,bc90db732046f85808f04b3f23214d3f
+tanzania_potato/images/healthy/healthy8694.jpg,potato_healthy,1,tanzania,c67a6fcad114685aec05198b9d93434d
+tanzania_potato/images/healthy/healthy8709.jpg,potato_healthy,1,tanzania,fa92e632d77fbcf86160e1cc2158e2c3
+tanzania_potato/images/healthy/healthy8761.jpg,potato_healthy,1,tanzania,a1012bbd764e6d5e9abb1f1f9bf3a0fa
+tanzania_potato/images/healthy/healthy8770.jpg,potato_healthy,1,tanzania,8b6a8d372dd339e32566573360ecc307
+tanzania_potato/images/healthy/healthy8783.jpg,potato_healthy,1,tanzania,8b27325eaf535c318787b9e305494296
+tanzania_potato/images/healthy/healthy8818.jpg,potato_healthy,1,tanzania,62033bb4c23dcf0aa910d1e6f2a8a91d
+tanzania_potato/images/healthy/healthy8879.jpg,potato_healthy,1,tanzania,ce199b5fa7d20fad8a2874a7ef85556c
+tanzania_potato/images/healthy/healthy8933.jpg,potato_healthy,1,tanzania,41fc06485743fa9a0ea4352f2b9f6538
+tanzania_potato/images/healthy/healthy9107.jpg,potato_healthy,1,tanzania,29edde639fd52efa612f4d6f485d7808
+tanzania_potato/images/healthy/healthy9149.jpg,potato_healthy,1,tanzania,917472ae8df9c0dc3d68113295e122a7
+tanzania_potato/images/healthy/healthy920.jpg,potato_healthy,1,tanzania,d177fac6fe6429a7c515a00363b00e64
+tanzania_potato/images/healthy/healthy9346.jpg,potato_healthy,1,tanzania,b8cf7455ada679410264bf2fa2f60122
+tanzania_potato/images/healthy/healthy9399.jpg,potato_healthy,1,tanzania,ffe8ad6f90ca476ddaeabbd444fbfeb7
+tanzania_potato/images/healthy/healthy941.jpg,potato_healthy,1,tanzania,c1ea916568bfcfc31982bf102403b9f5
+tanzania_potato/images/healthy/healthy95.jpg,potato_healthy,1,tanzania,7122667b55641a3cfb8e6cfbcf0394ff
+tanzania_potato/images/healthy/healthy9541.jpg,potato_healthy,1,tanzania,9919080930e62e00fb819297ecf316d9
+tanzania_potato/images/healthy/healthy9689.jpg,potato_healthy,1,tanzania,bc207cdaf118475b644ea59eed543623
+tanzania_potato/images/healthy/healthy9902.jpg,potato_healthy,1,tanzania,0589b3e453b622ed990871d5df277368
+tanzania_potato/images/healthy/healthy9920.jpg,potato_healthy,1,tanzania,9e30a47f25eefd29d94f01f4ed31d1f6
+tanzania_potato/images/healthy/healthy9947.jpg,potato_healthy,1,tanzania,3781b91e472e9b6edfaa3280c40898c5
+tanzania_potato/images/lateblt/lateblt10006.jpg,potato_late_blight,2,tanzania,edb37b500a29c77cf3624771f965e248
+tanzania_potato/images/lateblt/lateblt10294.jpg,potato_late_blight,2,tanzania,c2ae6d551b7ce8c872e3290eec6c43e3
+tanzania_potato/images/lateblt/lateblt1032.jpg,potato_late_blight,2,tanzania,a0cc8a779778daf19db130d6f34badb9
+tanzania_potato/images/lateblt/lateblt10412.jpg,potato_late_blight,2,tanzania,57de0fba260aa5084fa575f647f3fda4
+tanzania_potato/images/lateblt/lateblt10445.jpg,potato_late_blight,2,tanzania,f390c46addd7fc044244392852f88917
+tanzania_potato/images/lateblt/lateblt1047.jpg,potato_late_blight,2,tanzania,255e74f94165acd345dfa93560d10a00
+tanzania_potato/images/lateblt/lateblt10551.jpg,potato_late_blight,2,tanzania,a097dfea9de4cf5de0ea57caa51159bf
+tanzania_potato/images/lateblt/lateblt10795.jpg,potato_late_blight,2,tanzania,e9f9c21143ccdfdcc170213e3eced668
+tanzania_potato/images/lateblt/lateblt10807.jpg,potato_late_blight,2,tanzania,88d08a5c4aa29f73cbdc7b9be2881900
+tanzania_potato/images/lateblt/lateblt10881.jpg,potato_late_blight,2,tanzania,e22cd5a721735499af77e096653fa678
+tanzania_potato/images/lateblt/lateblt10956.jpg,potato_late_blight,2,tanzania,56d51ff35556db8c0fcd69ccf63df6db
+tanzania_potato/images/lateblt/lateblt11006.jpg,potato_late_blight,2,tanzania,dd070a06b78ca30c0d938127d0a34545
+tanzania_potato/images/lateblt/lateblt11042.jpg,potato_late_blight,2,tanzania,bec1fe43601b7b2808f2b9f9fa4860f6
+tanzania_potato/images/lateblt/lateblt1105.jpg,potato_late_blight,2,tanzania,e0aa19da730925ea72af40912ac1977c
+tanzania_potato/images/lateblt/lateblt1121.jpg,potato_late_blight,2,tanzania,833a97f160ed696a37de75a5b2ce5829
+tanzania_potato/images/lateblt/lateblt11224.jpg,potato_late_blight,2,tanzania,47314662b6a17602de6a862e174a11ab
+tanzania_potato/images/lateblt/lateblt11269.jpg,potato_late_blight,2,tanzania,dea6af4c56b3e16f40b2bf8aa1a99f86
+tanzania_potato/images/lateblt/lateblt11372.jpg,potato_late_blight,2,tanzania,b9427d7feac5a3185a16a3704a87bf84
+tanzania_potato/images/lateblt/lateblt11407.jpg,potato_late_blight,2,tanzania,5feb9f565a80fe0a9fc6e06df845248e
+tanzania_potato/images/lateblt/lateblt11474.jpg,potato_late_blight,2,tanzania,b53ac525233351282e018d31be776ea4
+tanzania_potato/images/lateblt/lateblt11615.jpg,potato_late_blight,2,tanzania,6bc74e59fdbee97cb446ec427b7694a9
+tanzania_potato/images/lateblt/lateblt11644.jpg,potato_late_blight,2,tanzania,685fe44eab51aabfccb44e530f6feaf8
+tanzania_potato/images/lateblt/lateblt11697.jpg,potato_late_blight,2,tanzania,48fd80983cab5cfe49ee5584beb1aa5d
+tanzania_potato/images/lateblt/lateblt11709.jpg,potato_late_blight,2,tanzania,a9bcc036d0d01e6c3dfc217350279d2d
+tanzania_potato/images/lateblt/lateblt11734.jpg,potato_late_blight,2,tanzania,aec18458f251ec8f34c725163440c4ab
+tanzania_potato/images/lateblt/lateblt11751.jpg,potato_late_blight,2,tanzania,4b4d88ec5e9973fb18690ed66dd92ad0
+tanzania_potato/images/lateblt/lateblt11764.jpg,potato_late_blight,2,tanzania,d8d8dfabaad347c20e143d6b123da1b6
+tanzania_potato/images/lateblt/lateblt11847.jpg,potato_late_blight,2,tanzania,bd417fde32ef61e1537246ed8f827b1d
+tanzania_potato/images/lateblt/lateblt11895.jpg,potato_late_blight,2,tanzania,42b4da892e81fb40fa63f8c70c961cf9
+tanzania_potato/images/lateblt/lateblt11977.jpg,potato_late_blight,2,tanzania,fd2f9ff1b7ae84b415447d352b883c1d
+tanzania_potato/images/lateblt/lateblt11984.jpg,potato_late_blight,2,tanzania,7acf499e920418d8d164afeca9f66f0c
+tanzania_potato/images/lateblt/lateblt12076.jpg,potato_late_blight,2,tanzania,9dfa207ee28adb910bc56ed8b8a730ae
+tanzania_potato/images/lateblt/lateblt12079.jpg,potato_late_blight,2,tanzania,c296b7e63382011a3162058313ea2ddb
+tanzania_potato/images/lateblt/lateblt12093.jpg,potato_late_blight,2,tanzania,a56899b1c54be66c2ffa37b4b6f8eacc
+tanzania_potato/images/lateblt/lateblt12112.jpg,potato_late_blight,2,tanzania,3babe52341962c24ab57524df309ac68
+tanzania_potato/images/lateblt/lateblt12128.jpg,potato_late_blight,2,tanzania,5b138a26f34664279a1f6a6590642329
+tanzania_potato/images/lateblt/lateblt12259.jpg,potato_late_blight,2,tanzania,56ff1b693170223340ae9502c7cfcda8
+tanzania_potato/images/lateblt/lateblt12272.jpg,potato_late_blight,2,tanzania,22bf53bc2e9b2939d8182256d45fa1ee
+tanzania_potato/images/lateblt/lateblt12292.jpg,potato_late_blight,2,tanzania,f42d4619959f0813d49b5697fe534632
+tanzania_potato/images/lateblt/lateblt12367.jpg,potato_late_blight,2,tanzania,6dccb17a8c161523b8daf3813ee58219
+tanzania_potato/images/lateblt/lateblt12412.jpg,potato_late_blight,2,tanzania,a9411491f2fa9946bc11f96689655ca6
+tanzania_potato/images/lateblt/lateblt12455.jpg,potato_late_blight,2,tanzania,7e08e792272db7eed4875a0676ac552a
+tanzania_potato/images/lateblt/lateblt1251.jpg,potato_late_blight,2,tanzania,e531f765582089692021be6387584e07
+tanzania_potato/images/lateblt/lateblt1252.jpg,potato_late_blight,2,tanzania,39489efab8d7fbe297fa9fe39b38ac4a
+tanzania_potato/images/lateblt/lateblt12544.jpg,potato_late_blight,2,tanzania,5f533dc3fe098d4f68f9ba344c91b932
+tanzania_potato/images/lateblt/lateblt126.jpg,potato_late_blight,2,tanzania,e62dcd30cf69fc784838b1a1b1337a46
+tanzania_potato/images/lateblt/lateblt12644.jpg,potato_late_blight,2,tanzania,86fadf3f704869ccb5706b4ba59d5ed9
+tanzania_potato/images/lateblt/lateblt12943.jpg,potato_late_blight,2,tanzania,d220ce8527728da7a6c2034f2002de73
+tanzania_potato/images/lateblt/lateblt13042.jpg,potato_late_blight,2,tanzania,f1a30f7d3a2dbc7f42983dbe60d339a9
+tanzania_potato/images/lateblt/lateblt13056.jpg,potato_late_blight,2,tanzania,5cb6c77f00b2d84c12ef537065b9b7fd
+tanzania_potato/images/lateblt/lateblt13059.jpg,potato_late_blight,2,tanzania,a9caefc0c9cefa473298f4ad0ee5052a
+tanzania_potato/images/lateblt/lateblt13214.jpg,potato_late_blight,2,tanzania,79127f18a97e0f2566fd03b6e943e58d
+tanzania_potato/images/lateblt/lateblt13215.jpg,potato_late_blight,2,tanzania,61fdecef9315b4f9c7fc00f89ed28b78
+tanzania_potato/images/lateblt/lateblt13321.jpg,potato_late_blight,2,tanzania,5bda83090444a3025919b757c8befad3
+tanzania_potato/images/lateblt/lateblt136.jpg,potato_late_blight,2,tanzania,2f99c9a2f2a2d8797ade5786ee3d1d02
+tanzania_potato/images/lateblt/lateblt13682.jpg,potato_late_blight,2,tanzania,d62769164ac19ecc25f5a1d0e0286485
+tanzania_potato/images/lateblt/lateblt13763.jpg,potato_late_blight,2,tanzania,7fe9e9dcae4b6fcc161bff0b800cf3e6
+tanzania_potato/images/lateblt/lateblt13809.jpg,potato_late_blight,2,tanzania,2e008088afc7fcea644d5d787d963057
+tanzania_potato/images/lateblt/lateblt13856.jpg,potato_late_blight,2,tanzania,bb99789bf24e1a23e4b29c288cb0136e
+tanzania_potato/images/lateblt/lateblt13938.jpg,potato_late_blight,2,tanzania,09519a23d0f4d2212d8985ac73af9676
+tanzania_potato/images/lateblt/lateblt13949.jpg,potato_late_blight,2,tanzania,5faafde31140b750c0e1b0038a920529
+tanzania_potato/images/lateblt/lateblt14002.jpg,potato_late_blight,2,tanzania,365e95557316f10ab30e1d56c4443282
+tanzania_potato/images/lateblt/lateblt14135.jpg,potato_late_blight,2,tanzania,e1b36abdcb9dace994714a44e8f99c4d
+tanzania_potato/images/lateblt/lateblt14366.jpg,potato_late_blight,2,tanzania,ac75e13e37ca44fd23260a9238d971b9
+tanzania_potato/images/lateblt/lateblt14400.jpg,potato_late_blight,2,tanzania,091c6dbe544c8f6d236a95f93be33b73
+tanzania_potato/images/lateblt/lateblt14486.jpg,potato_late_blight,2,tanzania,5aaf273a5eca8e93b3a046b4fd07536e
+tanzania_potato/images/lateblt/lateblt14533.jpg,potato_late_blight,2,tanzania,181aaaaadd7b8d443b5db503c5620d20
+tanzania_potato/images/lateblt/lateblt14554.jpg,potato_late_blight,2,tanzania,f556f4a072b499e9b29f408f47c694b9
+tanzania_potato/images/lateblt/lateblt14647.jpg,potato_late_blight,2,tanzania,07b75afe1e810146863dce2075bbb494
+tanzania_potato/images/lateblt/lateblt14685.jpg,potato_late_blight,2,tanzania,d1f74be778771143e28fd167089e4fe6
+tanzania_potato/images/lateblt/lateblt14816.jpg,potato_late_blight,2,tanzania,7011579e1fd14bd1901554ae825abcfa
+tanzania_potato/images/lateblt/lateblt14832.jpg,potato_late_blight,2,tanzania,38a826e72b810ba526ded6cee17a54ca
+tanzania_potato/images/lateblt/lateblt14946.jpg,potato_late_blight,2,tanzania,5941347b97604e156e87cc665f01e46f
+tanzania_potato/images/lateblt/lateblt15005.jpg,potato_late_blight,2,tanzania,9b5f709b00acf26a6c36056edf42f25b
+tanzania_potato/images/lateblt/lateblt15057.jpg,potato_late_blight,2,tanzania,f13e88484877e4e0633aede0ec08fecf
+tanzania_potato/images/lateblt/lateblt15073.jpg,potato_late_blight,2,tanzania,11d198396e5d3446471d218199ffcd1e
+tanzania_potato/images/lateblt/lateblt1531.jpg,potato_late_blight,2,tanzania,12aa1249a7414ba6e78732ffdd7ce83b
+tanzania_potato/images/lateblt/lateblt15329.jpg,potato_late_blight,2,tanzania,424e88cebd8d03c8319c36334fc5d7da
+tanzania_potato/images/lateblt/lateblt15431.jpg,potato_late_blight,2,tanzania,81a6997d156f3f3daba6b8a313a86c66
+tanzania_potato/images/lateblt/lateblt1553.jpg,potato_late_blight,2,tanzania,b18d99b3de3ad67cb427515cb70ab951
+tanzania_potato/images/lateblt/lateblt15591.jpg,potato_late_blight,2,tanzania,e93bb32830ba4b76cd4a86d72bf98ddf
+tanzania_potato/images/lateblt/lateblt1564.jpg,potato_late_blight,2,tanzania,cee2da1e93ee97fbd4266b7dc7291dfd
+tanzania_potato/images/lateblt/lateblt15669.jpg,potato_late_blight,2,tanzania,c2fc88b886df336ce60e50be05a617ea
+tanzania_potato/images/lateblt/lateblt15679.jpg,potato_late_blight,2,tanzania,036502546673879ec13380de64127ffa
+tanzania_potato/images/lateblt/lateblt15831.jpg,potato_late_blight,2,tanzania,f46bfd8277ac90adc11a598d6098819a
+tanzania_potato/images/lateblt/lateblt15854.jpg,potato_late_blight,2,tanzania,f4e3789e966ec720464ce023c4524258
+tanzania_potato/images/lateblt/lateblt16155.jpg,potato_late_blight,2,tanzania,449e5b3d97c9ce429690792ea7e7288c
+tanzania_potato/images/lateblt/lateblt16193.jpg,potato_late_blight,2,tanzania,4001366758e771fb4b13a204fd47d197
+tanzania_potato/images/lateblt/lateblt16196.jpg,potato_late_blight,2,tanzania,66fdc9828d30ec0ac4de0e3e570bb856
+tanzania_potato/images/lateblt/lateblt16258.jpg,potato_late_blight,2,tanzania,845f27472b3183f20ee7a1ffcce3585d
+tanzania_potato/images/lateblt/lateblt16286.jpg,potato_late_blight,2,tanzania,d4143d80d2bf82b532d3eee2bbf8d67f
+tanzania_potato/images/lateblt/lateblt16365.jpg,potato_late_blight,2,tanzania,eba1b60bada6cd0489e0286a356f9de4
+tanzania_potato/images/lateblt/lateblt16366.jpg,potato_late_blight,2,tanzania,a04feadb30eee6bc8c1c100cd4373164
+tanzania_potato/images/lateblt/lateblt16367.jpg,potato_late_blight,2,tanzania,e7084af0f9db14fdf8206d5aaf8f3ef9
+tanzania_potato/images/lateblt/lateblt1638.jpg,potato_late_blight,2,tanzania,72b61951a09c786d49151b7147577492
+tanzania_potato/images/lateblt/lateblt16425.jpg,potato_late_blight,2,tanzania,193635fff11528e95c348ad197de498a
+tanzania_potato/images/lateblt/lateblt16486.jpg,potato_late_blight,2,tanzania,14ed7a56d3e247398a53ded0386a0fb2
+tanzania_potato/images/lateblt/lateblt1652.jpg,potato_late_blight,2,tanzania,fcb9c6321f13b51bb783e195b87a251f
+tanzania_potato/images/lateblt/lateblt16536.jpg,potato_late_blight,2,tanzania,fab73e67bb843c3803025d336a357077
+tanzania_potato/images/lateblt/lateblt16614.jpg,potato_late_blight,2,tanzania,c21001c857f3a60affb8571e93d3dbe2
+tanzania_potato/images/lateblt/lateblt16705.jpg,potato_late_blight,2,tanzania,963385a581f6e1996e83a81c4dc7144a
+tanzania_potato/images/lateblt/lateblt16707.jpg,potato_late_blight,2,tanzania,1413426c2a4fa51a18223236ceaa7ad2
+tanzania_potato/images/lateblt/lateblt1678.jpg,potato_late_blight,2,tanzania,527fea8dd5c57795300a30dc7dc623ae
+tanzania_potato/images/lateblt/lateblt16890.jpg,potato_late_blight,2,tanzania,dfd6142cc6d32c3fe0f7ac9abaaf77fe
+tanzania_potato/images/lateblt/lateblt17222.jpg,potato_late_blight,2,tanzania,5daed93bf2e5167838d2cb0b7621afb3
+tanzania_potato/images/lateblt/lateblt17279.jpg,potato_late_blight,2,tanzania,18b06205ac26258519357d035e837a77
+tanzania_potato/images/lateblt/lateblt17324.jpg,potato_late_blight,2,tanzania,99f9db2fb3651f19a431aa1d793bdf12
+tanzania_potato/images/lateblt/lateblt17332.jpg,potato_late_blight,2,tanzania,95c8fa14cf940aeddbb846dc49085e38
+tanzania_potato/images/lateblt/lateblt17337.jpg,potato_late_blight,2,tanzania,5157bbb5fb2e34e270c69443bb122f9a
+tanzania_potato/images/lateblt/lateblt17386.jpg,potato_late_blight,2,tanzania,c835452619740c2d061776ea3656b873
+tanzania_potato/images/lateblt/lateblt1741.jpg,potato_late_blight,2,tanzania,ed25bd06f19ef92ada8b0ec53acc595a
+tanzania_potato/images/lateblt/lateblt17415.jpg,potato_late_blight,2,tanzania,fbb2262fe634a00438c415c1bfacc436
+tanzania_potato/images/lateblt/lateblt17439.jpg,potato_late_blight,2,tanzania,08ffc1d793c14348ab034f9e9bdbb5e2
+tanzania_potato/images/lateblt/lateblt1744.jpg,potato_late_blight,2,tanzania,281d9a767a2a76ab7776dcab41289938
+tanzania_potato/images/lateblt/lateblt17442.jpg,potato_late_blight,2,tanzania,ad7abcd6c93cdc2675672bbd8a156156
+tanzania_potato/images/lateblt/lateblt17447.jpg,potato_late_blight,2,tanzania,02c4c7c3ac4efd5f5c19917728f7ce36
+tanzania_potato/images/lateblt/lateblt17589.jpg,potato_late_blight,2,tanzania,bd3c4f968740dbddede6e4b1d13eb19b
+tanzania_potato/images/lateblt/lateblt17629.jpg,potato_late_blight,2,tanzania,c5759b03372d786a274eca4cc4e6c59c
+tanzania_potato/images/lateblt/lateblt17673.jpg,potato_late_blight,2,tanzania,934ea1a0c909d43d60470bb1373652ec
+tanzania_potato/images/lateblt/lateblt17774.jpg,potato_late_blight,2,tanzania,16977a863e0a742711d726be4603c814
+tanzania_potato/images/lateblt/lateblt17775.jpg,potato_late_blight,2,tanzania,81cf142eaded4992f737ec48ace4c217
+tanzania_potato/images/lateblt/lateblt17915.jpg,potato_late_blight,2,tanzania,182e2cce3926546849418136c632acb8
+tanzania_potato/images/lateblt/lateblt17919.jpg,potato_late_blight,2,tanzania,3bcab0ef164f3e3d499758d88295acc9
+tanzania_potato/images/lateblt/lateblt18011.jpg,potato_late_blight,2,tanzania,2450a141ad8e4071a480919fbb3c54ca
+tanzania_potato/images/lateblt/lateblt18014.jpg,potato_late_blight,2,tanzania,5577b2bdd72a68c22ceaec301d01d860
+tanzania_potato/images/lateblt/lateblt18038.jpg,potato_late_blight,2,tanzania,7c5d552e6b2a2267c6fdcca95287a453
+tanzania_potato/images/lateblt/lateblt18049.jpg,potato_late_blight,2,tanzania,5a7a07b34a24ac70d707e5898ec7bfe0
+tanzania_potato/images/lateblt/lateblt18053.jpg,potato_late_blight,2,tanzania,defe1996ad74399601ecb5e46d3351fd
+tanzania_potato/images/lateblt/lateblt18181.jpg,potato_late_blight,2,tanzania,9221f38f540cd5c534bd740cb84b2293
+tanzania_potato/images/lateblt/lateblt18260.jpg,potato_late_blight,2,tanzania,39a8a2f7e94ba9ad9cd062bb5c159e7e
+tanzania_potato/images/lateblt/lateblt1827.jpg,potato_late_blight,2,tanzania,fde22ba37e041077e07254c2babcfe47
+tanzania_potato/images/lateblt/lateblt18390.jpg,potato_late_blight,2,tanzania,b75929a944263e170bf0ea1ac19e4134
+tanzania_potato/images/lateblt/lateblt18447.jpg,potato_late_blight,2,tanzania,0b50a06b0ba432bae34edd42caf784db
+tanzania_potato/images/lateblt/lateblt18512.jpg,potato_late_blight,2,tanzania,16fead2035f4735c56e21d6daab5d3c7
+tanzania_potato/images/lateblt/lateblt18537.jpg,potato_late_blight,2,tanzania,785d9d9e7c433bb3cce8b0acd019253c
+tanzania_potato/images/lateblt/lateblt18584.jpg,potato_late_blight,2,tanzania,ffac81ca93acf9e8b676021d5895c166
+tanzania_potato/images/lateblt/lateblt18591.jpg,potato_late_blight,2,tanzania,8f9d067282439a0b72154525c5260511
+tanzania_potato/images/lateblt/lateblt1860.jpg,potato_late_blight,2,tanzania,1bf3da7d48fa34195e94f194dcd36c08
+tanzania_potato/images/lateblt/lateblt18782.jpg,potato_late_blight,2,tanzania,249c61319ebc09fd9bb03ff6c9c24c63
+tanzania_potato/images/lateblt/lateblt1896.jpg,potato_late_blight,2,tanzania,d126dcd581ab277e638caae30d234e22
+tanzania_potato/images/lateblt/lateblt19090.jpg,potato_late_blight,2,tanzania,cca93bb619d47c703bf1f98b94b3bcbb
+tanzania_potato/images/lateblt/lateblt19094.jpg,potato_late_blight,2,tanzania,c2b116570155bd4add6533228d3892a8
+tanzania_potato/images/lateblt/lateblt1920.jpg,potato_late_blight,2,tanzania,b366316af78d5c8d0a4e9c2bca11bf1a
+tanzania_potato/images/lateblt/lateblt19208.jpg,potato_late_blight,2,tanzania,5cbf12e3afdca8cd0c077109d5348b7f
+tanzania_potato/images/lateblt/lateblt19345.jpg,potato_late_blight,2,tanzania,b49bf5ee731aa84eba4ca5e76fbd4f56
+tanzania_potato/images/lateblt/lateblt1949.jpg,potato_late_blight,2,tanzania,08cda785db4cec4611a370c5aaf59f1b
+tanzania_potato/images/lateblt/lateblt19505.jpg,potato_late_blight,2,tanzania,8e092bc31c6bda539336703ba7b0eae4
+tanzania_potato/images/lateblt/lateblt19974.jpg,potato_late_blight,2,tanzania,83293d230a37168fe44a7e53e386c74d
+tanzania_potato/images/lateblt/lateblt20015.jpg,potato_late_blight,2,tanzania,195b740c7684e163bd47fb1bde17f1fb
+tanzania_potato/images/lateblt/lateblt20050.jpg,potato_late_blight,2,tanzania,ef6034dde27af8bb8a3af7282ca92777
+tanzania_potato/images/lateblt/lateblt20084.jpg,potato_late_blight,2,tanzania,6b914dbb56972245e002383e1be7d97e
+tanzania_potato/images/lateblt/lateblt20149.jpg,potato_late_blight,2,tanzania,8c59cbe692ee145c2f9bf44eef168b5d
+tanzania_potato/images/lateblt/lateblt20150.jpg,potato_late_blight,2,tanzania,4e28710b2d31f1a7ad23582fd2b3c34a
+tanzania_potato/images/lateblt/lateblt20160.jpg,potato_late_blight,2,tanzania,0796cef399ec60eda72d1f5accd062f1
+tanzania_potato/images/lateblt/lateblt20187.jpg,potato_late_blight,2,tanzania,95909a8ee4c00c594b893d3846fd5a5f
+tanzania_potato/images/lateblt/lateblt20210.jpg,potato_late_blight,2,tanzania,f2ff300f41b5994568b39259c1252512
+tanzania_potato/images/lateblt/lateblt20263.jpg,potato_late_blight,2,tanzania,965d7b6a5c464a383c65c4dd7dd7d0f1
+tanzania_potato/images/lateblt/lateblt20268.jpg,potato_late_blight,2,tanzania,a8431567b563050c2098feafa7c694ee
+tanzania_potato/images/lateblt/lateblt20270.jpg,potato_late_blight,2,tanzania,d23512b135818dd3e8b5eb0d471b7936
+tanzania_potato/images/lateblt/lateblt20278.jpg,potato_late_blight,2,tanzania,b6cee52f9180f8c318e7c5f4b39ca00b
+tanzania_potato/images/lateblt/lateblt20284.jpg,potato_late_blight,2,tanzania,1d7c5e0937dbd1e7147b8f80f9de54a1
+tanzania_potato/images/lateblt/lateblt20393.jpg,potato_late_blight,2,tanzania,0c3b4bf0934de93a6d3de671da6d9280
+tanzania_potato/images/lateblt/lateblt20408.jpg,potato_late_blight,2,tanzania,3b62a11ac565b6c6b8e9ca6b017fe50d
+tanzania_potato/images/lateblt/lateblt20409.jpg,potato_late_blight,2,tanzania,aca47ad4e0fc524e16ed619b39b86912
+tanzania_potato/images/lateblt/lateblt20456.jpg,potato_late_blight,2,tanzania,b453c593218e86ad7bfd50e5850b4243
+tanzania_potato/images/lateblt/lateblt20457.jpg,potato_late_blight,2,tanzania,62fb155ee2aacdd51851843e86ee9406
+tanzania_potato/images/lateblt/lateblt20460.jpg,potato_late_blight,2,tanzania,a961484f5542885d143a414f505b0e47
+tanzania_potato/images/lateblt/lateblt20495.jpg,potato_late_blight,2,tanzania,241cac56663c4a1ab8566b0a1c0a1fde
+tanzania_potato/images/lateblt/lateblt2194.jpg,potato_late_blight,2,tanzania,a6a85b6da5c8deaafbcd98f647876854
+tanzania_potato/images/lateblt/lateblt2255.jpg,potato_late_blight,2,tanzania,c603a188946d6f6adac9eb64f5ef9d55
+tanzania_potato/images/lateblt/lateblt2297.jpg,potato_late_blight,2,tanzania,2de5f2a002aab8239cec7d401a36a81b
+tanzania_potato/images/lateblt/lateblt2309.jpg,potato_late_blight,2,tanzania,addc2c8257775c1ea1d937a081cca290
+tanzania_potato/images/lateblt/lateblt2328.jpg,potato_late_blight,2,tanzania,fa4416745db2dcf32d67f28baebe5845
+tanzania_potato/images/lateblt/lateblt2351.jpg,potato_late_blight,2,tanzania,85407e7caa1cf81d4faf149b2ca14ae2
+tanzania_potato/images/lateblt/lateblt2358.jpg,potato_late_blight,2,tanzania,4d3be552541677d28c2d599604994c2a
+tanzania_potato/images/lateblt/lateblt2374.jpg,potato_late_blight,2,tanzania,673134a909b00c3ddac73519697bb906
+tanzania_potato/images/lateblt/lateblt2390.jpg,potato_late_blight,2,tanzania,4a934f988bc928528fc21fde3396b356
+tanzania_potato/images/lateblt/lateblt2533.jpg,potato_late_blight,2,tanzania,c730c4f7fbf968d13cf157e489087cb9
+tanzania_potato/images/lateblt/lateblt2540.jpg,potato_late_blight,2,tanzania,1cf8f717fd9c2332c61352dcca900230
+tanzania_potato/images/lateblt/lateblt2570.jpg,potato_late_blight,2,tanzania,8f9dcf712e08066b566c9a55bce5b5a5
+tanzania_potato/images/lateblt/lateblt2571.jpg,potato_late_blight,2,tanzania,48154ac2d96cd7d85833643a2cd55a2b
+tanzania_potato/images/lateblt/lateblt2604.jpg,potato_late_blight,2,tanzania,be56ea8087f5340b72ccaf9099c52ba9
+tanzania_potato/images/lateblt/lateblt2605.jpg,potato_late_blight,2,tanzania,04ad799a92a81565e4dc1a3a480ff2a2
+tanzania_potato/images/lateblt/lateblt2667.jpg,potato_late_blight,2,tanzania,831b713722d7b97df9e9fe0e0be4dfc7
+tanzania_potato/images/lateblt/lateblt2682.jpg,potato_late_blight,2,tanzania,9b4f2021fa7c78429e128e5514fee4a5
+tanzania_potato/images/lateblt/lateblt2713.jpg,potato_late_blight,2,tanzania,0579ecc71b8cabdf77b964c54846954a
+tanzania_potato/images/lateblt/lateblt2764.jpg,potato_late_blight,2,tanzania,7de19d9b4db6e54809b0446219fe9e23
+tanzania_potato/images/lateblt/lateblt2831.jpg,potato_late_blight,2,tanzania,472c792c174cef8e08a5040ecc77c00a
+tanzania_potato/images/lateblt/lateblt2944.jpg,potato_late_blight,2,tanzania,2993c87826f62319b805bb858daf95c3
+tanzania_potato/images/lateblt/lateblt3062.jpg,potato_late_blight,2,tanzania,645ded033c9d305e3c347ea0cffd75c1
+tanzania_potato/images/lateblt/lateblt3225.jpg,potato_late_blight,2,tanzania,a2c689268a2328d46a477e929d4f4c3b
+tanzania_potato/images/lateblt/lateblt3281.jpg,potato_late_blight,2,tanzania,9efcfc29891b6b74553b2c3965e7cb4e
+tanzania_potato/images/lateblt/lateblt3359.jpg,potato_late_blight,2,tanzania,7cdc423de576d5cbac11cf4446b33332
+tanzania_potato/images/lateblt/lateblt3379.jpg,potato_late_blight,2,tanzania,d2644d121511a92c80c58f487f215fda
+tanzania_potato/images/lateblt/lateblt3540.jpg,potato_late_blight,2,tanzania,1bfdab30ae9dcc2cbd0e27d71bfbc412
+tanzania_potato/images/lateblt/lateblt3601.jpg,potato_late_blight,2,tanzania,e20b44dbaa158b9b728958353b5c11ee
+tanzania_potato/images/lateblt/lateblt3685.jpg,potato_late_blight,2,tanzania,1f0e139614714e098e535dbe6580e971
+tanzania_potato/images/lateblt/lateblt3759.jpg,potato_late_blight,2,tanzania,fa7f47489594e34e54e4a8e19189125d
+tanzania_potato/images/lateblt/lateblt383.jpg,potato_late_blight,2,tanzania,e825dfa91658fb0d0106eb9be9fc854a
+tanzania_potato/images/lateblt/lateblt386.jpg,potato_late_blight,2,tanzania,11c0091f1b40c15abd4ca2634296c6de
+tanzania_potato/images/lateblt/lateblt3901.jpg,potato_late_blight,2,tanzania,b55fe4d87b220d9b8e2868f0c0d95e7c
+tanzania_potato/images/lateblt/lateblt4028.jpg,potato_late_blight,2,tanzania,c427ba443ef06f3ba403604d8f43a480
+tanzania_potato/images/lateblt/lateblt431.jpg,potato_late_blight,2,tanzania,63bddfba8113839bea56421867281665
+tanzania_potato/images/lateblt/lateblt4334.jpg,potato_late_blight,2,tanzania,1838e6191133e4227d24597214749443
+tanzania_potato/images/lateblt/lateblt4428.jpg,potato_late_blight,2,tanzania,d2a413d6700992aa5abbd8597e767f6a
+tanzania_potato/images/lateblt/lateblt4465.jpg,potato_late_blight,2,tanzania,88c5879ffeb2d6ee9cf8739cff29b3dc
+tanzania_potato/images/lateblt/lateblt4574.jpg,potato_late_blight,2,tanzania,d8a8ac07333dbf2ffe5fc67c7d30afdf
+tanzania_potato/images/lateblt/lateblt4608.jpg,potato_late_blight,2,tanzania,e587e4b5976a7f5e0f9ced2b38874cfa
+tanzania_potato/images/lateblt/lateblt4622.jpg,potato_late_blight,2,tanzania,7a3503ca14e1c645178335a3073fc72d
+tanzania_potato/images/lateblt/lateblt4670.jpg,potato_late_blight,2,tanzania,eb8fcb0a43b74c2900e1dce7baf3b77d
+tanzania_potato/images/lateblt/lateblt4685.jpg,potato_late_blight,2,tanzania,90e1a73ddc7d6f7ec4260c14944a42f8
+tanzania_potato/images/lateblt/lateblt4873.jpg,potato_late_blight,2,tanzania,909d8a0ff65d423a65b98bc9ba1af61f
+tanzania_potato/images/lateblt/lateblt4892.jpg,potato_late_blight,2,tanzania,2a47c82a2c915332596044c2bd3afc3f
+tanzania_potato/images/lateblt/lateblt4941.jpg,potato_late_blight,2,tanzania,36a14699ccc76ba6d262297642457338
+tanzania_potato/images/lateblt/lateblt4944.jpg,potato_late_blight,2,tanzania,ea46a4cf0707bc4ab117d9ae34fa3599
+tanzania_potato/images/lateblt/lateblt4968.jpg,potato_late_blight,2,tanzania,b07a111963ebd3e0d219e7705e9783e6
+tanzania_potato/images/lateblt/lateblt5038.jpg,potato_late_blight,2,tanzania,252bfb8dc541ac0ac40eef3f1681c80e
+tanzania_potato/images/lateblt/lateblt5044.jpg,potato_late_blight,2,tanzania,33cad92a7835a2311976a5fa83cb6f20
+tanzania_potato/images/lateblt/lateblt5074.jpg,potato_late_blight,2,tanzania,bcf79db89045c5e279c98e17434800ba
+tanzania_potato/images/lateblt/lateblt5084.jpg,potato_late_blight,2,tanzania,a8a4237808c5c32f6eff30060760b3ff
+tanzania_potato/images/lateblt/lateblt5085.jpg,potato_late_blight,2,tanzania,88d62e473c794af76d85ad7f6e1717e0
+tanzania_potato/images/lateblt/lateblt5129.jpg,potato_late_blight,2,tanzania,43b3ea834bc165a73e3f8ca0e5b48b7a
+tanzania_potato/images/lateblt/lateblt5194.jpg,potato_late_blight,2,tanzania,a3f76711ca4b19e5fe90ae69b0236854
+tanzania_potato/images/lateblt/lateblt5196.jpg,potato_late_blight,2,tanzania,e8c24439e900165cab136e5655e83d21
+tanzania_potato/images/lateblt/lateblt5229.jpg,potato_late_blight,2,tanzania,f054cc90ec474ef62e43a9ec904f68c6
+tanzania_potato/images/lateblt/lateblt5242.jpg,potato_late_blight,2,tanzania,3a55311a16aafc19a98dbafa2cd9b5a8
+tanzania_potato/images/lateblt/lateblt5268.jpg,potato_late_blight,2,tanzania,53490ebf27ee54ccd220360ac4000cf8
+tanzania_potato/images/lateblt/lateblt5377.jpg,potato_late_blight,2,tanzania,85cb18be4ad79127d0ec3bcf69ac0e82
+tanzania_potato/images/lateblt/lateblt5429.jpg,potato_late_blight,2,tanzania,4888ac11c1d43c499b96a7b5499dcd60
+tanzania_potato/images/lateblt/lateblt5551.jpg,potato_late_blight,2,tanzania,0c318935f678e702f9dd19c556f75921
+tanzania_potato/images/lateblt/lateblt5556.jpg,potato_late_blight,2,tanzania,30c4050ae3101617cc747db69fb6bbff
+tanzania_potato/images/lateblt/lateblt5575.jpg,potato_late_blight,2,tanzania,52ebeb6550f70fb41892c60bbde76454
+tanzania_potato/images/lateblt/lateblt5588.jpg,potato_late_blight,2,tanzania,ae37836606eaf0d44386d465d87a62fb
+tanzania_potato/images/lateblt/lateblt5767.jpg,potato_late_blight,2,tanzania,6b5f633ec1fafba84f3b7bb2354eaba7
+tanzania_potato/images/lateblt/lateblt5818.jpg,potato_late_blight,2,tanzania,32c0db6d2a35cef7a7b9958e5c1c2eba
+tanzania_potato/images/lateblt/lateblt587.jpg,potato_late_blight,2,tanzania,8738da921b31e9abfad63506058fc5af
+tanzania_potato/images/lateblt/lateblt5870.jpg,potato_late_blight,2,tanzania,184ef6e982c7cf1285a7f3db98547347
+tanzania_potato/images/lateblt/lateblt5903.jpg,potato_late_blight,2,tanzania,bc38fcc8b347b7a8fc2f4205a9645eaa
+tanzania_potato/images/lateblt/lateblt5905.jpg,potato_late_blight,2,tanzania,861ee639c9d5f48f5374414617ac419e
+tanzania_potato/images/lateblt/lateblt5927.jpg,potato_late_blight,2,tanzania,a828ffb124fc078309289126fc0d8fce
+tanzania_potato/images/lateblt/lateblt5933.jpg,potato_late_blight,2,tanzania,0c20c54cb3d5b1a7398b171ebcab32bd
+tanzania_potato/images/lateblt/lateblt5946.jpg,potato_late_blight,2,tanzania,f55343915fec72c1472b70c2e239a093
+tanzania_potato/images/lateblt/lateblt6005.jpg,potato_late_blight,2,tanzania,3c5928f488e5ee0b923c72a73e275709
+tanzania_potato/images/lateblt/lateblt6077.jpg,potato_late_blight,2,tanzania,641fb5a3b6a4a733711c5d99b8b0acd1
+tanzania_potato/images/lateblt/lateblt6120.jpg,potato_late_blight,2,tanzania,ccdcab4c6f886e58efcfb4c6e138a80b
+tanzania_potato/images/lateblt/lateblt6191.jpg,potato_late_blight,2,tanzania,8d88dd0d17bee971849b4726e33f24ba
+tanzania_potato/images/lateblt/lateblt622.jpg,potato_late_blight,2,tanzania,a0e3aaf4e7d5af5e4d5ec4696fd9b39b
+tanzania_potato/images/lateblt/lateblt6242.jpg,potato_late_blight,2,tanzania,95fb605552c21d9654ab4aba7a8577d1
+tanzania_potato/images/lateblt/lateblt6261.jpg,potato_late_blight,2,tanzania,2cec554b8bccab911b8cc05e1426e753
+tanzania_potato/images/lateblt/lateblt6320.jpg,potato_late_blight,2,tanzania,22e6169123998d8a88be9e20342b4735
+tanzania_potato/images/lateblt/lateblt6393.jpg,potato_late_blight,2,tanzania,9d62431303c53ef0558ed369bf62b666
+tanzania_potato/images/lateblt/lateblt6394.jpg,potato_late_blight,2,tanzania,33bc96297b48044016c11fd183bcc774
+tanzania_potato/images/lateblt/lateblt6517.jpg,potato_late_blight,2,tanzania,e970cc30d8b5a596966603814572676e
+tanzania_potato/images/lateblt/lateblt6537.jpg,potato_late_blight,2,tanzania,117111dfeed023773c634e2495248cfa
+tanzania_potato/images/lateblt/lateblt6664.jpg,potato_late_blight,2,tanzania,757500f77a32cb8cb3c0b51811347b09
+tanzania_potato/images/lateblt/lateblt6702.jpg,potato_late_blight,2,tanzania,1a80f13194e56643cb9e06f4d5e7fcfa
+tanzania_potato/images/lateblt/lateblt6733.jpg,potato_late_blight,2,tanzania,1ee41a7c7e044e66c6139e1139863b38
+tanzania_potato/images/lateblt/lateblt6756.jpg,potato_late_blight,2,tanzania,81e02d138f27dd9fe62754bdfe2f4609
+tanzania_potato/images/lateblt/lateblt6824.jpg,potato_late_blight,2,tanzania,2ea06deeef331c432acf25fda9f740ab
+tanzania_potato/images/lateblt/lateblt6849.jpg,potato_late_blight,2,tanzania,7d01ac1fc1693168b0954793ebe73ccf
+tanzania_potato/images/lateblt/lateblt6856.jpg,potato_late_blight,2,tanzania,20adfae5fc43a01698e32e7345838e2b
+tanzania_potato/images/lateblt/lateblt6875.jpg,potato_late_blight,2,tanzania,2ff68f850a2dad9f4759966ad0c33b3d
+tanzania_potato/images/lateblt/lateblt6881.jpg,potato_late_blight,2,tanzania,4fcf15a79d12e4e0108553ba56b3de1d
+tanzania_potato/images/lateblt/lateblt6909.jpg,potato_late_blight,2,tanzania,2152c46c1583ec58c445ebfca5fd80ec
+tanzania_potato/images/lateblt/lateblt6923.jpg,potato_late_blight,2,tanzania,b9005cee461de61c3d612318c3a28dd1
+tanzania_potato/images/lateblt/lateblt6942.jpg,potato_late_blight,2,tanzania,e02d1578ec8aeba87f3bb5012734c7f3
+tanzania_potato/images/lateblt/lateblt7010.jpg,potato_late_blight,2,tanzania,e645d87cbded7d658dc43e8f5bc76901
+tanzania_potato/images/lateblt/lateblt7051.jpg,potato_late_blight,2,tanzania,d7cd195b0dbf8988057c83a58d653713
+tanzania_potato/images/lateblt/lateblt7124.jpg,potato_late_blight,2,tanzania,b1a3677850f831ac8830e384b64d9bfc
+tanzania_potato/images/lateblt/lateblt7217.jpg,potato_late_blight,2,tanzania,f94e7ade9142a451f21cecc474925301
+tanzania_potato/images/lateblt/lateblt7218.jpg,potato_late_blight,2,tanzania,03e56d975ce72428f09eec2806b9927f
+tanzania_potato/images/lateblt/lateblt7270.jpg,potato_late_blight,2,tanzania,a0fd888aed4016c62139819ae70250c7
+tanzania_potato/images/lateblt/lateblt7584.jpg,potato_late_blight,2,tanzania,9c17ff008e74e73b52f1122a2093acf3
+tanzania_potato/images/lateblt/lateblt7586.jpg,potato_late_blight,2,tanzania,c6cdfd6f23dac93ac087b3ed031a7722
+tanzania_potato/images/lateblt/lateblt7609.jpg,potato_late_blight,2,tanzania,1fcd9d562ca7badda4712a09a6349c5c
+tanzania_potato/images/lateblt/lateblt7932.jpg,potato_late_blight,2,tanzania,33ef78d25ebbd6b6f2c5a2c2407a4af1
+tanzania_potato/images/lateblt/lateblt7965.jpg,potato_late_blight,2,tanzania,6d2832450d7726834288a8b87f43240d
+tanzania_potato/images/lateblt/lateblt7980.jpg,potato_late_blight,2,tanzania,b5e287d84b9f34b44472c9bf5e5d32f2
+tanzania_potato/images/lateblt/lateblt8004.jpg,potato_late_blight,2,tanzania,6357ea8f05aacd89d4f0d7519c3c76a5
+tanzania_potato/images/lateblt/lateblt8015.jpg,potato_late_blight,2,tanzania,babe7e99985fea8ea6177a04ff8ec3ab
+tanzania_potato/images/lateblt/lateblt8040.jpg,potato_late_blight,2,tanzania,4addfb46b9191985cade56a43999d3ed
+tanzania_potato/images/lateblt/lateblt8724.jpg,potato_late_blight,2,tanzania,df62c6f4695fa06ee1f8662ed2ede80f
+tanzania_potato/images/lateblt/lateblt8835.jpg,potato_late_blight,2,tanzania,62c5ac7cac49b05e08f23ac87c6a6ab0
+tanzania_potato/images/lateblt/lateblt8996.jpg,potato_late_blight,2,tanzania,17f52578ac5917d2d110ce39536d96b1
+tanzania_potato/images/lateblt/lateblt9027.jpg,potato_late_blight,2,tanzania,adbee5329b427386123f85650f98e607

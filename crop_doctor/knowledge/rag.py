@@ -51,6 +51,37 @@ def load_chunks(docs_dir: Path = DOCS_DIR) -> list[Chunk]:
     return chunks
 
 
+class MiniLMOnnx:
+    """The same all-MiniLM-L6-v2 model, as a published 8-bit ONNX file (~23 MB) + its tokenizer.
+    Used on the live server: ~10x less memory than loading it through a full embedding library."""
+
+    REPO, FILE = "Xenova/all-MiniLM-L6-v2", "onnx/model_quantized.onnx"
+
+    def __init__(self):
+        import onnxruntime as ort
+        from huggingface_hub import hf_hub_download
+        from tokenizers import Tokenizer
+        self.tok = Tokenizer.from_file(hf_hub_download(self.REPO, "tokenizer.json"))
+        self.tok.enable_truncation(256)
+        self.tok.enable_padding()
+        opts = ort.SessionOptions()
+        opts.intra_op_num_threads = 1
+        opts.enable_cpu_mem_arena = False
+        self.sess = ort.InferenceSession(hf_hub_download(self.REPO, self.FILE), opts, providers=["CPUExecutionProvider"])
+        self.inputs = {i.name for i in self.sess.get_inputs()}
+
+    def encode(self, texts) -> np.ndarray:
+        enc = self.tok.encode_batch(list(texts))
+        ids = np.array([e.ids for e in enc], dtype=np.int64)
+        mask = np.array([e.attention_mask for e in enc], dtype=np.int64)
+        feeds = {"input_ids": ids, "attention_mask": mask}
+        if "token_type_ids" in self.inputs:
+            feeds["token_type_ids"] = np.zeros_like(ids)
+        hidden = self.sess.run(None, feeds)[0]                      # (batch, tokens, 384)
+        pooled = (hidden * mask[..., None]).sum(1) / mask.sum(1, keepdims=True)   # mean over real tokens
+        return pooled / np.linalg.norm(pooled, axis=1, keepdims=True)
+
+
 class Retriever:
     def __init__(self, chunks: list[Chunk] | None = None, use_embeddings: bool = True):
         self.chunks = chunks or load_chunks()
@@ -68,7 +99,7 @@ class Retriever:
 
     @staticmethod
     def _load_embedder():
-        """Same MiniLM model either way: sentence-transformers (PyTorch, local) or fastembed (ONNX, live server)."""
+        """Same MiniLM model either way: sentence-transformers (PyTorch, local) or MiniLMOnnx (8-bit ONNX, live server)."""
         def norm(v):
             v = np.asarray(v, dtype=np.float32)
             return v / np.linalg.norm(v, axis=1, keepdims=True)
@@ -79,9 +110,7 @@ class Retriever:
         except Exception:  # noqa: BLE001 - not installed (server) or offline
             pass
         try:
-            from fastembed import TextEmbedding
-            m = TextEmbedding(EMBED_MODEL)
-            return lambda texts: norm(list(m.embed(list(texts))))
+            return MiniLMOnnx().encode
         except Exception:  # noqa: BLE001 - offline: keyword fallback
             return None
 

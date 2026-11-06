@@ -1,0 +1,33 @@
+# Render Blueprint: the Crop Doctor API (FastAPI + ONNX model). In Render: New > Blueprint > pick this repo.
+# Secrets marked "sync: false" are typed in Render's dashboard, never committed.
+services:
+  - type: web
+    name: crop-doctor-api
+    runtime: python
+    plan: free
+    region: singapore            # closest Render region to India
+    buildCommand: pip install --upgrade pip && pip install -r server/requirements.txt && python -m server.build_assets
+    startCommand: uvicorn server.main:app --host 0.0.0.0 --port $PORT --workers 1
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.8
+      - key: CROP_DOCTOR_BACKEND
+        value: onnx
+      - key: CROP_DOCTOR_APP_CONFIG
+        value: server/assets/app_model.json
+      - key: CROP_DOCTOR_LOGITS_DIR
+        value: server/assets/logits
+      - key: OMP_NUM_THREADS
+        value: "1"
+      - key: EXPERT_KEY            # password for the expert dashboard; Render generates it, see the dashboard
+        generateValue: true
+      - key: DATABASE_URL          # Supabase > Project Settings > Database > Connection string (Session pooler URI)
+        sync: false
+      - key: ALLOWED_ORIGINS       # your Vercel site, e.g. https://crop-doctor.vercel.app
+        sync: false
+      - key: ALLOWED_ORIGIN_REGEX  # also allow Vercel preview deployments of this project
+        value: https://crop-doctor-[a-z0-9-]+\.vercel\.app
+      - key: ANTHROPIC_API_KEY     # optional: friendly AI replies; leave empty for sourced template replies
+        sync: false
