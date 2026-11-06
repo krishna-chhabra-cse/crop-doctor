@@ -28,5 +28,14 @@ def test_status_mapping_and_images(tmp_path):
     assert db.case_status({"status": "diagnosis"}) == "answered"
     assert db.case_status({"status": "question"}) == "answered"
     assert db.case_status({"status": "retake"}) == "retake"
-    name = db.save_image(b"\xff\xd8fake", images_dir=tmp_path)
-    assert (tmp_path / name).read_bytes() == b"\xff\xd8fake"
+    name = db.save_image(b"\xff\xd8fake", db_path=tmp_path / "i.db")
+    assert db.load_image(name, db_path=tmp_path / "i.db") == b"\xff\xd8fake"
+
+
+def test_postgres_url_is_normalised(monkeypatch):
+    monkeypatch.setenv("DATABASE_URL", "postgresql://u:p@host.supabase.co:6543/postgres")
+    assert db.database_url() == "postgresql+psycopg://u:p@host.supabase.co:6543/postgres"
+    monkeypatch.setenv("DATABASE_URL", "postgres://u:p@h/db")
+    assert db.database_url().startswith("postgresql+psycopg://")
+    monkeypatch.delenv("DATABASE_URL")
+    assert db.database_url().startswith("sqlite:///")

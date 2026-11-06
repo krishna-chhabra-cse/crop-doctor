@@ -111,7 +111,8 @@ def add_expert_label(doctor, case: dict, label: str) -> dict | None:
     if not case.get("audit") or label not in doctor.classes:
         return None
     from PIL import Image
-    probs_logits = doctor.logits(Image.open(db.IMAGES / case["image_path"]), case["crop"])
+    import io
+    probs_logits = doctor.logits(Image.open(io.BytesIO(db.load_image(case["image_path"]))), case["crop"])
     db.add_calibration_points([("expert_audit", case["id"], doctor.classes.index(label), list(probs_logits))])
     return recalibrate(doctor, note=f"expert audit label (case {case['id']})")
 

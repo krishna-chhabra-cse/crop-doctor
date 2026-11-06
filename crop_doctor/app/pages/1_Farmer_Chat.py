@@ -61,7 +61,7 @@ def post_reply(cid: int, a: dict, question: str | None = None) -> None:
 def reassess(cid: int, **kwargs) -> dict:
     case = db.get_case(cid)
     prev = case["assessment"]
-    img = Image.open(db.IMAGES / case["image_path"])
+    img = Image.open(io.BytesIO(db.load_image(case["image_path"])))
     a = calibrated_doctor().assess(img, case["crop"], seed=case["seed"],
                         question_id=kwargs.get("question_id", ss.answers.get("question_id")),
                         option=kwargs.get("option", ss.answers.get("option")),
@@ -145,7 +145,7 @@ for i, m in enumerate(msgs):
     role = {"farmer": "user", "assistant": "assistant", "expert": "assistant"}[m["role"]]
     with st.chat_message(role, avatar="🧑‍🌾" if m["role"] == "expert" else None):
         if m["meta"].get("image"):
-            st.image(str(db.IMAGES / m["meta"]["image"]), width=260)
+            st.image(db.load_image(m["meta"]["image"]), width=260)
         else:
             st.markdown(("**Expert:** " if m["role"] == "expert" else "") + m["text"])
         if m["role"] == "assistant" and m["meta"].get("sources"):

@@ -45,7 +45,7 @@ with tab_q:
         a = case["assessment"]
         with st.container(border=True):
             left, right = st.columns([1, 2])
-            left.image(str(db.IMAGES / case["image_path"]), use_container_width=True)
+            left.image(db.load_image(case["image_path"]), use_container_width=True)
             with right:
                 kind = ("**Random audit:** the assistant answered *" + disease_name(case["model_label"]) +
                         f"* ({case['probability']:.0%}). Please check it." if case["audit"] and case["model_label"]
