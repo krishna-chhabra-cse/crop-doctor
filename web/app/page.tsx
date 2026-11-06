@@ -4,14 +4,30 @@ import Link from "next/link";
 import { useT, type Key } from "@/lib/i18n";
 import { RESULTS as R } from "@/lib/results";
 
-const pct = (x: number) => `${Math.round(x * 100)}%`;
+// Round DOWN so a result is never overstated (99.5% shows as 99%, not 100%).
+const pct = (x: number) => `${Math.floor(x * 100 + 1e-9)}%`;
 
-function Stat({ value, label, note, tone = "brand" }: { value: string; label: string; note: string; tone?: "brand" | "red" }) {
+/* One headline number: tag, big value, a meter that shows the value at a glance, one plain sentence. */
+function Stat({ value, tag, label, note, target, tone = "brand" }: {
+  value: number; tag: string; label: string; note: string; target?: number; tone?: "brand" | "red";
+}) {
+  const red = tone === "red";
   return (
-    <div className="rounded-3xl border border-border bg-surface p-5 shadow-card">
-      <div className={`text-4xl font-extrabold tracking-tight ${tone === "red" ? "text-red" : "text-brand"}`}>{value}</div>
-      <div className="mt-1 font-semibold text-ink">{label}</div>
-      <p className="mt-1 text-sm text-ink-3">{note}</p>
+    <div className="flex flex-col rounded-3xl border border-border bg-surface p-6 shadow-card">
+      <span className={`self-start rounded-full px-2.5 py-0.5 text-xs font-semibold ${red ? "bg-red-soft text-red" : "bg-brand-soft text-brand"}`}>
+        {tag}
+      </span>
+      <div className="mt-4 flex items-baseline gap-3">
+        <span className={`text-5xl font-extrabold tabular-nums tracking-tight ${red ? "text-red" : "text-brand"}`}>{pct(value)}</span>
+        <h3 className="text-lg font-bold leading-snug text-ink">{label}</h3>
+      </div>
+      <div className="relative mt-4 h-2 rounded-full bg-surface-2" aria-hidden="true">
+        <div className={`h-2 rounded-full ${red ? "bg-red" : "bg-brand"}`} style={{ width: pct(value) }} />
+        {target !== undefined && (
+          <div className="absolute -top-1 h-4 w-0.5 rounded-full bg-ink" style={{ left: pct(target) }} title={`Target ${pct(target)}`} />
+        )}
+      </div>
+      <p className="mt-4 text-[15px] leading-relaxed text-ink-2">{note}</p>
     </div>
   );
 }
@@ -131,18 +147,18 @@ export default function Home() {
 
       <section aria-labelledby="why" className="pb-14">
         <h2 id="why" className="text-2xl font-extrabold text-ink">Why honesty matters</h2>
-        <p className="mt-1 max-w-2xl text-ink-2">
-          Measured on {R.fieldTestPhotos} real field photos that none of the models saw during training.
+        <p className="mt-2 max-w-2xl leading-relaxed text-ink-2">
+          Tested on {R.fieldTestPhotos.toLocaleString("en-IN")} real field photos that no model saw while learning.
         </p>
-        <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          <Stat tone="red" value={pct(R.labOnlyFieldAccuracy)} label="A typical lab-trained model"
-            note={`${pct(R.labAccuracy)} right on lab photos, but only ${pct(R.labOnlyFieldAccuracy)} on ${R.labOnlyTestPhotos} field photos, while ${pct(R.labOnlyFieldConfidence)} sure of itself.`} />
-          <Stat value={pct(R.finalFieldAccuracy)} label="Our model's top answer"
-            note={`${pct(R.tanzaniaAccuracy)} on farm photos from Tanzania, ${pct(R.plantdocAccuracy)} on harder, more varied web photos.`} />
-          <Stat value={pct(R.coverage)} label="Shortlist contains the right disease"
-            note={`Target ${pct(R.coverageTarget)}, checked separately for each crop. On average ${R.avgShortlist.toFixed(1)} diseases in the shortlist.`} />
-          <Stat value={pct(R.accuracyWhenAnswered)} label="Right when it answers alone"
-            note={`It answers about ${pct(R.answeredByAssistant)} of photos itself and sends the rest to an expert.`} />
+        <div className="mt-6 grid gap-4 sm:grid-cols-2">
+          <Stat tone="red" tag="The usual way" value={R.labOnlyFieldAccuracy} label="right on real fields"
+            note={`A typical model trained on lab photos is ${pct(R.labAccuracy)} right in the lab, but only ${pct(R.labOnlyFieldAccuracy)} on field photos, while ${pct(R.labOnlyFieldConfidence)} sure of itself.`} />
+          <Stat tag="Crop Doctor" value={R.finalFieldAccuracy} label="first answer right"
+            note={`${pct(R.tanzaniaAccuracy)} on farm photos from Tanzania. ${pct(R.plantdocAccuracy)} on harder, more varied web photos.`} />
+          <Stat tag="Crop Doctor" value={R.coverage} target={R.coverageTarget} label="shortlist has the right disease"
+            note={`We promise ${pct(R.coverageTarget)} (the line) and check it for each crop. The shortlist is usually 1 or 2 diseases.`} />
+          <Stat tag="Crop Doctor" value={R.accuracyWhenAnswered} label="right when it answers alone"
+            note={`It answers ${pct(R.answeredByAssistant)} of photos itself. When unsure, it sends the photo to an expert.`} />
         </div>
       </section>
 

@@ -18,23 +18,40 @@ def main() -> None:
     e8 = json.loads((M / "exp8_final_v2.json").read_text())
     e6 = json.loads((M / "exp6_pipeline.json").read_text())["assistant_on_field_test"]["typical"]
     allv2 = e8["by_source"]["all"]
+    model = {"acc": allv2["v2_accuracy"], "cov": allv2["alpha_0.1"]["coverage"], "set": allv2["alpha_0.1"]["avg_set_size"],
+             "pd_acc": e8["by_source"]["plantdoc"]["v2_accuracy"], "tz_acc": e8["by_source"]["tanzania"]["v2_accuracy"],
+             "pd_cov": e8["by_source"]["plantdoc"]["alpha_0.1"]["coverage"],
+             "tz_cov": e8["by_source"]["tanzania"]["alpha_0.1"]["coverage"]}
+    app = json.loads((config.OUTPUTS_DIR / "app_model.json").read_text())
+    extra = {}
+    if "v3" in app["checkpoint"] and (M / "exp10_something_else.json").exists():
+        # The app runs v3 (Exp 10): show v3's numbers on the same 1,306 test photos.
+        e10 = json.loads((M / "exp10_something_else.json").read_text())
+        ft, src = e10["v3"]["field_test"], e10["v3"]["field_test"]["by_source"]
+        model = {"acc": ft["accuracy"], "cov": ft["coverage"], "set": ft["avg_set_size"],
+                 "pd_acc": src["plantdoc"]["accuracy"], "tz_acc": src["tanzania"]["accuracy"],
+                 "pd_cov": src["plantdoc"]["coverage"], "tz_cov": src["tanzania"]["coverage"]}
+        extra = {"unknownNamedBefore": e10["v2"]["unknown_heldout"]["all"]["named_one_known"],
+                 "unknownNamedNow": e10["v3"]["unknown_heldout"]["all"]["named_one_known"],
+                 "unknownToExpert": e10["v3"]["unknown_heldout"]["all"]["expert"]}
     r = {
         "labAccuracy": e1["lab_test"]["accuracy"],
         "labOnlyFieldAccuracy": e1["field_test"]["accuracy"],
         "labOnlyFieldConfidence": e1["field_test"]["mean_confidence"],
-        "finalFieldAccuracy": round(allv2["v2_accuracy"], 4),
-        "coverage": round(allv2["alpha_0.1"]["coverage"], 4),
+        "finalFieldAccuracy": round(model["acc"], 4),
+        "coverage": round(model["cov"], 4),
         "coverageTarget": 0.9,
-        "avgShortlist": round(allv2["alpha_0.1"]["avg_set_size"], 2),
+        "avgShortlist": round(model["set"], 2),
         "answeredByAssistant": e6["answered_by_assistant"],
         "accuracyWhenAnswered": e6["accuracy_when_answered"],
         "fieldTestPhotos": e8["test_photos"],
         "labOnlyTestPhotos": e1["field_test"]["images"],
         "unknownNamed": round(e8["unknown_probe"]["named_one_disease"], 4),
-        "plantdocAccuracy": round(e8["by_source"]["plantdoc"]["v2_accuracy"], 4),
-        "tanzaniaAccuracy": round(e8["by_source"]["tanzania"]["v2_accuracy"], 4),
-        "plantdocCoverage": round(e8["by_source"]["plantdoc"]["alpha_0.1"]["coverage"], 4),
-        "tanzaniaCoverage": round(e8["by_source"]["tanzania"]["alpha_0.1"]["coverage"], 4),
+        "plantdocAccuracy": round(model["pd_acc"], 4),
+        "tanzaniaAccuracy": round(model["tz_acc"], 4),
+        "plantdocCoverage": round(model["pd_cov"], 4),
+        "tanzaniaCoverage": round(model["tz_cov"], 4),
+        **extra,
     }
     body = ",\n".join(f"  {k}: {v}" for k, v in r.items())
     (config.ROOT / "web" / "lib" / "results.ts").write_text(
