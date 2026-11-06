@@ -17,7 +17,6 @@ import os
 from pathlib import Path
 
 import numpy as np
-from scipy.special import logsumexp
 from PIL import Image
 
 from crop_doctor import config
@@ -78,7 +77,8 @@ class CropDoctor:
         probs = softmax(logits[None, :], self.temperature)[0]
         # Unfamiliar-photo check (Exp 9): energy = log-sum-exp of the crop's raw outputs. Very low = the photo
         # doesn't strongly look like ANY disease the model knows -> an expert, never a confident wrong name.
-        familiarity = float(logsumexp(logits[np.isfinite(logits)]))
+        z = logits[np.isfinite(logits)]
+        familiarity = float(z.max() + np.log(np.exp(z - z.max()).sum()))   # log-sum-exp (no scipy: saves 29 MB)
         thr = (self.cfg.get("unfamiliar") or {}).get("threshold", {}).get(crop)
         result["familiarity"] = round(familiarity, 3)
         u = float(np.random.default_rng(seed).uniform())

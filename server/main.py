@@ -21,12 +21,14 @@ import io
 import json
 import os
 import secrets
+import time
+from collections import defaultdict, deque
 from contextlib import asynccontextmanager
 
-from fastapi import Depends, FastAPI, File, Form, Header, HTTPException, UploadFile
+from fastapi import Depends, FastAPI, File, Form, Header, HTTPException, Request, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import Response
-from PIL import Image, UnidentifiedImageError
+from PIL import Image, ImageOps, UnidentifiedImageError
 from pydantic import BaseModel, Field
 
 from crop_doctor import config
@@ -39,6 +41,22 @@ from crop_doctor.assistant.llm import provider as llm_provider
 SAMPLES_DIR = config.ROOT / "crop_doctor" / "app" / "samples"
 METRICS_DIR = config.OUTPUTS_DIR / "metrics"
 MAX_UPLOAD = 10 * 1024 * 1024
+MAX_SIDE = 1600        # uploads are shrunk to this: the model sees 224 px, and the free server/database are small
+
+
+def shrink_photo(data: bytes) -> bytes:
+    """Upright (phone rotation tag applied) and at most MAX_SIDE px, re-saved as JPEG. A 12 MP phone photo
+    otherwise costs ~100 MB of memory while it's checked, and ~5 MB in the database (free plan: 500 MB)."""
+    with Image.open(io.BytesIO(data)) as im:
+        if max(im.size) <= MAX_SIDE and im.format == "JPEG" and not im.getexif().get(0x0112):
+            return data                                   # already small and upright
+        k = MAX_SIDE / max(im.size)                       # JPEG: decode at 1/2, 1/4 or 1/8 size straight away
+        im.draft("RGB", (int(im.width * k), int(im.height * k)))
+        im = ImageOps.exif_transpose(im).convert("RGB")
+        im.thumbnail((MAX_SIDE, MAX_SIDE), Image.LANCZOS)
+        out = io.BytesIO()
+        im.save(out, format="JPEG", quality=90)
+        return out.getvalue()
 LANGUAGES = ["English", "Hindi", "Tamil", "Telugu", "Marathi", "Kannada", "Bengali", "Punjabi"]
 STATE: dict = {}
 
@@ -64,10 +82,45 @@ def doctor():
     return STATE["doctor"]
 
 
-def require_expert(x_expert_key: str | None = Header(default=None)) -> None:
+def is_expert(x_expert_key: str | None) -> bool:
     expected = os.environ.get("EXPERT_KEY")
-    if expected and not (x_expert_key and hmac.compare_digest(x_expert_key, expected)):
+    return not expected or bool(x_expert_key and hmac.compare_digest(x_expert_key.encode(), expected.encode()))
+
+
+def require_expert(x_expert_key: str | None = Header(default=None)) -> None:
+    if not is_expert(x_expert_key):
         raise HTTPException(401, "Expert key required")
+
+
+# Simple per-visitor rate limit (one server worker, so memory is enough). Protects the free server and the AI
+# quota from scripts; far above what a farmer needs. Key = the visitor's IP address.
+LIMITS = {"photo": (30, 600), "message": (60, 600)}          # (requests, seconds)
+_hits: dict[tuple[str, str], deque] = defaultdict(deque)
+
+
+def rate_limit(kind: str):
+    def check(request: Request) -> None:
+        if os.environ.get("CROP_DOCTOR_NO_RATE_LIMIT"):
+            return
+        # Cloudflare (in front of Render) sets CF-Connecting-IP and overwrites any client value; fall back to
+        # X-Forwarded-For, then the socket address (local runs).
+        ip = (request.headers.get("cf-connecting-ip") or request.headers.get("x-forwarded-for")
+              or (request.client.host if request.client else "?")).split(",")[0].strip()
+        limit, window = LIMITS[kind]
+        q, now = _hits[(kind, ip)], time.monotonic()
+        while q and now - q[0] > window:
+            q.popleft()
+        if len(q) >= limit:
+            raise HTTPException(429, "Too many requests. Please wait a few minutes and try again.")
+        q.append(now)
+    return check
+
+
+def check_language(language: str) -> str:
+    # The language goes into the AI prompt ("Reply in ..."), so only known values are accepted.
+    if language not in LANGUAGES:
+        raise HTTPException(400, f"language must be one of {LANGUAGES}")
+    return language
 
 
 # ---------- views ----------
@@ -119,6 +172,19 @@ def get_case_or_404(cid: int) -> dict:
     return case
 
 
+def owned_case(cid: int, x_session_id: str | None = Header(default=None),
+               x_expert_key: str | None = Header(default=None)) -> dict:
+    """A farmer's case (photo + chat) is private: only the browser session that created it, or an expert, may
+    read or change it. Case numbers count up, so without this anyone could read every farmer's photos.
+    404 (not 403), so strangers can't even tell which case numbers exist."""
+    case = get_case_or_404(cid)
+    mine = bool(x_session_id) and hmac.compare_digest(x_session_id[:64].encode(), case["session_id"].encode())
+    if not mine and not (
+            os.environ.get("EXPERT_KEY") and is_expert(x_expert_key)):
+        raise HTTPException(404, "Case not found")
+    return case
+
+
 # ---------- public ----------
 
 @app.get("/api/health")
@@ -165,12 +231,13 @@ def image(name: str):
     return Response(data, media_type="image/jpeg", headers={"Cache-Control": "private, max-age=86400"})
 
 
-@app.post("/api/cases")
+@app.post("/api/cases", dependencies=[Depends(rate_limit("photo"))])
 async def create_case(crop: str = Form(...), file: UploadFile | None = File(default=None),
                       sample: str | None = Form(default=None), language: str = Form(default="English"),
                       x_session_id: str | None = Header(default=None)):
     if crop not in doctor().crops:
         raise HTTPException(400, f"crop must be one of {doctor().crops}")
+    check_language(language)
     seed = None
     if sample:
         s = next((s for s in json.loads((SAMPLES_DIR / "samples.json").read_text()) if s["file"] == sample), None)
@@ -178,12 +245,13 @@ async def create_case(crop: str = Form(...), file: UploadFile | None = File(defa
             raise HTTPException(404, "Unknown sample")
         data, seed, crop = (SAMPLES_DIR / s["file"]).read_bytes(), s["seed"], s["crop"]
     elif file is not None:
-        data = await file.read()
+        data = await file.read(MAX_UPLOAD + 1)
         if len(data) > MAX_UPLOAD:
             raise HTTPException(413, "Photo too large (max 10 MB)")
         try:
             Image.open(io.BytesIO(data)).verify()
-        except (UnidentifiedImageError, OSError):
+            data = shrink_photo(data)
+        except (UnidentifiedImageError, OSError, Image.DecompressionBombError):
             raise HTTPException(400, "That file is not a photo we can read") from None
     else:
         raise HTTPException(400, "Send a photo or choose a sample")
@@ -193,8 +261,8 @@ async def create_case(crop: str = Form(...), file: UploadFile | None = File(defa
 
 
 @app.get("/api/cases/{cid}")
-def read_case(cid: int):
-    return case_view(get_case_or_404(cid))
+def read_case(case: dict = Depends(owned_case)):
+    return case_view(case)
 
 
 class QuestionAnswer(BaseModel):
@@ -202,9 +270,9 @@ class QuestionAnswer(BaseModel):
     language: str = "English"
 
 
-@app.post("/api/cases/{cid}/question")
-def answer_question(cid: int, body: QuestionAnswer):
-    case = get_case_or_404(cid)
+@app.post("/api/cases/{cid}/question", dependencies=[Depends(rate_limit("message"))])
+def answer_question(cid: int, body: QuestionAnswer, case: dict = Depends(owned_case)):
+    check_language(body.language)
     q = case["assessment"].get("question")
     if case["assessment"].get("status") != "question" or not q:
         raise HTTPException(409, "No question is waiting for an answer")
@@ -219,8 +287,7 @@ class Extent(BaseModel):
 
 
 @app.post("/api/cases/{cid}/extent")
-def answer_extent(cid: int, body: Extent):
-    case = get_case_or_404(cid)
+def answer_extent(cid: int, body: Extent, case: dict = Depends(owned_case)):
     if case["assessment"].get("status") != "diagnosis":
         raise HTTPException(409, "Only for a diagnosis")
     if body.value not in [o["value"] for o in knowledge()["extent_question"]["options"]]:
@@ -234,9 +301,9 @@ class Ask(BaseModel):
     language: str = "English"
 
 
-@app.post("/api/cases/{cid}/messages")
-def ask(cid: int, body: Ask):
-    case = get_case_or_404(cid)
+@app.post("/api/cases/{cid}/messages", dependencies=[Depends(rate_limit("message"))])
+def ask(cid: int, body: Ask, case: dict = Depends(owned_case)):
+    check_language(body.language)
     if case["assessment"].get("status") == "retake":
         raise HTTPException(409, "Please send a new photo first")
     service.ask(cid, body.text.strip(), language=body.language)
@@ -264,7 +331,11 @@ class ExpertAnswer(BaseModel):
 
 @app.post("/api/expert/cases/{cid}", dependencies=[Depends(require_expert)])
 def expert_answer(cid: int, body: ExpertAnswer):
-    get_case_or_404(cid)
+    case = get_case_or_404(cid)
+    # Only a disease of THIS crop: a wrong label would go into the live calibration and skew that crop's threshold.
+    valid = [d for d in doctor().classes if knowledge()["diseases"][d]["crop"] == case["crop"]]
+    if body.label not in valid:
+        raise HTTPException(400, f"label must be one of {valid}")
     run = service.expert_answer(doctor(), cid, body.label, body.note.strip())
     return {"recalibrated": run is not None, "run": run}
 

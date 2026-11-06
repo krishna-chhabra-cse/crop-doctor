@@ -19,6 +19,8 @@ services:
         value: server/assets/app_model.json
       - key: CROP_DOCTOR_LOGITS_DIR
         value: server/assets/logits
+      - key: MALLOC_ARENA_MAX     # glibc: few memory pools for the request threads, so RAM stays under 512 MB
+        value: "2"
       - key: OMP_NUM_THREADS
         value: "1"
       - key: EXPERT_KEY            # password for the expert dashboard; Render generates it, see the dashboard
