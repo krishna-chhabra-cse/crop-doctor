@@ -46,7 +46,8 @@ async def lifespan(_app: FastAPI):
     from crop_doctor.assistant.pipeline import CropDoctor
     from crop_doctor.knowledge.rag import default_retriever
     STATE["doctor"] = CropDoctor(alpha=0.1)
-    service.ensure_calibrated(STATE["doctor"])
+    from crop_doctor.assistant import live_calibration
+    live_calibration.ensure_initialised(STATE["doctor"])     # also resets calibration if the model was updated
     default_retriever()                                        # load embeddings now, not on the first question
     yield
 

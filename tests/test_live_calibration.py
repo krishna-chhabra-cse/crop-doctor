@@ -82,3 +82,16 @@ def test_runs_are_logged_and_reapplied(env):
     lc.ensure_initialised(env)
     assert env.qhat == pytest.approx(runs[-1]["qhat_by_crop"])
     assert np.isfinite(softmax(np.array([[1.0, 2.0, -np.inf]]), env.temperature)).all()
+
+
+def test_model_update_resets_stale_calibration(env, monkeypatch):
+    lc.reset(env, "field")
+    lc.simulate_expert_labels(env, 20, seed=3)
+    n_runs = len(db.calibration_runs())
+    lc.ensure_initialised(env)                     # same model -> keep the expert labels
+    assert len(db.calibration_runs()) == n_runs and len(db.calibration_points()) == 80
+    old = lc.split_logits                          # new model: slightly different outputs for the same photos
+    monkeypatch.setattr(lc, "split_logits", lambda split, doctor: (old(split, doctor)[0] + 0.05, old(split, doctor)[1]))
+    lc.ensure_initialised(env)
+    assert len(db.calibration_runs()) == n_runs + 1 and len(db.calibration_points()) == 60
+    assert "reset to field" in db.calibration_runs()[-1]["note"]

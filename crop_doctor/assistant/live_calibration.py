@@ -124,10 +124,32 @@ def reset(doctor, base: str) -> dict:
     return recalibrate(doctor, note=f"reset to {base} calibration")
 
 
+def stored_points_match_model(doctor, points: list[dict]) -> bool:
+    """Were the stored calibration outputs produced by the CURRENT model?
+
+    The database keeps model outputs (logits), not photos. After a model update, outputs from the old model would
+    give thresholds that don't fit the new one. We compare the first stored lab/field calibration photo with the
+    new model's cached output for that same photo (points are inserted in split order).
+    """
+    for source in ("field_cal", "lab_val"):
+        first = next((p for p in points if p["source"] == source), None)
+        if first is None:
+            continue
+        cached, _ = split_logits(split_for_source(doctor, source), doctor)
+        a, b = np.asarray(first["logits"], float), np.asarray(cached[0], float)
+        return a.shape == b.shape and bool(np.allclose(np.nan_to_num(a, neginf=-1e9), np.nan_to_num(b, neginf=-1e9),
+                                                       atol=1e-3))
+    return True
+
+
 def ensure_initialised(doctor) -> dict:
-    """First start: no points yet -> field calibration. Otherwise reapply the latest settings."""
+    """First start: no points yet -> field calibration. Model changed -> start again from field calibration
+    (expert labels from the old model's outputs no longer apply). Otherwise reapply the latest settings."""
     runs = db.calibration_runs()
-    if not db.calibration_points():
+    points = db.calibration_points()
+    if not points:
+        return reset(doctor, "field")
+    if not stored_points_match_model(doctor, points):
         return reset(doctor, "field")
     last = runs[-1] if runs else recalibrate(doctor, note="startup")
     doctor.set_calibration(last["temperature"], db.run_qhat(last))
