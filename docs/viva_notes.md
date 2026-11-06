@@ -554,3 +554,14 @@ phone → Vercel (Next.js website) → Render (FastAPI + ONNX model) → Supabas
   weights** (56 MB, identical answers on all test photos) and expand them at build time. Retrieval uses an 8-bit
   MiniLM. **Server memory: 685 MB → 294 MB.**
 - Photos and cases are stored in **Supabase Postgres** (survive restarts); expert pages need an **expert key**.
+
+### Whole assistant on the v2 test set (1,306 photos, simulated farmers answer follow-up questions)
+Typical farmer (answers right 80% of the time): the assistant **answers 75.6%** of photos itself, and **94.9%** of
+those answers are right; 21.7% go to an expert; 2.8% are asked to retake the photo. Per source (direct answers):
+Tanzania, answers 90% at 99.6% accuracy; PlantDoc (independent, harder), answers 34% at 80% accuracy and sends the
+rest to an expert. That's the honest behaviour we want: it answers less where it knows less.
+
+### Live links
+- Website (Vercel): https://crop-doctor-snowy.vercel.app
+- API (Render): https://crop-doctor-api.onrender.com/api/health (after the Render setup in docs/DEPLOY.md)
+- Code: private GitHub repo krishna-chhabra-cse/crop-doctor

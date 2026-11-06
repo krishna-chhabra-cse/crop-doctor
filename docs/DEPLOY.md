@@ -34,7 +34,7 @@ The API creates its tables automatically on first start.
 Free-plan behaviour: the API sleeps after 15 minutes without visitors; the first visit then takes about a minute
 (the website shows "Waking up the server…"). Open the site a minute before a demo.
 
-## 3. Vercel: the website
+## 3. Vercel: the website (live at https://crop-doctor-snowy.vercel.app)
 
 Deployed from `web/` with the Vercel CLI. `NEXT_PUBLIC_API_URL` must be the Render address, for example
 `https://crop-doctor-api.onrender.com`. To redeploy after changes:
