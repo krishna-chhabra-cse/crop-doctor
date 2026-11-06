@@ -17,8 +17,10 @@ MONITOR set (field_test). It is only displayed, never used to fit anything.
 """
 from __future__ import annotations
 
+import os
+from pathlib import Path
+
 import numpy as np
-import pandas as pd
 
 from crop_doctor import config
 from crop_doctor.app import db
@@ -33,7 +35,8 @@ LAB = "lab_val"
 FIELD_SOURCES = ("field_cal", "expert_audit", "simulated_expert")
 SPLIT_FOR_SOURCE = {"lab_val": "lab_val", "field_cal": "final_field_cal", "simulated_expert": "final_field_val"}
 MONITOR_SPLIT = "field_test"
-CACHE = config.OUTPUTS_DIR / "live_logits"
+# Cached model outputs per split. The live server ships these files (it has no datasets or PyTorch).
+CACHE = Path(os.environ.get("CROP_DOCTOR_LOGITS_DIR", config.OUTPUTS_DIR / "live_logits"))
 
 
 def split_logits(split: str, doctor) -> tuple[np.ndarray, np.ndarray]:
@@ -42,6 +45,7 @@ def split_logits(split: str, doctor) -> tuple[np.ndarray, np.ndarray]:
     if path.exists():
         d = np.load(path)
         return d["logits"], d["labels"]
+    import pandas as pd
     from torch.utils.data import DataLoader
 
     from crop_doctor.model.common import FrameDataset, eval_transform

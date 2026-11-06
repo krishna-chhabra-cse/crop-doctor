@@ -13,39 +13,42 @@ import argparse
 import json
 import secrets
 
+import os
+from pathlib import Path
+
 import numpy as np
-import torch
 from PIL import Image
 
 from crop_doctor import config
 from crop_doctor.assistant.decision import disease_name, decide, knowledge, urgency
-from crop_doctor.model.common import device, eval_transform, load_trained_model
+from crop_doctor.model.backends import load_backend
 from crop_doctor.model.crops import crop_mask
 from crop_doctor.uncertainty.calibration import softmax
 from crop_doctor.vision_extras import quality_gate, severity
 
-APP_CONFIG = config.OUTPUTS_DIR / "app_model.json"
+# Which model + calibration the app uses. The live server points this at server/assets/app_model.json (ONNX).
+APP_CONFIG = Path(os.environ.get("CROP_DOCTOR_APP_CONFIG", config.OUTPUTS_DIR / "app_model.json"))
 
 
 class CropDoctor:
-    def __init__(self, alpha: float = 0.1, dev: torch.device | None = None):
-        cfg = json.loads(APP_CONFIG.read_text())
-        self.dev = dev or device()
-        self.model, self.classes = load_trained_model(self.dev, config.OUTPUTS_DIR / cfg["checkpoint"])
+    def __init__(self, alpha: float = 0.1, backend=None, app_config: Path | None = None):
+        app_config = Path(app_config or APP_CONFIG)
+        cfg = json.loads(app_config.read_text())
+        self.backend = backend or load_backend(app_config, prefer=os.environ.get("CROP_DOCTOR_BACKEND", "auto"))
+        self.classes = self.backend.classes
+        self.model = getattr(self.backend, "model", None)    # PyTorch model (local only; None with ONNX)
+        self.dev = getattr(self.backend, "dev", None)
         self.temperature = cfg["temperature"]
         self.qhat = cfg["qhat"][str(alpha)]
         self.alpha = alpha
         self.crops = sorted({knowledge()["diseases"][c]["crop"] for c in self.classes})
-        self.tf = eval_transform()
 
     def set_calibration(self, temperature: float, qhat: float) -> None:
         """Live recalibration (expert labels) swaps these two numbers; the network is untouched."""
         self.temperature, self.qhat = float(temperature), float(qhat)
 
-    @torch.no_grad()
     def logits(self, img: Image.Image, crop: str) -> np.ndarray:
-        x = self.tf(img.convert("RGB")).unsqueeze(0).to(self.dev)
-        out = self.model(x).float().cpu().numpy()[0].astype(np.float64)
+        out = self.backend.raw_logits(img).copy()
         out[~crop_mask(self.classes, crop)] = -np.inf          # the farmer told us the crop
         return out
 

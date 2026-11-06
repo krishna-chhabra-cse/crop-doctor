@@ -57,21 +57,37 @@ class Retriever:
         self.texts = [f"{c.title}. {c.section}. {c.text}" for c in self.chunks]
         self.backend = "tfidf"
         if use_embeddings:
-            try:
-                from sentence_transformers import SentenceTransformer
-                self._model = SentenceTransformer(EMBED_MODEL, device="cpu")
-                self._vecs = self._model.encode(self.texts, normalize_embeddings=True)
+            self._encode = self._load_embedder()
+            if self._encode is not None:
+                self._vecs = self._encode(self.texts)
                 self.backend = "embeddings"
-            except Exception:  # noqa: BLE001 - offline / not installed: fall back to keywords
-                pass
         if self.backend == "tfidf":
             from sklearn.feature_extraction.text import TfidfVectorizer
             self._tfidf = TfidfVectorizer(stop_words="english").fit(self.texts)
             self._vecs = self._tfidf.transform(self.texts)
 
+    @staticmethod
+    def _load_embedder():
+        """Same MiniLM model either way: sentence-transformers (PyTorch, local) or fastembed (ONNX, live server)."""
+        def norm(v):
+            v = np.asarray(v, dtype=np.float32)
+            return v / np.linalg.norm(v, axis=1, keepdims=True)
+        try:
+            from sentence_transformers import SentenceTransformer
+            m = SentenceTransformer(EMBED_MODEL, device="cpu")
+            return lambda texts: norm(m.encode(list(texts)))
+        except Exception:  # noqa: BLE001 - not installed (server) or offline
+            pass
+        try:
+            from fastembed import TextEmbedding
+            m = TextEmbedding(EMBED_MODEL)
+            return lambda texts: norm(list(m.embed(list(texts))))
+        except Exception:  # noqa: BLE001 - offline: keyword fallback
+            return None
+
     def _scores(self, query: str) -> np.ndarray:
         if self.backend == "embeddings":
-            q = self._model.encode([query], normalize_embeddings=True)[0]
+            q = self._encode([query])[0]
             return self._vecs @ q                                  # cosine similarity (vectors are normalised)
         return (self._vecs @ self._tfidf.transform([query]).T).toarray().ravel()
 
