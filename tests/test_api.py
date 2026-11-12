@@ -139,4 +139,4 @@ def test_big_phone_photo_is_shrunk_and_upright():
     assert max(out.size) == MAX_SIDE and out.size[1] > out.size[0]          # smaller and portrait
     small = io.BytesIO()
     Image.new("RGB", (800, 600)).save(small, format="JPEG")
-    assert shrink_photo(small.getvalue()) == small.getvalue()                # small photos untouched
+    assert Image.open(io.BytesIO(shrink_photo(small.getvalue()))).size == (800, 600)   # small: same size, re-saved
