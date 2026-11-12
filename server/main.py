@@ -19,16 +19,18 @@ from __future__ import annotations
 import hmac
 import io
 import json
+import logging
 import os
 import secrets
 import time
+import warnings
 from collections import defaultdict, deque
 from contextlib import asynccontextmanager
 
 from fastapi import Depends, FastAPI, File, Form, Header, HTTPException, Request, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import Response
-from PIL import Image, ImageOps, UnidentifiedImageError
+from fastapi.responses import JSONResponse, Response
+from PIL import Image, ImageOps
 from pydantic import BaseModel, Field
 
 from crop_doctor import config
@@ -42,6 +44,10 @@ SAMPLES_DIR = config.ROOT / "crop_doctor" / "app" / "samples"
 METRICS_DIR = config.OUTPUTS_DIR / "metrics"
 MAX_UPLOAD = 10 * 1024 * 1024
 MAX_SIDE = 1600        # uploads are shrunk to this: the model sees 224 px, and the free server/database are small
+MAX_PIXELS = 40_000_000  # bigger pictures are refused BEFORE decoding: a 0.5 MB PNG can unpack to 169 MP = ~2 GB of RAM
+MAX_BODY = MAX_UPLOAD + 1024 * 1024    # the photo upload (POST /api/cases): photo + form fields
+MAX_JSON = 64 * 1024                   # every other request: small JSON
+log = logging.getLogger("crop_doctor")
 
 
 def shrink_photo(data: bytes) -> bytes:
@@ -49,14 +55,95 @@ def shrink_photo(data: bytes) -> bytes:
     otherwise costs ~100 MB of memory while it's checked, and ~5 MB in the database (free plan: 500 MB)."""
     with Image.open(io.BytesIO(data)) as im:
         if max(im.size) <= MAX_SIDE and im.format == "JPEG" and not im.getexif().get(0x0112):
+            im.load()                                     # decode fully now, so a broken file fails here (-> 400)
             return data                                   # already small and upright
         k = MAX_SIDE / max(im.size)                       # JPEG: decode at 1/2, 1/4 or 1/8 size straight away
-        im.draft("RGB", (int(im.width * k), int(im.height * k)))
+        im.draft("RGB", (max(1, int(im.width * k)), max(1, int(im.height * k))))
         im = ImageOps.exif_transpose(im).convert("RGB")
         im.thumbnail((MAX_SIDE, MAX_SIDE), Image.LANCZOS)
         out = io.BytesIO()
         im.save(out, format="JPEG", quality=90)
         return out.getvalue()
+
+
+def read_photo(data: bytes) -> bytes:
+    """Check an uploaded file is a readable photo of sensible size, then shrink it. Anything wrong -> 400."""
+    try:
+        with warnings.catch_warnings():
+            warnings.simplefilter("error", Image.DecompressionBombWarning)
+            with Image.open(io.BytesIO(data)) as im:      # reads the header only: size is known, nothing decoded
+                if im.width * im.height > MAX_PIXELS:
+                    raise HTTPException(400, "Photo too large (max 40 megapixels)")
+                if min(im.size) < 32 or max(im.size) > 10 * min(im.size):   # a strip, not a leaf photo
+                    raise HTTPException(400, "That doesn't look like a leaf photo (too small or too narrow)")
+                im.verify()
+            return shrink_photo(data)
+    except HTTPException:
+        raise
+    except Exception:  # noqa: BLE001 - any decoding problem (truncated, bad checksum, bomb...) is the file's fault
+        raise HTTPException(400, "That file is not a photo we can read") from None
+
+
+class Guard:
+    """Outer safety net (pure ASGI, runs before routing and auth, inside CORS so its replies carry CORS headers):
+    - request bodies over the limit get 413 without being read into memory (by Content-Length, and by counting
+      the bytes as they arrive when no length is given);
+    - an unexpected error becomes a JSON 500 the website can show, instead of a reply without CORS headers that
+      the browser reports as "Can't reach the server"."""
+
+    def __init__(self, app):
+        self.app = app
+
+    async def __call__(self, scope, receive, send):
+        if scope["type"] != "http":
+            return await self.app(scope, receive, send)
+        limit = MAX_BODY if scope["path"] == "/api/cases" else MAX_JSON
+        started = blocked = False
+        received = 0
+
+        async def guarded_send(message):
+            nonlocal started
+            if blocked:
+                return                                    # we already answered 413: drop the app's own reply
+            started = started or message["type"] == "http.response.start"
+            await send(message)
+
+        async def reply(status: int, detail: str):
+            await JSONResponse({"detail": detail}, status_code=status)(scope, receive, guarded_send)
+
+        length = dict(scope["headers"]).get(b"content-length")
+        if length is not None and (not length.isdigit() or int(length) > limit):
+            return await reply(413, "Request too large")
+
+        async def counted_receive():
+            nonlocal received, blocked
+            message = await receive()
+            if message["type"] == "http.request" and not blocked:
+                received += len(message.get("body", b""))
+                if received > limit:
+                    if not started:
+                        await reply(413, "Request too large")
+                    blocked = True
+            if blocked:
+                return {"type": "http.disconnect"}        # the app stops reading; its reply is dropped
+            return message
+
+        try:
+            await self.app(scope, counted_receive, guarded_send)
+        except Exception:
+            if blocked:
+                return                                    # the app tripped over the cut-off body: 413 already sent
+            log.exception("Unhandled error on %s %s", scope.get("method"), scope["path"])
+            if started:
+                raise
+            await reply(500, "Something went wrong on the server. Please try again.")
+
+
+def finite(value):
+    """JSON has no "infinity" (an empty calibration gives q-hat = inf): show it as null, also inside dicts."""
+    if isinstance(value, dict):
+        return {k: finite(v) for k, v in value.items()}
+    return None if isinstance(value, float) and value == float("inf") else value
 LANGUAGES = ["English", "Hindi", "Tamil", "Telugu", "Marathi", "Kannada", "Bengali", "Punjabi"]
 STATE: dict = {}
 
@@ -74,6 +161,7 @@ async def lifespan(_app: FastAPI):
 
 app = FastAPI(title="Crop Doctor API", version="2.0", lifespan=lifespan)
 origins = [o.strip() for o in os.environ.get("ALLOWED_ORIGINS", "*").split(",") if o.strip()]
+app.add_middleware(Guard)               # added first = runs inside CORS, so its 413/500 replies get CORS headers
 app.add_middleware(CORSMiddleware, allow_origins=origins, allow_methods=["*"], allow_headers=["*"],
                    allow_origin_regex=os.environ.get("ALLOWED_ORIGIN_REGEX"))
 
@@ -248,11 +336,7 @@ async def create_case(crop: str = Form(...), file: UploadFile | None = File(defa
         data = await file.read(MAX_UPLOAD + 1)
         if len(data) > MAX_UPLOAD:
             raise HTTPException(413, "Photo too large (max 10 MB)")
-        try:
-            Image.open(io.BytesIO(data)).verify()
-            data = shrink_photo(data)
-        except (UnidentifiedImageError, OSError, Image.DecompressionBombError):
-            raise HTTPException(400, "That file is not a photo we can read") from None
+        data = read_photo(data)
     else:
         raise HTTPException(400, "Send a photo or choose a sample")
     session = (x_session_id or secrets.token_hex(6))[:64]
@@ -324,6 +408,9 @@ def expert_queue():
     return out
 
 
+EXPERT_SPECIAL = ["other", "unusable"]
+
+
 class ExpertAnswer(BaseModel):
     label: str
     note: str = Field(default="", max_length=2000)
@@ -333,11 +420,12 @@ class ExpertAnswer(BaseModel):
 def expert_answer(cid: int, body: ExpertAnswer):
     case = get_case_or_404(cid)
     # Only a disease of THIS crop: a wrong label would go into the live calibration and skew that crop's threshold.
-    valid = [d for d in doctor().classes if knowledge()["diseases"][d]["crop"] == case["crop"]]
+    # "other" (a problem not in our list) and "unusable" (photo can't be judged) are stored, never calibrated on.
+    valid = [d for d in doctor().classes if knowledge()["diseases"][d]["crop"] == case["crop"]] + EXPERT_SPECIAL
     if body.label not in valid:
         raise HTTPException(400, f"label must be one of {valid}")
     run = service.expert_answer(doctor(), cid, body.label, body.note.strip())
-    return {"recalibrated": run is not None, "run": run}
+    return {"recalibrated": run is not None, "run": finite(run) if run else None}
 
 
 @app.get("/api/expert/trust", dependencies=[Depends(require_expert)])
@@ -345,11 +433,8 @@ def trust():
     runs = db.calibration_runs()
     resets = [i for i, r in enumerate(runs) if (r["note"] or "").startswith("reset")]
     since = runs[resets[-1]:] if resets else runs
-    def clean(r):  # JSON has no "infinity": show it as null
-        fix = lambda v: None if isinstance(v, float) and v == float("inf") else v  # noqa: E731
-        return {k: ({kk: fix(vv) for kk, vv in v.items()} if isinstance(v, dict) else fix(v)) for k, v in r.items()}
-    return {"current": clean(runs[-1]) if runs else None, "since_reset": [clean(r) for r in since],
-            "all": [clean(r) for r in runs[-200:]]}
+    return {"current": finite(runs[-1]) if runs else None, "since_reset": [finite(r) for r in since],
+            "all": [finite(r) for r in runs[-200:]]}
 
 
 class CalibrationAction(BaseModel):

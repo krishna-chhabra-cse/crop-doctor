@@ -8,7 +8,7 @@ import type { CalibrationRun } from "@/lib/api";
 const W = 420, H = 230, PAD = { l: 40, r: 12, t: 14, b: 38 };
 const SERIES = [
   { key: "monitor_coverage", label: "Shortlist contains right disease", color: "var(--brand)" },
-  { key: "monitor_answered", label: "Answered without expert", color: "var(--blue)" },
+  { key: "monitor_answered", label: "Answered without expert", color: "var(--ask)" },
 ] as const;
 
 export default function TrustChart({ runs }: { runs: CalibrationRun[] }) {

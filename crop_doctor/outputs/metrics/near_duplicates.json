@@ -1,0 +1,466 @@
+{
+  "method": {
+    "hash": "dHash 64 bits, 4 rotations",
+    "max_differing_bits": 4,
+    "confirm": "32x32 grey thumbnail correlation > 0.9 (best rotation)"
+  },
+  "comparisons": {
+    "field_test[plantdoc] vs field_train[plantdoc]": {
+      "query_photos": 476,
+      "reference_photos": 285,
+      "candidate_pairs": 19,
+      "confirmed_pairs": 19,
+      "query_photos_with_confirmed_twin": 19,
+      "confirmed_pairs_with_different_label": 7
+    },
+    "field_test[plantdoc] vs field_val[plantdoc]": {
+      "query_photos": 476,
+      "reference_photos": 95,
+      "candidate_pairs": 4,
+      "confirmed_pairs": 3,
+      "query_photos_with_confirmed_twin": 3,
+      "confirmed_pairs_with_different_label": 2
+    },
+    "field_test[plantdoc] vs field_cal[plantdoc]": {
+      "query_photos": 476,
+      "reference_photos": 95,
+      "candidate_pairs": 2,
+      "confirmed_pairs": 2,
+      "query_photos_with_confirmed_twin": 2,
+      "confirmed_pairs_with_different_label": 1
+    },
+    "field_test[tanzania] vs field_train[tanzania]": {
+      "query_photos": 830,
+      "reference_photos": 3600,
+      "candidate_pairs": 11,
+      "confirmed_pairs": 5,
+      "query_photos_with_confirmed_twin": 4,
+      "confirmed_pairs_with_different_label": 0
+    },
+    "field_test[tanzania] vs field_val[tanzania]": {
+      "query_photos": 830,
+      "reference_photos": 450,
+      "candidate_pairs": 11,
+      "confirmed_pairs": 7,
+      "query_photos_with_confirmed_twin": 7,
+      "confirmed_pairs_with_different_label": 0
+    },
+    "field_test[tanzania] vs field_cal[tanzania]": {
+      "query_photos": 830,
+      "reference_photos": 450,
+      "candidate_pairs": 7,
+      "confirmed_pairs": 5,
+      "query_photos_with_confirmed_twin": 5,
+      "confirmed_pairs_with_different_label": 0
+    },
+    "field_test[plantdoc] vs field_train[tomato_village]": {
+      "query_photos": 476,
+      "reference_photos": 1450,
+      "candidate_pairs": 0,
+      "confirmed_pairs": 0,
+      "query_photos_with_confirmed_twin": 0,
+      "confirmed_pairs_with_different_label": 0
+    },
+    "field_cal[tanzania] vs field_train[tanzania]": {
+      "query_photos": 450,
+      "reference_photos": 3600,
+      "candidate_pairs": 45,
+      "confirmed_pairs": 27,
+      "query_photos_with_confirmed_twin": 24,
+      "confirmed_pairs_with_different_label": 0
+    },
+    "field_val[tanzania] vs field_train[tanzania]": {
+      "query_photos": 450,
+      "reference_photos": 3600,
+      "candidate_pairs": 74,
+      "confirmed_pairs": 43,
+      "query_photos_with_confirmed_twin": 34,
+      "confirmed_pairs_with_different_label": 0
+    },
+    "field_cal[tanzania] vs field_val[tanzania]": {
+      "query_photos": 450,
+      "reference_photos": 450,
+      "candidate_pairs": 14,
+      "confirmed_pairs": 6,
+      "query_photos_with_confirmed_twin": 6,
+      "confirmed_pairs_with_different_label": 0
+    },
+    "field_cal[plantdoc] vs field_train[plantdoc]": {
+      "query_photos": 95,
+      "reference_photos": 285,
+      "candidate_pairs": 2,
+      "confirmed_pairs": 2,
+      "query_photos_with_confirmed_twin": 2,
+      "confirmed_pairs_with_different_label": 1
+    },
+    "field_val[plantdoc] vs field_train[plantdoc]": {
+      "query_photos": 95,
+      "reference_photos": 285,
+      "candidate_pairs": 0,
+      "confirmed_pairs": 0,
+      "query_photos_with_confirmed_twin": 0,
+      "confirmed_pairs_with_different_label": 0
+    },
+    "field_cal[plantdoc] vs field_val[plantdoc]": {
+      "query_photos": 95,
+      "reference_photos": 95,
+      "candidate_pairs": 1,
+      "confirmed_pairs": 1,
+      "query_photos_with_confirmed_twin": 1,
+      "confirmed_pairs_with_different_label": 0
+    }
+  },
+  "plantdoc_test_twins": [
+    {
+      "test": "plantdoc/test/Tomato leaf bacterial spot/07.17.18-Common_Tomato_Diseases_Canker-258x300.jpg",
+      "test_label": "tomato_bacterial_spot",
+      "twin": "plantdoc/train/Tomato leaf bacterial spot/bacterial-canker3x2400-2ia1kgd.jpg",
+      "twin_label": "tomato_bacterial_spot",
+      "twin_split": "field_train",
+      "bits": 0,
+      "corr": 1.0
+    },
+    {
+      "test": "plantdoc/train/Potato leaf early blight/backus-045-potato-blight.jpg",
+      "test_label": "potato_early_blight",
+      "twin": "plantdoc/train/Tomato leaf late blight/a7710b5901ba1f8e9759ef7576cd9f09.jpg",
+      "twin_label": "tomato_late_blight",
+      "twin_split": "field_train",
+      "bits": 0,
+      "corr": 1.0
+    },
+    {
+      "test": "plantdoc/train/Potato leaf late blight/IMG_5813-1024x768.jpg",
+      "test_label": "potato_late_blight",
+      "twin": "plantdoc/train/Tomato leaf late blight/IMG_5813.jpg",
+      "twin_label": "tomato_late_blight",
+      "twin_split": "field_train",
+      "bits": 0,
+      "corr": 1.0
+    },
+    {
+      "test": "plantdoc/train/Potato leaf late blight/Jessore-potato-late-blight-8-2h2fdkl.jpg",
+      "test_label": "potato_late_blight",
+      "twin": "plantdoc/train/Tomato leaf late blight/symptoms_of_late_blight_0.jpg",
+      "twin_label": "tomato_late_blight",
+      "twin_split": "field_train",
+      "bits": 0,
+      "corr": 1.0
+    },
+    {
+      "test": "plantdoc/train/Potato leaf late blight/LB_potato_leaf_topside.jpg",
+      "test_label": "potato_late_blight",
+      "twin": "plantdoc/train/Potato leaf late blight/PotatoLateBlight2.jpg",
+      "twin_label": "potato_late_blight",
+      "twin_split": "field_train",
+      "bits": 1,
+      "corr": 1.0
+    },
+    {
+      "test": "plantdoc/train/Potato leaf late blight/b3a52d4eda0deedc34260c4dee847a5b.jpg",
+      "test_label": "potato_late_blight",
+      "twin": "plantdoc/train/Potato leaf late blight/early_blight.jpg",
+      "twin_label": "potato_late_blight",
+      "twin_split": "field_train",
+      "bits": 0,
+      "corr": 1.0
+    },
+    {
+      "test": "plantdoc/train/Tomato Early blight leaf/Early-bligh_t.jpg",
+      "test_label": "tomato_early_blight",
+      "twin": "plantdoc/train/Tomato Early blight leaf/Early-blight.jpg",
+      "twin_label": "tomato_early_blight",
+      "twin_split": "field_train",
+      "bits": 0,
+      "corr": 1.0
+    },
+    {
+      "test": "plantdoc/train/Tomato Early blight leaf/Early_Blight_of_Tomato1687.jpg",
+      "test_label": "tomato_early_blight",
+      "twin": "plantdoc/train/Potato leaf early blight/2OBH_29_Gardening_early_blight.jpg",
+      "twin_label": "potato_early_blight",
+      "twin_split": "field_train",
+      "bits": 0,
+      "corr": 0.998
+    },
+    {
+      "test": "plantdoc/train/Tomato Early blight leaf/p1020084s.jpg",
+      "test_label": "tomato_early_blight",
+      "twin": "plantdoc/train/Tomato leaf late blight/tomato_late-blight_04_zoom.jpg",
+      "twin_label": "tomato_late_blight",
+      "twin_split": "field_train",
+      "bits": 0,
+      "corr": 1.0
+    },
+    {
+      "test": "plantdoc/train/Tomato Septoria leaf spot/5c77186a4ea326e5495c9d03cd89ce16.jpg",
+      "test_label": "tomato_septoria",
+      "twin": "plantdoc/train/Tomato Septoria leaf spot/eb56b488e349c2de423ab6afbcc4bd5b.jpg",
+      "twin_label": "tomato_septoria",
+      "twin_split": "field_train",
+      "bits": 0,
+      "corr": 0.995
+    },
+    {
+      "test": "plantdoc/train/Tomato Septoria leaf spot/caf212ccf4696675469a0beaa9e57213.jpg",
+      "test_label": "tomato_septoria",
+      "twin": "plantdoc/train/Potato leaf early blight/IMG_9055.JPG.jpg",
+      "twin_label": "potato_early_blight",
+      "twin_split": "field_train",
+      "bits": 0,
+      "corr": 1.0
+    },
+    {
+      "test": "plantdoc/train/Tomato Septoria leaf spot/tomato-septoria-3-500x384.jpg",
+      "test_label": "tomato_septoria",
+      "twin": "plantdoc/train/Tomato Septoria leaf spot/tomato-septoria-3.jpg",
+      "twin_label": "tomato_septoria",
+      "twin_split": "field_train",
+      "bits": 0,
+      "corr": 1.0
+    },
+    {
+      "test": "plantdoc/train/Tomato Septoria leaf spot/tomato-septoria-5.jpg",
+      "test_label": "tomato_septoria",
+      "twin": "plantdoc/train/Tomato Septoria leaf spot/tomato-septoria-5-500x384.jpg",
+      "twin_label": "tomato_septoria",
+      "twin_split": "field_train",
+      "bits": 0,
+      "corr": 1.0
+    },
+    {
+      "test": "plantdoc/train/Tomato Septoria leaf spot/tomatofactsheet.png.png",
+      "test_label": "tomato_septoria",
+      "twin": "plantdoc/train/Tomato Septoria leaf spot/Septoria-Tomato.jpg",
+      "twin_label": "tomato_septoria",
+      "twin_split": "field_train",
+      "bits": 0,
+      "corr": 0.995
+    },
+    {
+      "test": "plantdoc/train/Tomato leaf bacterial spot/BCH%20medium%20thumbnail%20for%20upload%20%2814%29.jpg",
+      "test_label": "tomato_bacterial_spot",
+      "twin": "plantdoc/train/Tomato leaf bacterial spot/BCH%20small%20thumbnail%20for%20upload%20%2814%29.jpg",
+      "twin_label": "tomato_bacterial_spot",
+      "twin_split": "field_train",
+      "bits": 0,
+      "corr": 1.0
+    },
+    {
+      "test": "plantdoc/train/Tomato leaf bacterial spot/bacterialspottomato2.jpg",
+      "test_label": "tomato_bacterial_spot",
+      "twin": "plantdoc/train/Tomato leaf bacterial spot/Figure-1-6.jpg",
+      "twin_label": "tomato_bacterial_spot",
+      "twin_split": "field_train",
+      "bits": 0,
+      "corr": 1.0
+    },
+    {
+      "test": "plantdoc/train/Tomato leaf late blight/20150619d.jpg",
+      "test_label": "tomato_late_blight",
+      "twin": "plantdoc/train/Tomato leaf late blight/IMG_5360.jpg",
+      "twin_label": "tomato_late_blight",
+      "twin_split": "field_train",
+      "bits": 0,
+      "corr": 1.0
+    },
+    {
+      "test": "plantdoc/train/Tomato leaf late blight/TomatoLateBlight-3-Underside-2ebj05b-300x225.jpg",
+      "test_label": "tomato_late_blight",
+      "twin": "plantdoc/train/Tomato leaf late blight/symptoms_of_late_blight.jpg2__0.jpg",
+      "twin_label": "tomato_late_blight",
+      "twin_split": "field_train",
+      "bits": 0,
+      "corr": 1.0
+    },
+    {
+      "test": "plantdoc/train/Tomato leaf yellow virus/Tomato2.jpg",
+      "test_label": "tomato_yellow_curl_virus",
+      "twin": "plantdoc/train/Tomato leaf mosaic virus/ab40cce958c60d8b6e0ec2e4fdb8f526.jpg",
+      "twin_label": "tomato_mosaic_virus",
+      "twin_split": "field_train",
+      "bits": 0,
+      "corr": 0.997
+    },
+    {
+      "test": "plantdoc/train/Potato leaf early blight/45035_1.jpg",
+      "test_label": "potato_early_blight",
+      "twin": "plantdoc/train/Potato leaf late blight/Late+blight+on+potato.jpg",
+      "twin_label": "potato_late_blight",
+      "twin_split": "field_val",
+      "bits": 1,
+      "corr": 0.996
+    },
+    {
+      "test": "plantdoc/train/Tomato Septoria leaf spot/Sept9-300x225.jpg",
+      "test_label": "tomato_septoria",
+      "twin": "plantdoc/train/Tomato leaf bacterial spot/FS547-4-big.jpg",
+      "twin_label": "tomato_bacterial_spot",
+      "twin_split": "field_val",
+      "bits": 1,
+      "corr": 0.999
+    },
+    {
+      "test": "plantdoc/train/Tomato leaf bacterial spot/bact-spot-leaf-big.jpg",
+      "test_label": "tomato_bacterial_spot",
+      "twin": "plantdoc/train/Tomato leaf bacterial spot/TomatoBacterialSpot2.jpg",
+      "twin_label": "tomato_bacterial_spot",
+      "twin_split": "field_val",
+      "bits": 2,
+      "corr": 0.952
+    },
+    {
+      "test": "plantdoc/train/Tomato Early blight leaf/3606630.jpg",
+      "test_label": "tomato_early_blight",
+      "twin": "plantdoc/train/Tomato Early blight leaf/early-blight-pp-labeled_orig.jpg",
+      "twin_label": "tomato_early_blight",
+      "twin_split": "field_cal",
+      "bits": 1,
+      "corr": 0.967
+    },
+    {
+      "test": "plantdoc/train/Tomato leaf late blight/LBleaf2INIA_0.jpg",
+      "test_label": "tomato_late_blight",
+      "twin": "plantdoc/train/Potato leaf early blight/Blght.jpg",
+      "twin_label": "potato_early_blight",
+      "twin_split": "field_cal",
+      "bits": 0,
+      "corr": 1.0
+    }
+  ],
+  "summary": {
+    "plantdoc_test_photos_with_twin": 24,
+    "plantdoc_test_photos_with_twin_different_label": 10,
+    "tanzania_test_photos_with_twin": 16,
+    "calibration_photos_with_twin_in_train": {
+      "plantdoc": 2,
+      "tanzania": 24
+    }
+  },
+  "sensitivity": {
+    "v2": {
+      "all": {
+        "with_twins": {
+          "photos": 1306,
+          "accuracy": 0.8744,
+          "coverage": 0.8989,
+          "avg_set_size": 1.511
+        },
+        "without_twins": {
+          "photos": 1266,
+          "accuracy": 0.8752,
+          "coverage": 0.9013,
+          "avg_set_size": 1.514
+        },
+        "without_twins_and_recalibrated": {
+          "photos": 1266,
+          "accuracy": 0.8752,
+          "coverage": 0.9194,
+          "avg_set_size": 1.572
+        }
+      },
+      "plantdoc": {
+        "with_twins": {
+          "photos": 476,
+          "accuracy": 0.6681,
+          "coverage": 0.8866,
+          "avg_set_size": 2.542
+        },
+        "without_twins": {
+          "photos": 452,
+          "accuracy": 0.6637,
+          "coverage": 0.8916,
+          "avg_set_size": 2.584
+        },
+        "without_twins_and_recalibrated": {
+          "photos": 452,
+          "accuracy": 0.6637,
+          "coverage": 0.9049,
+          "avg_set_size": 2.701
+        }
+      },
+      "tanzania": {
+        "with_twins": {
+          "photos": 830,
+          "accuracy": 0.9928,
+          "coverage": 0.906,
+          "avg_set_size": 0.919
+        },
+        "without_twins": {
+          "photos": 814,
+          "accuracy": 0.9926,
+          "coverage": 0.9066,
+          "avg_set_size": 0.92
+        },
+        "without_twins_and_recalibrated": {
+          "photos": 814,
+          "accuracy": 0.9926,
+          "coverage": 0.9275,
+          "avg_set_size": 0.945
+        }
+      }
+    },
+    "v3": {
+      "all": {
+        "with_twins": {
+          "photos": 1306,
+          "accuracy": 0.8645,
+          "coverage": 0.9051,
+          "avg_set_size": 1.662
+        },
+        "without_twins": {
+          "photos": 1266,
+          "accuracy": 0.8657,
+          "coverage": 0.906,
+          "avg_set_size": 1.665
+        },
+        "without_twins_and_recalibrated": {
+          "photos": 1266,
+          "accuracy": 0.8657,
+          "coverage": 0.9028,
+          "avg_set_size": 1.618
+        }
+      },
+      "plantdoc": {
+        "with_twins": {
+          "photos": 476,
+          "accuracy": 0.6366,
+          "coverage": 0.8971,
+          "avg_set_size": 2.943
+        },
+        "without_twins": {
+          "photos": 452,
+          "accuracy": 0.6327,
+          "coverage": 0.8982,
+          "avg_set_size": 2.991
+        },
+        "without_twins_and_recalibrated": {
+          "photos": 452,
+          "accuracy": 0.6327,
+          "coverage": 0.8938,
+          "avg_set_size": 2.865
+        }
+      },
+      "tanzania": {
+        "with_twins": {
+          "photos": 830,
+          "accuracy": 0.9952,
+          "coverage": 0.9096,
+          "avg_set_size": 0.928
+        },
+        "without_twins": {
+          "photos": 814,
+          "accuracy": 0.9951,
+          "coverage": 0.9103,
+          "avg_set_size": 0.929
+        },
+        "without_twins_and_recalibrated": {
+          "photos": 814,
+          "accuracy": 0.9951,
+          "coverage": 0.9079,
+          "avg_set_size": 0.926
+        }
+      }
+    }
+  }
+}

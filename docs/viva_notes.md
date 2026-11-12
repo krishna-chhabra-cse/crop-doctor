@@ -30,6 +30,12 @@ Tomato spider mites was dropped: PlantDoc has only 2 field photos of it, too few
     because we can't know the true label. This is concrete evidence of PlantDoc's label noise.
   - Some PlantDoc photos were in both its original train and test folders. If we hadn't removed
     them, a photo could be in the calibration pool and the test set at once, leaking the answer.
+  - **What MD5 misses (found later, Day 10 audit):** MD5 only catches *byte-identical* copies. The same web picture
+    saved at another size or quality has different bytes, so MD5 can't see it. A later perceptual-hash check (a
+    fingerprint of what the photo *looks like*) found that **24 of the 476 PlantDoc test photos have a resized twin**
+    in field_pool, and **10 of those twins have a different label** (e.g. the same photo is potato late blight in
+    the test set and tomato late blight in training): more PlantDoc label noise. So we removed *exact* copies only,
+    not every copy. The effect on the results is tiny (see "Near-duplicate audit" in Day 9).
 - **field_pool vs field_test (50/50).** field_pool simulates expert-labelled photos for the main
   experiment (recalibrate with 10, 25, 50... labels). field_test is kept untouched so the results are honest.
 
@@ -281,7 +287,9 @@ somewhat noisy. Per-class coverage isn't guaranteed. Tomato remains harder than 
 
 **Likely questions**
 - *Isn't training on field photos cheating?* No. They come from field_pool, the simulated "expert labels
-  collected so far". field_test (476 photos) was never used for training, choosing or calibrating.
+  collected so far". field_test (476 photos) was never used for training, choosing or calibrating. (One caveat: 24
+  test photos have a resized copy in field_pool, which MD5 couldn't catch; removing them changes accuracy by < 0.5
+  points. See "Near-duplicate audit" in Day 9.)
 - *Why ConvNeXt?* It was chosen on field_val (61% vs 54%), not on the test set. Bigger pretraining data
   generally gives more robust features.
 - *Why is ECE higher (0.10) than Day 3's 0.05?* Temperature is fitted on only 95 photos here (vs 475), and the
@@ -507,7 +515,8 @@ What our checks found (say these, they show rigour):
 - **Tanzania advertises 58,709 images; only ~38,600 are unique.** Early blight is only **35% unique**: one photo
   appears **350 times**. A naive random split would put copies of the same photo in train and test and inflate
   the score. We de-duplicated by checksum *before* sampling, and also removed 70 test photos with a near-identical
-  twin in training (perceptual hash).
+  twin in training (perceptual hash). That check was too narrow (test vs train only, no rotations, calibration and
+  validation not checked); the later audit below found a few more twins.
 - **Tomato-Village isn't field data**: the leaves were picked and photographed on paper, and some are rotated
   copies (black corners). Its own train/test split leaks: ~1,600 photos have a near-twin in another split. So we use
   it only for training and claim no test results on it.
@@ -518,7 +527,7 @@ ConvNeXt-Tiny, 10 epochs × 16,000 photos; each batch 40% lab / 60% field; class
 weights (rare classes drawn more often, without repeating a 16-photo class hundreds of times); strong augmentation;
 one-cycle learning rate; best epoch chosen by **macro-F1 on field_val** (every class counts equally): epoch 8, 0.719.
 
-### Results on 1,306 held-out field photos (never used for training, choosing or calibrating)
+### Results on 1,306 held-out field photos (never used for training, choosing or calibrating; 40 have a near-twin in those splits, see the audit below)
 | | v1 app model | **v2** |
 |---|---|---|
 | All | 61.9% | **87.4%** (macro-F1 0.59 → 0.73) |
@@ -528,6 +537,40 @@ one-cycle learning rate; best epoch chosen by **macro-F1 on field_val** (every c
 **Be honest about the 99%:** Tanzania test photos come from the same farms and phones as its training photos, so
 that number is "in-distribution". PlantDoc is the independent test, and there v2 improves only slightly. More
 *diverse* field data, not just more of the same, is what would move it.
+
+### Near-duplicate audit: how independent is the test set? (added on Day 10)
+`python -m crop_doctor.data.near_duplicates` → `outputs/metrics/near_duplicates.json`. Every photo gets a perceptual
+hash at 4 rotations; a close match is then **confirmed** only if the two small thumbnails are almost identical (a hash
+match alone can be a coincidence). The splits were **not** changed; this measures how much it matters.
+
+| What we looked for | Found |
+|---|---|
+| PlantDoc test photo with a twin in train / val / cal | **24 of 476** (19 train, 3 val, 2 cal); **10 twins have a different label** |
+| Tanzania test photo with a twin in train / val / cal | **16 of 830** (4 train, 7 val, 5 cal); all same label |
+| Calibration photo with a twin in training | 24 of 450 Tanzania, 2 of 95 PlantDoc |
+| PlantDoc test vs Tomato-Village training | 0 |
+
+The PlantDoc twins are the same web picture at another size (MD5 can't see that). The Tanzania twins are burst shots
+of the same leaf, some turned 90°.
+
+**Does it change the results?** (v3 app model, same temperature and thresholds as the app)
+| field_test | with twins (1,306 photos) | without twins (1,266) |
+|---|---|---|
+| Accuracy | 86.5% | 86.6% |
+| PlantDoc accuracy | 63.7% | 63.3% |
+| Tanzania accuracy | 99.5% | 99.5% |
+| Coverage (target 90%) | 90.5% | 90.6% |
+| PlantDoc coverage | 89.7% | 89.8% |
+
+v2 PlantDoc accuracy: 66.8% → 66.4%. Refitting the thresholds without the 26 calibration twins and testing without the
+test twins gives 90.3% coverage (v3). **So the twins move every number by less than half a point**: for accuracy that's
+about 2 photos, and coverage already moves ±1 point just from the randomised-APS coin flips. The headline results stand.
+
+**What to say:** "MD5 removed exact copies only. A later perceptual-hash audit found 24 PlantDoc and 16 Tanzania test
+photos with a resized or rotated twin in the training, validation or calibration photos. Removing them changes
+accuracy and coverage by less than half a point. Limitation: the hash only finds close copies; a different photo of
+the same leaf or plant can still be on both sides. Next time we'd group near-copies *before* splitting, as we already
+did for Tomato-Village in v3."
 
 ### Mondrian (per-crop) conformal: fixing a hidden coverage problem
 With one shared threshold, coverage was 89% overall, but only **82% on PlantDoc** (93% on Tanzania): the

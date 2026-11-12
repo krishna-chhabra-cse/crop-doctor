@@ -1,8 +1,13 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { api, ApiError, API_URL, type CaseView, type Meta } from "@/lib/api";
+import { api, API_URL, errorKey, type CaseView, type Meta } from "@/lib/api";
 import { useT, type Key } from "@/lib/i18n";
+import {
+  Camera, Check, ChevronDown, CircleCheck, CloudFog, Focus, Image as ImageIcon, Info, Leaf, LoaderCircle, Moon, RotateCcw,
+  ScanSearch, Sun, Upload, X, ZoomOut, type LucideIcon,
+} from "lucide-react";
+import { shrinkPhoto } from "@/lib/photo";
 
 const CROPS: Record<string, { label: Key; local: string; en: string; emoji: string }> = {
   tomato: { label: "tomato", local: "टमाटर", en: "Tomato", emoji: "🍅" },
@@ -13,21 +18,19 @@ const NATIVE: Record<string, string> = {
   English: "English", Hindi: "हिन्दी", Tamil: "தமிழ்", Telugu: "తెలుగు", Marathi: "मराठी",
   Kannada: "ಕನ್ನಡ", Bengali: "বাংলা", Punjabi: "ਪੰਜਾਬੀ",
 };
-const STEPS: { icon: string; text: Key }[] = [
-  { icon: "🔍", text: "s1" },
-  { icon: "🍃", text: "s2" },
-  { icon: "⚖️", text: "s3" },
-  { icon: "✍️", text: "s4" },
+type Phase = "preparing" | "sending" | "checking";
+const PHASES: Phase[] = ["preparing", "sending", "checking"];
+const PHASE_ICON: Record<Phase, LucideIcon> = { preparing: ImageIcon, sending: Upload, checking: ScanSearch };
+const PHASE_TEXT: Record<Phase, Key> = { preparing: "upPreparing", sending: "upSending", checking: "upChecking" };
+const GOOD: { icon: LucideIcon; text: Key }[] = [
+  { icon: Sun, text: "daylight" },
+  { icon: Leaf, text: "fillPhoto" },
+  { icon: Focus, text: "focus" },
 ];
-const GOOD: { icon: string; text: Key }[] = [
-  { icon: "☀️", text: "daylight" },
-  { icon: "🍃", text: "fillPhoto" },
-  { icon: "🎯", text: "focus" },
-];
-const BAD: { icon: string; text: Key }[] = [
-  { icon: "🌫️", text: "blurry" },
-  { icon: "🌑", text: "tooDark" },
-  { icon: "🔭", text: "tooFar" },
+const BAD: { icon: LucideIcon; text: Key }[] = [
+  { icon: CloudFog, text: "blurry" },
+  { icon: Moon, text: "tooDark" },
+  { icon: ZoomOut, text: "tooFar" },
 ];
 
 type Props = {
@@ -40,9 +43,9 @@ type Props = {
 
 function StepTitle({ n, done, children }: { n: number; done: boolean; children: React.ReactNode }) {
   return (
-    <h2 className="flex items-center gap-3 text-lg font-extrabold text-ink">
-      <span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm font-bold ${done ? "bg-brand text-brand-ink" : "bg-brand-soft text-brand"}`}>
-        {done ? "✓" : n}
+    <h2 className="flex items-center gap-3 text-lg font-semibold text-ink">
+      <span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full font-semibold ${done ? "bg-brand text-on-brand" : "bg-surface-2 text-ink"}`}>
+        {done ? <Check className="h-5 w-5" strokeWidth={3} aria-label={String(n)} /> : n}
       </span>
       {children}
     </h2>
@@ -53,9 +56,13 @@ export default function NewPhoto({ meta, language, onLanguage, onOpened, showSam
   const [crop, setCrop] = useState<string | null>(null);
   const [file, setFile] = useState<File | null>(null);
   const [preview, setPreview] = useState<string | null>(null);
-  const [busy, setBusy] = useState(false);
-  const [step, setStep] = useState(0);
-  const [error, setError] = useState<string | null>(null);
+  const [phase, setPhase] = useState<Phase | null>(null);       // null = not sending
+  const [steps, setSteps] = useState<Phase[]>(PHASES);
+  const [progress, setProgress] = useState(0);
+  const [slow, setSlow] = useState(false);
+  const [busyPreview, setBusyPreview] = useState<string | null>(null);
+  const [error, setError] = useState<Key | null>(null);
+  const [lastSample, setLastSample] = useState<{ file: string; crop: string } | null>(null);   // what "Try again" resends
   const samplesRef = useRef<HTMLDetailsElement>(null);
   const t = useT();
 
@@ -77,78 +84,99 @@ export default function NewPhoto({ meta, language, onLanguage, onOpened, showSam
     setPreview(URL.createObjectURL(f));
   };
 
+  // Honest progress: shrink the photo here, send it (real upload progress), then wait while the server checks it.
   const submit = async (sample?: { file: string; crop: string }) => {
     const form = new FormData();
     form.set("language", language);
+    const own = file;
     if (sample) {
       form.set("crop", sample.crop);
       form.set("sample", sample.file);
-      setPreview(`${API_URL}/api/samples/${sample.file}`);
+      setBusyPreview(`${API_URL}/api/samples/${sample.file}`);
+      setSteps(PHASES.filter((p) => p !== "preparing"));
     } else {
-      if (!crop || !file) return;
+      if (!crop || !own) return;
       form.set("crop", crop);
-      form.set("file", file);
+      setBusyPreview(preview);
+      setSteps(PHASES);
     }
-    setBusy(true);
+    setLastSample(sample ?? null);
     setError(null);
-    setStep(0);
-    const timer = setInterval(() => setStep((s) => Math.min(s + 1, STEPS.length - 1)), 1400);
+    setProgress(0);
+    setSlow(false);
+    let slowTimer: ReturnType<typeof setTimeout> | undefined;
     try {
-      onOpened(await api.createCase(form));
+      if (!sample && own) {
+        setPhase("preparing");
+        const small = await shrinkPhoto(own);
+        form.set("file", small, small === own ? own.name : "photo.jpg");
+      }
+      setPhase("sending");
+      slowTimer = setTimeout(() => setSlow(true), 12000);   // the free server may be starting up
+      const c = await api.createCase(form, setProgress, () => setPhase("checking"));
+      onOpened(c);
     } catch (e) {
-      setError(e instanceof ApiError ? e.message : "Something went wrong. Please try again.");
-      setBusy(false);
-      if (sample) setPreview(null);
+      setError(errorKey(e, "photo"));
+      setPhase(null);
     } finally {
-      clearInterval(timer);
+      clearTimeout(slowTimer);
     }
   };
+  const retry = () => submit(lastSample ?? undefined);
 
-  if (busy)
+  if (phase) {
+    const current = steps.indexOf(phase);
     return (
-      <div className="pop-in py-8" role="status" aria-live="polite">
-        <div className="relative mx-auto h-56 w-56 overflow-hidden rounded-3xl bg-surface-2 shadow-card">
-          {preview && (
-            <img src={preview} alt="Your leaf photo" className="h-full w-full object-cover" />
-          )}
-          <div className="scan-line absolute inset-x-0 h-1 bg-leaf shadow-[0_0_18px_6px_var(--leaf)]" aria-hidden="true" />
-          <div className="absolute inset-3 rounded-2xl border-2 border-dashed border-white/70" aria-hidden="true" />
+      <div className="py-6">
+        <div className="mx-auto h-56 w-56 overflow-hidden rounded-xl bg-surface-2">
+          {busyPreview && <img src={busyPreview} alt={t("yourPhoto")} className="h-full w-full object-cover" />}
         </div>
-        <ol className="mx-auto mt-8 max-w-xs space-y-3">
-          {STEPS.map((s, i) => (
-            <li key={s.text} className={`flex items-center gap-3 rounded-2xl px-3 py-2 transition ${
-              i === step ? "bg-brand-soft text-ink" : i < step ? "text-ink" : "text-ink-3"}`}>
-              <span className="text-xl" aria-hidden="true">{i < step ? "✅" : s.icon}</span>
-              <span className="font-semibold">{t(s.text)}</span>
-              {i === step && <span className="dot-pulse ml-auto text-brand" aria-hidden="true"><span>●</span><span>●</span><span>●</span></span>}
-            </li>
-          ))}
+        <ol className="mx-auto mt-6 max-w-xs divide-y divide-border" role="status" aria-live="polite">
+          {steps.map((p, i) => {
+            const Icon = i < current ? CircleCheck : i === current ? LoaderCircle : PHASE_ICON[p];
+            return (
+              <li key={p} className={`flex min-h-12 items-center gap-3 ${i <= current ? "text-ink" : "text-ink-3"}`}>
+                <Icon className={`h-6 w-6 shrink-0 ${i < current ? "text-ok" : ""} ${i === current ? "spin text-brand" : ""}`} aria-hidden="true" />
+                <span className={i === current ? "font-semibold" : ""}>{t(PHASE_TEXT[p])}</span>
+              </li>
+            );
+          })}
         </ol>
+        {phase === "sending" && (
+          <div className="mx-auto mt-4 h-2 max-w-xs overflow-hidden rounded-full bg-surface-2" role="progressbar"
+            aria-label={t("upSending")} aria-valuemin={0} aria-valuemax={100} aria-valuenow={Math.round(progress * 100)}>
+            <div className="h-full rounded-full bg-brand" style={{ width: `${Math.round(progress * 100)}%` }} />
+          </div>
+        )}
+        {slow && <p className="mx-auto mt-4 max-w-xs text-center text-sm text-ink-2">{t("upSlow")}</p>}
       </div>
     );
+  }
 
+  const card = "rounded-xl border border-border bg-surface p-4";
   return (
     <div className="space-y-5">
-      <div className="flex items-center gap-4">
-        <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-brand-soft text-3xl" aria-hidden="true">🩺</span>
-        <div>
-          <h1 className="text-3xl font-extrabold tracking-tight text-ink">{t("checkLeaf")}</h1>
-          <p className="text-ink-2">{t("stepsSub")}</p>
-        </div>
+      <div>
+        <h1 className="text-[28px] font-bold leading-[34px] text-ink">{t("checkLeaf")}</h1>
+        <p className="mt-1 text-ink-2">{t("stepsSub")}</p>
       </div>
 
-      <section aria-labelledby="s1" className="rounded-3xl border border-border bg-surface p-5 shadow-card">
+      <section aria-labelledby="s1" className={card}>
         <div id="s1"><StepTitle n={1} done={!!crop}>{t("whichCrop")}</StepTitle></div>
         <div className="mt-4 grid grid-cols-2 gap-3" role="radiogroup" aria-label="Crop">
           {meta.crops.map((c) => {
             const on = crop === c;
             return (
               <button key={c} type="button" role="radio" aria-checked={on} onClick={() => setCrop(c)}
-                className={`relative flex flex-col items-center justify-center gap-1 rounded-3xl border-2 py-5 transition ${
-                  on ? "border-brand bg-brand-soft" : "border-border bg-surface hover:border-ink-3"}`}>
-                {on && <span className="absolute right-3 top-3 flex h-6 w-6 items-center justify-center rounded-full bg-brand text-xs font-bold text-brand-ink" aria-hidden="true">✓</span>}
-                <span className="text-5xl" aria-hidden="true">{CROPS[c]?.emoji ?? "🌱"}</span>
-                <span className="text-lg font-extrabold text-ink">{CROPS[c] ? t(CROPS[c].label) : c}</span>
+                className={`relative flex min-h-28 flex-col items-center justify-center gap-1 rounded-xl border-2 py-4 transition ${
+                  on ? "border-brand bg-ok-soft" : "border-border bg-surface hover:border-ink-3"}`}>
+                {on && (
+                  <span className="absolute right-2 top-2 flex h-6 w-6 items-center justify-center rounded-full bg-brand text-on-brand" aria-hidden="true">
+                    <Check className="h-4 w-4" strokeWidth={3} />
+                  </span>
+                )}
+                <span className="text-4xl" aria-hidden="true">{CROPS[c]?.emoji ?? ""}</span>
+                <span className="text-lg font-semibold text-ink">{CROPS[c] ? t(CROPS[c].label) : c}</span>
                 <span className="text-sm text-ink-3">{CROPS[c] ? (t.hi ? CROPS[c].en : CROPS[c].local) : ""}</span>
               </button>
             );
@@ -156,60 +184,68 @@ export default function NewPhoto({ meta, language, onLanguage, onOpened, showSam
         </div>
       </section>
 
-      <section aria-labelledby="s2" className={`rounded-3xl border border-border bg-surface p-5 shadow-card transition ${crop ? "" : "opacity-60"}`}>
+      <section aria-labelledby="s2" className={card}>
         <div id="s2"><StepTitle n={2} done={!!file}>{t("photoOf")}</StepTitle></div>
 
-        <div className="mt-4 grid grid-cols-2 gap-2">
-          <div className="rounded-2xl bg-brand-soft p-3">
-            <p className="mb-2 text-xs font-bold uppercase tracking-wide text-brand">✓ {t("goodPhoto")}</p>
-            <ul className="space-y-1.5">
-              {GOOD.map((g) => <li key={g.text} className="flex items-center gap-2 text-sm font-semibold text-ink"><span className="text-xl" aria-hidden="true">{g.icon}</span>{t(g.text)}</li>)}
+        <div className="mt-4 grid grid-cols-2 gap-4">
+          <div>
+            <p className="mb-1 flex items-center gap-1.5 font-semibold text-ok"><Check className="h-5 w-5" aria-hidden="true" />{t("goodPhoto")}</p>
+            <ul>
+              {GOOD.map((g) => (
+                <li key={g.text} className="flex items-start gap-2 py-1 text-sm text-ink">
+                  <g.icon className="mt-0.5 h-5 w-5 shrink-0 text-ink-2" aria-hidden="true" />{t(g.text)}
+                </li>
+              ))}
             </ul>
           </div>
-          <div className="rounded-2xl bg-red-soft p-3">
-            <p className="mb-2 text-xs font-bold uppercase tracking-wide text-red">✗ {t("avoid")}</p>
-            <ul className="space-y-1.5">
-              {BAD.map((g) => <li key={g.text} className="flex items-center gap-2 text-sm font-semibold text-ink"><span className="text-xl" aria-hidden="true">{g.icon}</span>{t(g.text)}</li>)}
+          <div>
+            <p className="mb-1 flex items-center gap-1.5 font-semibold text-urgent"><X className="h-5 w-5" aria-hidden="true" />{t("avoid")}</p>
+            <ul>
+              {BAD.map((g) => (
+                <li key={g.text} className="flex items-start gap-2 py-1 text-sm text-ink">
+                  <g.icon className="mt-0.5 h-5 w-5 shrink-0 text-ink-2" aria-hidden="true" />{t(g.text)}
+                </li>
+              ))}
             </ul>
           </div>
         </div>
 
         {preview ? (
-          <div className="mt-4 flex items-center gap-4 rounded-2xl bg-surface-2 p-3">
-            <img src={preview} alt="Your leaf photo" className="h-24 w-24 rounded-2xl object-cover" />
+          <div className="mt-4 flex items-center gap-4 border-t border-border pt-4">
+            <img src={preview} alt={t("yourPhoto")} className="h-24 w-24 rounded-lg object-cover" />
             <div>
-              <p className="font-bold text-ink">✅ {t("photoReady")}</p>
-              <button type="button" className="mt-1 text-sm font-semibold text-ink-2 underline" onClick={() => { setFile(null); setPreview(null); }}>
+              <p className="flex items-center gap-1.5 font-semibold text-ok"><CircleCheck className="h-5 w-5" aria-hidden="true" />{t("photoReady")}</p>
+              <button type="button" className="min-h-12 font-semibold text-ink-2 underline underline-offset-4" onClick={() => { setFile(null); setPreview(null); }}>
                 {t("differentPhoto")}
               </button>
             </div>
           </div>
         ) : (
-          <div className="mt-4 grid grid-cols-2 gap-3">
-            <label className={`flex min-h-28 cursor-pointer flex-col items-center justify-center gap-1 rounded-3xl bg-brand text-brand-ink shadow-card ${crop ? "hover:brightness-110" : "pointer-events-none"}`}>
-              <span className="text-4xl" aria-hidden="true">📷</span>
-              <span className="font-bold">{t("takePhoto")}</span>
+          <div className={`mt-4 grid grid-cols-2 gap-3 ${crop ? "" : "opacity-50"}`}>
+            <label className={`flex min-h-24 cursor-pointer flex-col items-center justify-center gap-1 rounded-xl bg-brand text-on-brand ${crop ? "hover:opacity-90" : "pointer-events-none"}`}>
+              <Camera className="h-8 w-8" aria-hidden="true" />
+              <span className="font-semibold">{t("takePhoto")}</span>
               <input type="file" accept="image/*" capture="environment" className="sr-only" disabled={!crop}
                 onChange={(e) => pick(e.target.files?.[0])} />
             </label>
-            <label className={`flex min-h-28 cursor-pointer flex-col items-center justify-center gap-1 rounded-3xl border-2 border-border text-ink ${crop ? "hover:bg-surface-2" : "pointer-events-none"}`}>
-              <span className="text-4xl" aria-hidden="true">🖼️</span>
-              <span className="font-bold">{t("gallery")}</span>
+            <label className={`flex min-h-24 cursor-pointer flex-col items-center justify-center gap-1 rounded-xl border-2 border-border text-ink ${crop ? "hover:bg-surface-2" : "pointer-events-none"}`}>
+              <ImageIcon className="h-8 w-8" aria-hidden="true" />
+              <span className="font-semibold">{t("gallery")}</span>
               <input type="file" accept="image/*" className="sr-only" disabled={!crop}
                 onChange={(e) => pick(e.target.files?.[0])} />
             </label>
           </div>
         )}
-        {!crop && <p className="mt-3 flex items-center gap-2 text-sm font-semibold text-ink-3"><span aria-hidden="true">👆</span>{t("cropFirst")}</p>}
+        {!crop && <p className="mt-3 flex items-center gap-2 text-sm font-semibold text-ink-2"><Info className="h-5 w-5 shrink-0" aria-hidden="true" />{t("cropFirst")}</p>}
       </section>
 
-      <section aria-labelledby="s3" className="rounded-3xl border border-border bg-surface p-5 shadow-card">
+      <section aria-labelledby="s3" className={card}>
         <div id="s3"><StepTitle n={3} done={false}>{t("yourLanguage")}</StepTitle></div>
         <div className="mt-4 flex flex-wrap gap-2" role="radiogroup" aria-label="Reply language">
           {meta.languages.map((l) => (
             <button key={l} type="button" role="radio" aria-checked={language === l} onClick={() => onLanguage(l)} lang={l === "English" ? "en" : undefined}
-              className={`rounded-full border-2 px-4 py-2 font-semibold transition ${
-                language === l ? "border-brand bg-brand text-brand-ink" : "border-border bg-surface text-ink hover:border-ink-3"}`}>
+              className={`min-h-12 rounded-xl border-2 px-4 font-semibold transition ${
+                language === l ? "border-brand bg-brand text-on-brand" : "border-border bg-surface text-ink hover:border-ink-3"}`}>
               {NATIVE[l] ?? l}
             </button>
           ))}
@@ -217,25 +253,35 @@ export default function NewPhoto({ meta, language, onLanguage, onOpened, showSam
         {!meta.llm_enabled && language !== "English" && (
           <p className="mt-2 text-sm text-ink-3">{t("aiOff")}</p>
         )}
-        {error && <p role="alert" className="mt-3 rounded-xl bg-red-soft p-3 text-sm text-red">{error}</p>}
+        {error && (
+          <div role="alert" className="mt-4 rounded-xl bg-urgent-soft p-3 text-urgent">
+            <p>{t(error)}</p>
+            {(lastSample || file) && (
+              <button type="button" onClick={retry}
+                className="mt-2 flex min-h-12 items-center gap-2 rounded-xl bg-brand px-5 font-semibold text-on-brand">
+                <RotateCcw className="h-5 w-5" aria-hidden="true" />{t("retry")}
+              </button>
+            )}
+          </div>
+        )}
         <button type="button" disabled={!crop || !file} onClick={() => submit()}
-          className="mt-5 flex w-full items-center justify-center gap-2 rounded-2xl bg-brand py-4 text-lg font-bold text-brand-ink shadow-card transition enabled:hover:brightness-110 disabled:opacity-40">
-          <span aria-hidden="true">🔎</span> {t("checkThis")}
+          className="mt-5 flex min-h-14 w-full items-center justify-center gap-2 rounded-xl bg-brand text-lg font-semibold text-on-brand transition enabled:hover:opacity-90 disabled:opacity-40">
+          <ScanSearch className="h-6 w-6" aria-hidden="true" /> {t("checkThis")}
         </button>
       </section>
 
-      <details ref={samplesRef} className="group rounded-3xl border border-border bg-surface p-5 shadow-card">
-        <summary className="flex cursor-pointer list-none items-center gap-3 font-bold text-ink">
-          <span className="text-2xl" aria-hidden="true">🖼️</span>
+      <details ref={samplesRef} className={`group ${card}`}>
+        <summary className="flex min-h-12 cursor-pointer list-none items-center gap-3 font-semibold text-ink">
+          <ImageIcon className="h-6 w-6 shrink-0 text-ink-2" aria-hidden="true" />
           <span className="flex-1">{t("noPlant")}</span>
-          <span className="text-ink-3 transition group-open:rotate-180" aria-hidden="true">▾</span>
+          <ChevronDown className="h-5 w-5 text-ink-3 transition group-open:rotate-180" aria-hidden="true" />
         </summary>
         <p className="mt-2 text-sm text-ink-3">{t("samplesNote")}</p>
         <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3">
           {meta.samples.map((s) => (
             <button key={s.file} type="button" onClick={() => submit(s)}
-              className="group/s overflow-hidden rounded-2xl border border-border bg-surface text-left hover:border-brand">
-              <img src={`${API_URL}/api/samples/${s.file}`} alt="" loading="lazy" className="aspect-square w-full object-cover transition group-hover/s:scale-105" />
+              className="overflow-hidden rounded-lg border border-border bg-surface text-left hover:border-brand">
+              <img src={`${API_URL}/api/samples/${s.file}`} alt="" loading="lazy" className="aspect-square w-full object-cover" />
               <span className="flex items-start gap-1.5 p-2 text-sm font-semibold text-ink">
                 <span aria-hidden="true">{CROPS[s.crop]?.emoji}</span>{t.server(s.title)}
               </span>
