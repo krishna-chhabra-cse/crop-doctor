@@ -32,6 +32,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse, Response
 from PIL import Image, ImageOps
 from pydantic import BaseModel, Field
+from starlette.concurrency import run_in_threadpool
 
 from crop_doctor import config
 from crop_doctor.app import db, service
@@ -52,12 +53,11 @@ log = logging.getLogger("crop_doctor")
 
 def shrink_photo(data: bytes) -> bytes:
     """Upright (phone rotation tag applied) and at most MAX_SIDE px, re-saved as JPEG. A 12 MP phone photo
-    otherwise costs ~100 MB of memory while it's checked, and ~5 MB in the database (free plan: 500 MB)."""
+    otherwise costs ~100 MB of memory while it's checked, and ~5 MB in the database (free plan: 500 MB).
+    Always re-saved, even when already small: that drops the EXIF block (GPS location, phone model) and
+    anything hidden after the image data, so we never store or serve them."""
     with Image.open(io.BytesIO(data)) as im:
-        if max(im.size) <= MAX_SIDE and im.format == "JPEG" and not im.getexif().get(0x0112):
-            im.load()                                     # decode fully now, so a broken file fails here (-> 400)
-            return data                                   # already small and upright
-        k = MAX_SIDE / max(im.size)                       # JPEG: decode at 1/2, 1/4 or 1/8 size straight away
+        k = min(1.0, MAX_SIDE / max(im.size))             # JPEG: decode at 1/2, 1/4 or 1/8 size straight away
         im.draft("RGB", (max(1, int(im.width * k)), max(1, int(im.height * k))))
         im = ImageOps.exif_transpose(im).convert("RGB")
         im.thumbnail((MAX_SIDE, MAX_SIDE), Image.LANCZOS)
@@ -336,12 +336,14 @@ async def create_case(crop: str = Form(...), file: UploadFile | None = File(defa
         data = await file.read(MAX_UPLOAD + 1)
         if len(data) > MAX_UPLOAD:
             raise HTTPException(413, "Photo too large (max 10 MB)")
-        data = read_photo(data)
+        data = await run_in_threadpool(read_photo, data)
     else:
         raise HTTPException(400, "Send a photo or choose a sample")
     session = (x_session_id or secrets.token_hex(6))[:64]
-    cid = service.start_case(doctor(), data, crop, session, seed=seed, language=language)
-    return case_view(db.get_case(cid))
+    # The model and the AI reply (up to ~30-60 s) are slow, blocking work. Run them in a worker thread so the
+    # server keeps answering other farmers and Render's health check meanwhile.
+    cid = await run_in_threadpool(service.start_case, doctor(), data, crop, session, seed=seed, language=language)
+    return case_view(await run_in_threadpool(db.get_case, cid))
 
 
 @app.get("/api/cases/{cid}")

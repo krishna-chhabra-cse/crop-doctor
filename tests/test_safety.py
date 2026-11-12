@@ -280,3 +280,17 @@ def test_start_case_remembers_the_language(tmp_db, monkeypatch):
     cid = service.start_case(Doc(), b"jpg", "tomato", "s1", language="Hindi", audit_rate=0.0)
     assert db.get_case(cid)["assessment"]["_language"] == "Hindi"
     assert db.messages(cid)[-1]["text"].startswith("सबसे संभावित")
+
+
+def test_slow_ai_reply_falls_back_to_template_within_deadline(monkeypatch):
+    """A provider that hangs (slow network, SDK retries) must not hold the farmer's request: template after the deadline."""
+    import time
+    from crop_doctor.assistant import llm
+    monkeypatch.setattr(llm, "LLM_DEADLINE", 0.5)
+    monkeypatch.setattr(llm, "provider", lambda: "gemini")
+    monkeypatch.setattr(llm, "_ask_gemini", lambda *a: time.sleep(3) or "late reply")
+    assessment = {"status": "retake", "crop": "tomato", "reasons": ["too dark"]}
+    t = time.time()
+    r = llm.reply(assessment)
+    assert time.time() - t < 2
+    assert not r.used_llm and "no reply within" in r.fallback_reason

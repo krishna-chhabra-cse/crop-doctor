@@ -23,6 +23,8 @@ from __future__ import annotations
 
 import os
 import re
+from concurrent.futures import ThreadPoolExecutor
+from concurrent.futures import TimeoutError as Deadline
 import unicodedata
 from dataclasses import dataclass, field
 
@@ -32,6 +34,11 @@ from crop_doctor.knowledge.rag import GENERAL, Chunk, default_retriever
 MODEL = os.environ.get("CROP_DOCTOR_MODEL", "claude-opus-5-5")
 GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-3.6-flash")
 FALLBACK_BETA = "server-side-fallback-2026-07-01"
+# Hard wall-clock limit for one AI reply. The SDKs have their own timeouts, but they also RETRY (Gemini: up to 4
+# times x 30 s), so one slow provider could hold a farmer's request for minutes. After this many seconds the
+# farmer gets the sourced template reply instead; the slow call finishes (or fails) in the background.
+LLM_DEADLINE = float(os.environ.get("CROP_DOCTOR_LLM_DEADLINE", "20"))
+_llm_pool = ThreadPoolExecutor(max_workers=4, thread_name_prefix="llm")
 
 # Expert answers that are not one of the model's classes (no calibration point, no disease advice).
 EXPERT_OTHER, EXPERT_UNUSABLE = "other", "unusable"
@@ -434,9 +441,11 @@ def reply(assessment: dict, question: str | None = None, history: list[dict] | N
     system = SYSTEM_PROMPT.format(language=language)
     try:
         call = _ask_gemini if which == "gemini" else _ask_claude
-        text = call(system, _safe_history(history), user_text).strip()
+        text = _llm_pool.submit(call, system, _safe_history(history), user_text).result(timeout=LLM_DEADLINE).strip()
         if not text:
             raise Declined("empty reply")
+    except Deadline:
+        return template_reply(assessment, notes, f"{which}: no reply within {LLM_DEADLINE:g} s", language)
     except Declined as e:
         return template_reply(assessment, notes, f"{which}: {e}", language)
     except Exception as e:  # noqa: BLE001 - offline, bad key, rate limit...: the app must still answer
