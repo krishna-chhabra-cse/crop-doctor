@@ -4,10 +4,12 @@ Every other module imports from here, so changing a class or a path happens in o
 """
 from __future__ import annotations
 
+import os
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent          # the "ML project" folder
-DATASETS_DIR = ROOT / "datasets"                       # raw downloads (git-ignored, large)
+DATASETS_DIR = Path(os.environ.get("CROP_DOCTOR_DATASETS", ROOT / "datasets"))  # raw downloads (git-ignored, large);
+# the env var lets a second checkout (e.g. a git worktree) read the one shared copy of the datasets
 PLANTVILLAGE_DIR = DATASETS_DIR / "plantvillage"
 PLANTDOC_DIR = DATASETS_DIR / "plantdoc"
 SPLITS_DIR = ROOT / "crop_doctor" / "data" / "splits"  # small CSVs: these ARE the dataset definition
