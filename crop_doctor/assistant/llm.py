@@ -21,8 +21,10 @@ If both keys are set, Gemini is used unless CROP_DOCTOR_LLM=claude. No key -> te
 """
 from __future__ import annotations
 
+import logging
 import os
 import re
+import time
 from concurrent.futures import ThreadPoolExecutor
 from concurrent.futures import TimeoutError as Deadline
 import unicodedata
@@ -38,6 +40,7 @@ FALLBACK_BETA = "server-side-fallback-2026-07-01"
 # times x 30 s), so one slow provider could hold a farmer's request for minutes. After this many seconds the
 # farmer gets the sourced template reply instead; the slow call finishes (or fails) in the background.
 LLM_DEADLINE = float(os.environ.get("CROP_DOCTOR_LLM_DEADLINE", "20"))
+log = logging.getLogger("crop_doctor.llm")
 _llm_pool = ThreadPoolExecutor(max_workers=4, thread_name_prefix="llm")
 
 # Expert answers that are not one of the model's classes (no calibration point, no disease advice).
@@ -422,6 +425,25 @@ def _safe_history(history: list[dict] | None) -> list[dict]:
             for m in history or []]
 
 
+def _timed(which: str, call, *args) -> str:
+    """Run one AI call and log how it ended and how long it took. Runs in the worker thread, so a call that
+    outlives LLM_DEADLINE still logs its real outcome (slow answer, rate limit, bad model name...) later."""
+    t = time.monotonic()
+    try:
+        text = call(*args)
+    except Exception as e:
+        log.warning("AI reply (%s) failed after %.1f s: %s: %s", which, time.monotonic() - t, type(e).__name__,
+                    str(e)[:300])
+        raise
+    log.warning("AI reply (%s) arrived after %.1f s (%d characters)", which, time.monotonic() - t, len(text or ""))
+    return text
+
+
+def _fallback(assessment: dict, notes: list, reason: str, language: str) -> "Reply":
+    log.warning("AI reply not used, template instead: %s", reason)
+    return template_reply(assessment, notes, reason, language)
+
+
 def reply(assessment: dict, question: str | None = None, history: list[dict] | None = None,
           language: str = "English") -> Reply:
     """assessment: dict from CropDoctor.assess() (or expert_view(...) once an expert answered).
@@ -441,22 +463,23 @@ def reply(assessment: dict, question: str | None = None, history: list[dict] | N
     system = SYSTEM_PROMPT.format(language=language)
     try:
         call = _ask_gemini if which == "gemini" else _ask_claude
-        text = _llm_pool.submit(call, system, _safe_history(history), user_text).result(timeout=LLM_DEADLINE).strip()
+        text = _llm_pool.submit(_timed, which, call, system, _safe_history(history), user_text
+                                ).result(timeout=LLM_DEADLINE).strip()
         if not text:
             raise Declined("empty reply")
     except Deadline:
-        return template_reply(assessment, notes, f"{which}: no reply within {LLM_DEADLINE:g} s", language)
+        return _fallback(assessment, notes, f"{which}: no reply within {LLM_DEADLINE:g} s", language)
     except Declined as e:
-        return template_reply(assessment, notes, f"{which}: {e}", language)
+        return _fallback(assessment, notes, f"{which}: {e}", language)
     except Exception as e:  # noqa: BLE001 - offline, bad key, rate limit...: the app must still answer
-        return template_reply(assessment, notes, f"{which} unavailable: {type(e).__name__}", language)
+        return _fallback(assessment, notes, f"{which} unavailable: {type(e).__name__}", language)
     facts = block + "\n" + "\n".join(c.text for c in notes)     # what the reply may draw on
     bad = mentions_forbidden_disease(text, allowed, facts)
     if bad:
-        return template_reply(assessment, notes, f"guardrail: reply mentioned {bad}", language)
+        return _fallback(assessment, notes, f"guardrail: reply mentioned {bad}", language)
     bad = unsupported_treatment(text, facts)
     if bad:
-        return template_reply(assessment, notes, f"guardrail: {bad}", language)
+        return _fallback(assessment, notes, f"guardrail: {bad}", language)
     return Reply(text, sorted({s for c in notes for s in c.sources}), used_llm=True, note_ids=[c.id for c in notes])
 
 
