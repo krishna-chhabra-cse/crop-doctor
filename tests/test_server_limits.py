@@ -108,3 +108,19 @@ def test_expert_answer_with_infinite_threshold_is_valid_json(client, monkeypatch
     r = client.post(f"/api/expert/cases/{c['id']}", json={"label": "other"}, headers=EXPERT)
     assert r.status_code == 200
     assert r.json()["run"] == {"qhat": None, "qhat_by_crop": {"tomato": None}}
+
+
+def test_small_photo_loses_gps_and_hidden_data():
+    """A photo already under 1600 px is still re-saved: no EXIF (GPS, phone model), nothing after the image."""
+    from server.main import shrink_photo
+    exif = Image.Exif()
+    exif[0x0110] = "Phone Model X"                                  # camera model
+    exif.get_ifd(0x8825)[2] = (28.0, 36.0, 50.0)                    # GPS latitude
+    buf = io.BytesIO()
+    Image.effect_noise((800, 600), 60).convert("RGB").save(buf, format="JPEG", exif=exif.tobytes())
+    data = buf.getvalue() + b"hidden" * 1000
+    out = shrink_photo(data)
+    with Image.open(io.BytesIO(out)) as im:
+        assert im.size == (800, 600)
+        assert not im.getexif()
+    assert b"Phone Model X" not in out and b"hidden" not in out

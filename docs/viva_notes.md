@@ -213,9 +213,14 @@ safe answer is "all 10 diseases".
 1. **The guarantee breaks under lab→field shift.** Calibrated on lab photos, the shortlist promises 90%
    but contains the true disease only **32%** of the time on farm photos. It answers 58% of photos on
    its own, and only 28% of those answers are right. This is the most dangerous setting: it *looks* sure.
-2. **25–50 expert labels restore the 90% guarantee** (A: 93.5% ± 3.5 at N=25; ≈ 90% from N=50 with
-   shrinking spread). The medical-imaging study in our literature review needed ~1,000 labels; for this
-   10-class problem far fewer are enough. **This is our headline number.**
+2. **About 50 expert labels make the 90% promise dependable** (A: 93.5% ± 3.5 at N=25; ≈ 90% from N=50
+   with shrinking spread). Be precise here: the guarantee itself already holds *on average* from 9 labels
+   (the expected coverage is ceil(0.9(N+1))/(N+1): 90.9% at N=10, 92.3% at N=25). What more labels buy is
+   a *steadier* result for one particular set of labels: the spread across random label sets falls from
+   ± 9.3 (N=10) to ± 3.9 (N=25), ± 2.3 (N=100) and ± 1.8 (N=200). So "~50 labels" means "one batch of
+   labels is reliably within a few points of 90%", not "the guarantee switches on at 50". (The ± values
+   are a little optimistic: all draws come from the same 475-photo pool and are tested on the same test
+   set.) **This is our headline number.**
 3. **Recalibration makes it honest, retraining makes it useful.** With recalibration only, accuracy stays
    at 25% and shortlists stay at ~7 of 10 diseases. Using the same labels to also retrain lifts
    accuracy to 42% and shrinks shortlists to 5 at N=475. **The trade-off:** at small budgets (≤ 50)
@@ -260,7 +265,13 @@ A demo needs a model that is both honest **and** useful.
 4. **Compared two backbones on field_val only:** EfficientNet-B0 (53.7%) vs **ConvNeXt-Tiny** pretrained on
    ImageNet-22k (14M images) (**61.1%**). ConvNeXt was chosen. Models pretrained on more varied data are
    usually more robust to distribution shift.
-5. **field_test was used exactly once**, after every choice was made. That's why its numbers are honest.
+5. **field_test was never used to fit anything**: no weights, no temperature, no thresholds, and the
+   backbone was chosen on field_val. Be honest about the rest, though: the same test photos were then
+   *reused for reporting* in later experiments (Exp 1–10), and two later decisions looked at them:
+   switching to per-crop thresholds (Day 9, after seeing 82% coverage on one source) and the v3 "ship it"
+   check (Exp 10, passed by one photo). So the later numbers are mildly optimistic. The fair line in the
+   viva: "nothing was trained or calibrated on the test set, but it was reused, so a fresh test set would
+   be the next step".
 
 **Results on field_test** (both models crop-aware and calibrated on the same 95 field photos)
 | | Lab-only model (Day 2) | **Final model (ConvNeXt-Tiny)** |
@@ -287,7 +298,7 @@ somewhat noisy. Per-class coverage isn't guaranteed. Tomato remains harder than 
 
 **Likely questions**
 - *Isn't training on field photos cheating?* No. They come from field_pool, the simulated "expert labels
-  collected so far". field_test (476 photos) was never used for training, choosing or calibrating. (One caveat: 24
+  collected so far". field_test (476 photos) was never used for training or calibrating (it was reused for reporting later; see point 5 of Day 5a). (One caveat: 24
   test photos have a resized copy in field_pool, which MD5 couldn't catch; removing them changes accuracy by < 0.5
   points. See "Near-duplicate audit" in Day 9.)
 - *Why ConvNeXt?* It was chosen on field_val (61% vs 54%), not on the test set. Bigger pretraining data
@@ -527,7 +538,7 @@ ConvNeXt-Tiny, 10 epochs × 16,000 photos; each batch 40% lab / 60% field; class
 weights (rare classes drawn more often, without repeating a 16-photo class hundreds of times); strong augmentation;
 one-cycle learning rate; best epoch chosen by **macro-F1 on field_val** (every class counts equally): epoch 8, 0.719.
 
-### Results on 1,306 held-out field photos (never used for training, choosing or calibrating; 40 have a near-twin in those splits, see the audit below)
+### Results on 1,306 held-out field photos (never used for training or calibrating, but reused for reporting across versions; 40 have a near-twin in those splits, see the audit below)
 | | v1 app model | **v2** |
 |---|---|---|
 | All | 61.9% | **87.4%** (macro-F1 0.59 → 0.73) |
