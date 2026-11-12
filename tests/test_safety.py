@@ -294,3 +294,23 @@ def test_slow_ai_reply_falls_back_to_template_within_deadline(monkeypatch):
     r = llm.reply(assessment)
     assert time.time() - t < 2
     assert not r.used_llm and "no reply within" in r.fallback_reason
+
+
+def test_fallback_reason_and_late_outcome_are_logged(monkeypatch, caplog):
+    """The server log must say WHY the AI reply wasn't used, and how a slow call finally ended."""
+    import logging
+    import time
+    from crop_doctor.assistant import llm
+    monkeypatch.setattr(llm, "LLM_DEADLINE", 0.3)
+    monkeypatch.setattr(llm, "provider", lambda: "gemini")
+
+    def slow_then_fail(*a):
+        time.sleep(0.6)
+        raise RuntimeError("429 quota exceeded")
+    monkeypatch.setattr(llm, "_ask_gemini", slow_then_fail)
+    with caplog.at_level(logging.WARNING, logger="crop_doctor.llm"):
+        llm.reply({"status": "retake", "crop": "tomato", "reasons": ["too dark"]})
+        time.sleep(0.6)                                   # let the late call finish in the background
+    text = caplog.text
+    assert "template instead: gemini: no reply within 0.3 s" in text
+    assert "failed after" in text and "RuntimeError: 429 quota exceeded" in text
