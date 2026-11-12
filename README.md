@@ -16,7 +16,8 @@ py -3.13 -m venv .venv
 
 ```bash
 .venv/Scripts/python -m crop_doctor.data.download   # ~650 MB PlantVillage + ~1 GB PlantDoc zip → datasets/
-.venv/Scripts/python -m crop_doctor.data.prepare    # checks images, removes duplicates, writes splits
+.venv/Scripts/python -m crop_doctor.data.prepare    # checks images, removes exact duplicates (MD5), writes splits
+.venv/Scripts/python -m crop_doctor.data.near_duplicates   # audit: resized/rotated twins across the v3 splits
 .venv/Scripts/python -m pytest -q
 ```
 
@@ -24,6 +25,9 @@ Outputs:
 - `crop_doctor/data/splits/*.csv`: the official splits (lab_train, lab_val, lab_test, field_pool, field_test) and `classes.json`
 - `crop_doctor/outputs/class_counts.csv`: images per class per split
 - `crop_doctor/outputs/dropped_images.csv`: every rejected file and why
+- `crop_doctor/outputs/metrics/near_duplicates.json`: near-duplicate audit. MD5 only removes byte-identical copies;
+  24 PlantDoc and 16 Tanzania test photos have a resized or rotated twin in training/validation/calibration.
+  Without them, accuracy and coverage change by less than 0.5 points (details in `docs/viva_notes.md`, Day 9).
 
 ## Day 2: model
 

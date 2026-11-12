@@ -1,57 +1,92 @@
 @import "tailwindcss";
 
-/* Design tokens. Green = the brand and "safe"; amber = act soon; red = urgent. */
+/*
+ * Design tokens ("field clinic"). Colour is reserved for meaning:
+ *   ok (green)      healthy / can wait / the main "go" button
+ *   soon (amber)    act this week, retake the photo
+ *   urgent (red)    act today
+ *   ask (blue)      the app is asking the farmer something
+ *   expert (violet) a human expert is involved (sent, waiting, answered, audit)
+ * Every "*" text colour is >= 4.5:1 on its "*-soft" tint, on surface and on background;
+ * every "on-*" colour is >= 4.5:1 on its "*-solid" fill. Checked for light and dark.
+ */
 :root {
-  --background: #f7f6f1;
+  --background: #f6f7f4;
   --surface: #ffffff;
-  --surface-2: #f0efe8;
-  --border: #e3e1d8;
-  --ink: #17201a;
-  --ink-2: #4b554e;
-  --ink-3: #7a837c;
-  --brand: #15803d;
-  --brand-ink: #ffffff;
-  --brand-soft: #e5f3ea;
-  --leaf: #1baf7a;
-  --amber: #b45309;
-  --amber-soft: #fdf3e2;
-  --red: #b91c1c;
-  --red-soft: #fdeceb;
-  --blue: #1d5fad;
-  --blue-soft: #e8f0fb;
-  --shadow: 0 1px 2px rgb(23 32 26 / 0.06), 0 8px 24px -12px rgb(23 32 26 / 0.18);
+  --surface-2: #eceee9;
+  --border: #d9ddd6;
+  --ink: #14201a;
+  --ink-2: #46524b;
+  --ink-3: #5f6b64;
+  --focus: #1f5fa8;
+
+  --brand: #17663a;
+  --on-brand: #ffffff;
+  --ok: #17663a;
+  --ok-soft: #e3f0e7;
+  --soon: #8a4a06;
+  --soon-soft: #fcf1dc;
+  --soon-solid: #f2a93b;
+  --on-soon: #14201a;
+  --urgent: #a11f18;
+  --urgent-soft: #fbe9e7;
+  --urgent-solid: #b3261e;
+  --on-urgent: #ffffff;
+  --ask: #1a4f8c;
+  --ask-soft: #e6eef8;
+  --ask-solid: #1f5fa8;
+  --on-ask: #ffffff;
+  --expert: #5b3391;
+  --expert-soft: #efe8f7;
+  --expert-solid: #6b3fa0;
+  --on-expert: #ffffff;
   color-scheme: light;
 }
 
-/* Dark mode: warm near-black (not pure black), same meaning for every colour. */
+/* Dark: bright fills carry dark text, so buttons stay readable. */
 :root[data-theme="dark"] {
-  --background: #0f1411;
-  --surface: #171e1a;
-  --surface-2: #212a24;
-  --border: #2e3832;
-  --ink: #eef2ee;
-  --ink-2: #b7c1ba;
-  --ink-3: #8a958d;
-  --brand: #22a355;
-  --brand-ink: #ffffff;
-  --brand-soft: #173523;
-  --leaf: #3fcf8e;
-  --amber: #f5b14c;
-  --amber-soft: #3a2a12;
-  --red: #ff7b72;
-  --red-soft: #3d1a19;
-  --blue: #7cb4ff;
-  --blue-soft: #16273f;
-  --shadow: 0 1px 2px rgb(0 0 0 / 0.4), 0 8px 24px -12px rgb(0 0 0 / 0.6);
+  --background: #0e1311;
+  --surface: #161d19;
+  --surface-2: #1f2823;
+  --border: #2c3630;
+  --ink: #e9eeea;
+  --ink-2: #b4bfb8;
+  --ink-3: #93a098;
+  --focus: #8fc0ff;
+
+  --brand: #3ecf7c;
+  --on-brand: #06130b;
+  --ok: #6fe0a0;
+  --ok-soft: #143122;
+  --soon: #f5b955;
+  --soon-soft: #38280f;
+  --soon-solid: #f5b14c;
+  --on-soon: #1a1003;
+  --urgent: #ff9088;
+  --urgent-soft: #3b1715;
+  --urgent-solid: #ff7b72;
+  --on-urgent: #1c0605;
+  --ask: #8fc0ff;
+  --ask-soft: #13263f;
+  --ask-solid: #7cb4ff;
+  --on-ask: #06121f;
+  --expert: #c9a8f5;
+  --expert-soft: #291b3d;
+  --expert-solid: #b995ee;
+  --on-expert: #12091f;
   color-scheme: dark;
 }
 /* No JavaScript yet: follow the phone's setting. */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme]) {
-    --background: #0f1411; --surface: #171e1a; --surface-2: #212a24; --border: #2e3832;
-    --ink: #eef2ee; --ink-2: #b7c1ba; --ink-3: #8a958d; --brand: #22a355; --brand-soft: #173523;
-    --leaf: #3fcf8e; --amber: #f5b14c; --amber-soft: #3a2a12; --red: #ff7b72; --red-soft: #3d1a19;
-    --blue: #7cb4ff; --blue-soft: #16273f; color-scheme: dark;
+    --background: #0e1311; --surface: #161d19; --surface-2: #1f2823; --border: #2c3630;
+    --ink: #e9eeea; --ink-2: #b4bfb8; --ink-3: #93a098; --focus: #8fc0ff;
+    --brand: #3ecf7c; --on-brand: #06130b; --ok: #6fe0a0; --ok-soft: #143122;
+    --soon: #f5b955; --soon-soft: #38280f; --soon-solid: #f5b14c; --on-soon: #1a1003;
+    --urgent: #ff9088; --urgent-soft: #3b1715; --urgent-solid: #ff7b72; --on-urgent: #1c0605;
+    --ask: #8fc0ff; --ask-soft: #13263f; --ask-solid: #7cb4ff; --on-ask: #06121f;
+    --expert: #c9a8f5; --expert-soft: #291b3d; --expert-solid: #b995ee; --on-expert: #12091f;
+    color-scheme: dark;
   }
 }
 
@@ -63,18 +98,39 @@
   --color-ink: var(--ink);
   --color-ink-2: var(--ink-2);
   --color-ink-3: var(--ink-3);
+  --color-focus: var(--focus);
   --color-brand: var(--brand);
-  --color-brand-ink: var(--brand-ink);
-  --color-brand-soft: var(--brand-soft);
-  --color-leaf: var(--leaf);
-  --color-amber: var(--amber);
-  --color-amber-soft: var(--amber-soft);
-  --color-red: var(--red);
-  --color-red-soft: var(--red-soft);
-  --color-blue: var(--blue);
-  --color-blue-soft: var(--blue-soft);
-  --font-sans: var(--font-jakarta);
-  --shadow-card: var(--shadow);
+  --color-on-brand: var(--on-brand);
+  --color-ok: var(--ok);
+  --color-ok-soft: var(--ok-soft);
+  --color-soon: var(--soon);
+  --color-soon-soft: var(--soon-soft);
+  --color-soon-solid: var(--soon-solid);
+  --color-on-soon: var(--on-soon);
+  --color-urgent: var(--urgent);
+  --color-urgent-soft: var(--urgent-soft);
+  --color-urgent-solid: var(--urgent-solid);
+  --color-on-urgent: var(--on-urgent);
+  --color-ask: var(--ask);
+  --color-ask-soft: var(--ask-soft);
+  --color-ask-solid: var(--ask-solid);
+  --color-on-ask: var(--on-ask);
+  --color-expert: var(--expert);
+  --color-expert-soft: var(--expert-soft);
+  --color-expert-solid: var(--expert-solid);
+  --color-on-expert: var(--on-expert);
+  /* Older names, kept so the expert dashboard and chart keep working. */
+  --color-brand-ink: var(--on-brand);
+  --color-brand-soft: var(--ok-soft);
+  --color-leaf: var(--brand);
+  --color-amber: var(--soon);
+  --color-amber-soft: var(--soon-soft);
+  --color-red: var(--urgent);
+  --color-red-soft: var(--urgent-soft);
+  --color-blue: var(--ask);
+  --color-blue-soft: var(--ask-soft);
+
+  --font-sans: var(--font-noto), var(--font-noto-deva), system-ui, sans-serif;
 }
 
 html {
@@ -83,16 +139,22 @@ html {
 
 body {
   background: var(--background);
-  transition: background-color 0.2s ease, color 0.2s ease;
   color: var(--ink);
-  font-family: var(--font-jakarta), system-ui, sans-serif;
+  font-family: var(--font-noto), var(--font-noto-deva), system-ui, sans-serif;
+  line-height: 1.625;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
+
+/* Devanagari needs room for the marks above and below the line. */
+html:lang(hi) body { line-height: 1.75; }
+html:lang(hi) :is(h1, h2, h3, .leading-tight, .leading-snug) { line-height: 1.4; }
+html:lang(hi) .leading-relaxed { line-height: 1.8; }
 
 /* Visible keyboard focus everywhere. */
 :focus-visible {
-  outline: 3px solid var(--leaf);
+  outline: 3px solid var(--focus);
   outline-offset: 2px;
-  border-radius: 10px;
+  border-radius: 12px;
 }
 
 @keyframes pulse-dot {
@@ -103,25 +165,11 @@ body {
 .dot-pulse span:nth-child(2) { animation-delay: 0.2s; }
 .dot-pulse span:nth-child(3) { animation-delay: 0.4s; }
 
+@keyframes spin { to { transform: rotate(360deg); } }
+.spin { animation: spin 0.9s linear infinite; }
+
 @media (prefers-reduced-motion: reduce) {
   .dot-pulse span { animation: none; opacity: 0.7; }
-}
-
-/* Scanning line on the photo while the leaf is being checked. */
-@keyframes scan {
-  0% { top: 4%; }
-  50% { top: 92%; }
-  100% { top: 4%; }
-}
-.scan-line { animation: scan 2.4s ease-in-out infinite; }
-
-@keyframes pop-in {
-  from { opacity: 0; transform: translateY(8px) scale(0.98); }
-  to { opacity: 1; transform: none; }
-}
-.pop-in { animation: pop-in 0.35s ease-out both; }
-
-@media (prefers-reduced-motion: reduce) {
-  .scan-line, .pop-in { animation: none; }
+  .spin { animation: none; }
   body { transition: none; }
 }

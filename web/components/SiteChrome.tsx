@@ -12,30 +12,19 @@ function LanguageToggle() {
       type="button"
       onClick={() => setLanguage(hindi ? "English" : "Hindi")}
       aria-label={hindi ? "Switch to English" : "हिन्दी में बदलें"}
-      title={hindi ? "English" : "हिन्दी"}
-      className="flex h-10 min-w-10 items-center justify-center rounded-full border border-border px-2.5 text-sm font-bold text-ink hover:bg-surface-2"
+      lang={hindi ? "en" : "hi"}
+      className="flex h-12 min-w-12 items-center justify-center rounded-xl border border-border px-3 font-semibold text-ink hover:bg-surface-2"
     >
-      {hindi ? "EN" : "हिं"}
+      {hindi ? "English" : "हिन्दी"}
     </button>
   );
 }
 
 export function SiteNav() {
-  const t = useT();
   return (
-    <div className="flex items-center gap-1 whitespace-nowrap text-sm font-semibold">
+    <div className="flex items-center gap-1">
       <LanguageToggle />
       <ThemeToggle />
-      <Link href="/expert" aria-label={t("expert")} title={t("expert")}
-        className="flex h-10 items-center rounded-full px-2.5 text-ink-2 hover:bg-surface-2 hover:text-ink sm:px-3">
-        <span className="text-lg sm:hidden" aria-hidden="true">🧑‍🌾</span>
-        <span className="hidden sm:inline">{t("expert")}</span>
-      </Link>
-      <Link href="/check" className="flex h-10 items-center gap-1.5 rounded-full bg-brand px-3.5 text-brand-ink shadow-sm hover:brightness-110 sm:px-4">
-        <span aria-hidden="true">📷</span>
-        <span className="sm:hidden">{t("check")}</span>
-        <span className="hidden sm:inline">{t("checkLeaf")}</span>
-      </Link>
     </div>
   );
 }
@@ -43,10 +32,15 @@ export function SiteNav() {
 export function SiteFooter() {
   const t = useT();
   return (
-    <footer className="border-t border-border/80 px-4 py-8 text-sm text-ink-3">
+    <footer className="border-t border-border px-4 py-8 text-sm text-ink-3">
       <div className="mx-auto flex max-w-5xl flex-col gap-2 sm:flex-row sm:justify-between">
-        <p>{t("footerNote")}</p>
-        <p>{t("footerSources")}</p>
+        <div className="space-y-2">
+          <p>{t("footerNote")}</p>
+          <p>{t("footerSources")}</p>
+        </div>
+        <Link href="/expert" className="flex min-h-12 items-center self-start font-semibold text-ink-2 underline underline-offset-4 hover:text-ink">
+          {t("expertLink")}
+        </Link>
       </div>
     </footer>
   );

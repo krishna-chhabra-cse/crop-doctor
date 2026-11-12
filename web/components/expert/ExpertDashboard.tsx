@@ -9,13 +9,19 @@ type Tab = "queue" | "trust" | "answered";
 function KeyGate({ onDone, error }: { onDone: () => void; error: string | null }) {
   const [key, setKey] = useState("");
   return (
-    <form className="mx-auto mt-10 max-w-sm rounded-3xl border border-border bg-surface p-6"
-      onSubmit={(e) => { e.preventDefault(); localStorage.setItem("cd_expert_key", key.trim()); onDone(); }}>
-      <h1 className="text-2xl font-extrabold text-ink">Expert sign-in</h1>
+    <form className="mx-auto mt-10 max-w-sm rounded-xl border border-border bg-surface p-6"
+      onSubmit={(e) => {
+        e.preventDefault();
+        try {
+          localStorage.setItem("cd_expert_key", key.trim());
+        } catch {}
+        onDone();
+      }}>
+      <h1 className="text-2xl font-bold text-ink">Expert sign-in</h1>
       <p className="mt-1 text-sm text-ink-2">Enter the expert key set on the server (EXPERT_KEY).</p>
       <label htmlFor="key" className="mt-4 block text-sm font-semibold text-ink-2">Expert key</label>
       <input id="key" type="password" value={key} onChange={(e) => setKey(e.target.value)} autoComplete="current-password"
-        className="mt-1 w-full rounded-xl border border-border px-3 py-3" />
+        className="mt-1 w-full rounded-xl border border-border bg-surface px-3 py-3 text-ink" />
       {error && <p role="alert" className="mt-2 text-sm text-red">{error}</p>}
       <button className="mt-4 w-full rounded-2xl bg-brand py-3 font-bold text-brand-ink">Open dashboard</button>
     </form>
@@ -23,23 +29,32 @@ function KeyGate({ onDone, error }: { onDone: () => void; error: string | null }
 }
 
 function QueueCard({ item, onAnswered }: { item: QueueItem; onAnswered: (msg: string) => void }) {
-  const [label, setLabel] = useState(item.model_guess?.label ?? item.options[0]?.label ?? "");
+  // No answer is pre-selected: a pre-filled model guess would bias the expert, and audit answers are meant to be
+  // an independent check that recalibrates the assistant.
+  const [label, setLabel] = useState("");
   const [note, setNote] = useState("");
   const [busy, setBusy] = useState(false);
-  const extra = ["Other disease / not in the list", "Photo unusable"];
+  const [error, setError] = useState<string | null>(null);
+  const extra = [
+    { value: "other", text: "Other disease / not in the list" },
+    { value: "unusable", text: "Photo unusable" },
+  ];
   const send = async () => {
     setBusy(true);
+    setError(null);
     try {
       const r = await api.expertAnswer(item.id, label, note);
       onAnswered(r.recalibrated && r.run
         ? `Audit added: the assistant is recalibrated (coverage now ${Math.round(r.run.monitor_coverage * 100)}%).`
         : "Answer sent to the farmer and saved for retraining.");
+    } catch (e) {
+      setError(e instanceof ApiError ? `Not sent: ${e.message}` : "Not sent. Please try again.");
     } finally {
       setBusy(false);
     }
   };
   return (
-    <article className="grid gap-4 rounded-3xl border border-border bg-surface p-4 sm:grid-cols-[200px_1fr]">
+    <article className="grid gap-4 rounded-xl border border-border bg-surface p-4 sm:grid-cols-[200px_1fr]">
       <img src={imageUrl(item.image)} alt={`Leaf photo, case ${item.id}`} className="aspect-square w-full rounded-2xl object-cover" />
       <div>
         <div className="flex flex-wrap items-center gap-2 text-sm">
@@ -67,7 +82,7 @@ function QueueCard({ item, onAnswered }: { item: QueueItem; onAnswered: (msg: st
         <fieldset className="mt-3">
           <legend className="text-sm font-semibold text-ink-2">Your diagnosis</legend>
           <div className="mt-1 flex flex-wrap gap-2">
-            {[...item.options.map((o) => ({ value: o.label, text: o.name })), ...extra.map((e) => ({ value: e, text: e }))].map((o) => (
+            {[...item.options.map((o) => ({ value: o.label, text: o.name })), ...extra].map((o) => (
               <button type="button" key={o.value} onClick={() => setLabel(o.value)} aria-pressed={label === o.value}
                 className={`rounded-full border px-3 py-1.5 text-sm font-semibold ${label === o.value ? "border-brand bg-brand text-brand-ink" : "border-border text-ink hover:border-ink-3"}`}>
                 {o.text}
@@ -78,11 +93,13 @@ function QueueCard({ item, onAnswered }: { item: QueueItem; onAnswered: (msg: st
         <label htmlFor={`note${item.id}`} className="mt-3 block text-sm font-semibold text-ink-2">Advice for the farmer</label>
         <textarea id={`note${item.id}`} value={note} onChange={(e) => setNote(e.target.value)} rows={2}
           placeholder="e.g. Remove the lower leaves and spray copper this week. Check again in 5 days."
-          className="mt-1 w-full rounded-xl border border-border p-3 text-sm" />
+          className="mt-1 w-full rounded-xl border border-border bg-surface p-3 text-sm text-ink" />
         <button type="button" disabled={busy || !label} onClick={send}
           className="mt-2 rounded-2xl bg-brand px-5 py-2.5 font-bold text-brand-ink disabled:opacity-50">
           Send answer to farmer
         </button>
+        {!label && <p className="mt-1 text-sm text-ink-3">Choose a diagnosis first.</p>}
+        {error && <p role="alert" className="mt-2 rounded-xl bg-red-soft px-3 py-2 text-sm text-red">{error}</p>}
       </div>
     </article>
   );
@@ -150,10 +167,15 @@ export default function ExpertDashboard() {
     <div>
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
-          <h1 className="text-3xl font-extrabold tracking-tight text-ink">Expert dashboard</h1>
+          <h1 className="text-3xl font-bold text-ink">Expert dashboard</h1>
           <p className="text-ink-2">Answer unclear photos, check random audits, and watch how trustworthy the assistant is.</p>
         </div>
-        <button type="button" onClick={() => { localStorage.removeItem("cd_expert_key"); setNeedKey(true); }}
+        <button type="button" onClick={() => {
+          try {
+            localStorage.removeItem("cd_expert_key");
+          } catch {}
+          setNeedKey(true);
+        }}
           className="text-sm font-semibold text-ink-3 underline">Sign out</button>
       </div>
 
@@ -173,7 +195,7 @@ export default function ExpertDashboard() {
         <section className="mt-5 space-y-4">
           {!queue && <p className="text-ink-3">Loading…</p>}
           {queue?.length === 0 && (
-            <p className="rounded-3xl border border-dashed border-border p-8 text-center text-ink-2">
+            <p className="rounded-xl border border-dashed border-border p-8 text-center text-ink-2">
               No photos waiting. Unclear photos from farmers (and random audits) will appear here.
             </p>
           )}
@@ -197,7 +219,7 @@ export default function ExpertDashboard() {
               ["Answered without expert", `${Math.round(cur.monitor_answered * 100)}%`],
             ].map(([l, v]) => (
               <div key={l} className="rounded-2xl border border-border bg-surface p-4">
-                <div className="text-2xl font-extrabold text-ink">{v}</div>
+                <div className="text-2xl font-bold text-ink">{v}</div>
                 <div className="text-sm text-ink-2">{l}</div>
               </div>
             ))}
@@ -208,11 +230,11 @@ export default function ExpertDashboard() {
           {cur.n_field_points > 0 && cur.n_field_points < 9 && (
             <p className="rounded-xl bg-amber-soft px-4 py-3 text-sm text-amber">Fewer than 9 field labels: no safe threshold yet, so every disease stays possible.</p>
           )}
-          <div className="rounded-3xl border border-border bg-surface p-4">
+          <div className="rounded-xl border border-border bg-surface p-4">
             <h2 className="font-bold text-ink">Since the last reset</h2>
             <TrustChart runs={trust.since_reset} />
           </div>
-          <div className="rounded-3xl border border-border bg-surface p-4">
+          <div className="rounded-xl border border-border bg-surface p-4">
             <h2 className="font-bold text-ink">Demo: replay the experiment live</h2>
             <p className="text-sm text-ink-2">Start from lab-only calibration, then add expert-labelled field photos and watch the promise come back.</p>
             <div className="mt-3 flex flex-wrap gap-2">
@@ -227,11 +249,11 @@ export default function ExpertDashboard() {
       {tab === "answered" && answered && (
         <section className="mt-5 space-y-4">
           <div className="grid gap-3 sm:grid-cols-3">
-            <div className="rounded-2xl border border-border bg-surface p-4"><div className="text-2xl font-extrabold">{answered.retraining_pool}</div><div className="text-sm text-ink-2">Labels for the next retraining</div></div>
-            <div className="rounded-2xl border border-border bg-surface p-4"><div className="text-2xl font-extrabold">{answered.audits}</div><div className="text-sm text-ink-2">Random audits checked</div></div>
-            <div className="rounded-2xl border border-border bg-surface p-4"><div className="text-2xl font-extrabold">{answered.audit_accuracy == null ? "–" : `${Math.round(answered.audit_accuracy * 100)}%`}</div><div className="text-sm text-ink-2">Assistant right on audits (unbiased)</div></div>
+            <div className="rounded-2xl border border-border bg-surface p-4"><div className="text-2xl font-bold">{answered.retraining_pool}</div><div className="text-sm text-ink-2">Labels for the next retraining</div></div>
+            <div className="rounded-2xl border border-border bg-surface p-4"><div className="text-2xl font-bold">{answered.audits}</div><div className="text-sm text-ink-2">Random audits checked</div></div>
+            <div className="rounded-2xl border border-border bg-surface p-4"><div className="text-2xl font-bold">{answered.audit_accuracy == null ? "–" : `${Math.round(answered.audit_accuracy * 100)}%`}</div><div className="text-sm text-ink-2">Assistant right on audits (unbiased)</div></div>
           </div>
-          <div className="overflow-x-auto rounded-3xl border border-border bg-surface">
+          <div className="overflow-x-auto rounded-xl border border-border bg-surface">
             <table className="w-full text-left text-sm">
               <thead className="bg-surface-2 text-ink-2"><tr><th className="p-3">Case</th><th className="p-3">Crop</th><th className="p-3">Assistant said</th><th className="p-3">Expert said</th><th className="p-3">Audit</th></tr></thead>
               <tbody>
