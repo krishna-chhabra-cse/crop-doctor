@@ -1,0 +1,27 @@
+# Keeps the free Render API awake so farmers don't wait ~1 minute for a cold start.
+# Render's free plan stops the server after 15 minutes without requests; this calls the cheap
+# health endpoint every 10 minutes. One always-on free instance uses ~720 of the 750 free hours a month.
+# GitHub may run scheduled jobs a few minutes late, so an occasional cold start can still happen.
+name: Keep API awake
+
+on:
+  schedule:
+    - cron: "*/10 * * * *"
+  workflow_dispatch: {}
+
+permissions: {}
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Call /api/health
+        run: |
+          for i in 1 2 3; do
+            code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 90 https://crop-doctor-api-fz3n.onrender.com/api/health) || code=000
+            echo "attempt $i: HTTP $code"
+            [ "$code" = "200" ] && exit 0
+            sleep 10
+          done
+          echo "API did not answer 200 (it may be restarting); the next run will try again."
