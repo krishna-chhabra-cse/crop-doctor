@@ -11,26 +11,26 @@
  * every "on-*" colour is >= 4.5:1 on its "*-solid" fill. Checked for light and dark.
  */
 :root {
-  --background: #f6f7f4;
+  --background: #f3f6f3;
   --surface: #ffffff;
-  --surface-2: #eceee9;
-  --border: #d9ddd6;
-  --ink: #14201a;
-  --ink-2: #46524b;
-  --ink-3: #5f6b64;
+  --surface-2: #e9efea;
+  --border: #d5dfd7;
+  --ink: #0f1a14;
+  --ink-2: #405047;
+  --ink-3: #56665c;
   --focus: #1f5fa8;
 
-  --brand: #17663a;
+  --brand: #15803d;
   --on-brand: #ffffff;
-  --ok: #17663a;
-  --ok-soft: #e3f0e7;
+  --ok: #15803d;
+  --ok-soft: #e1f2e6;
   --soon: #8a4a06;
   --soon-soft: #fcf1dc;
   --soon-solid: #f2a93b;
   --on-soon: #14201a;
   --urgent: #a11f18;
   --urgent-soft: #fbe9e7;
-  --urgent-solid: #b3261e;
+  --urgent-solid: #c62a20;
   --on-urgent: #ffffff;
   --ask: #1a4f8c;
   --ask-soft: #e6eef8;
@@ -40,32 +40,37 @@
   --expert-soft: #efe8f7;
   --expert-solid: #6b3fa0;
   --on-expert: #ffffff;
+
+  /* Depth: soft card shadow, a green glow under the main button, a faint green light behind the page top. */
+  --card-shadow: 0 1px 2px rgb(15 26 20 / 0.05), 0 12px 32px -14px rgb(15 26 20 / 0.2);
+  --glow: 0 10px 28px -10px rgb(21 128 61 / 0.6);
+  --page-glow: rgb(21 128 61 / 0.09);
   color-scheme: light;
 }
 
 /* Dark: bright fills carry dark text, so buttons stay readable. */
 :root[data-theme="dark"] {
-  --background: #0e1311;
-  --surface: #161d19;
-  --surface-2: #1f2823;
-  --border: #2c3630;
-  --ink: #e9eeea;
-  --ink-2: #b4bfb8;
-  --ink-3: #93a098;
+  --background: #070d0a;
+  --surface: #0f1813;
+  --surface-2: #17231c;
+  --border: #243329;
+  --ink: #ecf3ee;
+  --ink-2: #b3c1b8;
+  --ink-3: #8f9e95;
   --focus: #8fc0ff;
 
-  --brand: #3ecf7c;
-  --on-brand: #06130b;
+  --brand: #34d27b;
+  --on-brand: #04140a;
   --ok: #6fe0a0;
-  --ok-soft: #143122;
+  --ok-soft: #10291b;
   --soon: #f5b955;
   --soon-soft: #38280f;
   --soon-solid: #f5b14c;
   --on-soon: #1a1003;
   --urgent: #ff9088;
   --urgent-soft: #3b1715;
-  --urgent-solid: #ff7b72;
-  --on-urgent: #1c0605;
+  --urgent-solid: #d4342c;
+  --on-urgent: #ffffff;
   --ask: #8fc0ff;
   --ask-soft: #13263f;
   --ask-solid: #7cb4ff;
@@ -74,18 +79,25 @@
   --expert-soft: #291b3d;
   --expert-solid: #b995ee;
   --on-expert: #12091f;
+
+  --card-shadow: inset 0 1px 0 rgb(255 255 255 / 0.04), 0 20px 40px -22px rgb(0 0 0 / 0.9);
+  --glow: 0 12px 34px -10px rgb(52 210 123 / 0.55);
+  --page-glow: rgb(52 210 123 / 0.13);
   color-scheme: dark;
 }
 /* No JavaScript yet: follow the phone's setting. */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme]) {
-    --background: #0e1311; --surface: #161d19; --surface-2: #1f2823; --border: #2c3630;
-    --ink: #e9eeea; --ink-2: #b4bfb8; --ink-3: #93a098; --focus: #8fc0ff;
-    --brand: #3ecf7c; --on-brand: #06130b; --ok: #6fe0a0; --ok-soft: #143122;
+    --background: #070d0a; --surface: #0f1813; --surface-2: #17231c; --border: #243329;
+    --ink: #ecf3ee; --ink-2: #b3c1b8; --ink-3: #8f9e95; --focus: #8fc0ff;
+    --brand: #34d27b; --on-brand: #04140a; --ok: #6fe0a0; --ok-soft: #10291b;
     --soon: #f5b955; --soon-soft: #38280f; --soon-solid: #f5b14c; --on-soon: #1a1003;
-    --urgent: #ff9088; --urgent-soft: #3b1715; --urgent-solid: #ff7b72; --on-urgent: #1c0605;
+    --urgent: #ff9088; --urgent-soft: #3b1715; --urgent-solid: #d4342c; --on-urgent: #ffffff;
     --ask: #8fc0ff; --ask-soft: #13263f; --ask-solid: #7cb4ff; --on-ask: #06121f;
     --expert: #c9a8f5; --expert-soft: #291b3d; --expert-solid: #b995ee; --on-expert: #12091f;
+    --card-shadow: inset 0 1px 0 rgb(255 255 255 / 0.04), 0 20px 40px -22px rgb(0 0 0 / 0.9);
+    --glow: 0 12px 34px -10px rgb(52 210 123 / 0.55);
+    --page-glow: rgb(52 210 123 / 0.13);
     color-scheme: dark;
   }
 }
@@ -130,6 +142,9 @@
   --color-blue: var(--ask);
   --color-blue-soft: var(--ask-soft);
 
+  --shadow-card: var(--card-shadow);
+  --shadow-glow: var(--glow);
+
   --font-sans: var(--font-noto), var(--font-noto-deva), system-ui, sans-serif;
 }
 
@@ -138,7 +153,7 @@ html {
 }
 
 body {
-  background: var(--background);
+  background: radial-gradient(1100px 520px at 50% -140px, var(--page-glow), transparent 70%) no-repeat, var(--background);
   color: var(--ink);
   font-family: var(--font-noto), var(--font-noto-deva), system-ui, sans-serif;
   line-height: 1.625;
@@ -172,4 +187,41 @@ html:lang(hi) .leading-relaxed { line-height: 1.8; }
   .dot-pulse span { animation: none; opacity: 0.7; }
   .spin { animation: none; }
   body { transition: none; }
+}
+
+/* ---------- Premium pieces ---------- */
+
+/* Hero photo: darkens toward the bottom so white text on top always reads. */
+.hero-scrim {
+  background: linear-gradient(180deg, rgb(4 10 7 / 0.35) 0%, rgb(4 10 7 / 0.55) 45%, rgb(4 10 7 / 0.92) 100%);
+}
+
+/* Glass panel on top of a photo. */
+.glass {
+  background: rgb(255 255 255 / 0.1);
+  border: 1px solid rgb(255 255 255 / 0.18);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+/* Checking a photo: a glowing ring turns around the leaf and a light line sweeps over it. */
+@keyframes ring-turn { to { transform: rotate(360deg); } }
+.scan-ring {
+  background: conic-gradient(from 0deg, transparent 0 55%, var(--brand) 85%, transparent 100%);
+  animation: ring-turn 1.6s linear infinite;
+}
+@keyframes sweep { 0%, 100% { top: 8%; } 50% { top: 88%; } }
+.scan-sweep {
+  animation: sweep 2.4s ease-in-out infinite;
+  box-shadow: 0 0 16px 4px var(--brand);
+}
+
+/* New content rises in gently. */
+@keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+.rise { animation: rise 0.45s ease-out both; }
+.rise-2 { animation: rise 0.45s ease-out 0.08s both; }
+.rise-3 { animation: rise 0.45s ease-out 0.16s both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .scan-ring, .scan-sweep, .rise, .rise-2, .rise-3 { animation: none; }
 }

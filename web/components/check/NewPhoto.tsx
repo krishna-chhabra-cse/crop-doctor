@@ -8,10 +8,11 @@ import {
   ScanSearch, Sun, Upload, X, ZoomOut, type LucideIcon,
 } from "lucide-react";
 import { shrinkPhoto } from "@/lib/photo";
+import { REFERENCES } from "@/lib/references";
 
-const CROPS: Record<string, { label: Key; local: string; en: string; emoji: string }> = {
-  tomato: { label: "tomato", local: "टमाटर", en: "Tomato", emoji: "🍅" },
-  potato: { label: "potato", local: "आलू", en: "Potato", emoji: "🥔" },
+const CROPS: Record<string, { label: Key; local: string; en: string; emoji: string; photo?: string }> = {
+  tomato: { label: "tomato", local: "टमाटर", en: "Tomato", emoji: "🍅", photo: REFERENCES.tomato_healthy?.src },
+  potato: { label: "potato", local: "आलू", en: "Potato", emoji: "🥔", photo: REFERENCES.potato_healthy?.src },
 };
 type Phase = "preparing" | "sending" | "checking";
 const PHASES: Phase[] = ["preparing", "sending", "checking"];
@@ -122,11 +123,15 @@ export default function NewPhoto({ meta, language, onLanguage, onOpened, showSam
   if (phase) {
     const current = steps.indexOf(phase);
     return (
-      <div className="py-6">
-        <div className="mx-auto h-56 w-56 overflow-hidden rounded-xl bg-surface-2">
-          {busyPreview && <img src={busyPreview} alt={t("yourPhoto")} className="h-full w-full object-cover" />}
+      <div className="rise py-6">
+        <div className="relative mx-auto h-60 w-60">
+          <div className="scan-ring absolute inset-0 rounded-full" aria-hidden="true" />
+          <div className="absolute inset-[5px] overflow-hidden rounded-full bg-surface-2 ring-4 ring-background">
+            {busyPreview && <img src={busyPreview} alt={t("yourPhoto")} className="h-full w-full object-cover" />}
+            <div className="scan-sweep absolute inset-x-6 h-0.5 rounded-full bg-brand" aria-hidden="true" />
+          </div>
         </div>
-        <ol className="mx-auto mt-6 max-w-xs divide-y divide-border" role="status" aria-live="polite">
+        <ol className="mx-auto mt-8 max-w-xs divide-y divide-border rounded-2xl border border-border bg-surface px-4 shadow-card" role="status" aria-live="polite">
           {steps.map((p, i) => {
             const Icon = i < current ? CircleCheck : i === current ? LoaderCircle : PHASE_ICON[p];
             return (
@@ -148,9 +153,9 @@ export default function NewPhoto({ meta, language, onLanguage, onOpened, showSam
     );
   }
 
-  const card = "rounded-xl border border-border bg-surface p-4";
+  const card = "rounded-2xl border border-border bg-surface p-5 shadow-card";
   return (
-    <div className="space-y-5">
+    <div className="rise space-y-5">
       <div>
         <h1 className="text-[28px] font-bold leading-[34px] text-ink">{t("checkLeaf")}</h1>
         <p className="mt-1 text-ink-2">{t("stepsSub")}</p>
@@ -163,16 +168,18 @@ export default function NewPhoto({ meta, language, onLanguage, onOpened, showSam
             const on = crop === c;
             return (
               <button key={c} type="button" role="radio" aria-checked={on} onClick={() => setCrop(c)}
-                className={`relative flex min-h-28 flex-col items-center justify-center gap-1 rounded-xl border-2 py-4 transition ${
-                  on ? "border-brand bg-ok-soft" : "border-border bg-surface hover:border-ink-3"}`}>
+                className={`relative flex min-h-36 flex-col items-start justify-end overflow-hidden rounded-2xl border-2 bg-[#0b130e] p-3 text-left text-white transition ${
+                  on ? "border-brand shadow-glow" : "border-transparent hover:border-ink-3"}`}>
+                {CROPS[c]?.photo && <img src={CROPS[c].photo} alt="" className={`absolute inset-0 h-full w-full object-cover transition ${on ? "scale-105" : ""}`} />}
+                <span className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/0" aria-hidden="true" />
                 {on && (
-                  <span className="absolute right-2 top-2 flex h-6 w-6 items-center justify-center rounded-full bg-brand text-on-brand" aria-hidden="true">
+                  <span className="absolute right-2 top-2 flex h-7 w-7 items-center justify-center rounded-full bg-brand text-on-brand" aria-hidden="true">
                     <Check className="h-4 w-4" strokeWidth={3} />
                   </span>
                 )}
-                <span className="text-4xl" aria-hidden="true">{CROPS[c]?.emoji ?? ""}</span>
-                <span className="text-lg font-semibold text-ink">{CROPS[c] ? t(CROPS[c].label) : c}</span>
-                <span className="text-sm text-ink-3">{CROPS[c] ? (t.hi ? CROPS[c].en : CROPS[c].local) : ""}</span>
+                <span className="relative text-2xl" aria-hidden="true">{CROPS[c]?.emoji ?? ""}</span>
+                <span className="relative text-lg font-semibold">{CROPS[c] ? t(CROPS[c].label) : c}</span>
+                <span className="relative text-sm text-white/75">{CROPS[c] ? (t.hi ? CROPS[c].en : CROPS[c].local) : ""}</span>
               </button>
             );
           })}
@@ -207,7 +214,7 @@ export default function NewPhoto({ meta, language, onLanguage, onOpened, showSam
 
         {preview ? (
           <div className="mt-4 flex items-center gap-4 border-t border-border pt-4">
-            <img src={preview} alt={t("yourPhoto")} className="h-24 w-24 rounded-lg object-cover" />
+            <img src={preview} alt={t("yourPhoto")} className="h-24 w-24 rounded-2xl object-cover ring-2 ring-brand" />
             <div>
               <p className="flex items-center gap-1.5 font-semibold text-ok"><CircleCheck className="h-5 w-5" aria-hidden="true" />{t("photoReady")}</p>
               <button type="button" className="min-h-12 font-semibold text-ink-2 underline underline-offset-4" onClick={() => { setFile(null); setPreview(null); }}>
@@ -217,13 +224,13 @@ export default function NewPhoto({ meta, language, onLanguage, onOpened, showSam
           </div>
         ) : (
           <div className={`mt-4 grid grid-cols-2 gap-3 ${crop ? "" : "opacity-50"}`}>
-            <label className={`flex min-h-24 cursor-pointer flex-col items-center justify-center gap-1 rounded-xl bg-brand text-on-brand ${crop ? "hover:opacity-90" : "pointer-events-none"}`}>
+            <label className={`flex min-h-24 cursor-pointer flex-col items-center justify-center gap-1 rounded-2xl bg-brand text-on-brand ${crop ? "shadow-glow hover:brightness-110" : "pointer-events-none"}`}>
               <Camera className="h-8 w-8" aria-hidden="true" />
               <span className="font-semibold">{t("takePhoto")}</span>
               <input type="file" accept="image/*" capture="environment" className="sr-only" disabled={!crop}
                 onChange={(e) => pick(e.target.files?.[0])} />
             </label>
-            <label className={`flex min-h-24 cursor-pointer flex-col items-center justify-center gap-1 rounded-xl border-2 border-border text-ink ${crop ? "hover:bg-surface-2" : "pointer-events-none"}`}>
+            <label className={`flex min-h-24 cursor-pointer flex-col items-center justify-center gap-1 rounded-2xl border-2 border-border text-ink ${crop ? "hover:bg-surface-2" : "pointer-events-none"}`}>
               <ImageIcon className="h-8 w-8" aria-hidden="true" />
               <span className="font-semibold">{t("gallery")}</span>
               <input type="file" accept="image/*" className="sr-only" disabled={!crop}
@@ -260,7 +267,7 @@ export default function NewPhoto({ meta, language, onLanguage, onOpened, showSam
           </div>
         )}
         <button type="button" disabled={!crop || !file} onClick={() => submit()}
-          className="mt-5 flex min-h-14 w-full items-center justify-center gap-2 rounded-xl bg-brand text-lg font-semibold text-on-brand transition enabled:hover:opacity-90 disabled:opacity-40">
+          className="mt-5 flex min-h-14 w-full items-center justify-center gap-2 rounded-2xl bg-brand text-lg font-semibold text-on-brand transition enabled:shadow-glow enabled:hover:brightness-110 disabled:opacity-40">
           <ScanSearch className="h-6 w-6" aria-hidden="true" /> {t("checkThis")}
         </button>
       </section>
@@ -275,7 +282,7 @@ export default function NewPhoto({ meta, language, onLanguage, onOpened, showSam
         <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3">
           {meta.samples.map((s) => (
             <button key={s.file} type="button" onClick={() => submit(s)}
-              className="overflow-hidden rounded-lg border border-border bg-surface text-left hover:border-brand">
+              className="overflow-hidden rounded-2xl border border-border bg-surface text-left transition hover:-translate-y-0.5 hover:border-brand hover:shadow-card">
               <img src={`${API_URL}/api/samples/${s.file}`} alt="" loading="lazy" className="aspect-square w-full object-cover" />
               <span className="flex items-start gap-1.5 p-2 text-sm font-semibold text-ink">
                 <span aria-hidden="true">{CROPS[s.crop]?.emoji}</span>{t.server(s.title)}

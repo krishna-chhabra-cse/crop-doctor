@@ -16,10 +16,10 @@ export const metadata: Metadata = {
     "An honest crop disease assistant for tomato and potato farmers: it answers when it's sure and asks an expert when it isn't.",
 };
 
-export const viewport: Viewport = { themeColor: "#f6f7f4", width: "device-width", initialScale: 1 };
+export const viewport: Viewport = { themeColor: "#f3f6f3", width: "device-width", initialScale: 1 };
 
 // Runs before the first paint: saved choice, else the phone's setting. Prevents a white flash in dark mode.
-const THEME_SCRIPT = `try{var t=localStorage.getItem("cd_theme");if(t!=="light"&&t!=="dark")t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.dataset.theme=t;if(localStorage.getItem("cd_language")==="Hindi")document.documentElement.lang="hi";if(t==="dark"){var m=document.querySelector('meta[name="theme-color"]');m&&m.setAttribute("content","#0e1311")}}catch(e){}`;
+const THEME_SCRIPT = `try{var t=localStorage.getItem("cd_theme");if(t!=="light"&&t!=="dark")t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.dataset.theme=t;if(localStorage.getItem("cd_language")==="Hindi")document.documentElement.lang="hi";if(t==="dark"){var m=document.querySelector('meta[name="theme-color"]');m&&m.setAttribute("content","#070d0a")}}catch(e){}`;
 
 function Logo() {
   return (

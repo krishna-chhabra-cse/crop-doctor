@@ -40,18 +40,28 @@ export function urgencyTone(level?: Urgency["level"]): Tone {
   return level === "urgent" ? "urgent" : level === "soon" ? "soon" : "ok";
 }
 
-export function VerdictBand({ kind, tone, label, main, sub }: {
-  kind: HeroKind; tone?: Tone; label?: string; main: string; sub?: string;
+export function VerdictBand({ kind, tone, label, main, sub, photo }: {
+  kind: HeroKind; tone?: Tone; label?: string; main: string; sub?: string; photo?: string;
 }) {
   const h = HERO[kind];
   const Icon = h.icon;
+  const solid = SOLID[tone ?? h.tone];
   return (
-    <div className={`flex items-start gap-3 rounded-xl px-4 py-4 ${SOLID[tone ?? h.tone]}`} role="status">
-      <Icon className="mt-0.5 h-8 w-8 shrink-0" strokeWidth={2.25} aria-hidden="true" />
+    <div className={`rise flex items-center gap-4 rounded-2xl p-4 shadow-card ${solid}`} role="status">
+      {photo ? (
+        <span className="relative shrink-0">
+          <img src={photo} alt="" className="h-20 w-20 rounded-xl object-cover sm:h-24 sm:w-24" />
+          <span className={`absolute -bottom-2 -right-2 flex h-9 w-9 items-center justify-center rounded-full border-[3px] border-surface ${solid}`} aria-hidden="true">
+            <Icon className="h-5 w-5" strokeWidth={2.5} />
+          </span>
+        </span>
+      ) : (
+        <Icon className="h-9 w-9 shrink-0" strokeWidth={2.25} aria-hidden="true" />
+      )}
       <div className="min-w-0">
-        {label && <p className="text-sm font-semibold">{label}</p>}
-        <p className="text-[22px] font-bold leading-7">{main}</p>
-        {sub && <p className="mt-0.5 font-semibold">{sub}</p>}
+        {label && <p className="text-sm font-semibold opacity-90">{label}</p>}
+        <p className="text-2xl font-bold leading-tight tracking-tight sm:text-[28px]">{main}</p>
+        {sub && <p className="mt-1 font-semibold">{sub}</p>}
       </div>
     </div>
   );
@@ -66,10 +76,10 @@ export function ConfidenceDots({ p }: { p: number }) {
     <div className="flex flex-wrap items-center gap-x-3 gap-y-1" aria-label={`${word}: ${Math.round(p * 100)} out of 100`}>
       <div className="flex gap-1" aria-hidden="true">
         {Array.from({ length: 10 }, (_, i) => (
-          <span key={i} className={`h-2.5 w-2.5 rounded-full ${i < filled ? "bg-ink-2" : "bg-surface-2 ring-1 ring-border"}`} />
+          <span key={i} className={`h-3 w-3 rounded-full ${i < filled ? "bg-brand" : "bg-surface-2 ring-1 ring-border"}`} />
         ))}
       </div>
-      <span className="text-sm font-semibold text-ink-2">{word} · {Math.round(p * 100)}%</span>
+      <span className="font-semibold text-ink-2"><span className="text-lg font-bold text-brand">{Math.round(p * 100)}%</span> {word}</span>
     </div>
   );
 }
@@ -88,8 +98,8 @@ export function UrgencyLight({ u }: { u: Urgency }) {
     <div>
       <div className="grid grid-cols-3 gap-1.5" role="img" aria-label={`${t("actWithin", { t: t.server(u.act_within) })}`}>
         {LEVELS.map((l) => (
-          <div key={l.key} className={`flex min-h-10 items-center justify-center rounded-lg px-1 text-center text-sm font-semibold ${
-            u.level === l.key ? SOLID[l.tone] : "bg-surface-2 text-ink-3"}`}>
+          <div key={l.key} className={`flex min-h-11 items-center justify-center rounded-full px-1 text-center text-sm font-semibold transition ${
+            u.level === l.key ? `${SOLID[l.tone]} scale-105 shadow-card` : "bg-surface-2 text-ink-3"}`}>
             {t(l.word)}
           </div>
         ))}
@@ -210,15 +220,13 @@ export function actionSteps(d: Disease | null, healthy: boolean, urgent: boolean
 export function ActionList({ steps }: { steps: { icon: LucideIcon; text: Key }[] }) {
   const t = useT();
   return (
-    <section aria-labelledby="todo">
+    <section aria-labelledby="todo" className="rounded-2xl border border-border bg-surface p-4 shadow-card">
       <h2 id="todo" className="text-lg font-semibold text-ink">{t("whatToDo")}</h2>
       <ol className="mt-1 divide-y divide-border">
         {steps.map((s, i) => (
           <li key={s.text} className="flex min-h-14 items-center gap-3 py-2">
-            <span className="w-5 shrink-0 text-right text-lg font-bold text-ink-3" aria-hidden="true">{i + 1}</span>
-            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-surface-2 text-ink" aria-hidden="true">
-              <s.icon className="h-5 w-5" />
-            </span>
+            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand text-base font-bold text-on-brand" aria-hidden="true">{i + 1}</span>
+            <s.icon className="h-5 w-5 shrink-0 text-ink-3" aria-hidden="true" />
             <span className="text-lg leading-snug text-ink">{t(s.text)}</span>
           </li>
         ))}
@@ -269,7 +277,7 @@ export function ListenButton({ text, language, big = false }: { text: string; la
   return (
     <button type="button" onClick={toggle} aria-pressed={speaking}
       className={big
-        ? "flex min-h-14 w-full items-center justify-center gap-2 rounded-xl border-2 border-ink bg-surface px-4 text-lg font-semibold text-ink hover:bg-surface-2"
+        ? "flex min-h-14 w-full items-center justify-center gap-2 rounded-full border-2 border-brand bg-surface px-4 text-lg font-semibold text-brand transition hover:bg-ok-soft"
         : "mt-2 inline-flex min-h-12 items-center gap-2 rounded-xl border border-border bg-surface px-4 font-semibold text-ink hover:bg-surface-2"}>
       <Icon className={big ? "h-6 w-6" : "h-5 w-5"} aria-hidden="true" />
       {t(speaking ? "stop" : big ? "listenAnswer" : "listen")}
@@ -309,13 +317,13 @@ export function PhotoCompare({ photo, disease }: { photo?: string; disease: Dise
     <div className="grid grid-cols-2 gap-3">
       {photo && (
         <figure>
-          <img src={photo} alt={t("yourPhoto")} className="aspect-[4/3] w-full rounded-lg object-cover" />
+          <img src={photo} alt={t("yourPhoto")} className="aspect-[4/3] w-full rounded-2xl object-cover shadow-card" />
           <figcaption className="mt-1 text-sm font-semibold text-ink">{t("yourLeaf")}</figcaption>
         </figure>
       )}
       {ref && disease && (
         <figure>
-          <img src={ref.src} alt={t.server(disease.name)} loading="lazy" className="aspect-[4/3] w-full rounded-lg object-cover" />
+          <img src={ref.src} alt={t.server(disease.name)} loading="lazy" className="aspect-[4/3] w-full rounded-2xl object-cover shadow-card" />
           <figcaption className="mt-1 text-sm leading-snug">
             <span className="block font-semibold text-ink">{t("typicalLook")}</span>
             <span className="block text-ink-3">{t("photoCredit")} {ref.credit}</span>
@@ -337,7 +345,7 @@ export function ReferencePhotos({ diseases }: { diseases: Disease[] }) {
       <div className={`grid gap-3 ${items.length > 2 ? "grid-cols-3" : "grid-cols-2"}`}>
         {items.map((d) => (
           <figure key={d.label}>
-            <img src={REFERENCES[d.label].src} alt={t.server(d.name)} loading="lazy" className="aspect-square w-full rounded-lg object-cover" />
+            <img src={REFERENCES[d.label].src} alt={t.server(d.name)} loading="lazy" className="aspect-square w-full rounded-2xl object-cover shadow-card" />
             <figcaption className="mt-1 text-sm leading-snug">
               <span className="block font-semibold text-ink">{t.server(d.name)}</span>
               <span className="block text-ink-3">{t("photoCredit")} {REFERENCES[d.label].credit}</span>

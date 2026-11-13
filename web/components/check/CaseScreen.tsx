@@ -305,18 +305,18 @@ export default function CaseScreen({ id, meta, language, initial, onNew }: Props
       <div className="flex items-center justify-between gap-3">
         <h1 className="sr-only">Your {c.crop} leaf</h1>
         <p className="text-sm font-semibold text-ink-3">{t("checkNo")} #{c.id}</p>
-        <button type="button" onClick={onNew} className="flex min-h-12 items-center gap-2 rounded-xl border border-border bg-surface px-4 font-semibold text-ink hover:bg-surface-2">
+        <button type="button" onClick={onNew} className="flex min-h-12 items-center gap-2 rounded-full border border-border bg-surface px-4 font-semibold text-ink shadow-card hover:bg-surface-2">
           <Camera className="h-5 w-5" aria-hidden="true" /> {t("newPhoto")}
         </button>
       </div>
 
       <div className="space-y-3">
-        <VerdictBand {...verdict} />
+        <VerdictBand {...verdict} photo={c.image ? imageUrl(c.image) : undefined} />
         <ListenButton big text={spokenSummary(c, verdict, t)} language={screenLanguage} />
       </div>
 
       {a.status === "question" && a.question && c.status !== "expert_answered" && (
-        <section aria-labelledby="q" className="rounded-xl border-2 border-ask bg-surface p-4">
+        <section aria-labelledby="q" className="rise rounded-2xl border-2 border-ask bg-surface p-5 shadow-card">
           <p className="flex items-center gap-2 text-sm font-semibold text-ask">
             <CircleHelp className="h-5 w-5" aria-hidden="true" />{t("lookClosely")}
           </p>
@@ -327,7 +327,7 @@ export default function CaseScreen({ id, meta, language, initial, onNew }: Props
               const Icon = optionIcon(o);
               return (
                 <button key={o} type="button" disabled={busy} onClick={() => act(() => api.answerQuestion(c.id, i, language))}
-                  className="flex min-h-16 w-full items-center gap-3 rounded-xl border-2 border-border bg-surface px-3 py-2 text-left font-semibold text-ink transition hover:border-ask hover:bg-ask-soft disabled:opacity-50">
+                  className="flex min-h-16 w-full items-center gap-3 rounded-2xl border-2 border-border bg-surface px-3 py-2 text-left font-semibold text-ink transition hover:-translate-y-0.5 hover:border-ask hover:bg-ask-soft disabled:opacity-50">
                   <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-surface-2 text-ink" aria-hidden="true"><Icon className="h-6 w-6" /></span>
                   <span className="leading-snug">{t.server(o)}</span>
                 </button>
@@ -345,13 +345,13 @@ export default function CaseScreen({ id, meta, language, initial, onNew }: Props
       <ResultBody c={c} />
 
       {c.ask_extent && c.status !== "expert_answered" && (
-        <section aria-labelledby="ext" className="rounded-xl border-2 border-ask bg-surface p-4">
+        <section aria-labelledby="ext" className="rise rounded-2xl border-2 border-ask bg-surface p-5 shadow-card">
           <h2 id="ext" className="text-lg font-semibold leading-snug text-ink">{t.server(meta.extent_question.text)}</h2>
           <p className="text-sm text-ink-3">{t("extentWhy")}</p>
           <div className="mt-3 grid grid-cols-3 gap-2">
             {meta.extent_question.options.map((o) => (
               <button key={o.value} type="button" disabled={busy} onClick={() => act(() => api.answerExtent(c.id, o.value))}
-                className="flex min-h-24 flex-col items-center justify-center gap-1 rounded-xl border-2 border-border px-2 py-3 text-center text-sm font-semibold leading-snug text-ink transition hover:border-ask hover:bg-ask-soft disabled:opacity-50">
+                className="flex min-h-24 flex-col items-center justify-center gap-1 rounded-2xl border-2 border-border px-2 py-3 text-center text-sm font-semibold leading-snug text-ink transition hover:border-ask hover:bg-ask-soft disabled:opacity-50">
                 <ExtentIcon value={o.value} />
                 {t.server(o.text)}
               </button>
@@ -361,7 +361,7 @@ export default function CaseScreen({ id, meta, language, initial, onNew }: Props
       )}
 
       {a.status === "retake" && (
-        <button type="button" onClick={onNew} className="flex min-h-14 w-full items-center justify-center gap-2 rounded-xl bg-brand text-lg font-semibold text-on-brand hover:opacity-90">
+        <button type="button" onClick={onNew} className="flex min-h-14 w-full items-center justify-center gap-2 rounded-2xl bg-brand text-lg font-semibold text-on-brand shadow-glow hover:brightness-110">
           <Camera className="h-6 w-6" aria-hidden="true" /> {t("takeNew")}
         </button>
       )}
@@ -386,7 +386,7 @@ export default function CaseScreen({ id, meta, language, initial, onNew }: Props
       )}
 
       {a.status !== "retake" && (
-        <form className="sticky bottom-3 flex gap-2 rounded-xl border border-border bg-surface p-2 shadow-[0_4px_16px_rgb(0_0_0/0.12)]"
+        <form className="sticky bottom-3 flex gap-2 rounded-2xl border border-border bg-surface/95 p-2 shadow-card backdrop-blur"
           onSubmit={(e) => {
             e.preventDefault();
             const q = text.trim();
@@ -400,7 +400,7 @@ export default function CaseScreen({ id, meta, language, initial, onNew }: Props
             placeholder={t("askPlaceholder")}
             className="min-h-12 min-w-0 flex-1 rounded-lg bg-transparent px-3 text-ink outline-none placeholder:text-ink-3" />
           <button type="submit" disabled={busy || !text.trim()}
-            className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-brand text-on-brand disabled:opacity-40" aria-label={t("send")}>
+            className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-brand text-on-brand enabled:shadow-glow disabled:opacity-40" aria-label={t("send")}>
             <Send className="h-5 w-5" aria-hidden="true" />
           </button>
         </form>
