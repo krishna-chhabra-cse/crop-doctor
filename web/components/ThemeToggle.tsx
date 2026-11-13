@@ -15,7 +15,7 @@ const subscribe = (fn: () => void) => {
 
 function setTheme(t: Theme) {
   document.documentElement.dataset.theme = t;
-  document.querySelector('meta[name="theme-color"]')?.setAttribute("content", t === "dark" ? "#0e1311" : "#f6f7f4");
+  document.querySelector('meta[name="theme-color"]')?.setAttribute("content", t === "dark" ? "#070d0a" : "#f3f6f3");
   try {
     localStorage.setItem("cd_theme", t);
   } catch {}

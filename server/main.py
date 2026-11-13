@@ -307,7 +307,8 @@ def sample_image(file: str):
     p = (SAMPLES_DIR / file).resolve()
     if p.parent != SAMPLES_DIR.resolve() or not p.exists() or p.suffix.lower() not in (".jpg", ".jpeg", ".png"):
         raise HTTPException(404)
-    return Response(p.read_bytes(), media_type="image/jpeg", headers={"Cache-Control": "public, max-age=86400"})
+    media = "image/png" if p.suffix.lower() == ".png" else "image/jpeg"
+    return Response(p.read_bytes(), media_type=media, headers={"Cache-Control": "public, max-age=86400"})
 
 
 @app.get("/api/images/{name}")

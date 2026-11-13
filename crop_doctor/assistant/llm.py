@@ -36,8 +36,8 @@ from crop_doctor.knowledge.rag import GENERAL, Chunk, default_retriever
 MODEL = os.environ.get("CROP_DOCTOR_MODEL", "claude-opus-5-5")
 GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-3.6-flash")
 FALLBACK_BETA = "server-side-fallback-2026-07-01"
-# Hard wall-clock limit for one AI reply. The SDKs have their own timeouts, but they also RETRY (Gemini: up to 4
-# times x 30 s), so one slow provider could hold a farmer's request for minutes. After this many seconds the
+# Hard wall-clock limit for one AI reply. Each Gemini attempt also times out at this limit (one retry at most);
+# Claude's SDK has its own timeout and one retry. After this many seconds the
 # farmer gets the sourced template reply instead; the slow call finishes (or fails) in the background.
 LLM_DEADLINE = float(os.environ.get("CROP_DOCTOR_LLM_DEADLINE", "20"))
 log = logging.getLogger("crop_doctor.llm")
@@ -503,7 +503,12 @@ def _ask_claude(system: str, history: list[dict], user_text: str) -> str:
 def _ask_gemini(system: str, history: list[dict], user_text: str) -> str:
     """Gemini Interactions API, stateless (store=False): earlier chat turns are included as text."""
     from google import genai
-    client = genai.Client(api_key=_gemini_key())
+    from google.genai import types
+    # Fewest retries the SDK allows (it turns attempts=0 into 1 retry). By default it retries a 503 several times
+    # and kept this thread busy for minutes after the farmer already got the template reply (Render, 13 Nov:
+    # "failed after 130.8 s"). Now worst case is about 2 x LLM_DEADLINE.
+    client = genai.Client(api_key=_gemini_key(),
+                          http_options=types.HttpOptions(retry_options=types.HttpRetryOptions(attempts=0)))
     earlier = "\n".join(f"{'Farmer' if m['role'] == 'user' else 'Crop Doctor'}: {m['content']}" for m in history)
     prompt = (f"<earlier_conversation>\n{earlier}\n</earlier_conversation>\n\n{user_text}" if earlier else user_text)
     it = client.interactions.create(
@@ -513,7 +518,7 @@ def _ask_gemini(system: str, history: list[dict], user_text: str) -> str:
         # Low thinking: it only explains facts it's given, and farmers shouldn't wait a minute for a reply.
         generation_config={"max_output_tokens": 1500, "thinking_level": "low"},
         store=False,                       # don't keep farmers' conversations on Google's servers
-        timeout=30.0,                      # slower than this -> template reply instead of a long wait
+        timeout=LLM_DEADLINE,              # stop waiting when the farmer gets the template reply anyway
     )
     if it.status != "completed":
         raise Declined(f"status {it.status}")
