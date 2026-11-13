@@ -32,8 +32,8 @@ export function SiteNav() {
 export function SiteFooter() {
   const t = useT();
   return (
-    <footer className="border-t border-border px-4 py-8 text-sm text-ink-3">
-      <div className="mx-auto flex max-w-5xl flex-col gap-2 sm:flex-row sm:justify-between">
+    <footer className="bg-surface-2 px-5 py-12 text-ink-2 sm:px-8">
+      <div className="mx-auto flex max-w-[1280px] flex-col gap-3 sm:flex-row sm:justify-between">
         <div className="space-y-2">
           <p>{t("footerNote")}</p>
           <p>{t("footerSources")}</p>

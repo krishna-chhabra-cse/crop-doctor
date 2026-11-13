@@ -3,6 +3,7 @@
 // The backend sleeps after 15 minutes without visitors and takes about a minute to start again. We ping it as
 // soon as anyone opens the site, and tell them (in their language) if it's starting or if they're offline.
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { api } from "@/lib/api";
 import { useT } from "@/lib/i18n";
 
@@ -11,6 +12,7 @@ type State = "checking" | "slow" | "offline" | "ok" | "down";
 export default function ServerWaker() {
   const [state, setState] = useState<State>("checking");
   const t = useT();
+  const pathname = usePathname();
 
   useEffect(() => {
     let done = false;
@@ -39,6 +41,8 @@ export default function ServerWaker() {
     };
   }, []);
 
+  // The landing page still wakes the server in the background, but shows no banner: it needs no server to read.
+  if (pathname === "/") return null;
   if (state === "slow")
     return (
       <div role="status" className="bg-soon-soft px-4 py-2 text-center text-sm text-soon">

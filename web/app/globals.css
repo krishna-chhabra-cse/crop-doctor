@@ -173,3 +173,20 @@ html:lang(hi) .leading-relaxed { line-height: 1.8; }
   .spin { animation: none; }
   body { transition: none; }
 }
+
+/* Landing motion. Content is visible by default; motion only plays when allowed. */
+.line-mask { display: block; overflow: hidden; padding-bottom: 0.08em; }
+.line-mask .line { display: block; }
+.press { transition: transform 140ms ease, opacity 140ms ease, background-color 140ms ease, color 140ms ease; }
+.press:hover { opacity: 0.92; }
+.press:active { transform: scale(0.97); }
+@keyframes line-up { from { transform: translateY(105%); } to { transform: none; } }
+@keyframes rise { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+@keyframes msg-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: no-preference) {
+  .line-mask .line { animation: line-up 900ms cubic-bezier(0.16, 1, 0.3, 1) both; animation-delay: calc(var(--l) * 110ms + 80ms); }
+  .hero-after { animation: rise 700ms cubic-bezier(0.16, 1, 0.3, 1) 420ms both; }
+  .msg { animation: msg-in 420ms cubic-bezier(0.16, 1, 0.3, 1) both; animation-delay: calc(var(--i) * 450ms + 250ms); }
+  .reveal-wait { opacity: 0; transform: translateY(24px); }
+  .reveal { transition: opacity 700ms cubic-bezier(0.16, 1, 0.3, 1) var(--d, 0ms), transform 700ms cubic-bezier(0.16, 1, 0.3, 1) var(--d, 0ms); }
+}

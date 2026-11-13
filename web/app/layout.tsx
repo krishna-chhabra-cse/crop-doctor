@@ -41,8 +41,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-xl focus:bg-surface focus:px-3 focus:py-2">
           Skip to content
         </a>
-        <header className="sticky top-0 z-30 border-b border-border bg-background/90 backdrop-blur">
-          <nav className="mx-auto flex max-w-5xl items-center justify-between gap-3 px-4 py-2" aria-label="Main">
+        <header className="bg-background">
+          <nav className="mx-auto flex max-w-[1280px] items-center justify-between gap-3 px-5 py-3 sm:px-8" aria-label="Main">
             <Link href="/" className="flex min-h-12 shrink-0 items-center gap-2 whitespace-nowrap text-lg font-bold text-ink">
               <Logo />
               <span>Crop Doctor</span>
