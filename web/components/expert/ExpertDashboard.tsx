@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { api, ApiError, expertKey, imageUrl, type Answered, type QueueItem, type Trust } from "@/lib/api";
+import { useVisiblePoll } from "@/lib/poll";
 import TrustChart from "./TrustChart";
 
 type Tab = "queue" | "trust" | "answered";
@@ -136,13 +137,11 @@ export default function ExpertDashboard() {
   }, []);
 
   useEffect(() => {
-    const first = setTimeout(refresh, 0);           // load right away, then every 20 s
-    const t = setInterval(refresh, 20000);
-    return () => {
-      clearTimeout(first);
-      clearInterval(t);
-    };
+    const first = setTimeout(refresh, 0);           // load right away
+    return () => clearTimeout(first);
   }, [refresh]);
+  // Then every 20 s while the tab is on screen, and not while the sign-in form is showing (it would only get 401s).
+  useVisiblePoll(refresh, 20000, !needKey);
 
   const calibrate = async (action: "reset_lab" | "reset_field" | "simulate") => {
     setBusy(true);

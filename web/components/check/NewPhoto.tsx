@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { api, API_URL, errorKey, type CaseView, type Meta } from "@/lib/api";
-import { useT, type Key } from "@/lib/i18n";
+import { NATIVE, useT, type Key } from "@/lib/i18n";
 import {
   Camera, Check, ChevronDown, CircleCheck, CloudFog, Focus, Image as ImageIcon, Info, Leaf, LoaderCircle, Moon, RotateCcw,
   ScanSearch, Sun, Upload, X, ZoomOut, type LucideIcon,
@@ -12,11 +12,6 @@ import { shrinkPhoto } from "@/lib/photo";
 const CROPS: Record<string, { label: Key; local: string; en: string; emoji: string }> = {
   tomato: { label: "tomato", local: "टमाटर", en: "Tomato", emoji: "🍅" },
   potato: { label: "potato", local: "आलू", en: "Potato", emoji: "🥔" },
-};
-// Languages shown in their own script, so farmers recognise their language without reading English.
-const NATIVE: Record<string, string> = {
-  English: "English", Hindi: "हिन्दी", Tamil: "தமிழ்", Telugu: "తెలుగు", Marathi: "मराठी",
-  Kannada: "ಕನ್ನಡ", Bengali: "বাংলা", Punjabi: "ਪੰਜਾਬੀ",
 };
 type Phase = "preparing" | "sending" | "checking";
 const PHASES: Phase[] = ["preparing", "sending", "checking"];

@@ -5,6 +5,13 @@
 // language). Server text (questions, disease names, urgency...) is a fixed set of sentences, translated here.
 import { useSyncExternalStore } from "react";
 
+// Reply languages (same list as LANGUAGES in server/main.py), each in its own script, so farmers recognise their
+// language without reading English.
+export const NATIVE: Record<string, string> = {
+  English: "English", Hindi: "हिन्दी", Tamil: "தமிழ்", Telugu: "తెలుగు", Marathi: "मराठी",
+  Kannada: "ಕನ್ನಡ", Bengali: "বাংলা", Punjabi: "ਪੰਜਾਬੀ",
+};
+
 const KEY = "cd_language";
 const listeners = new Set<() => void>();
 const subscribe = (fn: () => void) => {

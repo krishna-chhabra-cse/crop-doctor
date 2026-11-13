@@ -8,6 +8,7 @@ import {
   ReferencePhotos, UrgencyLight, urgencyTone, VerdictBand, type HeroKind, type Tone,
 } from "./visuals";
 import { useT, type Key, type T } from "@/lib/i18n";
+import { useVisiblePoll } from "@/lib/poll";
 
 // Tiny safe formatter: **bold**, "- " bullets and line breaks only (no HTML from the server is ever injected).
 function Rich({ text }: { text: string }) {
@@ -266,12 +267,8 @@ export default function CaseScreen({ id, meta, language, initial, onNew }: Props
     };
   }, [id, initial]);
 
-  // Waiting for an expert: check for their answer every 15 seconds.
-  useEffect(() => {
-    if (c?.status !== "pending" && !(c?.audit && c.status === "answered")) return;
-    const t = setInterval(load, 15000);
-    return () => clearInterval(t);
-  }, [c?.status, c?.audit, load]);
+  // Waiting for an expert: check for their answer every 15 seconds (only while this tab is on screen).
+  useVisiblePoll(load, 15000, c?.status === "pending" || (!!c?.audit && c.status === "answered"));
 
   // Scroll to new chat messages, but not on first load: the farmer should see the result card first.
   const seen = useRef<number | null>(null);
