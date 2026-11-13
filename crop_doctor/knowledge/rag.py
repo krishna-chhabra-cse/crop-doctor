@@ -70,8 +70,16 @@ class MiniLMOnnx:
         self.sess = ort.InferenceSession(hf_hub_download(self.REPO, self.FILE), opts, providers=["CPUExecutionProvider"])
         self.inputs = {i.name for i in self.sess.get_inputs()}
 
-    def encode(self, texts) -> np.ndarray:
-        enc = self.tok.encode_batch(list(texts))
+    def encode(self, texts, batch: int = 1) -> np.ndarray:
+        """One text at a time: one batch of every note padded to 256 tokens briefly cost ~100 MB at startup, enough to
+        push the 512 MB free server over its limit. It also makes a note's vector independent of the other notes
+        (this 8-bit model scales each batch together), exactly like a farmer's question, which is encoded alone."""
+        texts = list(texts)
+        return np.concatenate([self._encode(texts[i:i + batch]) for i in range(0, len(texts), batch)] or
+                              [np.zeros((0, 384), dtype=np.float32)])
+
+    def _encode(self, texts: list[str]) -> np.ndarray:
+        enc = self.tok.encode_batch(texts)
         ids = np.array([e.ids for e in enc], dtype=np.int64)
         mask = np.array([e.attention_mask for e in enc], dtype=np.int64)
         feeds = {"input_ids": ids, "attention_mask": mask}
