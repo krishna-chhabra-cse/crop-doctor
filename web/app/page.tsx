@@ -1,317 +1,280 @@
 "use client";
 
+// Landing page, built with the immersive-concept method: one axis, FIELD (−1) ⟷ MODEL (+1).
+// The concept block is at the top of app/immersive.css; the engine is components/immersive/useHeroEngine.ts.
 import Link from "next/link";
-import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
-import { Camera, Check, CircleCheck, CircleHelp, Image as ImageIcon, MessageCircle, ScanSearch, UserRound, type LucideIcon } from "lucide-react";
-import { useT, type Key } from "@/lib/i18n";
+import { useRef } from "react";
+import { useT } from "@/lib/i18n";
 import { RESULTS as R } from "@/lib/results";
+import { DEFS, POLE_A, POLE_B, UNDER_A, UNDER_B, PAPER } from "@/components/immersive/heroArt.generated";
+import { useHeroEngine } from "@/components/immersive/useHeroEngine";
+import { fraunces, plexMono, tiro } from "@/components/immersive/fonts";
+import "./immersive.css";
 
 // Round DOWN so a result is never overstated (99.5% shows as 99%, not 100%).
 const pct = (x: number) => `${Math.floor(x * 100 + 1e-9)}%`;
 
-const WRAP = "mx-auto w-full max-w-[1280px] px-5 sm:px-8";
+const COPY = {
+  en: {
+    h1: "Crop Doctor: a crop disease assistant that answers when it is sure and asks an expert when it isn't",
+    capsA: ["Your leaf", "Your field"],
+    capsB: ["The model", "Its doubt"],
+    tagline: ["Where your ", "field", " and the ", "model", " meet, and it tells you when it isn't sure."],
+    meta: `Tomato & potato · English & हिंदी · tested on ${R.fieldTestPhotos.toLocaleString("en-IN")} field photos`,
+    check: "Check a leaf",
+    numbers: "See the numbers",
+    cue: "↓ Scroll",
+    s01: "The idea",
+    ideaText:
+      "A photo of a leaf in a real field looks nothing like the clean lab photos most models learn from. Crop Doctor is built for that gap. It answers when it is sure, asks you one question when it is almost sure, and sends your photo to a person when it is not.",
+    cropTitle: "Crop",
+    cropTag: "what you see",
+    cropText: "Your photo, taken in sun or shade, with soil, shadows and other leaves in it. That is what the model has to read.",
+    docTitle: "Doctor",
+    docTag: "what it knows, and what it doesn't",
+    docText: "Trained on lab photos, tested on field photos, and measured on how often its doubt is right, not only how often it is.",
+    s1x: "§1.1 How it works",
+    howTitle: "One leaf, one answer, or an honest “not sure”.",
+    steps: [
+      ["Photograph one leaf", "In daylight, the sick leaf filling most of the frame."],
+      ["Get an answer, or one question", "If two diseases look alike, it shows both and asks which matches your leaf."],
+      ["Not sure? A person answers", "Your photo goes to an expert's queue, and their answer comes back in the app."],
+    ],
+    figCaption: "A potato leaf from a field. Crop Doctor's answer: early blight.",
+    s02a: "§02 For farmers",
+    s02aTitle: "What happens when you send a photo",
+    pathA: [
+      ["§2.1", "It is sure", "You get the disease, what causes it, and what to do this week, in English or Hindi."],
+      ["§2.2", "It is almost sure", "It shows the two diseases it is torn between and asks which looks like your leaf."],
+      ["§2.3", "It is not sure", "It says so. Your photo goes to an expert, and you are told to confirm with your KVK."],
+    ],
+    sayA: "It never guesses to sound clever.",
+    s02b: "§02 For the curious",
+    s02bTitle: "The numbers, the hard one first",
+    pathB: [
+      ["§2.1", pct(R.labOnlyFieldAccuracy), `A model trained only on lab photos, tested on field photos. It was confident ${pct(R.labOnlyFieldConfidence)} of the time anyway.`],
+      ["§2.2", pct(R.plantdocAccuracy), "Our first answer on PlantDoc field photos, the hardest public test set."],
+      ["§2.3", pct(R.coverage), `of the time the true disease is in the shortlist it shows. The target was ${pct(R.coverageTarget)}.`],
+      ["§2.4", pct(R.accuracyWhenAnswered), `right when it answers on its own, which it does for ${pct(R.answeredByAssistant)} of photos. The rest go to a person.`],
+    ],
+    sayB: "We headline the hard number, not the flattering one.",
+    s03: "§03 Try it",
+    closeTitle: "Have a sick leaf? Photograph it.",
+    closeText: "No account. Works on a cheap phone. If it can't tell, it will say so.",
+    expertTitle: "Are you an agronomist?",
+    expertText: "The photos it was not sure about wait in a queue for someone who knows.",
+    expertLink: "Open the expert queue",
+    chatTitle: "Have a question, not a photo?",
+    chatText: "Ask in plain words after a check, and it answers only from what it knows.",
+    chatLink: "Start with a leaf",
+  },
+  hi: {
+    h1: "क्रॉप डॉक्टर: फ़सल रोग सहायक जो पक्का होने पर जवाब देता है और पक्का न होने पर विशेषज्ञ से पूछता है",
+    capsA: ["आपका पत्ता", "आपका खेत"],
+    capsB: ["मॉडल", "उसका संदेह"],
+    tagline: ["जहाँ आपका ", "खेत", " और ", "मॉडल", " मिलते हैं, और पक्का न हो तो वह साफ़ बताता है।"],
+    meta: `टमाटर और आलू · हिंदी और English · ${R.fieldTestPhotos.toLocaleString("en-IN")} खेत की फ़ोटो पर परखा`,
+    check: "पत्ता जाँचें",
+    numbers: "आँकड़े देखें",
+    cue: "↓ स्क्रॉल करें",
+    s01: "विचार",
+    ideaText:
+      "खेत में ली गई पत्ते की फ़ोटो उन साफ़ लैब फ़ोटो जैसी बिल्कुल नहीं होती जिनसे ज़्यादातर मॉडल सीखते हैं। क्रॉप डॉक्टर इसी अंतर के लिए बना है। पक्का होने पर जवाब देता है, लगभग पक्का होने पर एक सवाल पूछता है, और पक्का न होने पर आपकी फ़ोटो किसी व्यक्ति को भेजता है।",
+    cropTitle: "फ़सल",
+    cropTag: "जो आप देखते हैं",
+    cropText: "धूप या छाँव में ली गई आपकी फ़ोटो, जिसमें मिट्टी, परछाईं और दूसरे पत्ते भी हैं। मॉडल को यही पढ़ना होता है।",
+    docTitle: "डॉक्टर",
+    docTag: "जो वह जानता है, और जो नहीं",
+    docText: "लैब फ़ोटो पर सिखाया, खेत की फ़ोटो पर परखा, और यह भी मापा कि उसका संदेह कितनी बार सही होता है।",
+    s1x: "§1.1 यह कैसे काम करता है",
+    howTitle: "एक पत्ता, एक जवाब, या ईमानदार “पक्का नहीं”।",
+    steps: [
+      ["एक पत्ते की फ़ोटो लें", "दिन की रोशनी में, बीमार पत्ता फ़्रेम का ज़्यादातर हिस्सा भरे।"],
+      ["जवाब पाएँ, या एक सवाल", "अगर दो रोग एक जैसे दिखें, तो दोनों दिखाकर पूछता है कि आपका पत्ता किससे मिलता है।"],
+      ["पक्का नहीं? कोई व्यक्ति जवाब देगा", "आपकी फ़ोटो विशेषज्ञ की कतार में जाती है, और उनका जवाब ऐप में आता है।"],
+    ],
+    figCaption: "खेत से आलू का पत्ता। क्रॉप डॉक्टर का जवाब: अगेती झुलसा।",
+    s02a: "§02 किसानों के लिए",
+    s02aTitle: "फ़ोटो भेजने पर क्या होता है",
+    pathA: [
+      ["§2.1", "वह पक्का है", "आपको रोग, उसका कारण, और इस हफ़्ते क्या करना है, हिंदी या अंग्रेज़ी में मिलता है।"],
+      ["§2.2", "वह लगभग पक्का है", "जिन दो रोगों में उलझा है, उन्हें दिखाकर पूछता है कि कौन-सा आपके पत्ते जैसा है।"],
+      ["§2.3", "वह पक्का नहीं है", "वह यह साफ़ कहता है। फ़ोटो विशेषज्ञ को जाती है, और आपको KVK से पुष्टि करने को कहा जाता है।"],
+    ],
+    sayA: "वह होशियार दिखने के लिए अंदाज़ा नहीं लगाता।",
+    s02b: "§02 जिज्ञासुओं के लिए",
+    s02bTitle: "आँकड़े, सबसे कठिन पहले",
+    pathB: [
+      ["§2.1", pct(R.labOnlyFieldAccuracy), `सिर्फ़ लैब फ़ोटो पर सिखाया मॉडल, खेत की फ़ोटो पर। फिर भी ${pct(R.labOnlyFieldConfidence)} बार वह आश्वस्त था।`],
+      ["§2.2", pct(R.plantdocAccuracy), "PlantDoc खेत फ़ोटो पर हमारा पहला जवाब, सबसे कठिन सार्वजनिक परीक्षण।"],
+      ["§2.3", pct(R.coverage), `बार सही रोग उसकी छोटी सूची में होता है। लक्ष्य ${pct(R.coverageTarget)} था।`],
+      ["§2.4", pct(R.accuracyWhenAnswered), `सही, जब वह ख़ुद जवाब देता है, जो ${pct(R.answeredByAssistant)} फ़ोटो पर होता है। बाकी किसी व्यक्ति को जाती हैं।`],
+    ],
+    sayB: "हम कठिन आँकड़ा सबसे आगे रखते हैं, लुभावना नहीं।",
+    s03: "§03 आज़माएँ",
+    closeTitle: "बीमार पत्ता है? उसकी फ़ोटो लें।",
+    closeText: "कोई खाता नहीं। सस्ते फ़ोन पर भी चलता है। पहचान न सके तो साफ़ बताएगा।",
+    expertTitle: "क्या आप कृषि विशेषज्ञ हैं?",
+    expertText: "जिन फ़ोटो पर वह पक्का नहीं था, वे किसी जानकार के इंतज़ार में कतार में हैं।",
+    expertLink: "विशेषज्ञ कतार खोलें",
+    chatTitle: "फ़ोटो नहीं, सवाल है?",
+    chatText: "जाँच के बाद सीधे शब्दों में पूछें; वह सिर्फ़ उसी से जवाब देता है जो वह जानता है।",
+    chatLink: "एक पत्ते से शुरू करें",
+  },
+};
 
-/* Parts of a section rise into place once as it enters the screen. Visible by default without script. */
-function Reveal({ children, className = "", delay = 0 }: { children: ReactNode; className?: string; delay?: number }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [state, setState] = useState<"idle" | "wait" | "in">("idle");
-  useEffect(() => {
-    const el = ref.current;
-    if (!el || !("IntersectionObserver" in window)) return;
-    if (el.getBoundingClientRect().top < window.innerHeight * 0.9) return; // already on screen: leave it shown
-    setState("wait");
-    const io = new IntersectionObserver(([e]) => {
-      if (e.isIntersecting) { setState("in"); io.disconnect(); }
-    }, { rootMargin: "0px 0px -10% 0px" });
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
+function HeroArt() {
   return (
-    <div ref={ref} className={`reveal ${state === "wait" ? "reveal-wait" : ""} ${className}`} style={{ "--d": `${delay}ms` } as CSSProperties}>
-      {children}
+    <div className="im-art" aria-hidden="true">
+      <svg className="im-under im-under--a" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" dangerouslySetInnerHTML={{ __html: UNDER_A }} />
+      <svg className="im-under im-under--b" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" dangerouslySetInnerHTML={{ __html: UNDER_B }} />
+      <svg className="im-art__main" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+        <defs dangerouslySetInnerHTML={{ __html: DEFS +
+          `<filter id="cd-soft"><feGaussianBlur stdDeviation="3"/></filter>` +
+          `<mask id="cd-mask-a" maskUnits="userSpaceOnUse" x="-200" y="0" width="2000" height="900"><rect x="-200" width="2000" height="900" fill="#fff"/><g id="cd-cells-a" fill="#000" filter="url(#cd-soft)"></g></mask>` +
+          `<mask id="cd-mask-b" maskUnits="userSpaceOnUse" x="-200" y="0" width="2000" height="900"><rect x="-200" width="2000" height="900" fill="#fff"/><g id="cd-cells-b" fill="#000" shape-rendering="crispEdges"></g></mask>` +
+          `<clipPath id="cd-clip-a"><rect x="-200" width="1000" height="900"/></clipPath>` +
+          `<clipPath id="cd-clip-b"><rect x="800" width="1000" height="900"/></clipPath>` }} />
+        <rect width="1600" height="900" fill={PAPER} />
+        <g mask="url(#cd-mask-b)"><g id="cd-pole-b" dangerouslySetInnerHTML={{ __html: POLE_B }} /></g>
+        <g mask="url(#cd-mask-a)"><g id="cd-pole-a" dangerouslySetInnerHTML={{ __html: POLE_A }} /></g>
+      </svg>
+      <canvas className="im-particles" />
     </div>
   );
 }
 
-type Kind = "sure" | "almost" | "notSure";
-
-/* The hero fragment: a farmer's chat with Crop Doctor about one real field photo.
-   Answers come from crop_doctor/knowledge (diseases.json and docs/potato_early_blight.md). */
-function PhoneChat({ kind }: { kind: Kind }) {
-  const t = useT();
-  const farmer = "msg ml-auto max-w-[84%] rounded-[20px] rounded-br-md bg-brand px-3.5 py-2.5 text-on-brand";
-  const model = "msg max-w-[90%] rounded-[20px] rounded-bl-md bg-surface px-3.5 py-2.5 text-ink";
-  return (
-    <div data-ui className="w-full max-w-[360px]">
-      <div className="flex h-[560px] flex-col overflow-hidden rounded-3xl bg-surface-2 text-[15px] leading-snug">
-        <div className="flex items-center gap-2.5 bg-surface-2 px-4 py-3">
-          <span className="flex h-9 w-9 items-center justify-center rounded-full bg-ok-soft text-ok" aria-hidden="true"><ScanSearch className="h-5 w-5" /></span>
-          <span className="font-bold text-ink">Crop Doctor</span>
-        </div>
-        <div key={kind} className="flex flex-1 flex-col justify-end gap-2.5 overflow-hidden bg-background px-3 py-4" aria-live="polite">
-          <div className={`${farmer} p-1.5`} style={{ "--i": 0 } as CSSProperties}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/landing/diag_potato.jpg" alt={t("yourLeaf")} width={800} height={615} className="aspect-[4/3] w-full rounded-[14px] object-cover" />
-            <p className="px-2 pb-1 pt-2">{t("chatQ1")}</p>
-          </div>
-          {kind === "sure" && (
-            <>
-              <div className={model} style={{ "--i": 1 } as CSSProperties}>
-                <p className="flex items-center gap-1.5 text-sm font-semibold text-ok"><CircleCheck className="h-4 w-4" aria-hidden="true" /> {t("sure")}</p>
-                <p className="mt-0.5 text-base font-bold">{t.server("Potato early blight")}</p>
-                <p className="mt-1 text-ink-2">{t("chatCause")}</p>
-              </div>
-              <p className={farmer} style={{ "--i": 2 } as CSSProperties}>{t("chatQ2")}</p>
-              <div className={model} style={{ "--i": 3 } as CSSProperties}>
-                <p>{t("chatA2")}</p>
-                <p className="mt-1.5 text-sm font-semibold text-soon">{t("chatKvk")}</p>
-              </div>
-            </>
-          )}
-          {kind === "almost" && (
-            <div className={model} style={{ "--i": 1 } as CSSProperties}>
-              <p className="flex items-center gap-1.5 text-sm font-semibold text-ask"><CircleHelp className="h-4 w-4" aria-hidden="true" /> {t("almost")}</p>
-              <p className="mt-1">{t.server("Look closely at the spots. Which looks more like your leaf?")}</p>
-              <div className="mt-2.5 space-y-2">
-                <span className="block rounded-xl border border-ask bg-ask-soft px-3 py-2 font-semibold text-ask">{t.server("Bigger brown spots with rings inside, like a target")}</span>
-                <span className="block rounded-xl border border-border px-3 py-2 text-ink">{t.server("Many small round spots with dark edges and pale centres")}</span>
-              </div>
-            </div>
-          )}
-          {kind === "notSure" && (
-            <div className={model} style={{ "--i": 1 } as CSSProperties}>
-              <p className="flex items-center gap-1.5 text-sm font-semibold text-expert"><UserRound className="h-4 w-4" aria-hidden="true" /> {t("notSure")}</p>
-              <p className="mt-1">{t("chatNotSure")}</p>
-              <p className="mt-2 inline-flex items-center gap-2 rounded-full bg-expert-soft px-3 py-1 text-sm font-semibold text-expert">
-                <span className="dot-pulse inline-flex gap-0.5" aria-hidden="true"><span>•</span><span>•</span><span>•</span></span> {t("waitingExpert")}
-              </p>
-            </div>
-          )}
-        </div>
-        <div className="flex items-center gap-2 bg-surface-2 px-3 py-3" aria-hidden="true">
-          <span className="flex-1 rounded-full bg-surface px-4 py-2.5 text-ink-2">{t("chatPlaceholder")}</span>
-          <span className="flex h-10 w-10 items-center justify-center rounded-full bg-brand text-on-brand"><MessageCircle className="h-5 w-5" /></span>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-const KINDS: { id: Kind; label: Key; icon: LucideIcon; on: string }[] = [
-  { id: "sure", label: "sure", icon: CircleCheck, on: "bg-ok text-on-brand" },
-  { id: "almost", label: "almost", icon: CircleHelp, on: "bg-ask-solid text-on-ask" },
-  { id: "notSure", label: "notSure", icon: UserRound, on: "bg-expert-solid text-on-expert" },
-];
-
-function Hero() {
-  const t = useT();
-  const [kind, setKind] = useState<Kind>("sure");
-  const lines = t("heroTitle").split(/(?<=[.।])\s+/);
-  return (
-    <section className={`${WRAP} grid items-center gap-12 pb-24 pt-8 lg:grid-cols-[1fr_auto] lg:gap-20 lg:pb-32 lg:pt-6`}>
-      <div>
-        <h1 className="text-[28px] font-bold leading-[1.08] tracking-[-0.03em] text-ink sm:text-5xl lg:text-[60px]">
-          {lines.map((l, i) => (
-            <span key={i} className="line-mask"><span className="line" style={{ "--l": i } as CSSProperties}>{l}</span></span>
-          ))}
-        </h1>
-        <p className="hero-after mt-10 max-w-[34rem] text-lg leading-relaxed text-ink sm:text-xl">{t("heroText")}</p>
-        <div className="hero-after mt-10 flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-5">
-          <Link href="/check" className="press flex min-h-14 items-center justify-center gap-2 rounded-full bg-brand px-8 text-lg font-semibold text-on-brand">
-            <Camera className="h-6 w-6" aria-hidden="true" /> {t("checkNow")}
-          </Link>
-          <Link href="/check?sample=1" className="press flex min-h-12 items-center justify-center gap-2 px-2 font-semibold text-ink underline underline-offset-4 hover:text-brand">
-            <ImageIcon className="h-5 w-5" aria-hidden="true" /> {t("trySample")}
-          </Link>
-        </div>
-        <ul className="hero-after mt-8 flex flex-wrap gap-x-6 gap-y-2 text-ink">
-          {(["free", "noInstall", "languages8"] as const).map((k) => (
-            <li key={k} className="flex items-center gap-2"><Check className="h-5 w-5 text-ok" aria-hidden="true" />{t(k)}</li>
-          ))}
-        </ul>
-      </div>
-
-      <div className="flex flex-col items-center gap-5">
-        <PhoneChat kind={kind} />
-        <div role="radiogroup" aria-label={t("liveLabel")} className="flex w-full max-w-[360px] gap-1 rounded-full bg-surface-2 p-1">
-          {KINDS.map((k) => (
-            <button key={k.id} type="button" role="radio" aria-checked={kind === k.id} onClick={() => setKind(k.id)}
-              className={`press flex min-h-11 flex-1 items-center justify-center gap-1 whitespace-nowrap rounded-full px-1.5 text-sm font-semibold ${kind === k.id ? k.on : "text-ink hover:bg-surface"}`}>
-              <k.icon className="h-4 w-4" aria-hidden="true" /> {t(k.label)}
-            </button>
-          ))}
-        </div>
-        <p className="max-w-[360px] text-center text-sm text-ink-2">{t("sampleCaption")}</p>
-      </div>
-    </section>
-  );
-}
-
-/* How it works: one reading column, run-in phrases, real field photos as evidence. */
-function HowItWorks() {
-  const t = useT();
-  const steps: { title: Key; text: Key; pics: string[] }[] = [
-    { title: "flow1t", text: "flow1", pics: [] },
-    { title: "flow2t", text: "flow2", pics: ["/reference/potato_early_blight.jpg", "/reference/potato_late_blight.jpg", "/reference/potato_healthy.jpg"] },
-    { title: "flow3t", text: "flow3", pics: [] },
-  ];
-  return (
-    <section aria-labelledby="how" className="bg-surface py-28 lg:py-40">
-      <div className={`${WRAP} grid gap-12 lg:grid-cols-[1fr_560px] lg:gap-20`}>
-        {/* Left: the heading and the photo a farmer takes. */}
-        <div>
-          <Reveal><h2 id="how" className="text-[32px] font-bold leading-tight tracking-[-0.02em] text-ink lg:text-5xl">{t("howItWorks")}</h2></Reveal>
-          <Reveal delay={80} className="mt-8">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/landing/question.jpg" alt="" loading="lazy" width={800} height={600} className="aspect-[4/3] w-full rounded-3xl object-cover lg:aspect-[5/4]" />
-          </Reveal>
-        </div>
-        <ol className="space-y-14 lg:pt-24">
-          {steps.map((s, i) => (
-            <li key={s.title}>
-              <Reveal delay={i * 80}>
-                <p className="text-lg leading-relaxed text-ink-2"><strong className="font-bold text-ink">{t(s.title)}.</strong> {t(s.text)}</p>
-              </Reveal>
-              {s.pics.length === 1 && (
-                <Reveal delay={i * 80 + 80} className="mt-5">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={s.pics[0]} alt="" loading="lazy" width={800} height={450} className="aspect-video w-full rounded-2xl object-cover" />
-                </Reveal>
-              )}
-              {s.pics.length > 1 && (
-                <Reveal delay={i * 80 + 80} className="mt-5 flex gap-3 overflow-x-auto">
-                  {s.pics.map((p) => (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img key={p} src={p} alt="" loading="lazy" width={300} height={300} className="h-36 min-w-0 flex-1 rounded-2xl object-cover sm:h-44" />
-                  ))}
-                </Reveal>
-              )}
-              {s.title === "flow3t" && (
-                <Reveal delay={i * 80 + 80} className="mt-5">
-                  <div data-ui className="rounded-2xl bg-background p-5">
-                    <p className="flex items-center gap-1.5 text-sm font-semibold text-ok"><CircleCheck className="h-4 w-4" aria-hidden="true" /> {t("sure")}</p>
-                    <p className="mt-1 text-xl font-bold text-ink">{t.server("Potato early blight")}</p>
-                    <p className="mt-2 leading-relaxed text-ink-2">{t("chatA2")}</p>
-                    <p className="mt-2 text-sm font-semibold text-soon">{t("chatKvk")}</p>
-                  </div>
-                </Reveal>
-              )}
-            </li>
-          ))}
-        </ol>
-      </div>
-    </section>
-  );
-}
-
-const OUTCOMES: { icon: LucideIcon; tone: string; title: Key; text: Key }[] = [
-  { icon: CircleCheck, tone: "bg-ok-soft text-ok", title: "sure", text: "sureT" },
-  { icon: CircleHelp, tone: "bg-ask-soft text-ask", title: "almost", text: "almostT" },
-  { icon: UserRound, tone: "bg-expert-soft text-expert", title: "notSure", text: "notSureT" },
-];
-
-/* Three kinds of answer: a statement on the left, the three as a large run on the right. */
-function Answers() {
-  const t = useT();
-  return (
-    <section aria-labelledby="answers" className={`${WRAP} grid gap-12 py-28 lg:grid-cols-[5fr_7fr] lg:gap-20 lg:py-40`}>
-      <Reveal>
-        <h2 id="answers" className="text-[32px] font-bold leading-tight tracking-[-0.02em] text-ink lg:text-5xl">{t("kinds")}</h2>
-        <p className="mt-6 max-w-md text-xl leading-relaxed text-ink">{t("kindsSub")}</p>
-      </Reveal>
-      <ul className="space-y-12">
-        {OUTCOMES.map((o, i) => (
-          <li key={o.title}>
-            <Reveal delay={i * 90} className="flex gap-5">
-              <span className={`flex h-16 w-16 shrink-0 items-center justify-center rounded-full ${o.tone}`} aria-hidden="true"><o.icon className="h-8 w-8" /></span>
-              <div>
-                <h3 className="text-2xl font-bold text-ink">{t(o.title)}</h3>
-                <p className="mt-1 text-lg leading-relaxed text-ink-2">{t(o.text)}</p>
-              </div>
-            </Reveal>
-          </li>
-        ))}
-      </ul>
-    </section>
-  );
-}
-
-/* One number with its bar and plain sentence. The number leads; its meaning follows as the sentence. */
-function Figure({ value, title, note, strong, target }: { value: number; title: string; note: string; strong?: boolean; target?: number }) {
-  return (
-    <div>
-      <p className={`text-6xl font-bold tabular-nums tracking-[-0.03em] lg:text-7xl ${strong ? "text-brand" : "text-ink-2"}`}>{pct(value)}</p>
-      <h3 className="mt-2 text-xl font-bold text-ink">{title}</h3>
-      <span className="relative mt-4 block h-3 rounded-full bg-surface-2" aria-hidden="true">
-        <span className={`block h-3 rounded-full ${strong ? "bg-brand" : "bg-ink-3"}`} style={{ width: pct(value) }} />
-        {target !== undefined && <span className="absolute -top-1.5 h-6 w-1 rounded-full bg-ink" style={{ left: pct(target) }} />}
-      </span>
-      <p className="mt-4 max-w-prose text-lg leading-relaxed text-ink-2">{note}</p>
-    </div>
-  );
-}
-
-function Honesty() {
-  const t = useT();
-  return (
-    <section aria-labelledby="why" className="bg-surface py-28 lg:py-40">
-      <div className={WRAP}>
-        <Reveal>
-          <h2 id="why" className="text-[32px] font-bold leading-tight tracking-[-0.02em] text-ink lg:text-5xl">{t("whyTitle")}</h2>
-          <p className="mt-4 text-xl leading-relaxed text-ink">{t("whyTested", { n: R.fieldTestPhotos.toLocaleString("en-IN") })}</p>
-        </Reveal>
-        <div className="mt-16 grid gap-16 md:grid-cols-2 lg:gap-x-24">
-          <Reveal><Figure value={R.labOnlyFieldAccuracy} title={`${t("whyUsualTag")}: ${t("whyFieldLabel")}`}
-            note={t("whyFieldNote", { lab: pct(R.labAccuracy), field: pct(R.labOnlyFieldAccuracy), conf: pct(R.labOnlyFieldConfidence) })} /></Reveal>
-          {/* Honest numbers rule: lead with the hard 63% on varied photos, not the easy-set average. */}
-          <Reveal delay={90}><Figure strong value={R.plantdocAccuracy} title={`${t("whyOursTag")}: ${t("whyFirstLabel")}`}
-            note={t("whyFirstNote", { tz: pct(R.tanzaniaAccuracy), pd: pct(R.plantdocAccuracy) })} /></Reveal>
-          <Reveal><Figure strong value={R.coverage} target={R.coverageTarget} title={t("whyCoverLabel")}
-            note={t("whyCoverNote", { target: pct(R.coverageTarget) })} /></Reveal>
-          <Reveal delay={90}><Figure strong value={R.accuracyWhenAnswered} title={t("whyAloneLabel")}
-            note={t("whyAloneNote", { answered: pct(R.answeredByAssistant) })} /></Reveal>
-        </div>
-        <p className="mt-16 text-sm text-ink-2">{t("fieldPhotoCredit")}</p>
-      </div>
-    </section>
-  );
-}
-
-/* The close: a full field of brand green with the first step already open. */
-function Close() {
-  const t = useT();
-  return (
-    <section aria-labelledby="close" className="bg-brand py-28 text-on-brand lg:py-40">
-      <div className={`${WRAP} grid items-end gap-12 lg:grid-cols-[1fr_440px]`}>
-        <Reveal>
-          <h2 id="close" className="text-[34px] font-bold leading-[1.02] tracking-[-0.03em] sm:text-6xl lg:text-7xl">{t("closeTitle")}</h2>
-          <p className="mt-6 max-w-md text-xl leading-relaxed">{t("closeText")}</p>
-        </Reveal>
-        <Reveal delay={120}>
-          <div data-ui className="rounded-3xl bg-background p-6 text-ink">
-            <div className="flex items-center gap-3">
-              <span className="flex h-11 w-11 items-center justify-center rounded-full bg-ok-soft text-ok" aria-hidden="true"><Camera className="h-6 w-6" /></span>
-              <p className="text-lg font-bold">{t("flow1t")}</p>
-            </div>
-            <p className="mt-3 leading-relaxed text-ink-2">{t("flow1")}</p>
-            <Link href="/check" className="press mt-6 flex min-h-14 items-center justify-center gap-2 rounded-full bg-brand px-6 text-lg font-semibold text-on-brand">
-              <Camera className="h-6 w-6" aria-hidden="true" /> {t("checkNow")}
-            </Link>
-          </div>
-        </Reveal>
-      </div>
-    </section>
-  );
-}
+const serif = "[font-family:var(--serif)] text-[1.375rem] font-normal text-[var(--ink)]";
 
 export default function Home() {
+  const t = useT();
+  const c = t.hi ? COPY.hi : COPY.en;
+  const root = useRef<HTMLDivElement>(null);
+  useHeroEngine(root);
+
   return (
-    <div className="flex-1">
-      <Hero />
-      <HowItWorks />
-      <Answers />
-      <Honesty />
-      <Close />
+    <div ref={root} className={`im im-path-a ${fraunces.variable} ${tiro.variable} ${plexMono.variable}`}>
+      <section className="im-hero" aria-labelledby="im-h1">
+        <h1 id="im-h1" className="sr-only">{c.h1}</h1>
+        <HeroArt />
+        <div className="im-stage">
+          <div className="im-logo" aria-hidden="true">
+            <span className="word word--a">Crop</span>
+            <span className="ring" />
+            <span className="word word--b">Doctor</span>
+          </div>
+          <div className="im-caps im-caps--a" aria-hidden="true">{c.capsA.map((w) => <span key={w}>{w}</span>)}</div>
+          <div className="im-caps im-caps--b" aria-hidden="true">{c.capsB.map((w) => <span key={w}>{w}</span>)}</div>
+          <div className="im-plumb" aria-hidden="true" />
+          <div className="im-foot">
+            <p className="tagline">
+              {c.tagline[0]}<em className="acc-a">{c.tagline[1]}</em>{c.tagline[2]}<em className="acc-b">{c.tagline[3]}</em>{c.tagline[4]}
+            </p>
+            <div className="im-cta">
+              <Link href="/check" className="btn btn--primary">{c.check}</Link>
+              <a href="#numbers" className="btn btn--secondary">{c.numbers}</a>
+            </div>
+            <p className="im-meta">{c.meta}</p>
+            <p className="im-cue">{c.cue}</p>
+          </div>
+        </div>
+      </section>
+
+      <div className="im-body">
+        <div className="im-col">
+          <section className="im-sec" aria-labelledby="im-idea">
+            <p className="num"><b>§01</b> {c.s01}</p>
+            <h2 id="im-idea" className="im-idea-h">
+              <span className="acc-a">{c.cropTitle}</span><span className="plus">+</span><span className="acc-b">{c.docTitle}</span>
+            </h2>
+            <p>{c.ideaText}</p>
+            <div className="im-pair">
+              <div className="panel panel--a">
+                <h3 className="acc-a">{c.cropTitle}</h3>
+                <p className="tagline">{c.cropTag}</p>
+                <p className="mt-3">{c.cropText}</p>
+              </div>
+              <div className="panel panel--b">
+                <h3 className="acc-b">{c.docTitle}</h3>
+                <p className="tagline">{c.docTag}</p>
+                <p className="mt-3">{c.docText}</p>
+              </div>
+            </div>
+          </section>
+
+          <section className="im-sec" aria-labelledby="im-how">
+            <p className="eyebrow">{c.s1x}</p>
+            <h2 id="im-how">{c.howTitle}</h2>
+            <div className="im-how grid gap-6">
+              <ol className="im-steps">
+                {c.steps.map(([h, d], i) => (
+                  <li key={h}>
+                    <span className="num"><b>{`0${i + 1}`}</b></span>
+                    <strong>{h}</strong>
+                    <span>{d}</span>
+                  </li>
+                ))}
+              </ol>
+              <figure className="figure">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/landing/diag_potato.jpg" alt={c.figCaption} width={800} height={615} loading="lazy" />
+                <figcaption>{c.figCaption}</figcaption>
+              </figure>
+            </div>
+          </section>
+
+          <div className="im-paths" id="numbers">
+            <section className="im-path im-path--a" aria-labelledby="im-pa">
+              <p className="eyebrow eyebrow--a">{c.s02a}</p>
+              <h2 id="im-pa">{c.s02aTitle}</h2>
+              <ol>
+                {c.pathA.map(([n, h, d]) => (
+                  <li key={n}>
+                    <span className="num"><b>{n}</b></span>
+                    <strong className={serif}>{h}</strong>
+                    <span>{d}</span>
+                  </li>
+                ))}
+              </ol>
+              <p className="say">{c.sayA}</p>
+            </section>
+            <section className="im-path im-path--b" aria-labelledby="im-pb">
+              <p className="eyebrow eyebrow--b">{c.s02b}</p>
+              <h2 id="im-pb">{c.s02bTitle}</h2>
+              <ol>
+                {c.pathB.map(([n, big, d]) => (
+                  <li key={n}>
+                    <span className="num"><b>{n}</b></span>
+                    <span className="im-big">{big}</span>
+                    <span>{d}</span>
+                  </li>
+                ))}
+              </ol>
+              <p className="say">{c.sayB}</p>
+            </section>
+          </div>
+
+          <section className="im-sec im-close" aria-labelledby="im-close">
+            <p className="eyebrow">{c.s03}</p>
+            <h2 id="im-close">{c.closeTitle}</h2>
+            <p>{c.closeText}</p>
+            <div><Link href="/check" className="btn btn--primary">{c.check}</Link></div>
+          </section>
+
+          <div className="im-more">
+            <div className="panel panel--b">
+              <h3 className="text-[1.4rem]">{c.expertTitle}</h3>
+              <p className="mt-2">{c.expertText}</p>
+              <p className="mt-4"><Link href="/expert">{c.expertLink}</Link></p>
+            </div>
+            <div className="panel panel--a">
+              <h3 className="text-[1.4rem]">{c.chatTitle}</h3>
+              <p className="mt-2">{c.chatText}</p>
+              <p className="mt-4"><Link href="/check">{c.chatLink}</Link></p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
